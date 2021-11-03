@@ -28,6 +28,11 @@ set signcolumn=yes
 set noswapfile
 set nobackup
 
+" enable hidden buffers. By default, if there are unsaved changes in your
+" current buffer, and you try moving to some another buffer, vim won't let you
+" do that. By setting `hidden` it enables this behavior.
+set hidden
+
 " >>>>>>>>>>> Key Mappings Starts <<<<<<<<<<<<<
 
 let mapleader = ","

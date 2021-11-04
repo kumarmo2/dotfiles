@@ -52,6 +52,11 @@ nnoremap <leader>v<cr> :vs<cr>
 nnoremap <leader>h<cr> :split<cr><c-w>j
 
 
+" on press of 2 times leader key, go to previous buffer.
+" Very helpful for quickly switching between 2 buffers.
+nnoremap <leader><leader> <c-^>
+
+
 " >>>>>> Common Autocomplete starts <<<<<<<
 
 " Automatically complete create the closing curly braces.
@@ -69,24 +74,54 @@ inoremap (<space> ()<esc>i
 
 " >>>>>> Common Autocomplete ends <<<<<<<
 
+" >>>>>  fzf related key bindings starts <<<<<< 
+
+
+
+" open files using fzf 
+nnoremap <c-p> :Files<cr>
+
+" shortcut for opening buffers using fzf
+nnoremap <leader>; :Buffers<cr>
+
+
+" >>>>>  fzf related key bindings ends <<<<<< 
 
 " >>>>>>>>>>> Key Mappings Ends <<<<<<<<<<<<<
 
-
-
-" 
-nnoremap <c-p> :Files<cr>
 
 " Plugins using `vim-plug`
 
 
 call plug#begin('~/.vim/plugged')
 
+" fuzzy searching.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'morhetz/gruvbox'
+
+
+" highlights the yanked text.
+Plug 'machakann/vim-highlightedyank'
+
+Plug 'itchyny/lightline.vim'
+
 call plug#end()
+
+" gruvbox colorscheme settings starts
+
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
+
+" gruvbox colorscheme settings ends
 
 
 " Plugins end
+"
+" >>>> lightline plugin settings start
+
+set laststatus=2
+
+" >>>>>> lightline plugin settings ends
 

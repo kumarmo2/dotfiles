@@ -45,6 +45,11 @@ nnoremap \ :noh<return>
 " save file on press of `<leader>w`
 nnoremap <leader>w :w<cr>
 
+nnoremap <leader>wq :wq<cr>
+
+nnoremap <leader>q :q<cr>
+nnoremap <leader>q! :q!<cr>
+
 " `vertical split` on press of `<leader>vs`
 nnoremap <leader>v<cr> :vs<cr>
 
@@ -83,6 +88,8 @@ nnoremap <c-p> :Files<cr>
 
 " shortcut for opening buffers using fzf
 nnoremap <leader>; :Buffers<cr>
+
+nnoremap <c-F> :Rg<cr>
 
 
 " >>>>>  fzf related key bindings ends <<<<<< 

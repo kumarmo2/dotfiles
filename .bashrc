@@ -134,17 +134,18 @@ export DOTNET_ROOT=$HOME/dotnet
 # extends the default features
 export FZF_DEFAULT_OPS="--extended"
 
-# giving alias to fd
-alias fd=fdfind
 
 # by default, fzf uses `find` internally
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-# export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_DEFAULT_COMMAND='fdfind --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# giving alias to fd
+alias fd=fdfind
 
 # fzf and fd ends
 
@@ -152,8 +153,8 @@ alias fd=fdfind
 alias l='ls -l'
 alias la='ls -al'
 
-" not exactly sure what exactly setting this TERM is doing
-" but setting TERM to this value, makes the vim colorschemes
-" specially custom ones work much better. eg gruvbox.
+# not exactly sure what exactly setting this TERM is doing
+# but setting TERM to this value, makes the vim colorschemes
+# specially custom ones work much better. eg gruvbox.
 export TERM=xterm-256color
 

@@ -7,12 +7,18 @@ set ignorecase
 set rnu
 set nu
 
+" turn off bells.
+set visualbell
+
+
 set nowrap
 
 set tabstop=4
 " set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+
 
 set smartindent
 " set incremental search. highlights as you type the search term.

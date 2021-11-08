@@ -115,15 +115,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
 
-# dotnet configs.
-export PATH=$PATH:$HOME/dotnet
-export DOTNET_ROOT=$HOME/dotnet
+
+
 
 
 # >>>> My custom configs starts from here.
@@ -144,17 +139,15 @@ export FZF_DEFAULT_COMMAND='fdfind --type f'
 # For `ctrl-t` also, we are overriding to use `fd`
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# giving alias to fd
 alias fd=fdfind
 
-# fzf and fd ends
-
-
-alias l='ls -l'
-alias la='ls -al'
-
-# not exactly sure what exactly setting this TERM is doing
-# but setting TERM to this value, makes the vim colorschemes
-# specially custom ones work much better. eg gruvbox.
 export TERM=xterm-256color
+
+export ANDROID_SDK=/home/kumarmo2/Android/Sdk
+export PATH=${PATH}:/home/kumarmo2/Android/Sdk/platform-tools
+
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+export PATH=$PATH:$HOME/nvim-linux64/bin
+alias vim=nvim
 

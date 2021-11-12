@@ -1,3 +1,10 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["javascript"]
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "javascript",
+        "json",
+        "cs",
+        "rust"
+    ],
+    "css.lint.duplicateProperties": true
 }

@@ -92,8 +92,6 @@ inoremap (<space> ()<esc>i
 
 inoremap [<space> []<esc>i
 
-inoremap <<space> <><esc>i
-
 nnoremap <C-E> :Lexplore<CR>
 
 
@@ -144,6 +142,9 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+" ranger plugin
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+
 call plug#end()
 
 " Plugins end
@@ -192,9 +193,9 @@ let g:netrw_banner = 0
 
 " netrw settings ends
 
+let g:rnvimr_ex_enable = 1
 
-
-
+nmap <space>r :RnvimrToggle<CR>
 
 
 " coc settings starts

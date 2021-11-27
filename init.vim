@@ -92,6 +92,8 @@ inoremap (<space> ()<esc>i
 
 inoremap [<space> []<esc>i
 
+inoremap <<space> <><esc>i
+
 nnoremap <C-E> :Lexplore<CR>
 
 

@@ -157,6 +157,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export LC_ALL="en_IN.UTF-8"
+
+alias rng=ranger
+
+
+# starship prompt settings.
+eval "$(starship init bash)"
+export STARSHIP_CONFIG=~/.config/starship.toml
 
 
 neofetch

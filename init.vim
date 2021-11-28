@@ -92,9 +92,6 @@ inoremap (<space> ()<esc>i
 
 inoremap [<space> []<esc>i
 
-nnoremap <C-E> :Lexplore<CR>
-
-
 " >>>>>> Common Autocomplete ends <<<<<<<
 
 " >>>>>  fzf related key bindings starts <<<<<< 
@@ -110,6 +107,9 @@ nnoremap <leader>; :Buffers<cr>
 nnoremap <c-F> :Rg<cr>
 
 nnoremap <leader>gs :G<CR>
+
+" Close the current buffer(without closing the window)
+nnoremap <SPACE>w :bd<CR>
 
 
 " >>>>>  fzf related key bindings ends <<<<<< 
@@ -195,7 +195,7 @@ let g:netrw_banner = 0
 
 let g:rnvimr_ex_enable = 1
 
-nmap <space>r :RnvimrToggle<CR>
+nnoremap <space>r :RnvimrToggle<CR>
 
 
 " coc settings starts

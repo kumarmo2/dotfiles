@@ -1,4 +1,3 @@
-# NOTE: put this config file in $HOME/.config/alacritty/alacritty.yml
 # Colors (Gruvbox dark)
 colors:
   primary:
@@ -92,6 +91,10 @@ window:
     x: 6
     y: 6
 
+window:
+  startup_mode: Maximized
+  decorations: none
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -110,4 +113,16 @@ selection:
 
 
 live_config_reload: true
+
+key_bindings:
+- { key: F,   mods: Control,           action: ToggleFullscreen }
+# (Windows, Linux, and BSD only)
+#- { key: V,        mods: Control|Shift, action: Paste            }
+#- { key: C,        mods: Control|Shift, action: Copy             }
+#- { key: Insert,   mods: Shift,         action: PasteSelection   }
+#- { key: Key0,     mods: Control,       action: ResetFontSize    }
+#- { key: Equals,   mods: Control,       action: IncreaseFontSize }
+#- { key: Add,      mods: Control,       action: IncreaseFontSize }
+#- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+#- { key: Minus,    mods: Control,       action: DecreaseFontSize }
 

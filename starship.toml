@@ -18,8 +18,12 @@ disabled = true
 
 [git_branch]
 #format = "on [$branch]($style) "
+style = "bold green"
 
 [dotnet]
+disabled = true
+
+[nodejs]
 disabled = true
 
 

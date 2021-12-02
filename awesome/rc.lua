@@ -21,6 +21,8 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
+-- Load volume widget . Just make sure `awesome-wm-widgets` repo is cloned at `~/.config/awesome`.
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -230,6 +232,10 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            volume_widget(),
+            volume_widget{
+                widget_type = 'arc'
+            },
             mytextclock,
             s.mylayoutbox,
         },
@@ -344,7 +350,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+                  {description = "show the menubar", group = "launcher"}),
+    -- Volume controls
+    awful.key({ modkey }, "]", function() volume_widget:inc(5) end),
+    awful.key({ modkey }, "[", function() volume_widget:dec(5) end),
+    awful.key({ modkey }, "\\", function() volume_widget:toggle() end)
 )
 
 clientkeys = gears.table.join(
@@ -586,7 +596,11 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell('~/.config/autostart/keysswap.sh')
 
 
--- gaps
+-- gaps starts
+
 beautiful.gap_single_client = true
 beautiful.useless_gap = 4
+
+-- gaps ends
+
 -- }}}

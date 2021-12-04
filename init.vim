@@ -145,6 +145,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " ranger plugin
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
+"Plug 'sheerun/vim-polyglot'
+
 call plug#end()
 
 " Plugins end

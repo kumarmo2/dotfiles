@@ -4,7 +4,8 @@
         "javascript",
         "json",
         "cs",
-        "rust"
+        "rust",
+        "lua"
     ],
     "css.lint.duplicateProperties": true
 }

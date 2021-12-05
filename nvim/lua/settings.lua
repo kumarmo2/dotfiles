@@ -59,5 +59,3 @@ vim.o.background = 'dark'
 cmd('colorscheme gruvbox')
 
 
-
-

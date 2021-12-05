@@ -6,6 +6,7 @@ cmd('source ~/.config/nvim/lua/settings.lua')
 cmd('source ~/.config/nvim/lua/plugins.lua')
 cmd('source ~/.config/nvim/lua/keymappings.lua')
 cmd('source ~/.config/nvim/vimfiles/coc.vim')
+cmd('source ~/.config/nvim/vimfiles/lightline.vim')
 
 
 

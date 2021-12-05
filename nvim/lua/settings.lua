@@ -53,7 +53,7 @@ vim.o.backup = false
 vim.o.hidden = true
 
 setOption('syntax', 'enable')
--- setOption('laststatus', 2)
+setOption('laststatus', 2)
 vim.o.background = 'dark'
 
 cmd('colorscheme gruvbox')

@@ -37,7 +37,8 @@ setKeyMap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true})
 setKeyMap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true})
 setKeyMap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true})
 
-
+-- buffers
+setKeyMap('n', '<SPACE>w', ':bd<CR>', { noremap = true})
 
 -- better visual indenting
 setKeyMap('v', '<', '<gv', { noremap = true, silent = true})
@@ -48,7 +49,7 @@ setKeyMap('v', '>', '>gv', { noremap = true, silent = true})
 
 setKeyMap('n', '<C-p>', ':Files<CR>', { noremap = true})
 setKeyMap('n', '<leader>;', ':Buffers<CR>', {noremap = true})
-setKeyMap('n', '<C-f>', ':Rg<CR>', {noremap = true})
+setKeyMap('n', '<C-F>', ':Rg<CR>', {noremap = true})
 
 
 

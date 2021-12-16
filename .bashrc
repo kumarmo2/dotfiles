@@ -166,5 +166,22 @@ alias rng=ranger
 eval "$(starship init bash)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
+#setxkbmap -option caps:swapescape
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+
+# git aliases
+alias gd="git diff"
+alias ga="git add"
+alias gs="git status"
+alias gc="git commit"
+alias gp="git push origin"
+
+# tmux aliases
+alias ts="tmux new-session -s"
+
+export PATH=$PATH:$HOME/rust/bin
 
 neofetch

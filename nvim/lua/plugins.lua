@@ -17,12 +17,12 @@ return require('packer').startup(function(use)
    use 'morhetz/gruvbox'
    use 'machakann/vim-highlightedyank'
    use 'kevinhwang91/rnvimr'
+   -- use 'sheerun/vim-polyglot'
 
    -- status line plugin
    use 'itchyny/lightline.vim'
 
-   -- use 'neovim/nvim-lspconfig'
---use 'hrsh7th/nvim-compe'
+   use 'Omnisharp/Omnisharp-vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

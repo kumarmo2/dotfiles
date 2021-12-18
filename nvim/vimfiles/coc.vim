@@ -164,9 +164,12 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"extensions 
-"let g:coc_global_extensions = ['coc-omnisharp']
-
-" settings for csharp
+" TODO: move these keybindings to keybindings.lua.
+" settings for csharp starts
+" override mapping `gd` to use omnisharp-vim plugin instead of coc.
 autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<CR>
  
+" keymapping for code actions like `remove unused usings etc.`
+autocmd FileType cs nnoremap <Space><Tab> :OmniSharpGetCodeActions<CR>
+"
+" settings for csharp ends

@@ -146,8 +146,9 @@ export TERM=xterm-256color
 export ANDROID_SDK=/home/kumarmo2/Android/Sdk
 export PATH=${PATH}:/home/kumarmo2/Android/Sdk/platform-tools
 
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
+# export DOTNET_ROOT=$HOME/dotnet
+# export PATH=$PATH:$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet-6
 export PATH=$PATH:$HOME/nvim-linux64/bin
 alias vim=nvim
 export PATH=$PATH:$HOME/Downloads/logstash-7.15.1/bin
@@ -179,9 +180,11 @@ alias gs="git status"
 alias gc="git commit"
 alias gp="git push origin"
 
+# dotnet alias
+alias dt=dotnet
+
 # tmux aliases
 alias ts="tmux new-session -s"
-
 export PATH=$PATH:$HOME/rust/bin
 
 neofetch

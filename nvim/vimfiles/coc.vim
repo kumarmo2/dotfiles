@@ -170,6 +170,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<CR>
  
 " keymapping for code actions like `remove unused usings etc.`
-autocmd FileType cs nnoremap <Space><Tab> :OmniSharpGetCodeActions<CR>
+autocmd FileType cs nnoremap <silent> <Space><Tab> :OmniSharpGetCodeActions<CR>
 "
 " settings for csharp ends

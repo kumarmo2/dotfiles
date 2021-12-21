@@ -1,4 +1,14 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["rust", "js", "csharp", "c#", "java"],
-    "suggest.enablePreview": true
+    "coc.preferences.formatOnSaveFiletypes": ["rust", "js", "cs", "java"],
+    "suggest.enablePreview": true,
+    "languageserver": {
+        "lua": {
+            "command": "/home/kumarmo2/lua-scripts/lua-language-server/bin/lua-language-server",
+            "filetypes": ["lua"],
+            "rootPatterns": [".git/"]
+        }
+    },
+    "Lua.diagnostics.disable" : [
+        "lowercase-global"
+    ]
 }

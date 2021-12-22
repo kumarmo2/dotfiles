@@ -23,6 +23,7 @@ local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 -- Load volume widget . Just make sure `awesome-wm-widgets` repo is cloned at `~/.config/awesome`.
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+local ram_widget = require('awesome-wm-widgets.ram-widget.ram-widget')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -189,7 +190,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "main", "work_slack", "3", "4", "5", "6", "7", "8", "music" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -232,7 +233,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
-            volume_widget(),
+            -- ram_widget(),
             volume_widget{
                 widget_type = 'arc'
             },

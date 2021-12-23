@@ -3,7 +3,7 @@ local vim = vim
 local setKeyMap= vim.api.nvim_set_keymap
 
 -- set leader key to ','
-vim.g.mapleader = ','
+vim.g.mapleader = ' '
 
 
 -- create closing parentheses/brackets etc starts.
@@ -49,7 +49,7 @@ setKeyMap('v', '>', '>gv', { noremap = true, silent = true})
 
 setKeyMap('n', '<C-p>', ':Files<CR>', { noremap = true})
 setKeyMap('n', '<leader>;', ':Buffers<CR>', {noremap = true})
-setKeyMap('n', '<Space>f', ':Rg<CR>', {noremap = true})
+setKeyMap('n', '<leader>f', ':Rg<CR>', {noremap = true})
 
 
 

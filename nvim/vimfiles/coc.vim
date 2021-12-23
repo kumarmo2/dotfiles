@@ -82,7 +82,10 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+"nmap <leader>rn <Plug>(coc-rename)
+" had to use `,` because mapped the leader to <Space>
+" and <leader>r was mapped to open ranger's file explorer.
+nmap ,rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)

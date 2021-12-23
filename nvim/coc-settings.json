@@ -8,6 +8,7 @@
             "rootPatterns": [".git/"]
         }
     },
+    "Lua.completion.showParams": true,
     "Lua.diagnostics.disable" : [
         "lowercase-global"
     ]

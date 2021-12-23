@@ -60,4 +60,7 @@ vim.o.background = 'dark'
 
 vim.termguicolors = true
 
+-- keep block cursor in normal, visual, command and insert modes.
+cmd('set guicursor=n-v-c-i:block-Cursor')
+
 

@@ -28,6 +28,8 @@ return require('packer').startup(function(use)
 
    use 'lunarvim/colorschemes'
 
+   use 'flazz/vim-colorschemes'
+
    use 'itchyny/vim-gitbranch'
 
    -- for better syntax highlighting

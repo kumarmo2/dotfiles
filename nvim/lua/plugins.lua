@@ -30,7 +30,10 @@ return require('packer').startup(function(use)
 
    use 'itchyny/vim-gitbranch'
 
+   -- for better syntax highlighting
    use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
+
+   use 'preservim/nerdcommenter'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

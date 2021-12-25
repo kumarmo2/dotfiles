@@ -1,22 +1,14 @@
 
 local cmd = vim.cmd
 
--- cmd('source '..lua_files_path..'/plugins.lua')
---
-cmd('source ~/.config/nvim/lua/settings.lua')
-cmd('source ~/.config/nvim/lua/plugins.lua')
+require('settings')
+require('plugins')
+-- TODO: migrate all vim files to lua
 cmd('source ~/.config/nvim/vimfiles/coc.vim')
 cmd('source ~/.config/nvim/vimfiles/lightline.vim')
 cmd('source ~/.config/nvim/vimfiles/preview-markdown.vim')
-cmd('source ~/.config/nvim/lua/coc/init.lua')
-cmd('source ~/.config/nvim/lua/keymappings.lua')
-cmd('source ~/.config/nvim/lua/treesitter.lua')
-
-cmd('autocmd FileType javascript nnoremap <buffer> <C-_> I//<ESC>')
-
-
-
-
-
-
+require('coc/init');
+require('keymappings')
+require('treesitter')
+require('nerd-commenter')
 

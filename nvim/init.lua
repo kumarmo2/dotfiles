@@ -11,6 +11,7 @@ require('coc/init');
 require('keymappings')
 require('treesitter')
 require('nerd-commenter')
+require('night_fox')
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
 

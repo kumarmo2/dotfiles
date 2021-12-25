@@ -12,3 +12,5 @@ require('keymappings')
 require('treesitter')
 require('nerd-commenter')
 
+cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
+

@@ -55,7 +55,7 @@ vim.o.hidden = true
 setOption('syntax', 'enable')
 setOption('laststatus', 2)
 
-cmd('colorscheme gruvbox')
+cmd('colorscheme onedarker')
 vim.o.background = 'dark'
 
 vim.termguicolors = true

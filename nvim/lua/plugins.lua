@@ -35,6 +35,11 @@ return require('packer').startup(function(use)
 
    use 'preservim/nerdcommenter'
 
+   use 'shaunsingh/nord.nvim'
+
+   use 'joshdick/onedark.vim'
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

@@ -43,7 +43,6 @@ return require('packer').startup(function(use)
    -- nightfox and alike colorschemes
    use 'EdenEast/nightfox.nvim'
 
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

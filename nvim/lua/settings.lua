@@ -55,8 +55,8 @@ vim.o.hidden = true
 setOption('syntax', 'enable')
 setOption('laststatus', 2)
 
-cmd('colorscheme nightfox')
-vim.o.background = 'dark'
+cmd('colorscheme nordfox')
+-- vim.o.background = 'dark'
 
 vim.termguicolors = true
 

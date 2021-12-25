@@ -35,11 +35,13 @@ return require('packer').startup(function(use)
    -- for better syntax highlighting
    use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate'}
 
+   -- for commentings
    use 'preservim/nerdcommenter'
 
-   use 'shaunsingh/nord.nvim'
-
    use 'joshdick/onedark.vim'
+
+   -- nightfox and alike colorschemes
+   use 'EdenEast/nightfox.nvim'
 
 
   -- Automatically set up your configuration after cloning packer.nvim

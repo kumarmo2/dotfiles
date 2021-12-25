@@ -56,6 +56,7 @@ setOption('syntax', 'enable')
 setOption('laststatus', 2)
 
 cmd('colorscheme gruvbox')
+
 vim.o.background = 'dark'
 
 vim.termguicolors = true

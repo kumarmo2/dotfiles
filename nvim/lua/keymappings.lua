@@ -23,7 +23,10 @@ setKeyMap('n', '<Leader>qq', ':q!<CR>', {noremap = true, silent = true})
 
 
 -- File explorer using ranger and its vim plugin
-setKeyMap('n', '<Space>r', ':RnvimrToggle<CR>', {noremap = true})
+-- using nvim-tree. thats why disable `rnvimr` bindings
+-- setKeyMap('n', '<Space>r', ':RnvimrToggle<CR>', {noremap = true})
+
+setKeyMap('n', '<Space>r', ':NvimTreeToggle<CR>', {noremap = true})
 
 
 -- prev buffer

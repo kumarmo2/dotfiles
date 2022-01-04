@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["rust", "js", "cs", "java"],
+    "coc.preferences.formatOnSaveFiletypes": ["rust", "js","javascript", "cs", "java"],
     "suggest.enablePreview": true,
     "languageserver": {
         "lua": {

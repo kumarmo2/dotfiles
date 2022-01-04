@@ -3,7 +3,7 @@ local nightfox = require('nightfox')
 
 
 nightfox.setup({
-    fox = "nordfox",
+    fox = "nightfox",
     -- transparent = true,
     styles = {
         -- comments = "italic",

@@ -15,6 +15,7 @@ require('nerd-commenter')
 -- require('night_fox')
 require('gitsigns-setup')
 require('fzf')
+require('nvim-tree-setup')
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
 

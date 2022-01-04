@@ -12,11 +12,19 @@ return require('packer').startup(function(use)
    use 'wbthomason/packer.nvim'
    use {'junegunn/fzf', run = ' -> fzf#install()'}
    use 'junegunn/fzf.vim'
+
+   -- nvim tree
+   use 'kyazdani42/nvim-web-devicons'
+   use 'kyazdani42/nvim-tree.lua'
+
+
    use {'neoclide/coc.nvim', branch = 'release'}
 
    use 'morhetz/gruvbox'
    use 'machakann/vim-highlightedyank'
-   use 'kevinhwang91/rnvimr'
+
+   -- using nvim-tree for file explorer
+   -- use 'kevinhwang91/rnvimr'
    -- use 'sheerun/vim-polyglot'
 
    -- status line plugin

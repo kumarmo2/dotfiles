@@ -25,7 +25,9 @@
  vim.o.shiftwidth = 4
  vim.o.expandtab = true
  vim.o.smartindent = true
- vim.o.scrolloff = 999
+ -- using big value for `scrolloff`, you can keep the cursor at the
+ -- center
+ -- vim.o.scrolloff = 999
  vim.o.colorcolumn = '120'
  -- shorter way to global options
  vim.o.swapfile = false

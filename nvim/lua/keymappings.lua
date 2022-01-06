@@ -26,7 +26,7 @@ setKeyMap('n', '<Leader>qq', ':q!<CR>', {noremap = true, silent = true})
 -- using nvim-tree. thats why disable `rnvimr` bindings
 -- setKeyMap('n', '<Space>r', ':RnvimrToggle<CR>', {noremap = true})
 
-setKeyMap('n', '<Space>r', ':NvimTreeToggle<CR>', {noremap = true})
+setKeyMap('n', '<Space>r', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
 
 -- prev buffer

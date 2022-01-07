@@ -179,12 +179,18 @@ alias ga="git add"
 alias gs="git status"
 alias gc="git commit"
 alias gp="git push origin"
+alias gch="git checkout"
 
 # dotnet alias
 alias dt=dotnet
 
 # tmux aliases
 alias ts="tmux new-session -s"
+
+
 export PATH=$PATH:$HOME/rust/bin
+
+# misc aliases
+alias cl=clear
 
 neofetch

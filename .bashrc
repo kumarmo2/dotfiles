@@ -193,4 +193,6 @@ export PATH=$PATH:$HOME/rust/bin
 # misc aliases
 alias cl=clear
 
+alias lg=lazygit
+
 neofetch

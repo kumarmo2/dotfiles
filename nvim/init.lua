@@ -16,6 +16,7 @@ require('nerd-commenter')
 require('gitsigns-setup')
 require('fzf')
 require('nvim-tree-setup')
+require('toggleterm-setup')
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
 

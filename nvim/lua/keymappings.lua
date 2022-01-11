@@ -41,7 +41,8 @@ setKeyMap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true})
 setKeyMap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true})
 
 -- buffers
-setKeyMap('n', '<SPACE>w', ':bd<CR>', { noremap = true})
+-- delete current buffer.
+setKeyMap('n', '<leader>dd', ':Bdelete<CR>', { noremap = true, silent = true })
 
 -- better visual indenting
 setKeyMap('v', '<', '<gv', { noremap = true, silent = true})

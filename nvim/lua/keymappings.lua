@@ -10,6 +10,7 @@ vim.g.mapleader = ' '
 setKeyMap('i', '(', '()<Esc>i', {noremap = true, silent = true} )
 setKeyMap('i', '{', '{}<Esc>i', {noremap = true, silent = true} )
 setKeyMap('i', '[', '[]<Esc>i', {noremap = true, silent = true} )
+setKeyMap('i', '<', '<><Esc>i', {noremap = true, silent = true} )
 setKeyMap('i', "'", "''<Esc>i", {noremap = true, silent = true} )
 setKeyMap('i', "\"", "\"\"<Esc>i", {noremap = true, silent = true} )
 

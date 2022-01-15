@@ -596,7 +596,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- run the script used for swapping keys
 awful.spawn.with_shell('~/.config/autostart/keysswap.sh')
-
+awful.spawn.with_shell('~/.config/autostart/set-bg.sh')
 
 -- gaps starts
 

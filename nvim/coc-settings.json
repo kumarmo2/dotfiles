@@ -1,15 +1,16 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["rust", "js","javascript", "cs", "java"],
-    "suggest.enablePreview": true,
-    "languageserver": {
-        "lua": {
-            "command": "/home/kumarmo2/lua-scripts/lua-language-server/bin/lua-language-server",
-            "filetypes": ["lua"],
-            "rootPatterns": [".git/"]
-        }
-    },
-    "Lua.completion.showParams": true,
-    "Lua.diagnostics.disable" : [
-        "lowercase-global"
-    ]
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "suggest.enablePreview": true,
+  "languageserver": {
+    "lua": {
+      "command": "/home/kumarmo2/lua-scripts/lua-language-server/bin/lua-language-server",
+      "filetypes": ["lua"],
+      "rootPatterns": [".git/"]
+    }
+  },
+  "prettier.formatterPriority": 1000000,
+  "prettier.requireConfig": false,
+  "prettier.singleQuote": false,
+  "Lua.completion.showParams": true,
+  "Lua.diagnostics.disable": ["lowercase-global"]
 }

@@ -8,6 +8,7 @@ require('plugins')
 -- TODO: migrate all vim files to lua
 cmd('source ~/.config/nvim/vimfiles/coc.vim')
 cmd('source ~/.config/nvim/vimfiles/lightline.vim')
+cmd('source ~/.config/nvim/vimfiles/coc-prettier.vim')
 require('coc/init');
 require('keymappings')
 require('treesitter')

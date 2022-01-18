@@ -184,6 +184,7 @@ alias gch="git checkout"
 
 # dotnet alias
 alias dt=dotnet
+alias dtv="dotnet --version"
 
 # tmux aliases
 alias ts="tmux new-session -s"

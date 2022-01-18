@@ -169,8 +169,12 @@ export STARSHIP_CONFIG=~/.config/starship.toml
 
 #setxkbmap -option caps:swapescape
 
+# vim/nvim
 export VISUAL=vim
 export EDITOR="$VISUAL"
+alias v=vim
+
+
 
 
 # git aliases
@@ -185,6 +189,9 @@ alias gch="git checkout"
 # dotnet alias
 alias dt=dotnet
 alias dtv="dotnet --version"
+alias dtc="dotnet clean"
+alias dtb="dotnet build"
+alias dtr="dotnet run"
 
 # tmux aliases
 alias ts="tmux new-session -s"

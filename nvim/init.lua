@@ -20,4 +20,5 @@ require('nvim-tree-setup')
 require('toggleterm-setup')
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
+cmd('source ~/.config/nvim/vimfiles/vimspector.vim')
 

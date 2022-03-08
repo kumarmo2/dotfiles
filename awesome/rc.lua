@@ -336,7 +336,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "r",     function () awful.spawn("rofi -show drun")end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -595,7 +595,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 
 -- run the script used for swapping keys
-awful.spawn.with_shell('~/.config/autostart/keysswap.sh')
+-- awful.spawn.with_shell('~/.config/autostart/keysswap.sh')
 awful.spawn.with_shell('~/.config/autostart/set-bg.sh')
 
 -- gaps starts

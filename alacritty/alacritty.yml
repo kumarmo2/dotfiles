@@ -29,8 +29,6 @@ colors:
     cyan:    '#56b6c2'
     white:   '#ffffff'
 
-background_opacity: 0.8
-
 font:
   normal:
     family: "Caskaydia Cove Nerd Font"
@@ -65,6 +63,7 @@ window:
 window:
   startup_mode: Windowed
   decorations: full
+  opacity: 1.0
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

@@ -134,12 +134,12 @@ export FZF_DEFAULT_OPS="--extended"
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-export FZF_DEFAULT_COMMAND='fdfind --type f'
+# export FZF_DEFAULT_COMMAND='fdfind --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-alias fd=fdfind
+# alias fd=fdfind
 
 export TERM=xterm-256color
 

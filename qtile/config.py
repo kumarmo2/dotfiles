@@ -5,15 +5,20 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 import os
 import subprocess
-
 from libqtile import hook
+
 mod = "mod4"
-#  terminal = guess_terminal()
 terminal = "alacritty"
 
+colors = {
+            'teal': '00cdcd',
+            'light_slate_grey': '778899'
+         }
+border_width = 5
+gap = 5
+
+
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -33,6 +38,13 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Key bindings  specific to MonadTall layout starts
+    Key([mod], "i", lazy.layout.grow()),
+    Key([mod], "o", lazy.layout.shrink()),
+    # this will toggle between max and min 
+    Key([mod], "m", lazy.layout.maximize()),
+    # Key bindings  specific to MonadTall layout ends
+
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -52,10 +64,8 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # Volume binding starts
-
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q sset Master 1%-"), desc="decrease volume"),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q sset Master 1%+"), desc="increase volume"),
-
     # Volume binding ends
 
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
@@ -88,19 +98,8 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    #  layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.MonadTall(border_focus = colors['teal'], border_normal = colors['light_slate_grey'],
+        border_width = border_width, max_ratio = 0.9, margin = gap),
 ]
 
 widget_defaults = dict(

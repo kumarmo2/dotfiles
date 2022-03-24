@@ -39,8 +39,8 @@ keys = [
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Key bindings  specific to MonadTall layout starts
-    Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "o", lazy.layout.shrink()),
+    Key([mod], "o", lazy.layout.grow()), # "o" for outwards
+    Key([mod], "i", lazy.layout.shrink()), # 'i' for inwards
     # this will toggle between max and min 
     Key([mod], "m", lazy.layout.maximize()),
     # Key bindings  specific to MonadTall layout ends
@@ -103,7 +103,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="Caskaydia Cove Nerd Font",
     fontsize=12,
     padding=3,
 )
@@ -111,7 +111,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -127,13 +127,10 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
                 widget.Volume(),
-                #  widget.Memory(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
             ],
             24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            margin = [5,5,5,5]
         ),
     ),
 ]

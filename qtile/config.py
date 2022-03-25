@@ -12,7 +12,9 @@ terminal = "alacritty"
 
 colors = {
             'teal': '00cdcd',
-            'light_slate_grey': '778899'
+            'light_slate_grey': '778899',
+            'very_dark_grayish_blue': '383D48',
+            'dark_grayish_blue': '979FAD'
          }
 border_width = 5
 gap = 5
@@ -89,11 +91,7 @@ for i in groups:
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            )
         ]
     )
 
@@ -114,8 +112,9 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
+                widget.GroupBox(highlight_method = 'line'
+                    , inactive = colors['dark_grayish_blue'], highlight_color = [colors['very_dark_grayish_blue'],
+                        colors['very_dark_grayish_blue']]),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -123,14 +122,17 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.CPU(),
+                widget.TextBox('|'),
                 widget.Systray(),
                 widget.Volume(),
+                widget.TextBox('|'),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             ],
             24,
-            margin = [5,5,5,5]
+            margin = [5,5,5,5],
+            background = '#282c34',
+            #  foreground = '#979FAD'
         ),
     ),
 ]

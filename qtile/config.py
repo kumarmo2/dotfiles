@@ -9,15 +9,23 @@ from libqtile import hook
 
 mod = "mod4"
 terminal = "alacritty"
+cs = 'one_dark' #colorscheme
 
 colors = {
-            'teal': '00cdcd',
-            'light_slate_grey': '778899',
-            'very_dark_grayish_blue': '383D48',
-            'dark_grayish_blue': '979FAD'
+            'one_dark': {
+                'soft_blue': '61AFEF',
+                'light_slate_grey': '778899',
+                'black': '282C34',
+                'green': '98c379',
+                'pink': 'C678DD',
+                'red': 'E06C75',
+                'yellow': 'E5C07B'
+
+            },
+            'dark_grayish_blue': '979FAD',
          }
 border_width = 5
-gap = 5
+gap = 10
 
 
 keys = [
@@ -96,7 +104,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.MonadTall(border_focus = colors['teal'], border_normal = colors['light_slate_grey'],
+    layout.MonadTall(border_focus = colors[cs]['soft_blue'], border_normal = colors[cs]['light_slate_grey'],
         border_width = border_width, max_ratio = 0.9, margin = gap),
 ]
 
@@ -111,28 +119,30 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(highlight_method = 'line'
-                    , inactive = colors['dark_grayish_blue'], highlight_color = [colors['very_dark_grayish_blue'],
-                        colors['very_dark_grayish_blue']]),
-                widget.WindowName(),
+                    , inactive = colors['dark_grayish_blue'], highlight_color = [colors[cs]['black'],
+                        colors[cs]['black']], borderwidth = 3),
+                widget.WindowName(foreground=colors[cs]['yellow']),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.CPU(),
-                widget.TextBox('|'),
+                widget.CPU(foreground = colors[cs]['green'], 
+                    border_width=3,
+                     border_color=colors[cs]['green']
+                    ),
+                widget.Sep(foreground=colors[cs]['green']),
                 widget.Systray(),
-                widget.Volume(),
-                widget.TextBox('|'),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Volume(foreground=colors[cs]['pink']),
+                widget.Sep(foreground=colors[cs]['green']),
+                widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
+                widget.CurrentLayoutIcon(scale = 0.65)
             ],
             24,
             margin = [5,5,5,5],
-            background = '#282c34',
-            #  foreground = '#979FAD'
+            background = colors[cs]['black'],
         ),
     ),
 ]

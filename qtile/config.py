@@ -26,6 +26,7 @@ colors = {
          }
 border_width = 5
 gap = 10
+right_widgets_padding = 10
 
 
 keys = [
@@ -122,22 +123,21 @@ screens = [
                 widget.GroupBox(highlight_method = 'line'
                     , inactive = colors['dark_grayish_blue'], highlight_color = [colors[cs]['black'],
                         colors[cs]['black']], borderwidth = 3),
-                widget.WindowName(foreground=colors[cs]['yellow']),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
+                widget.Spacer(length=850), # added this spacer to align clock in center of the screen.
+                widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
+                widget.Spacer(), # added this spacer to push rest of the widgets to right.
                 widget.CPU(foreground = colors[cs]['green'], 
-                    border_width=3,
+                    #  border_width=3,
+                     padding=right_widgets_padding,
                      border_color=colors[cs]['green']
                     ),
                 widget.Sep(foreground=colors[cs]['green']),
+                widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}', padding=right_widgets_padding),
+                widget.Sep(foreground=colors[cs]['yellow']),
                 widget.Systray(),
+                widget.TextBox("Vol:", foreground=colors[cs]['pink']),
                 widget.Volume(foreground=colors[cs]['pink']),
-                widget.Sep(foreground=colors[cs]['green']),
-                widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
+                widget.Sep(foreground=colors[cs]['pink']),
                 widget.CurrentLayoutIcon(scale = 0.65)
             ],
             24,

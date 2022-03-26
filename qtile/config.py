@@ -123,7 +123,7 @@ screens = [
                 widget.GroupBox(highlight_method = 'line'
                     , inactive = colors['dark_grayish_blue'], highlight_color = [colors[cs]['black'],
                         colors[cs]['black']], borderwidth = 3),
-                widget.Spacer(length=850), # added this spacer to align clock in center of the screen.
+                widget.Spacer(length=1000), # added this spacer to align clock in center of the screen.
                 widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
                 widget.Spacer(), # added this spacer to push rest of the widgets to right.
                 widget.CPU(foreground = colors[cs]['green'], 

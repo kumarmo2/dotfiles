@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
 
    use {'neoclide/coc.nvim', branch = 'release'}
 
-   use 'morhetz/gruvbox'
+   -- use 'morhetz/gruvbox'
    use 'machakann/vim-highlightedyank'
 
    -- using nvim-tree for file explorer
@@ -32,11 +32,11 @@ return require('packer').startup(function(use)
 
    use 'Omnisharp/Omnisharp-vim'
 
-   use {'dracula/vim', as = 'dracula'}
+   -- use {'dracula/vim', as = 'dracula'}
 
-   use 'lunarvim/colorschemes'
+   -- use 'lunarvim/colorschemes'
 
-   use 'flazz/vim-colorschemes'
+   -- use 'flazz/vim-colorschemes'
 
    use 'itchyny/vim-gitbranch'
 
@@ -46,11 +46,12 @@ return require('packer').startup(function(use)
    -- for commentings
    use 'preservim/nerdcommenter'
 
-   use 'joshdick/onedark.vim'
+   -- use 'joshdick/onedark.vim'
 
    -- nightfox and alike colorschemes
    use 'EdenEast/nightfox.nvim'
-
+   -- use 'olimorris/onedarkpro.nvim'
+   use 'navarasu/onedark.nvim'
    -- git integrations.
    use {
        'lewis6991/gitsigns.nvim',

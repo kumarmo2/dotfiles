@@ -59,11 +59,9 @@ glyph_offset:
 
 window:
   padding:
-    x: 60
-    y: 60
+    x: 5
+    y: 5
   dynamic_padding: true
-
-window:
   startup_mode: Windowed
   decorations: full
   opacity: 1.0

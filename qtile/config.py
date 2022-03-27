@@ -106,7 +106,7 @@ for i in groups:
 
 layouts = [
     layout.MonadTall(border_focus = colors[cs]['soft_blue'], border_normal = colors[cs]['light_slate_grey'],
-        border_width = border_width, max_ratio = 0.9, margin = gap),
+        border_width = border_width, max_ratio = 0.9, margin = gap, single_margin = [50, 200, 50, 200]),
 ]
 
 widget_defaults = dict(
@@ -123,16 +123,16 @@ screens = [
                 widget.GroupBox(highlight_method = 'line'
                     , inactive = colors['dark_grayish_blue'], highlight_color = [colors[cs]['black'],
                         colors[cs]['black']], borderwidth = 3),
-                widget.Spacer(length=1000), # added this spacer to align clock in center of the screen.
+                widget.Spacer(), 
                 widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
-                widget.Spacer(), # added this spacer to push rest of the widgets to right.
+                widget.Spacer(), 
                 widget.CPU(foreground = colors[cs]['green'], 
-                    #  border_width=3,
                      padding=right_widgets_padding,
                      border_color=colors[cs]['green']
                     ),
                 widget.Sep(foreground=colors[cs]['green']),
-                widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}', padding=right_widgets_padding),
+                widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
+                    padding=right_widgets_padding),
                 widget.Sep(foreground=colors[cs]['yellow']),
                 widget.Systray(),
                 widget.TextBox("Vol:", foreground=colors[cs]['pink']),
@@ -141,7 +141,7 @@ screens = [
                 widget.CurrentLayoutIcon(scale = 0.65)
             ],
             24,
-            margin = [5,5,5,5],
+            margin = [5,500,5,500],
             background = colors[cs]['black'],
         ),
     ),

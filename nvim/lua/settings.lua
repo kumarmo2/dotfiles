@@ -38,8 +38,8 @@
  vim.o.hidden = true
  setOption('syntax', 'enable')
  setOption('laststatus', 2)
- cmd('colorscheme onedarker')
- -- vim.o.background = 'dark'
+ cmd('colorscheme nordfox')
+ vim.o.background = 'dark'
  vim.termguicolors = true
  -- keep block cursor in normal, visual, command and insert modes.
  cmd('set guicursor=n-v-c-i:block-Cursor')

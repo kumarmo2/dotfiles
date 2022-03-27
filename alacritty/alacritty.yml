@@ -1,33 +1,36 @@
 # Colors (One Dark)
 colors:
-  # Default colors
   primary:
-    background: '#282c34'
-    foreground: '#abb2bf'
+    background: "#282c34"
+    foreground: "#abb2bf"
 
-  # Normal colors
   normal:
-    # NOTE: Use '#131613' for the `black` color if you'd like to see
-    # black text on the background.
-    black:   '#282c34'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#d19a66'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#abb2bf'
+    black: "#282c34"
+    red: "#e06c75"
+    green: "#98c379"
+    yellow: "#e5c07b"
+    blue: "#61afef"
+    magenta: "#c678dd"
+    cyan: "#56b6c2"
+    white: "#abb2bf"
 
-  # Bright colors
   bright:
-    black:   '#5c6370'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#d19a66'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#ffffff'
+    black: "#3f3f3f"
+    red: "#e06c75"
+    green: "#98c379"
+    yellow: "#e5c07b"
+    blue: "#61afef"
+    magenta: "#c678dd"
+    cyan: "#56b6c2"
+    white: "#bfc5ce"
+
+  cursor:
+    text: CellBackground
+    cursor: CellForeground # syntax-cursor-color
+
+  selection:
+    text: CellForeground
+    background: "#3e4452"
 
 font:
   normal:
@@ -56,11 +59,9 @@ glyph_offset:
 
 window:
   padding:
-    x: 60
-    y: 60
+    x: 5
+    y: 5
   dynamic_padding: true
-
-window:
   startup_mode: Windowed
   decorations: full
   opacity: 1.0

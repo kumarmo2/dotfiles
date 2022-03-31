@@ -4,6 +4,7 @@
 
     grey: #778899;
     grey-tone-1: #49515f;
+    white: #ABB2BF;
     black: #282C34;
     green: #98c379;
     pink: #C678DD;
@@ -13,18 +14,19 @@
     
     background: @black;
     alternate-background: @black-alternate;
-    foreground: @grey;
+    foreground: @white;
 
     border-color: @grey;
     separatorcolor: @border-color;
     scrollbar-handle: @border-color;
 
     normal-background: @background;
+    normal-foreground: @foreground;
+
     alternate-normal-background: @black-alternate;
     alternate-normal-foreground: @foreground;
 
-    normal-foreground: @foreground;
-    selected-normal-foreground: @black;
+    selected-normal-foreground: @foreground;
     selected-normal-background: @grey-tone-1;
 
 
@@ -40,6 +42,7 @@
 mainbox {
     border:  0;
     padding: 0;
+    background-color: @background;
 }
 
 textbox {
@@ -53,11 +56,13 @@ listview {
     border-color: @separatorcolor;
     spacing:      2px;
     scrollbar:    @scrollbar;
+    background-color: @background;
 }
 
 element {
     border:  0;
     padding: 6px;
+    /* background-color: @background; */
 }
 
 element.normal.normal {
@@ -100,6 +105,7 @@ scrollbar {
     handle-color: @scrollbar-handle;
     handle-width: 8px;
     padding:      0;
+    background-color: @background;
 }
 
 
@@ -108,6 +114,7 @@ inputbar {
     text-color: @normal-foreground;
     padding:    2px;
     children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+    background-color: @background;
 }
 
 case-indicator,
@@ -117,10 +124,14 @@ button {
     spacing:    0;
     text-color: @normal-foreground;
 }
+entry, prompt {
+ background-color: @background;
+}
 
 textbox-prompt-sep {
     expand:     false;
     str:        ":";
     text-color: @normal-foreground;
+    background-color: @background;
     margin:     0 0.3em 0 0;
 }

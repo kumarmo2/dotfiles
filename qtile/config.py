@@ -8,6 +8,7 @@ import subprocess
 from libqtile import hook
 
 mod = "mod4"
+alt = "mod1"
 terminal = "alacritty"
 cs = 'one_dark' #colorscheme
 
@@ -79,7 +80,8 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q sset Master 1%+"), desc="increase volume"),
     # Volume binding ends
 
-    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
+    Key([mod], "space", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
+    Key([alt], "Tab", lazy.spawn("rofi -show window"), desc="Spawn a command using a prompt widget"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -105,8 +107,9 @@ for i in groups:
     )
 
 layouts = [
-    layout.MonadTall(border_focus = colors[cs]['soft_blue'], border_normal = colors[cs]['light_slate_grey'],
+    layout.MonadTall(border_focus = colors[cs]['pink'], border_normal = colors[cs]['light_slate_grey'],
         border_width = border_width, max_ratio = 0.9, margin = gap, single_margin = [50, 200, 50, 200]),
+    #  layout.Columns(corner_radius=8)
 ]
 
 widget_defaults = dict(
@@ -116,6 +119,8 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+# BAR TODO: bold fonts, right widgets need to be underlined, rounded corners for bar.
 screens = [
     Screen(
         top=bar.Bar(
@@ -127,17 +132,23 @@ screens = [
                 widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
                 widget.Spacer(), 
                 widget.CPU(foreground = colors[cs]['green'], 
-                     padding=right_widgets_padding,
                      border_color=colors[cs]['green']
                     ),
+                widget.ThermalSensor(foreground=colors[cs]['green']),
+                widget.Spacer(length=10),
                 widget.Sep(foreground=colors[cs]['green']),
-                widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}',
-                    padding=right_widgets_padding),
+                widget.Spacer(length=10),
+                widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}'),
+                widget.Spacer(length=10),
                 widget.Sep(foreground=colors[cs]['yellow']),
+                widget.Spacer(length=10),
                 widget.Systray(),
+                widget.Spacer(length=10),
                 widget.TextBox("Vol:", foreground=colors[cs]['pink']),
                 widget.Volume(foreground=colors[cs]['pink']),
+                widget.Spacer(length=10),
                 widget.Sep(foreground=colors[cs]['pink']),
+                widget.Spacer(length=10),
                 widget.CurrentLayoutIcon(scale = 0.65)
             ],
             24,

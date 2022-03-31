@@ -1,0 +1,6 @@
+/* Layout info:  https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown#layout */
+configuration {
+
+}
+/* @theme "theme/gruvbox.rasi" */
+@theme "theme/custom-one-dark.rasi"

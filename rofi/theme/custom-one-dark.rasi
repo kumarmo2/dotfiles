@@ -1,0 +1,137 @@
+* {
+    highlight: bold italic;
+    scrollbar: true;
+
+    grey: #778899;
+    grey-tone-1: #49515f;
+    white: #ABB2BF;
+    black: #282C34;
+    green: #98c379;
+    pink: #C678DD;
+    red: #E06C75;
+    yellow: #E5C07B;
+    black-alternate: #282d34;
+    
+    background: @black;
+    alternate-background: @black-alternate;
+    foreground: @white;
+
+    border-color: @grey;
+    separatorcolor: @border-color;
+    scrollbar-handle: @border-color;
+
+    normal-background: @background;
+    normal-foreground: @foreground;
+
+    alternate-normal-background: @black-alternate;
+    alternate-normal-foreground: @foreground;
+
+    selected-normal-foreground: @foreground;
+    selected-normal-background: @grey-tone-1;
+
+
+    font: "Caskaydia Cove Nerd Font";
+}
+
+#window {
+    background-color: @background;
+    border:           2;
+    padding:          2;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+    background-color: @background;
+}
+
+textbox {
+    highlight:  @highlight;
+    text-color: @foreground;
+}
+
+listview {
+    border:       2px solid 0 0;
+    padding:      2px 0 0;
+    border-color: @separatorcolor;
+    spacing:      2px;
+    scrollbar:    @scrollbar;
+    background-color: @background;
+}
+
+element {
+    border:  0;
+    padding: 6px;
+    /* background-color: @background; */
+}
+
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+scrollbar {
+    width:        4px;
+    border:       0;
+    handle-color: @scrollbar-handle;
+    handle-width: 8px;
+    padding:      0;
+    background-color: @background;
+}
+
+
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    2px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+    background-color: @background;
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+entry, prompt {
+ background-color: @background;
+}
+
+textbox-prompt-sep {
+    expand:     false;
+    str:        ":";
+    text-color: @normal-foreground;
+    background-color: @background;
+    margin:     0 0.3em 0 0;
+}

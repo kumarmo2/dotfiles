@@ -58,13 +58,13 @@ glyph_offset:
   y: 0
 
 window:
+  opacity: 0.8
   padding:
     x: 5
-    y: 5
+    y: 0
   dynamic_padding: true
   startup_mode: Windowed
   decorations: full
-  opacity: 1.0
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

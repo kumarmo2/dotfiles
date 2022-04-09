@@ -28,7 +28,11 @@ return require('packer').startup(function(use)
    -- use 'sheerun/vim-polyglot'
 
    -- status line plugin
-   use 'itchyny/lightline.vim'
+   -- use 'itchyny/lightline.vim'
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
    use 'Omnisharp/Omnisharp-vim'
 

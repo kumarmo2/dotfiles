@@ -141,7 +141,6 @@ screens = [
                 widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}'),
                 widget.Spacer(length=10),
                 widget.Sep(foreground=colors[cs]['yellow']),
-                widget.Spacer(length=10),
                 widget.Systray(),
                 widget.Spacer(length=10),
                 widget.TextBox("Vol:", foreground=colors[cs]['pink']),
@@ -200,7 +199,7 @@ auto_minimize = True
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
-@hook.subscribe.startup
+@hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/configs/autostart.sh')
     subprocess.run([home])

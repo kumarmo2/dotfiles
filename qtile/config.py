@@ -108,8 +108,8 @@ for i in groups:
 
 layouts = [
     layout.MonadTall(border_focus = colors[cs]['pink'], border_normal = colors[cs]['light_slate_grey'],
-        border_width = border_width, max_ratio = 0.9, margin = gap, single_margin = [50, 200, 50, 200]),
-    #  layout.Columns(corner_radius=8)
+        border_width = border_width, max_ratio = 0.9, margin = gap)
+        #  border_width = border_width, max_ratio = 0.9, margin = gap, single_margin = [50, 200, 50, 200]),
 ]
 
 widget_defaults = dict(

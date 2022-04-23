@@ -76,8 +76,8 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # Volume binding starts
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q sset Master 1%-"), desc="decrease volume"),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q sset Master 1%+"), desc="increase volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q sset Master 5%-"), desc="decrease volume"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q sset Master 5%+"), desc="increase volume"),
     # Volume binding ends
 
     Key([mod], "space", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
@@ -123,7 +123,7 @@ extension_defaults = widget_defaults.copy()
 # BAR TODO: bold fonts, right widgets need to be underlined, rounded corners for bar.
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.GroupBox(highlight_method = 'line'
                     , inactive = colors['dark_grayish_blue'], highlight_color = [colors[cs]['black'],
@@ -131,7 +131,7 @@ screens = [
                 widget.Spacer(), 
                 widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
                 widget.Spacer(), 
-                widget.CPU(foreground = colors[cs]['green'], 
+                widget.CPU(format='{load_percent}%', foreground = colors[cs]['green'], 
                      border_color=colors[cs]['green']
                     ),
                 widget.ThermalSensor(foreground=colors[cs]['green']),
@@ -145,13 +145,13 @@ screens = [
                 widget.Spacer(length=10),
                 widget.TextBox("Vol:", foreground=colors[cs]['pink']),
                 widget.Volume(foreground=colors[cs]['pink']),
-                widget.Spacer(length=10),
-                widget.Sep(foreground=colors[cs]['pink']),
-                widget.Spacer(length=10),
-                widget.CurrentLayoutIcon(scale = 0.65)
+                widget.Spacer(length=5),
+                #  widget.Sep(foreground=colors[cs]['pink']),
+                #  widget.Spacer(length=10),
+                #  widget.CurrentLayoutIcon(scale = 0.65)
             ],
             24,
-            margin = [5,500,5,500],
+            margin = [0,700,5,700],
             background = colors[cs]['black'],
         ),
     ),

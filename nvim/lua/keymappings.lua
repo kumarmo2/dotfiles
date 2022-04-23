@@ -46,4 +46,4 @@ setKeyMap('v', '>', '>gv', { noremap = true, silent = true })
 
 setKeyMap('n', '<C-p>', ':Files<CR>', { noremap = true })
 setKeyMap('n', '<leader>;', ':Buffers<CR>', { noremap = true })
-setKeyMap('n', '<space>f', ':Rg<CR>', { noremap = true })
+setKeyMap('n', '<leader>f', ':Rg<CR>', { noremap = true })

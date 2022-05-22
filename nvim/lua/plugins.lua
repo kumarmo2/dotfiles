@@ -7,8 +7,6 @@ end
 
 return require('packer').startup(function(use)
     -- My plugins here
-    -- use 'foo1/bar1.nvim'
-    -- use 'foo2/bar2.nvim'
     use 'wbthomason/packer.nvim'
     use { 'junegunn/fzf', run = ' -> fzf#install()' }
     use 'junegunn/fzf.vim'
@@ -17,31 +15,28 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
 
+    -- nvim cmp
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-nvim-lsp'
 
-    use { 'neoclide/coc.nvim', branch = 'release' }
+    -- snippets
+    use 'L3MON4D3/LuaSnip'
+
+    -- lsp
+    use 'neovim/nvim-lspconfig' -- enable lsp
+    use 'williamboman/nvim-lsp-installer' -- simple to use language server installer
 
     use 'morhetz/gruvbox'
-    -- use 'luisiacc/gruvbox-baby'
     use 'machakann/vim-highlightedyank'
 
-    -- using nvim-tree for file explorer
-    -- use 'kevinhwang91/rnvimr'
-    -- use 'sheerun/vim-polyglot'
-
-    -- status line plugin
-    -- use 'itchyny/lightline.vim'
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     use 'Omnisharp/Omnisharp-vim'
-
-    -- use {'dracula/vim', as = 'dracula'}
-
-    -- use 'lunarvim/colorschemes'
-
-    -- use 'flazz/vim-colorschemes'
 
     use 'itchyny/vim-gitbranch'
 
@@ -51,11 +46,8 @@ return require('packer').startup(function(use)
     -- for commentings
     use 'preservim/nerdcommenter'
 
-    -- use 'joshdick/onedark.vim'
-
     -- nightfox and alike colorschemes
     use 'EdenEast/nightfox.nvim'
-    -- use 'olimorris/onedarkpro.nvim'
     use 'navarasu/onedark.nvim'
     -- git integrations.
     use {
@@ -70,8 +62,6 @@ return require('packer').startup(function(use)
     use 'ellisonleao/glow.nvim'
 
     use 'famiu/bufdelete.nvim'
-
-    -- use { 'akinsho/bufferline.nvim', tag = "*", requires = 'kyazdani42/nvim-web-devicons' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

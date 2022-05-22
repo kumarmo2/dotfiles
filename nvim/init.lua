@@ -14,7 +14,7 @@ require('fzf')
 require('nvim-tree-setup')
 require('toggleterm-setup')
 require('lualine').setup()
+require('user.neoformat')
 require('keymappings')
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
--- cmd('autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<CR>')

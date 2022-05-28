@@ -1,26 +1,6 @@
 local setKeyMap = vim.api.nvim_set_keymap
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-vim.g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = {
-        unstaged = "",
-        staged = "S",
-        unmerged = "",
-        renamed = "➜",
-        deleted = "",
-        untracked = "U",
-        ignored = "◌",
-    },
-    folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-    },
-}
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -43,7 +23,6 @@ nvim_tree.setup {
         "dashboard",
         "alpha",
     },
-    auto_close = true,
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = true,
@@ -70,6 +49,45 @@ nvim_tree.setup {
         ignore = false,
         timeout = 500,
     },
+    renderer = {
+        root_folder_modifier = ":t",
+        icons = {
+            webdev_colors = true,
+            git_placement = "before",
+            padding = " ",
+            symlink_arrow = " ➛ ",
+            show = {
+                file = true,
+                folder = true,
+                folder_arrow = true,
+                git = true,
+            },
+            glyphs = {
+                default = "",
+                symlink = "",
+                folder = {
+                    arrow_closed = "",
+                    arrow_open = "",
+                    default = "",
+                    open = "",
+                    empty = "",
+                    empty_open = "",
+                    symlink = "",
+                    symlink_open = "",
+                },
+                git = {
+                    unstaged = "✗",
+                    staged = "✓",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "★",
+                    deleted = "",
+                    ignored = "◌",
+                },
+            }
+        }
+
+    },
     view = {
         width = 40,
         height = 30,
@@ -87,23 +105,12 @@ nvim_tree.setup {
         number = false,
         relativenumber = false,
     },
-    quit_on_open = 0,
-    git_hl = 1,
-    disable_window_picker = 0,
-    root_folder_modifier = ":t",
-    show_icons = {
-        git = 1,
-        folders = 1,
-        files = 1,
-        folder_arrows = 1,
-        tree_width = 30,
-    },
-    actions = {
-        open_file = {
-            quit_on_open = true,
+        actions = {
+            open_file = {
+                quit_on_open = true,
+            }
         }
     }
-}
 
-setKeyMap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })
+    setKeyMap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+    setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })

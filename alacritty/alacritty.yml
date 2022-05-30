@@ -13,19 +13,6 @@ colors:
   vi_mode_cursor:
     text:   CellBackground
     cursor: CellForeground
-  # search:
-  #   matches:
-  #     foreground: '#000000'
-  #     background: '#ffffff'
-  #   focused_match:
-  #    foreground: CellBackground
-  #    background: CellForeground
-  #   bar:
-  #     background: ''
-  #     foreground: ''
-  # line_indicator:
-  #   foreground: None
-  #   background: None
   selection:
     text:       CellBackground
     background: CellForeground
@@ -87,7 +74,7 @@ window:
   opacity: 0.8
   padding:
     x: 5
-    y: 0
+    y: 2
   dynamic_padding: true
   startup_mode: Windowed
   decorations: full

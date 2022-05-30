@@ -8,12 +8,20 @@ end
 return require('packer').startup(function(use)
     -- My plugins here
     use 'wbthomason/packer.nvim'
-    use { 'junegunn/fzf', run = ' -> fzf#install()' }
-    use 'junegunn/fzf.vim'
+    -- use { 'junegunn/fzf', run = ' -> fzf#install()' }
+    -- use 'junegunn/fzf.vim'
 
+    -- use '/home/manya/code/nvim-plugins/practice-run.nvim'
     -- nvim tree
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
+
+    -- telescope 
+    use 'nvim-lua/plenary.nvim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
     -- nvim cmp
     use 'hrsh7th/nvim-cmp'
@@ -27,6 +35,9 @@ return require('packer').startup(function(use)
     -- lsp
     use 'neovim/nvim-lspconfig' -- enable lsp
     use 'williamboman/nvim-lsp-installer' -- simple to use language server installer
+
+    -- formatting
+    use 'sbdchd/neoformat'
 
     use 'morhetz/gruvbox'
     use 'machakann/vim-highlightedyank'

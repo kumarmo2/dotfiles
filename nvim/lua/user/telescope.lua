@@ -12,7 +12,15 @@ require('telescope').setup{
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
             }
-        }
+        },
+        layout_strategy = 'horizontal',
+        sorting_strategy = "ascending",
+        layout_config = {
+            height = 0.9,
+            preview_cutoff = 30,
+            prompt_position = "top",
+            width = 0.8
+          }
     },
     pickers = {
         -- Default configuration for builtin pickers goes here:

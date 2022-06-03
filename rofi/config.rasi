@@ -2,5 +2,5 @@
 configuration {
 
 }
-/* @theme "theme/gruvbox.rasi" */
-@theme "theme/custom-one-dark.rasi"
+@theme "theme/gruvbox.rasi"
+/* @theme "theme/custom-one-dark.rasi" */

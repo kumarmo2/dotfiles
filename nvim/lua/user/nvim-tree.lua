@@ -25,7 +25,8 @@ nvim_tree.setup {
     },
     open_on_tab = false,
     hijack_cursor = false,
-    update_cwd = true,
+    update_cwd = false,
+    respect_buf_cwd = true,
     update_to_buf_dir = {
         enable = true,
         auto_open = true,
@@ -107,10 +108,10 @@ nvim_tree.setup {
     },
         actions = {
             open_file = {
-                quit_on_open = true,
+                quit_on_open = false,
             }
         }
     }
 
-    setKeyMap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-    setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })
+setKeyMap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })

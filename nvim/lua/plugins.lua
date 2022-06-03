@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use 'nvim-treesitter/playground'
 
     -- nvim cmp
     use 'hrsh7th/nvim-cmp'

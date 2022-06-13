@@ -7,6 +7,7 @@ local actions = require "telescope.actions"
 
 require('telescope').setup{
     defaults = {
+        preview = false,
         mappings = {
             i = {
                 ["<C-j>"] = actions.move_selection_next,
@@ -17,7 +18,7 @@ require('telescope').setup{
         sorting_strategy = "ascending",
         layout_config = {
             height = 0.9,
-            preview_cutoff = 30,
+            preview_cutoff = 10,
             prompt_position = "top",
             width = 0.8
           }

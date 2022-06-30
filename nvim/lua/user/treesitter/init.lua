@@ -1,4 +1,6 @@
 local vim = vim;
+local opt = vim.opt;
+
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {"rust", "c", "css", "html", "lua", "javascript", "python"} ,
@@ -45,10 +47,16 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-local opt = vim.opt;
+-- code folding starts
+
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+local callback = function ()
+    vim.api.nvim_command('normal zR')
+end
 
 local group = vim.api.nvim_create_augroup("OpenCodeFoldsByDefault", { clear = true});
-vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, { pattern = {"*"}, command = "normal zR", group = group})
+vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, { pattern = "*", callback = callback, group = group})
+
+-- code folding ends

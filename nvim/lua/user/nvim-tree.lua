@@ -27,9 +27,9 @@ nvim_tree.setup {
     hijack_cursor = false,
     update_cwd = false,
     respect_buf_cwd = true,
-    update_to_buf_dir = {
+    hijack_directories = {
         enable = true,
-        auto_open = true,
+        auto_open = true
     },
     diagnostics = {
         enable = false,
@@ -94,7 +94,6 @@ nvim_tree.setup {
         height = 30,
         hide_root_folder = false,
         side = "right",
-        auto_resize = true,
         mappings = {
             custom_only = false,
             list = {
@@ -106,12 +105,24 @@ nvim_tree.setup {
         number = false,
         relativenumber = false,
     },
-        actions = {
-            open_file = {
-                quit_on_open = false,
-            }
+    actions = {
+        open_file = {
+            quit_on_open = false,
+            resize_window = true
         }
     }
+}
 
 setKeyMap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })
+
+
+-- if last window is nvim-tree. quit the nvim
+local buf_enter_callback = function (opts)
+    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+        vim.cmd "quit"
+    end
+end
+
+local group = vim.api.nvim_create_augroup("NvimTreeCloseIfLast", { clear = true});
+vim.api.nvim_create_autocmd("BufEnter", { callback = buf_enter_callback, group = group})

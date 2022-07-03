@@ -1,0 +1,10 @@
+[Unit]
+Description=Service to start the picom compositor.
+
+[Service]
+Type=simple
+Environment=XAUTHORITY=/home/manya/.Xauthority
+ExecStart=picom --experimental-backend
+
+[Install]
+WantedBy=graphical.target

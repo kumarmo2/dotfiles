@@ -1,0 +1,16 @@
+[Unit]
+Description=Daemon for Searxng service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=docker run \
+             -p 8080:8080 \
+             -v "/home/manya/searxng:/etc/searxng" \
+             -e "BASE_URL=http://localhost:8080/" \
+             -e "INSTANCE_NAME=my-instance" \
+             searxng/searxng
+
+[Install]
+After=docker.service
+

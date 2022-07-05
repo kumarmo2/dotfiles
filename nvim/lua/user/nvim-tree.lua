@@ -109,6 +109,10 @@ nvim_tree.setup {
         open_file = {
             quit_on_open = false,
             resize_window = true
+        },
+        change_dir = {
+            -- this is used so that nvim tree won't go above the directory in which it was opened.
+            restrict_above_cwd = true 
         }
     }
 }

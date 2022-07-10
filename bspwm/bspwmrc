@@ -21,7 +21,7 @@ gruvbox['grey0']="#a89984"
 gruvbox['purple0']="#b16286"
 
 bspc config border_width        3 
-bspc config window_gap          12
+bspc config window_gap          5
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true

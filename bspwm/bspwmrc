@@ -5,7 +5,7 @@ sxhkd &
 polybar example &
 pgrep -x sxhkd > /dev/null || sxhkd &
 # set wallpaper
-hsetroot -extend  ~/configs/wallpapers/beautiful/mountain-lake-2560x1080-wallpapers.jpg
+hsetroot -extend  ~/configs/wallpapers/Gruv/penguin.jpg
 # swap escape and capslock
 setxkbmap -option caps:swapescape
 

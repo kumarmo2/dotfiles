@@ -152,7 +152,9 @@ export PATH=$PATH:$HOME/dotnet-6
 export PATH=$PATH:$HOME/nvim-linux64/bin
 alias vim=nvim
 export PATH=$PATH:$HOME/Downloads/logstash-7.15.1/bin
-
+export PATH=$PATH:$HOME/go/bin
+BUN_INSTALL="/home/manya/.bun"
+PATH="$BUN_INSTALL/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -175,8 +177,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 alias v=vim
 
-
-
+export PATH=$PATH:/usr/local/go/bin
 
 # git aliases
 alias gd="git diff"
@@ -207,4 +208,4 @@ alias lg=lazygit
 
 alias sctl=systemctl
 
-neofetch
+pfetch

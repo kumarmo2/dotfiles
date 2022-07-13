@@ -162,7 +162,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export LC_ALL="en_IN.UTF-8"
 
-alias rng=ranger
+alias r=ranger
 
 
 # starship prompt settings.
@@ -207,5 +207,7 @@ alias cl=clear
 alias lg=lazygit
 
 alias sctl=systemctl
+
+alias rm=trash-put
 
 pfetch

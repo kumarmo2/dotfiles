@@ -4,12 +4,13 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=docker run \
+ExecStart=docker run --rm --name my-searxng \
              -p 8080:8080 \
              -v "/home/manya/searxng:/etc/searxng" \
              -e "BASE_URL=http://localhost:8080/" \
-             -e "INSTANCE_NAME=my-instance" \
+             -e "INSTANCE_NAME=my-searxng" \
              searxng/searxng
+ExecStop=docker kill my-searxng && docker rm my-searxng
 
 [Install]
 After=docker.service

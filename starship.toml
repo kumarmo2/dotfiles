@@ -10,8 +10,8 @@ success_symbol = "[😐️](bold green)"     # The "success_symbol" segment is b
 error_symbol = "[#](bold red)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
 
-[aws]
-disabled = true
+# [aws]
+# disabled = true
 
 [rust]
 disabled = true
@@ -20,11 +20,11 @@ disabled = true
 #format = "on [$branch]($style) "
 style = "bold green"
 
-[dotnet]
-disabled = true
+# [dotnet]
+# disabled = true
 
-[nodejs]
-disabled = true
+# [nodejs]
+# disabled = true
 
 [golang]
 disabled = true

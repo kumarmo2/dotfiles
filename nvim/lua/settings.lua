@@ -12,7 +12,6 @@ vim.o.ignorecase = true
 vim.o.incsearch = true
 -- show cursor line
 -- setOption('cursorline', true)
-vim.o.cursorline = true
 -- removes the -- INSERT --. Since i am using lightline plugin which anyways
 -- shows the mode in it.
 vim.o.showmode = false
@@ -37,9 +36,11 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 setOption('syntax', 'enable')
-setOption('laststatus', 2)
+setOption('laststatus', 3)
+vim.g.gruvbox_transparent_bg = '1'
 cmd('colorscheme gruvbox')
-vim.o.background = 'dark'
+-- vim.o.cursorline = true
+-- vim.o.background = 'dark'
 vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')

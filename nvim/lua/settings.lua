@@ -44,3 +44,11 @@ cmd('colorscheme gruvbox')
 vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')
+
+-- make the vim background transparent
+vim.cmd([[
+        augroup transparent_background
+        autocmd! * <buffer>
+        autocmd VimEnter * hi Normal ctermbg=none
+        augroup END
+]])

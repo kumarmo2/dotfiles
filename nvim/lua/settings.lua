@@ -46,9 +46,6 @@ vim.termguicolors = true
 cmd('set guicursor=n-v-c-i:block-Cursor')
 
 -- make the vim background transparent
-vim.cmd([[
-        augroup transparent_background
-        autocmd! * <buffer>
-        autocmd VimEnter * hi Normal ctermbg=none
-        augroup END
-]])
+
+local group = vim.api.nvim_create_augroup("transparent_background_v2", { clear = true });
+vim.api.nvim_create_autocmd("VimEnter", { group = group, command = "hi Normal ctermbg=none" })

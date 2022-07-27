@@ -1,5 +1,5 @@
 local cmd = vim.cmd
-
+local M = {}
 require('plugins')
 require('settings')
 
@@ -7,14 +7,20 @@ require('settings')
 
 require('user/lsp')
 require('user/nvim-cmp')
-require('treesitter')
-require('nerd-commenter')
+require('user.treesitter')
+require('user/nerd-commenter')
 require('gitsigns-setup')
-require('nvim-tree-setup')
+require('user.nvim-tree')
 require('user.toggleterm')
 require('lualine').setup()
 require('user.neoformat')
 require('keymappings')
 require('user.telescope')
+require('user.dap')
+
+PrintX = function ()
+    print("hello")
+end
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
+return M

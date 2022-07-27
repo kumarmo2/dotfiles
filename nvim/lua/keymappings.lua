@@ -12,9 +12,9 @@ local opts = { noremap = true, silent = true };
 setKeyMap('i', '(', '()<Esc>i', opts)
 setKeyMap('i', '{', '{}<Esc>i', opts)
 setKeyMap('i', '[', '[]<Esc>i', opts)
-setKeyMap('i', '<', '<><Esc>i', opts)
-setKeyMap('i', "'", "''<Esc>i", opts)
-setKeyMap('i', "\"", "\"\"<Esc>i", opts)
+-- setKeyMap('i', '<', '<><Esc>i', opts)
+-- setKeyMap('i', "'", "''<Esc>i", opts)
+-- setKeyMap('i', "\"", "\"\"<Esc>i", opts)
 
 -- create closing parentheses/brackets etc starts.
 
@@ -23,6 +23,10 @@ setKeyMap('n', '\\', ':noh<CR>', opts)
 setKeyMap('n', '<Leader>ww', ':w<CR>', opts)
 setKeyMap('n', '<Leader>wq', ':wq<CR>', opts)
 setKeyMap('n', '<Leader>qq', ':q!<CR>', opts)
+setKeyMap('n', '<C-Q>', ':q!<CR>', opts)
+setKeyMap('n', '<C-s>', ':w<CR>', opts)
+setKeyMap('i', '<C-s>', '<Esc>:w<CR>i', opts)
+setKeyMap('n', '<Leader>qa', ':qa<CR>', opts)
 
 
 -- prev buffer
@@ -44,6 +48,7 @@ setKeyMap('v', '<', '<gv', opts)
 setKeyMap('v', '>', '>gv', opts)
 
 
+setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
 setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })

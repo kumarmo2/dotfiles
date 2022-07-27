@@ -44,4 +44,5 @@ require('telescope').setup{
 setKeyMap('n', '<C-p>', ':Telescope find_files<CR>', opts);
 setKeyMap('n', '<leader>;', ':Telescope buffers<CR>', opts);
 setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts);
+setKeyMap('n', '<C-h>', ':Telescope help_tags<CR>', opts);
 

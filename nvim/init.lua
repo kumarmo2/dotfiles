@@ -17,10 +17,12 @@ require('user.neoformat')
 require('keymappings')
 require('user.telescope')
 require('user.dap')
+require('user.custom.commands')
 
 PrintX = function ()
     print("hello")
 end
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
+
 return M

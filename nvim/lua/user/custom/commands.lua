@@ -1,7 +1,15 @@
+local is_neovide = vim.g.neovide or false
+
+if(is_neovide) then
+    return
+end
 
 local group = vim.api.nvim_create_augroup("transparent_background_v2", { clear = true });
 -- make the vim background transparent on vim startup.
 vim.api.nvim_create_autocmd("VimEnter", { group = group, command = "hi Normal ctermbg=none guibg=none" })
+
+
+
 -- global function to make the background opaque
 set_opaque = function ()
     -- TODO: Shouldn't directly put the black here as blindly doing this can 
@@ -15,3 +23,4 @@ end
 
 vim.api.nvim_create_user_command("Opaque", 'lua set_opaque()', {})
 vim.api.nvim_create_user_command("Transparent", 'lua set_transparent()', {})
+

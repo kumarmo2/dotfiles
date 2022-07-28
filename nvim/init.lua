@@ -1,6 +1,7 @@
 local cmd = vim.cmd
 local M = {}
 require('plugins')
+require('user.night_fox')
 require('settings')
 
 -- TODO: migrate all vim files to lua

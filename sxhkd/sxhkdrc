@@ -6,6 +6,9 @@
 super + Return
 	alacritty
 
+super + b
+    librewolf
+
 # program launcher
 super + @space
 	rofi -show drun -show-icons
@@ -14,6 +17,9 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# scratchpad
+super + u
+    tdrop -aw 2558 alacritty
 #
 # bspwm hotkeys
 #

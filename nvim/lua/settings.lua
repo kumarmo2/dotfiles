@@ -1,8 +1,6 @@
 local vim = vim
 local setOption = vim.api.nvim_set_option
 local cmd = vim.cmd
--- setOption('rnu', true)
---setOption('nu', true)
 vim.o.rnu = true
 vim.o.nu = true
 -- highlight search terms
@@ -24,10 +22,12 @@ setOption('shiftwidth', 4)
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
+-- mouse support on
+vim.o.mouse = 'a'
 -- using big value for `scrolloff`, you can keep the cursor at the
 -- center
 -- vim.o.scrolloff = 999
-vim.o.colorcolumn = '120'
+-- vim.o.colorcolumn = '120'
 -- shorter way to global options
 vim.o.swapfile = false
 vim.o.backup = false
@@ -35,6 +35,10 @@ vim.o.backup = false
 -- current buffer, and you try moving to some another buffer, vim won't let you
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
+vim.o.guifont = 'Caskaydia Cove Nerd Font'
+
+
+
 setOption('syntax', 'enable')
 setOption('laststatus', 3)
 vim.g.gruvbox_transparent_bg = '1'
@@ -46,7 +50,3 @@ vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')
 
--- make the vim background transparent
-
-local group = vim.api.nvim_create_augroup("transparent_background_v2", { clear = true });
-vim.api.nvim_create_autocmd("VimEnter", { group = group, command = "hi Normal ctermbg=none" })

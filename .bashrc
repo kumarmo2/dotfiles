@@ -210,4 +210,5 @@ alias sctl=systemctl
 
 alias rm=trash-put
 
+shopt -s autocd # auto cd into the path typed.
 pfetch

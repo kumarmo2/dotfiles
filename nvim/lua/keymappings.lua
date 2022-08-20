@@ -39,6 +39,11 @@ setKeyMap('n', '<C-j>', '<C-w>j', opts)
 setKeyMap('n', '<C-k>', '<C-w>k', opts)
 setKeyMap('n', '<C-l>', '<C-w>l', opts)
 
+-- tabs management
+setKeyMap('n', '<leader>l', ':tabnext<CR>', opts)
+setKeyMap('n', '<leader>h', ':tabprevious<CR>', opts)
+-- nnoremap <leader>l :tabnext<CR>
+
 -- buffers
 -- delete current buffer.
 setKeyMap('n', '<leader>dd', ':Bdelete<CR>', opts)
@@ -52,5 +57,7 @@ setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true }
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
 setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
+
+
 
 

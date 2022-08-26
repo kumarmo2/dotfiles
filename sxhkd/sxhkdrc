@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	alacritty --class myterm
 
 super + b
     librewolf
@@ -19,7 +19,8 @@ super + Escape
 
 # scratchpad
 super + u
-    tdrop -aw 2558 alacritty
+    tdrop -aw -6 alacritty 
+
 #
 # bspwm hotkeys
 #

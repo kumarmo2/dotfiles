@@ -19,7 +19,7 @@ super + Escape
 
 # scratchpad
 super + u
-    tdrop -aw -6 alacritty 
+    tdrop -aw -6 alacritty -o window.opacity=1
 
 #
 # bspwm hotkeys

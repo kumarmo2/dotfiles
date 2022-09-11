@@ -2,10 +2,12 @@
 
 # Autostart
 sxhkd &
+# killall picom &
+# killall polybar &
 polybar example &
 pgrep -x sxhkd > /dev/null || sxhkd &
 # set wallpaper
-hsetroot -extend  ~/configs/wallpapers/Gruv/gruv-nvim.png
+hsetroot -extend  ~/configs/wallpapers/beautiful/wallhaven-j3m8y5.png
 # swap escape and capslock
 setxkbmap -option caps:swapescape
 

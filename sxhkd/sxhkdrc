@@ -20,7 +20,7 @@ super + Escape
 
 # scratchpad
 super + u
-    tdrop -aw 2558 alacritty
+    tdrop -aw 2558 alacritty -o window.opacity=1
 
 # super + n
     # neovide ~/

@@ -200,6 +200,7 @@ alias ts="tmux new-session -s"
 
 
 export PATH=$PATH:$HOME/rust/bin
+export PATH=$PATH:/usr/local/go/bin
 
 # misc aliases
 alias cl=clear
@@ -210,5 +211,6 @@ alias sctl=systemctl
 
 alias rm=trash-put
 
+alias docker=podman
 shopt -s autocd # auto cd into the path typed.
 pfetch

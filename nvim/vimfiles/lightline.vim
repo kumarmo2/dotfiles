@@ -3,16 +3,16 @@
 
 set laststatus=2
 
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ 'active': {
-            \ 'left': [ [ 'mode', 'paste'],
-            \           ['gitbranch', 'readonly', 'filename', 'modified'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
+" let g:lightline = {
+      " \ 'colorscheme': 'nordfox',
+      " \ 'active': {
+            " \ 'left': [ [ 'mode', 'paste'],
+            " \           ['gitbranch', 'readonly', 'filename', 'modified'] ]
+      " \ },
+      " \ 'component_function': {
+      " \   'gitbranch': 'gitbranch#name'
+      " \ },
+      " \ }
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0

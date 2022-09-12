@@ -16,10 +16,10 @@ vim.o.showmode = false
 vim.o.visualbell = true
 vim.o.wrap = false
 -- indentation behavior
-setOption('tabstop', 4)
-vim.o.tabstop = 4
-setOption('shiftwidth', 4)
-vim.o.shiftwidth = 4
+setOption('tabstop',2)
+vim.o.tabstop = 2
+setOption('shiftwidth', 2)
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 -- mouse support on
@@ -40,6 +40,7 @@ vim.o.guifont = 'Caskaydia Cove Nerd Font'
 
 
 setOption('syntax', 'enable')
+setOption('filetype', 'on')
 setOption('laststatus', 3)
 vim.g.gruvbox_transparent_bg = '1'
 cmd('colorscheme gruvbox')

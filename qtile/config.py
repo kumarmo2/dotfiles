@@ -23,9 +23,30 @@ colors = {
                 'yellow': 'E5C07B'
 
             },
+            'gruvbox': {
+                'bg': '282828',
+                'fg0': 'fbf1c7',
+                'fg': 'ebdbb2',
+                'fg4': 'a89984',
+                'red0': 'cc241d',
+                'red1': 'fb4934',
+                'green0': '98971a',
+                'green1': 'b8bb26',
+                'yellow0': 'd79921',
+                'yellow1': 'fabd2f',
+                'blue0': '458588',
+                'blue1': '83a598',
+                'purple0': 'b16286',
+                'purple1': 'd3869b',
+                'aqua0': '689d6a',
+                'aqua1': '8ec07c',
+                'grey0': 'a89984',
+                'grey1': '928374'
+
+            },
             'dark_grayish_blue': '979FAD',
          }
-border_width = 5
+border_width = 2
 gap = 10
 right_widgets_padding = 10
 
@@ -107,7 +128,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.MonadTall(border_focus = colors[cs]['pink'], border_normal = colors[cs]['light_slate_grey'],
+    layout.MonadTall(border_focus = colors['gruvbox']['purple0'], border_normal = colors['gruvbox']['grey0'],
         border_width = border_width, max_ratio = 0.9, margin = gap)
         #  border_width = border_width, max_ratio = 0.9, margin = gap, single_margin = [50, 200, 50, 200]),
 ]
@@ -126,33 +147,30 @@ screens = [
         bottom=bar.Bar(
             [
                 widget.GroupBox(highlight_method = 'line'
-                    , inactive = colors['dark_grayish_blue'], highlight_color = [colors[cs]['black'],
-                        colors[cs]['black']], borderwidth = 3),
+                    , inactive = colors['gruvbox']['fg4'], highlight_color = [colors['gruvbox']['bg'],
+                        colors['gruvbox']['bg']], borderwidth = 3),
                 widget.Spacer(), 
-                widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors[cs]['red']),
+                widget.Clock(format="%Y-%m-%d %a %H:%M", foreground=colors['gruvbox']['red0']),
                 widget.Spacer(), 
-                widget.CPU(format='{load_percent}%', foreground = colors[cs]['green'], 
-                     border_color=colors[cs]['green']
+                widget.CPU(format='{load_percent}%', foreground = colors['gruvbox']['green0'], 
+                     #  border_color=colors['gruvbox']['green0']
                     ),
-                widget.ThermalSensor(foreground=colors[cs]['green']),
+                widget.ThermalSensor(foreground=colors['gruvbox']['green0']),
                 widget.Spacer(length=10),
-                widget.Sep(foreground=colors[cs]['green']),
+                widget.Sep(foreground=colors['gruvbox']['green0']),
                 widget.Spacer(length=10),
-                widget.Memory(foreground=colors[cs]['yellow'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}'),
+                widget.Memory(foreground=colors['gruvbox']['yellow1'], format = '{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}'),
                 widget.Spacer(length=10),
-                widget.Sep(foreground=colors[cs]['yellow']),
+                widget.Sep(foreground=colors['gruvbox']['yellow1']),
                 widget.Systray(),
                 widget.Spacer(length=10),
-                widget.TextBox("Vol:", foreground=colors[cs]['pink']),
-                widget.Volume(foreground=colors[cs]['pink']),
+                widget.TextBox("Vol:", foreground=colors['gruvbox']['purple0']),
+                widget.Volume(foreground=colors['gruvbox']['purple0']),
                 widget.Spacer(length=5),
-                #  widget.Sep(foreground=colors[cs]['pink']),
-                #  widget.Spacer(length=10),
-                #  widget.CurrentLayoutIcon(scale = 0.65)
             ],
             24,
             margin = [0,700,5,700],
-            background = colors[cs]['black'],
+            background = colors['gruvbox']['bg'],
         ),
     ),
 ]

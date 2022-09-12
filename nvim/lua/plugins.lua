@@ -20,8 +20,10 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
     use {
         'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+   use {'nvim-telescope/telescope-ui-select.nvim' }
     use 'nvim-treesitter/playground'
 
     -- nvim cmp
@@ -36,9 +38,20 @@ return require('packer').startup(function(use)
     -- lsp
     use 'neovim/nvim-lspconfig' -- enable lsp
     use 'williamboman/nvim-lsp-installer' -- simple to use language server installer
+    use 'simrat39/rust-tools.nvim'
+
+    -- dap
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
 
     -- formatting
     use 'sbdchd/neoformat'
+    --
+    -- code foldings
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
     use 'morhetz/gruvbox'
     use 'machakann/vim-highlightedyank'

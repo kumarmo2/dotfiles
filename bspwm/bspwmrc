@@ -2,12 +2,13 @@
 
 # Autostart
 sxhkd &
-# killall picom &
-# killall polybar &
+# killall picom &&
+# picom -b --experimental-backends &
+killall polybar &&
 polybar example &
 pgrep -x sxhkd > /dev/null || sxhkd &
 # set wallpaper
-hsetroot -extend  ~/configs/wallpapers/beautiful/wallhaven-j3m8y5.png
+hsetroot -cover  ~/wallpapers/beautiful/wallhaven-e7jj6r.jpg
 # swap escape and capslock
 setxkbmap -option caps:swapescape
 

@@ -134,10 +134,10 @@ export FZF_DEFAULT_OPS="--extended"
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-export FZF_DEFAULT_COMMAND='fd --type f'
+# export FZF_DEFAULT_COMMAND='fd --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # alias fd=fdfind
 
@@ -175,7 +175,7 @@ setxkbmap -option caps:swapescape
 # vim/nvim
 export VISUAL=vim
 export EDITOR="$VISUAL"
-alias v=vim
+# alias v=vim
 
 export PATH=$PATH:/usr/local/go/bin
 
@@ -201,6 +201,7 @@ alias ts="tmux new-session -s"
 
 export PATH=$PATH:$HOME/rust/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # misc aliases
 alias cl=clear
@@ -211,6 +212,7 @@ alias sctl=systemctl
 
 alias rm=trash-put
 
-alias docker=podman
+# alias docker=podman
+
 shopt -s autocd # auto cd into the path typed.
 pfetch

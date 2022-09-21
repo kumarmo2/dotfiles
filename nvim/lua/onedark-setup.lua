@@ -1,15 +1,15 @@
 -- Lua
 local onedark = require('onedark')
 
-onedark.setup  {
+onedark.setup {
     -- Main options --
-    style = 'cool', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    transparent = true,  -- Show/hide background
+    style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    transparent = false, -- Show/hide background
     term_colors = true, -- Change terminal color as per the selected theme style
     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
     -- toggle theme style ---
     toggle_style_key = '<leader>ts', -- Default keybinding to toggle
-    toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+    toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
 
     -- Change code style ---
     -- Options are italic, bold, underline, none
@@ -24,17 +24,21 @@ onedark.setup  {
 
     -- Custom Highlights --
     colors = {
-            bright_orange = "#ff8800"
+        bright_orange = "#ff8800",
+        purple = "#c678dd",
+        slight_grey = '#778899',
+        black = '#282C34'
     }, -- Override default colors
     highlights = {
-        String = {fg = '$bright_orange', bg = '#00ff00', fmt = 'bold'}
+        String = { fg = '$bright_orange', bg = '#00ff00', fmt = 'bold' },
+        -- CursorLine = { bg = '$purple', fg = '$black' }
     }, -- Override highlight groups
 
     -- Plugins Config --
     diagnostics = {
         darker = true, -- darker colors for diagnostic
-        undercurl = true,   -- use undercurl instead of underline for diagnostics
-        background = true,    -- use background color for virtual text
+        undercurl = true, -- use undercurl instead of underline for diagnostics
+        background = true, -- use background color for virtual text
     },
 }
 onedark.load()

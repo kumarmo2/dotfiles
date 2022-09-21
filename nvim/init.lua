@@ -5,9 +5,7 @@ local M = {}
 require('plugins')
 require('user.night_fox')
 require('settings')
-
 -- TODO: migrate all vim files to lua
-
 require('user.lsp')
 require('user.nvim-cmp')
 require('user.treesitter')
@@ -22,12 +20,13 @@ require('user.telescope')
 require('user.dap')
 require "user.custom.neovide"
 require('user.custom.commands')
+require "user.custom.au-commands"
+require 'user.nvim-ufo'
 
-PrintX = function ()
-    print("hello")
-end
+-- PrintX = function ()
+    -- print("hello")
+-- end
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
-
 
 return M

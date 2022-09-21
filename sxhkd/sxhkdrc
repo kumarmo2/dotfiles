@@ -1,10 +1,11 @@
 #
 # wm independent hotkeys
-#
+# Articles for configuration
+# 1. https://dev.to/l04db4l4nc3r/bspwm-a-bare-bones-window-manager-44di#window-state-actions
 
 # terminal emulator
 super + Return
-	alacritty
+	alacritty --class myterm
 
 super + b
     librewolf
@@ -21,7 +22,10 @@ super + Escape
 
 # scratchpad
 super + u
-    tdrop -aw 2558 alacritty
+    tdrop -aw 2558 alacritty -o window.opacity=1
+
+# super + n
+    # neovide ~/
 #
 # bspwm hotkeys
 #
@@ -130,11 +134,9 @@ super + {Left,Down,Up,Right}
 
 
 XF86AudioLowerVolume
-    amixer -q sset Master 5%-
+    amixer -q sset Master 1%-
 
 XF86AudioRaiseVolume
-    amixer -q sset Master 5%+
+    amixer -q sset Master 1%+
 
-super + b
-    brave
 

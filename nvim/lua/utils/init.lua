@@ -22,6 +22,8 @@ local open_file_in_cur_dir = function ()
 
     for file in out:lines() do -- TODO: checkout methods in lua.
         print("file:"..file)
+        -- v.fn.bufload(file)
+        -- v.api.nvim_set_current_buf(file)
         v.cmd("e " .. file)
         return;
     end

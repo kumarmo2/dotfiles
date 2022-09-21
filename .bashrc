@@ -176,6 +176,7 @@ setxkbmap -option caps:swapescape
 export VISUAL=vim
 export EDITOR="$VISUAL"
 alias v=vim
+# alias vimo="vim -o `fzf`"
 
 export PATH=$PATH:/usr/local/go/bin
 
@@ -200,6 +201,7 @@ alias ts="tmux new-session -s"
 
 
 export PATH=$PATH:$HOME/rust/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/go/bin
 
 # misc aliases
@@ -213,4 +215,13 @@ alias rm=trash-put
 
 alias docker=podman
 shopt -s autocd # auto cd into the path typed.
+
+# eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias fk)
+
+source /usr/share/nvm/init-nvm.sh
+
+# tmux script
+# ~/configs/tmux/script.sh
 pfetch

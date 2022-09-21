@@ -16,8 +16,8 @@ local open_file_on_startup_if_not_provided = function()
 
         if bufname == nil or bufname == '' or is_directory == 1 then -- TODO: also need to do the same if its a directory
             print("no buf name")
-            -- TODO: the iss that is happening right now is that, when 
-            -- file is openend using this method,  either the filetype or lsp or both
+            -- TODO: the issue that is happening right now is that, when 
+            -- file is openend using this method, either the filetype or lsp or both
             -- are not being able to get set because of which no colorscheme, lsp is being enabled.
             utils.open_file_in_cur_dir()
         end

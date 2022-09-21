@@ -9,6 +9,8 @@ super + Return
 super + b
     librewolf
 
+super + d
+    dolphin
 # program launcher
 super + @space
 	rofi -show drun -show-icons

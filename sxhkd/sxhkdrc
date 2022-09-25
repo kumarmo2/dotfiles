@@ -24,6 +24,8 @@ super + Escape
 super + u
     tdrop -aw 2558 alacritty -o window.opacity=1
 
+super + p
+  ~/code/scripts/toggle-picom.lua
 # super + n
     # neovide ~/
 #

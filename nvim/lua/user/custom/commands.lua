@@ -38,11 +38,33 @@ set_opaque = function ()
 end
 
 set_transparent = function ()
-    vim.cmd("hi Normal ctermbg=none guibg=none")
+  vim.cmd("hi Normal ctermbg=none guibg=none")
 end
+
+PrintSelectedContent = function ()
+  -- [bufnum, lnum, col, off]
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local startLine = start_pos[2]
+  local endLine = end_pos[2]
+
+  print( "start_pos: " .. vim.inspect(start_pos));
+  print( "startLine: " .. startLine);
+  print( "end_pos: " .. vim.inspect(end_pos));
+  print( "endLine: " .. endLine);
+
+  print(vim.inspect(api.nvim_buf_get_lines(0, startLine, endLine, false)))
+
+
+
+
+end
+
+
 
 api.nvim_create_user_command("Opaque", 'lua set_opaque()', {})
 api.nvim_create_user_command("Transparent", 'lua set_transparent()', {})
+
 
 
 

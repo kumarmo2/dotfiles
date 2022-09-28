@@ -41,6 +41,18 @@ set_transparent = function ()
   vim.cmd("hi Normal ctermbg=none guibg=none")
 end
 
+
+local getTableLength = function (t)
+  local length = 0
+  if t == nil then
+    return length
+  end
+  for k, v in pairs(t) do
+    length = length + 1
+  end
+  return length
+end
+
 PrintSelectedContent = function ()
   -- [bufnum, lnum, col, off]
   local start_pos = vim.fn.getpos("'<")
@@ -53,7 +65,18 @@ PrintSelectedContent = function ()
   print( "end_pos: " .. vim.inspect(end_pos));
   print( "endLine: " .. endLine);
 
-  print(vim.inspect(api.nvim_buf_get_lines(0, startLine, endLine, false)))
+  -- need to subtract 1 from startline as indices are 0 based.
+  local lines = api.nvim_buf_get_lines(0, startLine - 1, endLine, false);
+  print("total number of lines selected: "..getTableLength(lines))
+
+  for k, v in pairs(lines) do
+    print("key: "..k.." value: "..v)
+    if k == 1 then
+      
+    end
+  end
+
+  print(vim.inspect(lines))
 
 
 

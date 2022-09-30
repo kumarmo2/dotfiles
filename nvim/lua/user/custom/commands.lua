@@ -53,6 +53,10 @@ local getTableLength = function (t)
   return length
 end
 
+-- local handleTransformForSingleLine = function ()
+  
+-- end
+
 local transform = function (lower)
   -- [bufnum, lnum, col, off]
   local start_pos = vim.fn.getpos("'<")
@@ -68,15 +72,15 @@ local transform = function (lower)
 
   -- [[
   -- cases:
-  --  1. when startRow == endRow i.e numberOfLines selected = 1
-  --  2. when startRow != endRow i.e numberOfLines selected > 1
+  --  1. when startrow == endrow i.e numberoflines selected = 1
+  --  2. when startrow != endrow i.e numberoflines selected > 1
   -- ]]
 
   local startRow = startLine - 1
   local startCol = start_pos[3] -1
-  local endCol = end_pos[3]
+  local endRow = endLine - 1
+  local endCol = end_pos[3] - 1
 
-  -- TODO: handling for multiple lines
   if numberOfLines == 1 then
 
     local text = vim.api.nvim_buf_get_text(0, startRow,startCol, startRow, endCol, {} )[1]
@@ -89,7 +93,52 @@ local transform = function (lower)
     end
 
     vim.api.nvim_buf_set_text(0, startRow,startCol, startRow, endCol, {transformed} )
+  else
+    -- print("todo: handling for multiple lines")
+    -- print("startrow: "..startrow..", startcol: ".. startcol..", endrow: "..endrow.. ", endcol: "..endcol)
+    local newLines = {}
+    local text = vim.api.nvim_buf_get_text(0, startRow,startCol, endRow, endCol, {} )
+    for k, v in pairs(text) do
+      -- print("k: "..k..", v: "..v)
+      local transformed;
+      if lower then
+        transformed = string.lower(v)
+      else
+        transformed = string.upper(v)
+      end
+      table.insert(newLines, transformed)
+    end
+
+    -- print(vim.inspect(newLines))
+
+
+
+
+    --[
+    -- - get text, using text = (0, startROW,STARTCOL, ENdrow, endcol, {} )
+    -- - loop in array of text
+    -- - get text, using text = (0, startrow,startcol, endrow, endcol, {} )
+    -- - loop in array of text
+    -- - GET TEXT, USING TEXT = (0, STARTROW,STARTCOL, ENDROW, ENDCOL, {} )
+    -- - LOOP IN ARRAY OF TEXT
+    --]
+    --[
+    -- - get text, using text = (0, startrow,startcol, endrow, endcol, {} )
+    -- - loop in array of text
+    --]
+    --[
+    -- - GET TEXT, USING TEXT = (0, STARTROW,STARTCOL, ENDROW, ENDCOL, {} )
+    -- - LOOP IN ARRAY OF TEXT
+    --]
+    -- - get text, using text = (0, startRow,startCol, endRow, endCol, {} )
+    -- - loop in array of text
+    --]
+
+    vim.api.nvim_buf_set_text(0, startRow,startCol, endRow, endCol, newLines )
+
   end
+
+
 end
 
 

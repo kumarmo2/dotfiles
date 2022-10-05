@@ -23,6 +23,20 @@ super + Escape
 super + u
     tdrop -aw -6 alacritty -o window.opacity=1
 
+# rotate wallpaper
+# NOTE: make sure you build wallpaper-rotation and put it in
+# PATH.
+super + ctrl +  y
+    wallpaper-rotation
+
+# incr/decr alacritty's opacity
+# NOTE: make sure you build alacritty-config-updater and put it in
+# PATH.
+ctrl + shift + i
+  alacritty-config-updater -o 0.1
+
+ctrl + shift + o
+  alacritty-config-updater -o -0.1
 #
 # bspwm hotkeys
 #

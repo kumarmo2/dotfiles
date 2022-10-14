@@ -17,11 +17,9 @@ require('lualine').setup()
 require('user.neoformat')
 require('keymappings')
 require('user.telescope')
-require('user.dap')
 require "user.custom.neovide"
 require('user.custom.commands')
 require "user.custom.au-commands"
-require 'user.nvim-ufo'
 
 -- PrintX = function ()
     -- print("hello")

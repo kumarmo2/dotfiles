@@ -22,11 +22,11 @@ require('user.telescope')
 require "user.custom.neovide"
 require('user.custom.commands')
 
-PrintX = function ()
-    print("hello")
-end
+-- PrintX = function ()
+    -- -- print("hello")
+-- -- end
 
-cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
+-- -- cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
 
 
 return M

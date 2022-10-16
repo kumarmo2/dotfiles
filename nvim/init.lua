@@ -20,6 +20,8 @@ require('user.telescope')
 require "user.custom.neovide"
 require('user.custom.commands')
 require "user.custom.au-commands"
+require "user.leap"
+
 
 -- PrintX = function ()
     -- print("hello")

@@ -16,10 +16,10 @@ vim.o.showmode = false
 vim.o.visualbell = true
 vim.o.wrap = false
 -- indentation behavior
-setOption('tabstop', 4)
-vim.o.tabstop = 4
-setOption('shiftwidth', 4)
-vim.o.shiftwidth = 4
+setOption('tabstop', 2)
+vim.o.tabstop = 2
+setOption('shiftwidth', 2)
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 -- mouse support on
@@ -36,6 +36,7 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 vim.o.guifont = 'Caskaydia Cove Nerd Font'
+-- vim.o.autoread = true
 
 
 
@@ -47,6 +48,7 @@ cmd('colorscheme gruvbox')
 -- vim.o.cursorline = true
 -- vim.o.background = 'dark'
 vim.termguicolors = true
+-- vim.o.ch = 0 -- set command heght to 0
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')
 

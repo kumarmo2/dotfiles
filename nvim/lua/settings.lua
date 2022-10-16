@@ -36,6 +36,7 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 vim.o.guifont = 'Caskaydia Cove Nerd Font'
+vim.o.ch = 0
 
 
 

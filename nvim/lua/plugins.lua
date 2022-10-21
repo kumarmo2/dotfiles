@@ -16,18 +16,16 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
 
-    use({
-      "folke/noice.nvim",
-      event = "VimEnter",
-      config = function()
-        require("noice").setup()
-      end,
-      requires = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-        }
-    })
+    -- use({
+      -- "folke/noice.nvim",
+      -- event = "VimEnter",
+      -- config = function() require("noice").setup() end,
+      -- requires = {
+        -- -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        -- "MunifTanjim/nui.nvim",
+        -- "rcarriga/nvim-notify",
+        -- }
+    -- })
 
     -- telescope 
     use 'nvim-lua/plenary.nvim'

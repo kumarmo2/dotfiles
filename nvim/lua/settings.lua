@@ -45,10 +45,14 @@ setOption('laststatus', 3)
 vim.g.gruvbox_transparent_bg = '1'
 cmd('colorscheme gruvbox')
 -- cmd('colorscheme nordfox')
--- vim.o.cursorline = true
+vim.o.cursorline = true
 -- vim.o.background = 'dark'
 vim.termguicolors = true
 -- vim.o.ch = 0 -- set command heght to 0
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')
+vim.o.cmdheight=0
+
+
+
 

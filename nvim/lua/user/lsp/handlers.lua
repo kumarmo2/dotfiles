@@ -1,4 +1,5 @@
 local M = {}
+local vim = vim;
 
 -- TODO: backfill this to template
 M.setup = function()
@@ -62,14 +63,8 @@ end
 
 local function lsp_keymaps(bufnr, client)
   local opts = { noremap = true, silent = true }
-  if client.name == "omnisharp" then
-      -- For omnisharp, use Omnisharp plugin for just OmniSharpGotoDefinition
-      -- as GoToDefinition for dlls doesn't work correctly with native lsp.
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":OmniSharpGotoDefinition<CR>", opts)
-  else
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  end
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)

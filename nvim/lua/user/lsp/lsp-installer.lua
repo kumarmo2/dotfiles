@@ -11,21 +11,25 @@ lsp_installer.on_server_ready(function(server)
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
+  if server.name == "omnisharp" then
+    local pid = vim.fn.getpid()
+    local omnisharp_bin = "/usr/bin/omnisharp"
+
+    local config = {
+      handlers = {
+        ["textDocument/definition"] = require('omnisharp_extended').handler,
+      },
+      cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) },
+      -- rest of your settings
+    }
+      opts = vim.tbl_deep_extend("force", config, opts)
+  end
+
 	 -- if server.name == "jsonls" then
 		 -- local jsonls_opts = require("user.lsp.settings.jsonls")
 		 -- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
 	 -- end
-
-	 -- if server.name == "sumneko_lua" then
-		 -- local sumneko_opts = require("user.lsp.settings.sumneko_lua")
-		 -- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-	 -- end
-
-	 -- if server.name == "pyright" then
-		 -- local pyright_opts = require("user.lsp.settings.pyright")
-		 -- opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-	 -- end
-
+  
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)

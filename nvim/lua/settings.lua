@@ -36,6 +36,7 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 vim.o.guifont = 'Caskaydia Cove Nerd Font'
+vim.o.ch = 0
 
 
 
@@ -45,7 +46,7 @@ setOption('laststatus', 3)
 vim.g.gruvbox_transparent_bg = '1'
 cmd('colorscheme gruvbox')
 -- cmd('colorscheme nordfox')
--- vim.o.cursorline = true
+vim.o.cursorline = true
 -- vim.o.background = 'dark'
 vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.

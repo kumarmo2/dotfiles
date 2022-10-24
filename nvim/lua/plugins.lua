@@ -8,13 +8,23 @@ end
 return require('packer').startup(function(use)
     -- My plugins here
     use 'wbthomason/packer.nvim'
-    -- use { 'junegunn/fzf', run = ' -> fzf#install()' }
-    -- use 'junegunn/fzf.vim'
 
     -- use '/home/manya/code/nvim-plugins/practice-run.nvim'
     -- nvim tree
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
+    use({
+        "folke/noice.nvim",
+        event = "VimEnter",
+        config = function()
+          require("noice").setup()
+        end,
+        requires = {
+          -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+          "MunifTanjim/nui.nvim",
+          "rcarriga/nvim-notify",
+          }
+      })
 
     -- telescope 
     use 'nvim-lua/plenary.nvim'
@@ -24,7 +34,7 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
    use {'nvim-telescope/telescope-ui-select.nvim' }
-    use 'nvim-treesitter/playground'
+   use 'nvim-treesitter/playground'
 
     -- nvim cmp
     use 'hrsh7th/nvim-cmp'
@@ -35,17 +45,20 @@ return require('packer').startup(function(use)
     -- snippets
     use 'L3MON4D3/LuaSnip'
 
+    -- vim movements
+    use 'ggandor/leap.nvim'
+
     -- lsp
     use 'neovim/nvim-lspconfig' -- enable lsp
     use 'williamboman/nvim-lsp-installer' -- simple to use language server installer
     use 'simrat39/rust-tools.nvim'
 
     -- dap
-    use 'mfussenegger/nvim-dap'
-    use 'leoluz/nvim-dap-go'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
+    -- use 'mfussenegger/nvim-dap'
+    -- use 'leoluz/nvim-dap-go'
+    -- use 'rcarriga/nvim-dap-ui'
+    -- use 'theHamsta/nvim-dap-virtual-text'
+    -- use 'nvim-telescope/telescope-dap.nvim'
 
     -- formatting
     use 'sbdchd/neoformat'
@@ -66,7 +79,10 @@ return require('packer').startup(function(use)
     use 'itchyny/vim-gitbranch'
 
     -- for better syntax highlighting
-    use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' }
+        use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
 
     -- for commentings
     use 'preservim/nerdcommenter'

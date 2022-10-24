@@ -3,5 +3,4 @@
 /* start picom for window effects like blur, rounded corners etc. */
 picom -b --experimental-backend &
 
-tmux new-session -s svc
 

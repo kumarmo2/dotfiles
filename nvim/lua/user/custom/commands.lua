@@ -38,13 +38,9 @@ set_opaque = function ()
 end
 
 set_transparent = function ()
-    vim.cmd("hi Normal ctermbg=none guibg=none")
+  vim.cmd("hi Normal ctermbg=none guibg=none")
 end
 
 api.nvim_create_user_command("Opaque", 'lua set_opaque()', {})
 api.nvim_create_user_command("Transparent", 'lua set_transparent()', {})
-
-
-
-
 

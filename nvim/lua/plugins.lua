@@ -59,8 +59,7 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    use 'Omnisharp/Omnisharp-vim'
-
+    use 'Hoffs/omnisharp-extended-lsp.nvim'
     use 'itchyny/vim-gitbranch'
 
     -- for better syntax highlighting

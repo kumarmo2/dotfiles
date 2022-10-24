@@ -7,6 +7,7 @@ require('settings')
 
 
 require('user.lsp')
+require'user.dap'
 require('user.nvim-cmp')
 require('user.treesitter')
 require('user.nerd-commenter')

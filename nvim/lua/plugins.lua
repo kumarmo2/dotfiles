@@ -6,7 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-    -- My plugins here
+    -- My plugins here 
     use 'wbthomason/packer.nvim'
     -- use { 'junegunn/fzf', run = ' -> fzf#install()' }
     -- use 'junegunn/fzf.vim'
@@ -48,6 +48,13 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig' -- enable lsp
     use 'williamboman/nvim-lsp-installer' -- simple to use language server installer
 
+    -- dap
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
+
     -- formatting
     use 'sbdchd/neoformat'
 
@@ -59,7 +66,7 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    use 'Omnisharp/Omnisharp-vim'
+    use 'Hoffs/omnisharp-extended-lsp.nvim'
 
     use 'itchyny/vim-gitbranch'
 

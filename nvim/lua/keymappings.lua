@@ -57,6 +57,7 @@ setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true }
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
 setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
+setKeyMap('n', 'D', '0d$', { noremap = true, silent = true })
 
 
 

@@ -3,6 +3,7 @@ local v = vim
 local M = {}
 require("plugins")
 require("user.night_fox")
+require("user.colorschemes.catppuccin")
 require("settings")
 
 require("user.lsp")
@@ -18,8 +19,8 @@ require("lualine").setup()
 require("keymappings")
 require("user.telescope")
 require("user.custom.neovide")
-require("user.custom.commands")
 require("user.custom.case-transformation")
+require("user.custom.commands")
 
 -- PrintX = function ()
     -- print("hello")

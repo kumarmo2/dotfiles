@@ -1,9 +1,9 @@
 require("catppuccin").setup({
   flavour = "macchiato", -- latte, frappe, macchiato, mocha
-  -- background = { -- :h background
-  -- light = "latte",
-  -- dark = "mocha",
-  -- },
+  background = { -- :h background
+    light = "latte",
+    dark = "mocha",
+  },
   compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
   transparent_background = false,
   -- term_colors = false,

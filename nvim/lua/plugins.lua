@@ -39,11 +39,14 @@ return require("packer").startup(function(use)
   -- formatting
   -- use 'sbdchd/neoformat'
 
-  use("morhetz/gruvbox")
+  -- colorschemes
   use({
     "catppuccin/nvim",
     as = "catppuccin",
   })
+  use("folke/tokyonight.nvim")
+  use({ "ellisonleao/gruvbox.nvim" })
+
   use("machakann/vim-highlightedyank")
 
   use({

@@ -16,14 +16,14 @@ vim.o.showmode = false
 vim.o.visualbell = true
 vim.o.wrap = false
 -- indentation behavior
-setOption('tabstop',2)
+setOption("tabstop", 2)
 vim.o.tabstop = 2
-setOption('shiftwidth', 2)
+setOption("shiftwidth", 2)
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 -- mouse support on
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 -- using big value for `scrolloff`, you can keep the cursor at the
 -- center
 -- vim.o.scrolloff = 999
@@ -35,20 +35,19 @@ vim.o.backup = false
 -- current buffer, and you try moving to some another buffer, vim won't let you
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
-vim.o.guifont = 'Caskaydia Cove Nerd Font'
-vim.o.ch = 0
+vim.o.guifont = "Caskaydia Cove Nerd Font"
+-- vim.o.autoread = true
 
-
-
-setOption('syntax', 'enable')
-setOption('filetype', 'on')
-setOption('laststatus', 3)
-vim.g.gruvbox_transparent_bg = '1'
-cmd('colorscheme gruvbox')
+setOption("syntax", "enable")
+setOption("laststatus", 3)
+-- vim.g.gruvbox_transparent_bg = "1"
+-- cmd("colorscheme gruvbox")
+-- vim.api.nvim_command("colorscheme catppuccin")
+-- vim.api.nvim_command("colorscheme tokyonight")
 -- cmd('colorscheme nordfox')
 vim.o.cursorline = true
 -- vim.o.background = 'dark'
 vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.
-cmd('set guicursor=n-v-c-i:block-Cursor')
-
+cmd("set guicursor=n-v-c-i:block-Cursor")
+vim.o.cmdheight = 1

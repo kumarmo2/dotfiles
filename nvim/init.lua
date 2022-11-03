@@ -2,8 +2,10 @@ local cmd = vim.cmd
 local v = vim
 local M = {}
 require("plugins")
-require("user.night_fox")
-require("user.colorschemes.catppuccin")
+require("user.colorschemes.night_fox")
+-- require("user.colorschemes.catppuccin")
+-- require("user.colorschemes.tokyonight")
+-- require("user.colorschemes.gruvbox")
 require("settings")
 
 require("user.lsp")

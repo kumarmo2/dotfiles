@@ -28,6 +28,26 @@ super + p
   ~/code/scripts/toggle-picom.lua
 # super + n
     # neovide ~/
+
+# rotate wallpaper
+# NOTE: make sure you build wallpaper-rotation and put it in
+# PATH.
+super + ctrl +  y
+    wallpaper-rotation -m next
+super + ctrl +  t
+    wallpaper-rotation -m previous
+
+# incr/decr alacritty's opacity
+# NOTE: make sure you build alacritty-config-updater and put it in
+# PATH.
+ctrl + shift + i
+  alacritty-config-updater -o 0.1
+
+ctrl + shift + o
+  alacritty-config-updater -o -0.1
+
+ctrl + shift + x
+  betterlockscreen -l
 #
 # bspwm hotkeys
 #

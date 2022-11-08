@@ -25,7 +25,7 @@ require("user.custom.case-transformation")
 require("user.custom.commands")
 
 -- PrintX = function ()
-    -- print("hello")
+-- print("hello")
 -- end
 
 cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')

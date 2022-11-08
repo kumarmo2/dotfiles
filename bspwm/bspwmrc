@@ -6,7 +6,7 @@ killall polybar
 polybar example &
 pgrep -x sxhkd > /dev/null || sxhkd &
 # set wallpaper
-hsetroot -extend ~/configs/wallpapers/anime/1.jpg
+hsetroot -extend ~/wallpapers/anime/1.jpg
 # swap escape and capslock
 setxkbmap -option caps:swapescape
 # tmux start-server &

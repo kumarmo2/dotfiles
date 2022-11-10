@@ -5,8 +5,6 @@ sxhkd &
 killall polybar
 polybar example &
 pgrep -x sxhkd > /dev/null || sxhkd &
-# set wallpaper
-hsetroot -extend ~/wallpapers/anime/1.jpg
 # swap escape and capslock
 setxkbmap -option caps:swapescape
 # tmux start-server &
@@ -46,3 +44,5 @@ bspc rule -a dropdown sticky=on state=floating hidden=on
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Kupfer.py focus=on
 # bspc rule -a Screenkey manage=off
+# restore wallpaper using custom wallpaper rotation tool
+wallpaper-rotation -m restore

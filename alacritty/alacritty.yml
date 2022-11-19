@@ -1,10 +1,23 @@
-draw_bold_text_with_bright_colors: true
+import:
+- ~/configs/alacritty/catppuccin-macchiato.yml
+scrolling:
+  history: 10000
+  multiplier: 10
+glyph_offset:
+  x: 0
+  y: 0
+offset:
+  x: 0
+  y: 0
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: true
 font:
   normal:
     family: JetBrains Mono NL ExtraBold
     style: ExtraBold Italic
   bold:
-    family:
+    family: null
     style: Bold
   italic:
     family: JetBrainsMono NF
@@ -13,26 +26,13 @@ font:
     family: JetBrainsMono NF
     style: Extra Bold Italic
   size: 6.6
-scrolling:
-  history: 10000
-  multiplier: 10
-offset:
-  x: 0
-  y: 0
-glyph_offset:
-  x: 0
-  y: 0
+draw_bold_text_with_bright_colors: true
 live_config_reload: true
-import:
-  - ~/configs/alacritty/catppuccin-macchiato.yml
-selection:
-  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
-  save_to_clipboard: true
 window:
-  opacity: 0.0
-  startup_mode: Windowed
-  decorations: full
+  opacity: 1.0
   dynamic_padding: true
   padding:
     x: 5
     y: 2
+  decorations: full
+  startup_mode: Windowed

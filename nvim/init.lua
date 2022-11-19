@@ -28,6 +28,4 @@ require("user.custom.commands")
 -- print("hello")
 -- end
 
-cmd('source ~/.config/nvim/vimfiles/omnisharp.vim')
-
 return M

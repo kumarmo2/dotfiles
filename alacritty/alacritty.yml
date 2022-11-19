@@ -1,70 +1,38 @@
-# Colors (Gruvbox dark)
-
-import:
-  - ~/configs/alacritty/catppuccin-macchiato.yml
-  # - ~/configs/alacritty/gruvbox.yml
-
+draw_bold_text_with_bright_colors: true
 font:
   normal:
-    family: "Caskaydia Cove Nerd Font"
-    style: Regular
+    family: JetBrainsMono NF
+    style: Extra Bold Italic
   bold:
-    family: "Caskaydia Cove Nerd Font"
+    family: 
     style: Bold
   italic:
-    family: "Caskaydia Cove Nerd Font"
-    style: Italic
+    family: JetBrainsMono NF
+    style: Extra Bold Italic
   bold_italic:
-    family: "Caskaydia Cove Nerd Font"
-    style: Bold Italic
-  # Point size
+    family: JetBrainsMono NF
+    style: Extra Bold Italic
   size: 6.6
-
-
+scrolling:
+  history: 10000
+  multiplier: 10
 offset:
   x: 0
   y: 0
 glyph_offset:
   x: 0
   y: 0
-
-window:
-  opacity: 0.7
-  padding:
-    x: 5
-    y: 2
-  dynamic_padding: true
-  startup_mode: Windowed
-  decorations: full
-
-scrolling:
-  # Maximum number of lines in the scrollback buffer.
-  # Specifying '0' will disable scrolling.
-  history: 10000
-
-  # Number of lines the viewport will move for every line scrolled when
-  # scrollback is enabled (history > 0).
-  multiplier: 10
-
-# If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
-
+live_config_reload: true
+import:
+- ~/configs/alacritty/catppuccin-macchiato.yml
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
-
-
-live_config_reload: true
-
-#key_bindings:
-#- { key: F,   mods: Control,           action: ToggleFullscreen }
-# (Windows, Linux, and BSD only)
-#- { key: V,        mods: Control|Shift, action: Paste            }
-#- { key: C,        mods: Control|Shift, action: Copy             }
-#- { key: Insert,   mods: Shift,         action: PasteSelection   }
-#- { key: Key0,     mods: Control,       action: ResetFontSize    }
-#- { key: Equals,   mods: Control,       action: IncreaseFontSize }
-#- { key: Add,      mods: Control,       action: IncreaseFontSize }
-#- { key: Subtract, mods: Control,       action: DecreaseFontSize }
-#- { key: Minus,    mods: Control,       action: DecreaseFontSize }
-
+window:
+  opacity: 0.0
+  startup_mode: Windowed
+  decorations: full
+  dynamic_padding: true
+  padding:
+    x: 5
+    y: 2

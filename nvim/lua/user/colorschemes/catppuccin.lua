@@ -9,7 +9,7 @@ require("catppuccin").setup({
   -- term_colors = false,
   -- dim_inactive = {
   -- enabled = false,
-  -- shade = "dark",
+  shade = "dark",
   -- percentage = 0.15,
   -- },
   -- styles = {

@@ -9,15 +9,8 @@ local opts = { noremap = true, silent = true };
 
 -- create closing parentheses/brackets etc starts.
 
-setKeyMap('i', '(', '()<Esc>i', opts)
-setKeyMap('i', '{', '{}<Esc>i', opts)
-setKeyMap('i', '[', '[]<Esc>i', opts)
--- setKeyMap('i', '<', '<><Esc>i', opts)
--- setKeyMap('i', "'", "''<Esc>i", opts)
--- setKeyMap('i', "\"", "\"\"<Esc>i", opts)
 
--- create closing parentheses/brackets etc starts.
-
+-- turnoff hightlight
 setKeyMap('n', '\\', ':noh<CR>', opts)
 
 setKeyMap('n', '<Leader>ww', ':w<CR>', opts)
@@ -61,4 +54,5 @@ setKeyMap('n', 'D', '0d$', { noremap = true, silent = true })
 
 
 
-
+-- toggle cmd height
+setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', { noremap = true, silent = true })

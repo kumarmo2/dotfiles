@@ -35,8 +35,10 @@ return require("packer").startup(function(use)
   use("williamboman/nvim-lsp-installer") -- simple to use language server installer
   use("jose-elias-alvarez/null-ls.nvim") -- for better formatting
 
-  -- formatting
-  -- use 'sbdchd/neoformat'
+  use { "windwp/nvim-autopairs", config = function()
+    require "nvim-autopairs".setup {}
+  end
+  }
 
   -- colorschemes starts
   use({

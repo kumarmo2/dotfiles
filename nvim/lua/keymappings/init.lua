@@ -1,6 +1,7 @@
 -- set function ref to make it easier
 local vim = vim
 local setKeyMap = vim.api.nvim_set_keymap
+require 'keymappings.toggle-cmdheight'
 
 -- set leader key to ','
 vim.g.mapleader = ' '

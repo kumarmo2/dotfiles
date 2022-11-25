@@ -38,8 +38,10 @@ return require("packer").startup(function(use)
   use("Hoffs/omnisharp-extended-lsp.nvim")
   use("simrat39/rust-tools.nvim")
 
-  -- formatting
-  -- use 'sbdchd/neoformat'
+  use { "windwp/nvim-autopairs", config = function()
+    require "nvim-autopairs".setup {}
+  end
+  }
 
   -- colorschemes
   use({

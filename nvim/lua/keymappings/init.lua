@@ -8,10 +8,6 @@ vim.g.mapleader = ' '
 
 local opts = { noremap = true, silent = true };
 
--- create closing parentheses/brackets etc starts.
-
-
--- turnoff hightlight
 setKeyMap('n', '\\', ':noh<CR>', opts)
 
 setKeyMap('n', '<Leader>ww', ':w<CR>', opts)

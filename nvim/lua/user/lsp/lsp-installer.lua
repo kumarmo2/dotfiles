@@ -1,3 +1,5 @@
+local vim = vim;
+
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
 	return
@@ -11,6 +13,22 @@ lsp_installer.on_server_ready(function(server)
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
+  if server.name == "rust_analyzer" then
+    local ok, rt = pcall(require, "rust-tools");
+    if not ok then
+      return
+    end
+    -- rust-tools plugin takes care of setting up the server capabilities.
+    -- in opts.on_attach, we have some common functionalities like key-mappings
+    -- , document formatting etc.
+    rt.setup({
+      server = {
+        on_attach = opts.on_attach
+      }
+    });
+    return;
+
+  end
   if server.name == "omnisharp" then
     local pid = vim.fn.getpid()
     local omnisharp_bin = "/usr/bin/omnisharp"

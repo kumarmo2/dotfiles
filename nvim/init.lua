@@ -12,6 +12,7 @@ require("user.lsp")
 require("user.lsp.null-ls")
 require("user.nvim-cmp")
 require("user.treesitter")
+require "user.autopairs"
 require("user.nerd-commenter")
 require("gitsigns-setup")
 require("user.nvim-tree")

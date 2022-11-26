@@ -32,6 +32,7 @@ setKeyMap('n', '<C-l>', '<C-w>l', opts)
 -- tabs management
 setKeyMap('n', '<leader>l', ':tabnext<CR>', opts)
 setKeyMap('n', '<leader>h', ':tabprevious<CR>', opts)
+setKeyMap('n', '<leader>tc', ':tabclose<CR>', opts)
 -- nnoremap <leader>l :tabnext<CR>
 
 -- buffers
@@ -43,7 +44,7 @@ setKeyMap('v', '<', '<gv', opts)
 setKeyMap('v', '>', '>gv', opts)
 
 
-setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
+-- setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
 setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
@@ -53,3 +54,6 @@ setKeyMap('n', 'D', '0d$', { noremap = true, silent = true })
 
 -- toggle cmd height
 setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', { noremap = true, silent = true })
+
+
+setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', { noremap = true, silent = true })

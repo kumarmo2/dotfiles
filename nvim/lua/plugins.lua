@@ -64,9 +64,6 @@ return require("packer").startup(function(use)
 
   use({
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup()
-    end,
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
@@ -86,6 +83,7 @@ return require("packer").startup(function(use)
   -- nightfox and alike colorschemes
   use("EdenEast/nightfox.nvim")
   use("navarasu/onedark.nvim")
+
   -- git integrations.
   use({
     "lewis6991/gitsigns.nvim",
@@ -95,6 +93,9 @@ return require("packer").startup(function(use)
   })
   use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
+  -- git integrations ends.
+
+  -- terminal
   use("akinsho/toggleterm.nvim")
 
   use("ellisonleao/glow.nvim")

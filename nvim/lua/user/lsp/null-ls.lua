@@ -12,7 +12,6 @@ local config = {
     formatting.stylua,
     formatting.prettier,
     formatting.csharpier,
-    formatting.rustfmt,
 
     -- linters/diagnostics
     diagnostics.eslint,

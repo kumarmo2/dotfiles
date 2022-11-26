@@ -38,10 +38,19 @@ return require("packer").startup(function(use)
   use("Hoffs/omnisharp-extended-lsp.nvim")
   use("simrat39/rust-tools.nvim")
 
-  use { "windwp/nvim-autopairs", config = function()
-    require "nvim-autopairs".setup {}
-  end
-  }
+  -- illuminate: highlights the other occurences of the current word under cursor.
+  use({
+    "RRethy/vim-illuminate",
+    config = function()
+      require("lvim.core.illuminate").setup()
+    end,
+  })
+  use({
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({})
+    end,
+  })
 
   -- colorschemes
   use({
@@ -81,7 +90,7 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
     },
   })
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
   use("akinsho/toggleterm.nvim")
 

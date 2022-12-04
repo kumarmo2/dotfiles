@@ -202,7 +202,6 @@ alias ts="tmux new-session -s"
 
 export PATH=$PATH:$HOME/rust/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/usr/local/go/bin
 
 # misc aliases
 alias cl=clear
@@ -210,10 +209,11 @@ alias cl=clear
 alias lg=lazygit
 
 alias sctl=systemctl
+alias sudo=doas
 
-alias rm=trash-put
+# alias rm=trash-put
 
-alias docker=podman
+
 shopt -s autocd # auto cd into the path typed.
 
 # eval $(thefuck --alias)
@@ -225,3 +225,4 @@ source /usr/share/nvm/init-nvm.sh
 # tmux script
 # ~/configs/tmux/script.sh
 pfetch
+

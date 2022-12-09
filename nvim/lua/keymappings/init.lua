@@ -10,28 +10,27 @@ local opts = { noremap = true, silent = true };
 
 setKeyMap('n', '\\', ':noh<CR>', opts)
 
-setKeyMap('n', '<Leader>ww', ':w<CR>', opts)
-setKeyMap('n', '<Leader>wq', ':wq<CR>', opts)
-setKeyMap('n', '<Leader>qq', ':q!<CR>', opts)
-setKeyMap('n', '<C-Q>', ':q!<CR>', opts)
-setKeyMap('n', '<C-s>', ':w<CR>', opts)
-setKeyMap('i', '<C-s>', '<Esc>:w<CR>i', opts)
+setKeyMap('n', '<Leader>w', ':w<CR>', opts)
+setKeyMap('n', '<Leader><CR>', ':q<CR>', opts)
 setKeyMap('n', '<Leader>qa', ':qa<CR>', opts)
 
+-- movements
+setKeyMap('n', '<C-d>', '<C-d>zz', opts)
+setKeyMap('n', '<C-u>', '<C-u>zz', opts)
 
 -- prev buffer
 setKeyMap('n', '<leader><leader>', '<C-^>', { noremap = true })
 
 
 -- better window movement
-setKeyMap('n', '<C-h>', '<C-w>h', opts)
-setKeyMap('n', '<C-j>', '<C-w>j', opts)
-setKeyMap('n', '<C-k>', '<C-w>k', opts)
-setKeyMap('n', '<C-l>', '<C-w>l', opts)
+setKeyMap('n', '<Leader>h', '<C-w>h', opts)
+setKeyMap('n', '<Leader>j', '<C-w>j', opts)
+setKeyMap('n', '<Leader>k', '<C-w>k', opts)
+setKeyMap('n', '<Leader>l', '<C-w>l', opts)
 
 -- tabs management
-setKeyMap('n', '<leader>l', ':tabnext<CR>', opts)
-setKeyMap('n', '<leader>h', ':tabprevious<CR>', opts)
+setKeyMap('n', '<leader>tl', ':tabnext<CR>', opts)
+setKeyMap('n', '<leader>th', ':tabprevious<CR>', opts)
 setKeyMap('n', '<leader>tc', ':tabclose<CR>', opts)
 -- nnoremap <leader>l :tabnext<CR>
 
@@ -56,4 +55,5 @@ setKeyMap('n', 'D', '0d$', { noremap = true, silent = true })
 setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', { noremap = true, silent = true })
 
 
+-- open nvim config folder in new tab
 setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', { noremap = true, silent = true })

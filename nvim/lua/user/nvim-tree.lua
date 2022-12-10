@@ -117,8 +117,6 @@ nvim_tree.setup {
   }
 }
 
-setKeyMap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })
 
 
 -- if last window is nvim-tree. quit the nvim

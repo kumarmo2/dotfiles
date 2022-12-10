@@ -50,36 +50,6 @@ require('telescope').setup {
 -- check documentation for *vim.ui.select()*
 require "telescope".load_extension("ui-select")
 
-MyPicker = function()
-  local results = {}
-  table.insert(results, "kumamor2")
-  table.insert(results, "manya")
-
-  pickers.new({}, {
-    prompt_title = "Custom Picker",
-    finder = finders.new_table(results),
-    sorter = conf.generic_sorter({}),
-
-    -- attach_mappings = function(_, map)
-    -- map("i", "<CR>", actions.set_command_line)
-    -- map("n", "<CR>", actions.set_command_line)
-    -- map("n", "<C-e>", actions.edit_command_line)
-    -- map("i", "<C-e>", actions.edit_command_line)
-
-    -- TODO: Find a way to insert the text... it seems hard.
-    -- map('i', '<C-i>', actions.insert_value, { expr = true })
-
-    -- return true
-    -- end,
-  }):find()
-
-end
-
-
-PrintX2 = function()
-  print("hello")
-end
-
 setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts);
 setKeyMap('n', '<leader>;', ':Telescope buffers<CR>', opts);
 setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts);

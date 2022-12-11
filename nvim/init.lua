@@ -9,6 +9,7 @@ require("user.greeters.alpha")
 -- require("user.colorschemes.tokyonight")
 -- require("user.colorschemes.gruvbox")
 v.cmd("colorscheme oxocarbon")
+require("user.colorschemes.onedarkpro")
 require("settings")
 
 require("user.lsp")

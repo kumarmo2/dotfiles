@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
 	use("navarasu/onedark.nvim")
 	use("EdenEast/nightfox.nvim")
 	use("nyoom-engineering/oxocarbon.nvim")
+	use("olimorris/onedarkpro.nvim")
 
 	-- colorschemes ends
 

@@ -14,17 +14,17 @@ local diagnostics = null_ls.builtins.diagnostics
 -- ]]
 -- NOTE: Need to make sure the sources are available in $PATH.
 local config = {
-  sources = {
-    -- formatters
-    formatting.stylua,
-    formatting.prettier,
-    formatting.csharpier,
-    formatting.rustfmt,
+	sources = {
+		-- formatters
+		formatting.stylua,
+		formatting.prettier,
+		formatting.csharpier,
+		formatting.rustfmt,
 
-    -- linters/diagnostics
-    diagnostics.eslint,
-  },
-  -- debug = true
+		-- linters/diagnostics
+		diagnostics.eslint,
+	},
+	-- debug = true
 }
 
 null_ls.setup(config)

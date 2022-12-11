@@ -1,3 +1,4 @@
+local formatting = require "user.lsp.formatting";
 local M = {}
 local vim = vim
 
@@ -98,9 +99,10 @@ local function lsp_keymaps(bufnr, client)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" or client.name == "omnisharp" then
-    client.server_capabilities.document_formatting = false
-  end
+  print("client name: " .. client.name);
+  formatting.setup_lsp_formatting(client, bufnr);
+  -- local code_lens_available = client.supports_method("textDocument/codeLens");
+
   lsp_keymaps(bufnr, client)
   lsp_highlight_document(client)
 end

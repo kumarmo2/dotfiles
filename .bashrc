@@ -170,7 +170,7 @@ eval "$(starship init bash)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
 #setxkbmap -option caps:swapescape
-setxkbmap -option caps:swapescape
+# setxkbmap -option caps:swapescape
 
 # vim/nvim
 export VISUAL=vim

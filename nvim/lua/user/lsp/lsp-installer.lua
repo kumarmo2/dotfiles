@@ -1,54 +1,89 @@
-local vim = vim;
+local vim = vim
 
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-  return
+local found_mason, _ = pcall(require, "mason")
+
+if not found_mason then
+	return
 end
+
+local status_ok, lsp_installer = pcall(require, "mason-lspconfig")
+if not status_ok then
+	return
+end
+
+require("mason-lspconfig").setup({
+	ensure_installed = { "sumneko_lua", "rust_analyzer", "tsserver" },
+})
+
+local opts = {
+	on_attach = require("user.lsp.handlers").on_attach,
+	capabilities = require("user.lsp.handlers").capabilities,
+}
+
+lsp_installer.setup_handlers({
+
+	function(server_name)
+		require("lspconfig")[server_name].setup(opts)
+	end,
+	["rust_analyzer"] = function()
+		local ok, rt = pcall(require, "rust-tools")
+		if not ok then
+			return
+		end
+		-- rust-tools plugin takes care of setting up the server capabilities.
+		-- in opts.on_attach, we have some common functionalities like key-mappings
+		-- , document formatting etc.
+		rt.setup({
+			server = {
+				on_attach = opts.on_attach,
+			},
+		})
+	end,
+})
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
-  }
+-- lsp_installer.on_server_ready(function(server)
+-- local opts = {
+-- on_attach = require("user.lsp.handlers").on_attach,
+-- capabilities = require("user.lsp.handlers").capabilities,
+-- }
 
-  if server.name == "rust_analyzer" then
-    local ok, rt = pcall(require, "rust-tools");
-    if not ok then
-      return
-    end
-    -- rust-tools plugin takes care of setting up the server capabilities.
-    -- in opts.on_attach, we have some common functionalities like key-mappings
-    -- , document formatting etc.
-    rt.setup({
-      server = {
-        on_attach = opts.on_attach
-      }
-    });
-    return;
+-- if server.name == "rust_analyzer" then
+-- local ok, rt = pcall(require, "rust-tools")
+-- if not ok then
+-- return
+-- end
+-- -- rust-tools plugin takes care of setting up the server capabilities.
+-- -- in opts.on_attach, we have some common functionalities like key-mappings
+-- -- , document formatting etc.
+-- rt.setup({
+-- server = {
+-- on_attach = opts.on_attach,
+-- },
+-- })
+-- return
+-- end
+-- if server.name == "omnisharp" then
+-- local pid = vim.fn.getpid()
+-- local omnisharp_bin = "/usr/bin/omnisharp"
 
-  end
-  if server.name == "omnisharp" then
-    local pid = vim.fn.getpid()
-    local omnisharp_bin = "/usr/bin/omnisharp"
+-- local config = {
+-- handlers = {
+-- ["textDocument/definition"] = require("omnisharp_extended").handler,
+-- },
+-- cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+-- -- rest of your settings
+-- }
+-- opts = vim.tbl_deep_extend("force", config, opts)
+-- end
 
-    local config = {
-      handlers = {
-        ["textDocument/definition"] = require('omnisharp_extended').handler,
-      },
-      cmd = { omnisharp_bin, '--languageserver', '--hostPID', tostring(pid) },
-      -- rest of your settings
-    }
-    opts = vim.tbl_deep_extend("force", config, opts)
-  end
+-- -- if server.name == "jsonls" then
+-- -- local jsonls_opts = require("user.lsp.settings.jsonls")
+-- -- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+-- -- end
 
-  -- if server.name == "jsonls" then
-  -- local jsonls_opts = require("user.lsp.settings.jsonls")
-  -- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-  -- end
-
-  -- This setup() function is exactly the same as lspconfig's setup function.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
+-- -- This setup() function is exactly the same as lspconfig's setup function.
+-- -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- server:setup(opts)
+-- end)

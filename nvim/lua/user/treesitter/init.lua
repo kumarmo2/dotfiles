@@ -49,6 +49,7 @@ require("nvim-treesitter.configs").setup({
 
 -- code folding starts
 
+-- toggle folding: `za`
 opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"

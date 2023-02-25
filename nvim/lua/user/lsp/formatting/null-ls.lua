@@ -16,15 +16,14 @@ local diagnostics = null_ls.builtins.diagnostics
 local config = {
 	sources = {
 		-- formatters
+		formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
 		formatting.stylua,
 		formatting.prettier,
 		formatting.csharpier,
-		formatting.rustfmt,
-
 		-- linters/diagnostics
 		diagnostics.eslint,
 	},
-	-- debug = true
+	-- debug = true,
 }
 
 null_ls.setup(config)

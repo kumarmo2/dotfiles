@@ -1,4 +1,4 @@
-local vim = vim;
+local vim = vim
 
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
@@ -12,44 +12,47 @@ lsp_installer.on_server_ready(function(server)
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
+	print("on_server_readY: " .. server.name)
 
-  if server.name == "rust_analyzer" then
-    local ok, rt = pcall(require, "rust-tools");
-    if not ok then
-      return
-    end
-    -- rust-tools plugin takes care of setting up the server capabilities.
-    -- in opts.on_attach, we have some common functionalities like key-mappings
-    -- , document formatting etc.
-    rt.setup({
-      server = {
-        on_attach = opts.on_attach
-      }
-    });
-    return;
+	if server.name == "rust_analyzer" then
+		local ok, rt = pcall(require, "rust-tools")
+		if not ok then
+			return
+		end
+		-- rust-tools plugin takes care of setting up the server capabilities.
+		-- in opts.on_attach, we have some common functionalities like key-mappings
+		-- , document formatting etc.
+		-- NOTE: see below script to turn on/off inlay_hints.
+		-- lua require('rust-tools').inlay_hints.set()
+		-- lua require('rust-tools').inlay_hints.unset()
 
-  end
-  if server.name == "omnisharp" then
-    local pid = vim.fn.getpid()
-    local omnisharp_bin = "/usr/bin/omnisharp"
+		rt.setup({
+			server = {
+				on_attach = opts.on_attach,
+			},
+		})
+		return
+	end
+	if server.name == "omnisharp" then
+		local pid = vim.fn.getpid()
+		local omnisharp_bin = "/usr/bin/omnisharp"
 
-    local config = {
-      handlers = {
-        ["textDocument/definition"] = require('omnisharp_extended').handler,
-      },
-      cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) },
-      -- rest of your settings
-    }
-      opts = vim.tbl_deep_extend("force", config, opts)
-  end
+		local config = {
+			handlers = {
+				["textDocument/definition"] = require("omnisharp_extended").handler,
+			},
+			cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+			-- rest of your settings
+		}
+		opts = vim.tbl_deep_extend("force", config, opts)
+	end
 
-	 -- if server.name == "jsonls" then
-		 -- local jsonls_opts = require("user.lsp.settings.jsonls")
-		 -- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	 -- end
-  
+	-- if server.name == "jsonls" then
+	-- local jsonls_opts = require("user.lsp.settings.jsonls")
+	-- opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+	-- end
+
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)
 end)
-

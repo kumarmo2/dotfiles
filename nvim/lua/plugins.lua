@@ -32,8 +32,10 @@ return require("packer").startup(function(use)
 	use("L3MON4D3/LuaSnip")
 
 	-- lsp
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig") -- enable lsp
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	-- use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("jose-elias-alvarez/null-ls.nvim") -- for better formatting
 	use("Hoffs/omnisharp-extended-lsp.nvim")
 	use("simrat39/rust-tools.nvim")
@@ -87,7 +89,7 @@ return require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 		},
 	})
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	-- use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- Is using a standard Neovim install, i.e. built from source or using a
 	-- provided appimage.

@@ -1,3 +1,6 @@
+-- NOTE: This file is not being in used since we are using mason now.
+-- Have kept this for reference only.
+
 local vim = vim
 
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")

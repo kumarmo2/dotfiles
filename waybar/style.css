@@ -1,7 +1,9 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: "JetBrainsMono NF",FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 window#waybar {
@@ -27,7 +29,7 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 0.4em;
     background-color: transparent;
     color: #ffffff;
 }
@@ -70,7 +72,8 @@ button:hover {
 #scratchpad,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
+    color: #333333;
+    margin: 6px 3px;
 }
 
 #window,
@@ -95,7 +98,7 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: #bbccdd;
 }
 
 #battery {
@@ -135,7 +138,7 @@ label:focus {
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #bbccdd;
 }
 
 #disk {

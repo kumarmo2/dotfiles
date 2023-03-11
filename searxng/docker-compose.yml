@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - ./data:/etc/searxng
+    environment:
+      - "BASE_URL=http://localhost:8080/"
+      - "INSTANCE_NAME=my-instance"
+      
+# volumes:
+ # searxng:
+    
+  

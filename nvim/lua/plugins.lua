@@ -9,6 +9,16 @@ end
 return require("packer").startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim")
+	use("lewis6991/impatient.nvim")
+
+	use({
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
+		module = "persistence",
+		config = function()
+			require("persistence").setup()
+		end,
+	})
 
 	-- nvim tree
 	use("kyazdani42/nvim-web-devicons")
@@ -68,8 +78,6 @@ return require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
-	use("itchyny/vim-gitbranch")
-
 	-- for better syntax highlighting
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -93,7 +101,6 @@ return require("packer").startup(function(use)
 
 	-- Is using a standard Neovim install, i.e. built from source or using a
 	-- provided appimage.
-	use("lewis6991/impatient.nvim")
 	use({
 		"goolord/alpha-nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
@@ -102,9 +109,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("akinsho/toggleterm.nvim")
-
-	use("ellisonleao/glow.nvim")
+	-- use("akinsho/toggleterm.nvim")
 
 	use("famiu/bufdelete.nvim")
 

@@ -26,5 +26,6 @@ require("keymappings")
 require("user.git_integrations.diffview")
 require("user.telescope")
 require("user.custom.case-transformation")
+require("user.session-persistence")
 
 return M

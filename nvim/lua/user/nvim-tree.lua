@@ -104,8 +104,7 @@ nvim_tree.setup({
       resize_window = true,
     },
     change_dir = {
-      -- this is used so that nvim tree won't go above the directory in which it was opened.
-      -- restrict_above_cwd = true
+      enable = false, -- if true, then your cwd is subject to be changed, which causes issue with other plugins like telescope which shows files under the "cwd" only.
     },
   },
 })

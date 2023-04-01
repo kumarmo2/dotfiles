@@ -26,7 +26,7 @@ vim.o.smartindent = true
 vim.o.mouse = "a"
 -- using big value for `scrolloff`, you can keep the cursor at the
 -- center
--- vim.o.scrolloff = 999
+vim.o.scrolloff = 999
 -- vim.o.colorcolumn = '120'
 -- shorter way to global options
 vim.o.swapfile = false

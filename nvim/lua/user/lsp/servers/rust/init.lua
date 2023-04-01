@@ -1,5 +1,5 @@
-local rt = require("rust-tools")
-local common_on_attach = require("user.lsp.handlers").on_attach
+local rt = require('rust-tools')
+local common_on_attach = require('user.lsp.handlers').on_attach
 
 -- rust-tools plugin takes care of setting up the server capabilities.
 -- in opts.on_attach, we have some common functionalities like key-mappings
@@ -10,10 +10,32 @@ local common_on_attach = require("user.lsp.handlers").on_attach
 
 local M = {}
 M.setup = function()
-	rt.setup({
-		server = {
-			on_attach = common_on_attach,
-		},
-	})
+  rt.setup({
+    server = {
+      on_attach = common_on_attach,
+      settings = {
+        ['rust-analyzer'] = {
+          procMacro = {
+            enable = false,
+          },
+          inlayHints = {
+            chainingHints = {
+              enable = false,
+            },
+            closingBraceHints = {
+              enable = false,
+            },
+            parameterHints = {
+              enable = false,
+            },
+            renderColons = false,
+            typeHints = {
+              enable = false,
+            },
+          },
+        },
+      },
+    },
+  })
 end
 return M

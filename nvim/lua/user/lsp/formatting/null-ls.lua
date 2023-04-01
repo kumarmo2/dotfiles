@@ -1,4 +1,4 @@
-local null_ls = require("null-ls")
+local null_ls = require('null-ls')
 local vim = vim
 
 local formatting = null_ls.builtins.formatting
@@ -14,16 +14,16 @@ local diagnostics = null_ls.builtins.diagnostics
 -- ]]
 -- NOTE: Need to make sure the sources are available in $PATH.
 local config = {
-	sources = {
-		-- formatters
-		formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
-		formatting.stylua,
-		formatting.prettier,
-		formatting.csharpier,
-		-- linters/diagnostics
-		diagnostics.eslint,
-	},
-	-- debug = true,
+  sources = {
+    -- formatters
+    formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
+    formatting.stylua,
+    formatting.prettier,
+    formatting.csharpier,
+    -- linters/diagnostics
+    diagnostics.eslint,
+  },
+  -- debug = true,
 }
 
 null_ls.setup(config)

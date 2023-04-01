@@ -129,6 +129,14 @@ fi
 # extends the default features
 export FZF_DEFAULT_OPS="--extended"
 
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
 
 # by default, fzf uses `find` internally
 # we are overriding to use `fd` which covers
@@ -166,14 +174,14 @@ alias r=ranger
 
 
 # starship prompt settings.
-eval "$(starship init bash)"
 export STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init bash)"
 
 #setxkbmap -option caps:swapescape
 # setxkbmap -option caps:swapescape
 
 # vim/nvim
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 # alias v=vim
 
@@ -203,6 +211,18 @@ export PATH=$PATH:$HOME/rust/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 
+# pass related envs start
+
+export PASSWORD_STORE_CLIP_TIME=120 #num of seconds after which password will be automatically removed from clipboard
+
+# pass related envs end
+
+
+export AWS_ACCESS_KEY_ID=DUMMYIDEXAMPLE
+export AWS_SECRET_ACCESS_KEY=DUMMYIDEXAMPLE
+# export AWS_SESSION_TOKEN
+
+
 # misc aliases
 alias cl=clear
 
@@ -210,9 +230,9 @@ alias lg=lazygit
 
 alias sctl=systemctl
 
-alias rm=trash-put
+# alias cat=bat
 
-# alias docker=podman
+alias rm=trash-put
 
 shopt -s autocd # auto cd into the path typed.
 pfetch

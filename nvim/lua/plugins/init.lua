@@ -6,6 +6,14 @@ return {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
+  -- {
+  -- 'folke/persistence.nvim',
+  -- event = 'BufReadPre', -- this will only start session saving when an actual file was opened
+  -- module = 'persistence',
+  -- config = function()
+  -- require('persistence').setup()
+  -- end,
+  -- },
   'nvim-telescope/telescope-ui-select.nvim',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-buffer',
@@ -13,7 +21,7 @@ return {
   'hrsh7th/cmp-nvim-lsp',
 
   -- snippets
-  'L3MON4D3/LuaSnip',
+  -- 'L3MON4D3/LuaSnip',
 
   -- lsp
   'williamboman/mason.nvim',
@@ -31,16 +39,18 @@ return {
   },
 
   -- colorschemes starts
+  -- "priority": applicable for plugins with lazy = false. useful for loading certain plugins first.
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    priority = 900,
+    lazy = true,
   },
-  'folke/tokyonight.nvim',
-  { 'ellisonleao/gruvbox.nvim' },
-  'navarasu/onedark.nvim',
-  'EdenEast/nightfox.nvim',
-  'nyoom-engineering/oxocarbon.nvim',
-  'olimorris/onedarkpro.nvim',
+  { 'folke/tokyonight.nvim', priority = 901, lazy = true },
+  { 'ellisonleao/gruvbox.nvim', priority = 902, lazy = true },
+  { 'EdenEast/nightfox.nvim', priority = 903, lazy = true },
+  { 'nyoom-engineering/oxocarbon.nvim', priority = 904, lazy = true },
+  { 'olimorris/onedarkpro.nvim', priority = 1000, lazy = true },
   -- colorschemes ends
 
   { 'machakann/vim-highlightedyank', lazy = false },
@@ -72,9 +82,11 @@ return {
   {
     'goolord/alpha-nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require('alpha').setup(require('alpha.themes.startify').config)
-    end,
+    -- NOTE: not loading it temporarily as i want to start using the session persistence extension.
+    -- config = function()
+    -- require('alpha').setup(require('alpha.themes.startify').config)
+    -- end,
+    lazy = true,
   },
 
   -- use("akinsho/toggleterm.nvim")

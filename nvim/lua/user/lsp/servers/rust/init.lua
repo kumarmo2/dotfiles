@@ -18,6 +18,11 @@ M.setup = function()
           procMacro = {
             enable = false,
           },
+          diagnostics = {
+            disabled = {
+              'unresolved-proc-macro',
+            },
+          },
           inlayHints = {
             chainingHints = {
               enable = false,

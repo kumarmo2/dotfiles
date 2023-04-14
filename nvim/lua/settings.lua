@@ -38,8 +38,9 @@ vim.o.hidden = true
 vim.o.guifont = "Caskaydia Cove Nerd Font"
 -- vim.o.autoread = true
 
-setOption("syntax", "enable")
-setOption("laststatus", 3)
+setOption('syntax', 'enable')
+setOption('laststatus', 3)
+setOption('statuscolumn', '%l %r')
 -- vim.g.gruvbox_transparent_bg = "1"
 -- cmd("colorscheme gruvbox")
 -- vim.api.nvim_command("colorscheme catppuccin")

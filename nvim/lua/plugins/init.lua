@@ -66,7 +66,7 @@ return {
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
   },
-  'nvim-treesitter/playground',
+  -- 'nvim-treesitter/playground',
   -- for commentings
   { 'preservim/nerdcommenter', lazy = false },
 

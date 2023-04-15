@@ -1,7 +1,6 @@
 local onedarkpro = require('onedarkpro')
 local vim = vim
-
-onedarkpro.setup({
+local config = {
   colors = {}, -- Override default colors or create your own
   highlights = {}, -- Override default highlight groups or create your own
   filetypes = { -- Override which filetype highlight groups are loaded
@@ -34,6 +33,14 @@ onedarkpro.setup({
     terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
     highlight_inactive_windows = false, -- When the window is out of focus, change the normal background?
   },
-})
+}
+
+local is_neovide = vim.g.neovide or false
+
+if is_neovide then
+  config.options.transparency = false
+end
+
+onedarkpro.setup(config)
 
 vim.cmd('colorscheme onedark')

@@ -1,5 +1,4 @@
 local null_ls = require('null-ls')
-local vim = vim
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
@@ -19,7 +18,7 @@ local config = {
     formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
     formatting.stylua,
     formatting.prettier,
-    formatting.csharpier,
+    -- formatting.csharpier,
     -- linters/diagnostics
     diagnostics.eslint,
   },

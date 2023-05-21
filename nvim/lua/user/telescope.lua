@@ -47,7 +47,7 @@ require('telescope').setup({
 -- check documentation for *vim.ui.select()*
 require('telescope').load_extension('ui-select')
 
-setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts)
+-- setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts)
 setKeyMap('n', '<leader>;', ':Telescope buffers<CR>', opts)
 setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
 -- setKeyMap('n', '<C-h>', ':Telescope help_tags<CR>', opts);

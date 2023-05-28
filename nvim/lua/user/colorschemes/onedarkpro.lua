@@ -43,4 +43,4 @@ end
 
 onedarkpro.setup(config)
 
-vim.cmd('colorscheme onedark')
+-- vim.cmd('colorscheme onedark')

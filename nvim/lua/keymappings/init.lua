@@ -51,6 +51,8 @@ setKeyMap('n', '<leader>dd', ':Bdelete<CR>', opts)
 setKeyMap('v', '<', '<gv', opts)
 setKeyMap('v', '>', '>gv', opts)
 
+-- select current line visually while in normal mode
+setKeyMap('n', '<leader>v', 'zzV', opts)
 -- setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })

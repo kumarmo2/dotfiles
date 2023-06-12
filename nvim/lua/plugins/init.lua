@@ -4,7 +4,7 @@ return {
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
   },
   -- {
   -- 'folke/persistence.nvim',

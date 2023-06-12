@@ -46,8 +46,11 @@ require('telescope').setup({
 
 -- check documentation for *vim.ui.select()*
 require('telescope').load_extension('ui-select')
+require('telescope').load_extension('live_grep_args')
 
--- setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts)
+setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts)
 setKeyMap('n', '<leader>;', ':Telescope buffers<CR>', opts)
-setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
+-- setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
+setKeyMap('n', '<leader>fg', ':lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', opts)
+setKeyMap('n', '<leader>m', ':Telescope marks<CR>', opts)
 -- setKeyMap('n', '<C-h>', ':Telescope help_tags<CR>', opts);

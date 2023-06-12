@@ -3,6 +3,7 @@ local setKeyMap = vim.api.nvim_set_keymap
 
 local opts = { noremap = true, silent = true }
 local actions = require('telescope.actions')
+local lga_actions = require('telescope-live-grep-args.actions')
 -- local pickers = require("telescope.pickers")
 
 -- local conf = require("telescope.config").values
@@ -40,6 +41,15 @@ require('telescope').setup({
     -- setting vim.ui.select to telescope
     ['ui-select'] = {
       require('telescope.themes').get_dropdown({}),
+    },
+    live_grep_args = {
+      auto_quoting = true,
+      mappings = { -- extend mappings
+        i = {
+          ['<C-k>'] = lga_actions.quote_prompt(),
+          ['<C-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
+        },
+      },
     },
   },
 })

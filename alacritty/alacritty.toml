@@ -1,0 +1,40 @@
+import = [ "~/configs/alacritty/catppuccin/catppuccin-macchiato.toml" ]
+live_config_reload = true
+
+[font]
+size = 12
+
+[font.normal]
+family = "JetBrainsMono NF"
+style = "Bold"
+
+[font.bold]
+family = "JetBrainsMono NF"
+style = "extra Bold"
+
+[font.italic]
+family = "JetBrainsMono NF"
+style = "bold italic"
+
+[font.bold_italic]
+family = "JetBrainsMono NF"
+style = "extra Bold italic"
+
+[scrolling]
+history = 10_000
+multiplier = 10
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+save_to_clipboard = true
+
+[window]
+opacity = 1
+dynamic_padding = false
+decorations = "full"
+startup_mode = "Windowed"
+
+  [window.padding]
+  x = 5
+  y = 1
+

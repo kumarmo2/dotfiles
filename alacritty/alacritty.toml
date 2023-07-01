@@ -1,24 +1,24 @@
-import = [ "~/configs/alacritty/catppuccin/catppuccin-macchiato.toml" ]
+import = [ "~/.config/alacritty/catppuccin-macchiato.toml" ]
 live_config_reload = true
 
 [font]
 size = 12
 
 [font.normal]
-family = "JetBrainsMono NF"
-style = "Bold"
+family = "CaskaydiaCove NF"
+style = "Regular"
 
 [font.bold]
-family = "JetBrainsMono NF"
-style = "extra Bold"
+family = "CaskaydiaCove NF"
+style = "Bold"
 
 [font.italic]
-family = "JetBrainsMono NF"
-style = "bold italic"
+family = "CaskaydiaCove NF"
+style = "italic"
 
 [font.bold_italic]
-family = "JetBrainsMono NF"
-style = "extra Bold italic"
+family = "CaskaydiaCove NF"
+style = "Bold Italic"
 
 [scrolling]
 history = 10_000

@@ -12,17 +12,21 @@ local diagnostics = null_ls.builtins.diagnostics
 --
 -- ]]
 -- NOTE: Need to make sure the sources are available in $PATH.
+local common_on_attach = require('user.lsp.handlers').on_attach
 local config = {
   sources = {
     -- formatters
     formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
     formatting.stylua,
     formatting.prettier,
+    formatting.pg_format,
+    -- formatting.dprint,
     -- formatting.csharpier,
     -- linters/diagnostics
     diagnostics.eslint,
   },
   -- debug = true,
+  on_attach = common_on_attach,
 }
 
 null_ls.setup(config)

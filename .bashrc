@@ -142,17 +142,21 @@ export FZF_CTRL_R_OPTS="
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-# export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fdfind --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # alias fd=fdfind
 
 export TERM=xterm-256color
 
-export ANDROID_SDK=/home/kumarmo2/Android/Sdk
-export PATH=${PATH}:/home/kumarmo2/Android/Sdk/platform-tools
+function open_tmux_session() {
+  $HOME/dotfiles/scripts/bash/tmux_fzf.sh
+}
+
+bind -x '"\C-p": open_tmux_session'
+
 
 # export DOTNET_ROOT=$HOME/dotnet
 # export PATH=$PATH:$HOME/dotnet

@@ -4,10 +4,44 @@ local setKeyMap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local actions = require('telescope.actions')
 local lga_actions = require('telescope-live-grep-args.actions')
--- local pickers = require("telescope.pickers")
+local action_state = require('telescope.actions.state')
+local helpers = require('telescope-live-grep-args.helpers')
+local Path = require('plenary.path')
 
--- local conf = require("telescope.config").values
--- local finders = require("telescope.finders")
+local cur_live_grep_buf = 0 -- fg_buf is used to track the "current" buf number when live_grep was invoked.
+
+function FILE_GREP_HANDLER()
+  cur_live_grep_buf = vim.api.nvim_get_current_buf()
+  require('telescope').extensions.live_grep_args.live_grep_args()
+end
+
+function FILE_GREP_UNDER_CURSOR_HANDLER()
+  cur_live_grep_buf = vim.api.nvim_get_current_buf()
+  require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()
+end
+
+function HELPER_QUOTE_PROMPT(prompt_bufnr)
+  local prompt_opts = {
+    quote_char = '"',
+    postfix = ' ',
+    trim = true,
+  }
+
+  local file = vim.api.nvim_buf_get_name(cur_live_grep_buf)
+  local cwd = vim.loop.cwd()
+  local relative_path = Path:new(file):make_relative(cwd)
+
+  prompt_opts.postfix = ' --iglob ' .. relative_path
+
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local prompt = picker:_get_prompt()
+  if prompt_opts.trim then
+    prompt = vim.trim(prompt)
+  end
+
+  prompt = helpers.quote(prompt, { quote_char = prompt_opts.quote_char }) .. prompt_opts.postfix
+  picker:set_prompt(prompt)
+end
 
 require('telescope').setup({
   defaults = {
@@ -46,21 +80,26 @@ require('telescope').setup({
       auto_quoting = true,
       mappings = { -- extend mappings
         i = {
-          ['<C-k>'] = lga_actions.quote_prompt(),
+          -- ['<C-k>'] = lga_actions.quote_prompt(),
           ['<C-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
+          ['<C-k>'] = HELPER_QUOTE_PROMPT,
         },
       },
     },
   },
 })
 
+setKeyMap('n', '<leader>i', ':lua HELPER_QUOTE_PROMPT()<CR>', opts)
+
 -- check documentation for *vim.ui.select()*
 require('telescope').load_extension('ui-select')
 require('telescope').load_extension('live_grep_args')
 
+-- lua print(vim.api.nvim_buf_get_name(0))
 setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts)
 setKeyMap('n', '<leader>;', ':Telescope buffers<CR>', opts)
 -- setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
-setKeyMap('n', '<leader>fg', ':lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', opts)
+setKeyMap('n', '<leader>fg', ':lua FILE_GREP_HANDLER()<CR>', opts)
+setKeyMap('n', '<leader>gc', ':lua require(\'telescope-live-grep-args.shortcuts\').grep_word_under_cursor()<CR>', opts)
 setKeyMap('n', '<leader>m', ':Telescope marks<CR>', opts)
 -- setKeyMap('n', '<C-h>', ':Telescope help_tags<CR>', opts);

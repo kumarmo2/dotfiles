@@ -67,5 +67,5 @@ setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', { noremap = true, silent
 setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', { noremap = true, silent = true })
 
 -- nvim tree
-setKeyMap('n', '<Leader>.', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+setKeyMap('n', '<Leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })

@@ -79,17 +79,5 @@ return {
     },
   },
 
-  {
-    'goolord/alpha-nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    -- NOTE: not loading it temporarily as i want to start using the session persistence extension.
-    -- config = function()
-    -- require('alpha').setup(require('alpha.themes.startify').config)
-    -- end,
-    lazy = true,
-  },
-
-  -- use("akinsho/toggleterm.nvim")
-
   'famiu/bufdelete.nvim',
 }

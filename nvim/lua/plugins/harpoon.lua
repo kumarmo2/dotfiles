@@ -1,5 +1,5 @@
 local vim = vim
-local binding_opts = {}
+local binding_opts = { silent = true, noremap = true }
 return {
   {
     'ThePrimeagen/harpoon',

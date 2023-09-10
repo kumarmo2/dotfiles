@@ -18,13 +18,12 @@ local client_capablities = require('user.lsp.handlers').capabilities
 local lsp_options = { on_attach = common_on_attach, capabilities = client_capablities }
 -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
--- Language servers setup.
-
 lspconfig.lua_ls.setup(lsp_options) -- lua
--- lspconfig.jdtls.setup(lsp_options)
 lspconfig.pylsp.setup({})
+lspconfig.bufls.setup({})
 
-lspconfig.yamlls.setup({})
+require('lspconfig').tailwindcss.setup({})
 require('user.lsp.servers.rust').setup() -- rust
 require('user.lsp.servers.omnisharp').setup() -- csharp
 require('user.lsp.servers.tsserver').setup() -- js/ts
+require('lspconfig').dockerls.setup({})

@@ -47,10 +47,9 @@ return {
     lazy = true,
   },
   { 'folke/tokyonight.nvim', priority = 901, lazy = true },
-  { 'ellisonleao/gruvbox.nvim', priority = 902, lazy = true },
   { 'EdenEast/nightfox.nvim', priority = 903, lazy = true },
   { 'nyoom-engineering/oxocarbon.nvim', priority = 904, lazy = true },
-  { 'olimorris/onedarkpro.nvim', priority = 1000, lazy = true },
+  { 'olimorris/onedarkpro.nvim', priority = 902, lazy = true },
   -- colorschemes ends
 
   { 'machakann/vim-highlightedyank', lazy = false },
@@ -71,13 +70,6 @@ return {
   { 'preservim/nerdcommenter', lazy = false },
 
   -- nightfox and alike colorschemes
-  -- git integrations.
-  {
-    'lewis6991/gitsigns.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-  },
 
   'famiu/bufdelete.nvim',
 }

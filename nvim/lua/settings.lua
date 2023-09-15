@@ -9,7 +9,6 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
 -- show cursor line
--- setOption('cursorline', true)
 -- removes the -- INSERT --. Since i am using lightline plugin which anyways
 -- shows the mode in it.
 vim.o.showmode = false
@@ -46,7 +45,7 @@ setOption('statuscolumn', '%l %r ')
 -- vim.api.nvim_command("colorscheme catppuccin")
 -- vim.api.nvim_command("colorscheme tokyonight")
 -- cmd('colorscheme nordfox')
-vim.o.cursorline = false
+vim.o.cursorline = true
 -- vim.o.background = 'dark'
 vim.termguicolors = true
 -- vim.o.ch = 0 -- set command heght to 0

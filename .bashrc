@@ -161,6 +161,7 @@ bind -x '"\C-p": open_tmux_session'
 # export DOTNET_ROOT=$HOME/dotnet
 # export PATH=$PATH:$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet-6
+export PATH=$PATH:$HOME/.dotnet
 export PATH=$PATH:$HOME/nvim-linux64/bin
 alias vim=nvim
 export PATH=$PATH:$HOME/Downloads/logstash-7.15.1/bin
@@ -174,7 +175,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export LC_ALL="en_IN.UTF-8"
 
-alias r=ranger
+alias r=yazi
 
 
 # starship prompt settings.
@@ -214,6 +215,11 @@ alias ts="tmux new-session -s"
 export PATH=$PATH:$HOME/rust/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/softwares/prometheus-2.45.0.linux-amd64/
+export PATH=$PATH:$HOME/softwares/bin/
+export PATH=$PATH:$HOME/.config/emacs/bin/
+#export OPENAI_API_KEY=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
 
 # pass related envs start
 
@@ -222,8 +228,8 @@ export PASSWORD_STORE_CLIP_TIME=120 #num of seconds after which password will be
 # pass related envs end
 
 
-export AWS_ACCESS_KEY_ID=DUMMYIDEXAMPLE
-export AWS_SECRET_ACCESS_KEY=DUMMYIDEXAMPLE
+# export AWS_ACCESS_KEY_ID=DUMMYIDEXAMPLE
+# export AWS_SECRET_ACCESS_KEY=DUMMYIDEXAMPLE
 # export AWS_SESSION_TOKEN
 
 
@@ -234,13 +240,20 @@ alias lg=lazygit
 
 alias sctl=systemctl
 
-# alias cat=bat
 
 alias rm=trash-put
+alias em="emacsclient -c -a 'nvim'"
 
 shopt -s autocd # auto cd into the path typed.
-pfetch
+neofetch
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+export PATH=$PATH:$HOME/.bun/bin/
+
+# yazi helper function to help changing working
+# directory on quitting.
 function ya() {
     tmp="$(mktemp -t "yazi-cwd.XXXXX")"
     yazi --cwd-file="$tmp"

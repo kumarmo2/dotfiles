@@ -1,0 +1,37 @@
+font:
+  normal:
+    family: JetBrainsMono NF
+    style: Bold
+  bold:
+    family: JetBrainsMono NF
+    style: extra Bold
+  italic:
+    family: JetBrainsMono NF
+    style: bold italic
+  bold_italic:
+    family: JetBrainsMono NF
+    style: extra Bold italic
+  size: 12
+scrolling:
+  history: 10000
+  multiplier: 10
+glyph_offset:
+  x: 0
+  y: 0
+import:
+- ~/configs/alacritty/catppuccin/catppuccin-macchiato.yml
+offset:
+  x: 0
+  y: 0
+live_config_reload: true
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: true
+window:
+  opacity: 1.0
+  dynamic_padding: false
+  decorations: full
+  startup_mode: Windowed
+  padding:
+    x: 5
+    y: 1

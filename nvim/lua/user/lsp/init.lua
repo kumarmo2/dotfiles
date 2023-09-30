@@ -7,7 +7,7 @@ end
 mason.setup({})
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'omnisharp' },
+  ensure_installed = { 'lua_ls', 'rust_analyzer', 'omnisharp', 'gopls' },
 })
 
 local lspconfig = require('lspconfig')
@@ -19,12 +19,13 @@ local lsp_options = { on_attach = common_on_attach, capabilities = client_capabl
 -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 lspconfig.lua_ls.setup(lsp_options) -- lua
-lspconfig.pylsp.setup({})
-lspconfig.bufls.setup({})
-lspconfig.clangd.setup({})
+lspconfig.pylsp.setup(lsp_options)
+lspconfig.bufls.setup(lsp_options)
+lspconfig.clangd.setup(lsp_options)
+lspconfig.gopls.setup(lsp_options)
 
-require('lspconfig').tailwindcss.setup({})
+require('lspconfig').tailwindcss.setup(lsp_options)
 require('user.lsp.servers.rust').setup() -- rust
 require('user.lsp.servers.omnisharp').setup() -- csharp
 require('user.lsp.servers.tsserver').setup() -- js/ts
-require('lspconfig').dockerls.setup({})
+require('lspconfig').dockerls.setup(lsp_options)

@@ -5,7 +5,7 @@ require('catppuccin').setup({
     dark = 'mocha',
   },
   compile_path = vim.fn.stdpath('cache') .. '/catppuccin',
-  transparent_background = false,
+  transparent_background = true,
   -- term_colors = false,
   -- dim_inactive = {
   -- enabled = false,
@@ -38,4 +38,4 @@ require('catppuccin').setup({
   -- },
 })
 
-vim.cmd('colorscheme catppuccin')
+-- vim.cmd('colorscheme catppuccin')

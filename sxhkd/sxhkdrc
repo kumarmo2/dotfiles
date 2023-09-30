@@ -27,16 +27,21 @@ super + u
 # NOTE: make sure you build wallpaper-rotation and put it in
 # PATH.
 super + ctrl +  y
-    wallpaper-rotation
+    wallpaper-rotation -m next
+super + ctrl +  t
+    wallpaper-rotation -m previous
 
 # incr/decr alacritty's opacity
 # NOTE: make sure you build alacritty-config-updater and put it in
 # PATH.
 ctrl + shift + i
-  alacritty-config-updater -o 0.1
+  alacritty-config-updater -o 0.01
 
 ctrl + shift + o
-  alacritty-config-updater -o -0.1
+  alacritty-config-updater -o -0.01
+
+ctrl + shift + x
+  betterlockscreen -l
 #
 # bspwm hotkeys
 #

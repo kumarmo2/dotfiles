@@ -263,4 +263,6 @@ function ya() {
     rm -f -- "$tmp"
 }
 
+shopt -s autocd # auto cd into the path typed.
+pfetch
 

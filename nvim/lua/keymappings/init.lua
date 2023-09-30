@@ -28,8 +28,8 @@ setKeyMap('n', '<Leader>k', '<C-w>k', opts)
 setKeyMap('n', '<Leader>l', '<C-w>l', opts)
 
 -- tabs management
-setKeyMap('n', '<leader>]', ':tabnext<CR>', opts)
-setKeyMap('n', '<leader>[', ':tabprevious<CR>', opts)
+setKeyMap('n', '<leader>tn', ':tabnext<CR>', opts)
+setKeyMap('n', '<leader>tp', ':tabprevious<CR>', opts)
 setKeyMap('n', '<leader>tc', ':tabclose<CR>', opts)
 -- nnoremap <leader>l :tabnext<CR>
 
@@ -61,11 +61,14 @@ setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
 setKeyMap('n', 'D', '0d$', { noremap = true, silent = true })
 
 -- toggle cmd height
-setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', { noremap = true, silent = true })
+setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 
 -- open nvim config folder in new tab
 setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', { noremap = true, silent = true })
 
 -- nvim tree
-setKeyMap('n', '<Leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = false })
+setKeyMap('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)
+setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', opts)
+
+-- neogit
+setKeyMap('n', '<leader>gg', ':Neogit<CR>', opts)

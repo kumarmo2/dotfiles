@@ -20,6 +20,7 @@ local config = {
     formatting.stylua,
     formatting.prettier,
     formatting.pg_format,
+    formatting.gofmt,
     -- formatting.dprint,
     -- formatting.csharpier,
     -- linters/diagnostics

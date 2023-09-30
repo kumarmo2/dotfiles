@@ -21,6 +21,7 @@ local lsp_options = { on_attach = common_on_attach, capabilities = client_capabl
 lspconfig.lua_ls.setup(lsp_options) -- lua
 lspconfig.pylsp.setup({})
 lspconfig.bufls.setup({})
+lspconfig.clangd.setup({})
 
 require('lspconfig').tailwindcss.setup({})
 require('user.lsp.servers.rust').setup() -- rust

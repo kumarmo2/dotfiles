@@ -731,7 +731,7 @@ engines:
   - name: google
     engine: google
     shortcut: go
-    timeout: 5.0
+    timeout: 10.0
     # see https://docs.searxng.org/src/searx.engines.google.html#module-searx.engines.google
     use_mobile_ui: false
     # additional_tests:

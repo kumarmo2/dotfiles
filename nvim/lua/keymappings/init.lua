@@ -58,13 +58,12 @@ setKeyMap('n', 'vv', 'zzV', opts)
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
 setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
-setKeyMap('n', 'D', '0d$', { noremap = true, silent = true })
 
 -- toggle cmd height
 setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 
 -- open nvim config folder in new tab
-setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', { noremap = true, silent = true })
+setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', opts)
 
 -- nvim tree
 setKeyMap('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)

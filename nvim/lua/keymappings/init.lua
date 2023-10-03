@@ -72,4 +72,4 @@ setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', opts)
 -- neogit
 setKeyMap('n', '<leader>gg', ':Neogit<CR>', opts)
 
-setKeyMap('n', '<leader>zz', ':ZenMode<CR>', opts)
+setKeyMap('n', '<leader>zm', ':ZenMode<CR>', opts)

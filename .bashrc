@@ -149,7 +149,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # alias fd=fdfind
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
+export TERM=alacritty
 
 function open_tmux_session() {
   $HOME/dotfiles/scripts/bash/tmux_fzf.sh

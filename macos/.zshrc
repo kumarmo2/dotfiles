@@ -1,4 +1,3 @@
-# export TERM=alacritty
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.cargo/bin/alacritty:$PATH
 export PATH=/usr/local/bin:$PATH
@@ -9,7 +8,7 @@ export PATH=/opt/homebrew/Cellar/lazygit/0.40.2/bin:$PATH
 # Prompt
 eval "$(starship init zsh)"
 
-bindkey -v # enable vi mode
+# bindkey -v # enable vi mode
 
 setopt autocd
 

@@ -1,28 +1,17 @@
 return {
-  -- { 'kyazdani42/nvim-web-devicons', name = 'devicons' },
   'kyazdani42/nvim-tree.lua',
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
   },
-  -- {
-  -- 'folke/persistence.nvim',
-  -- event = 'BufReadPre', -- this will only start session saving when an actual file was opened
-  -- module = 'persistence',
-  -- config = function()
-  -- require('persistence').setup()
-  -- end,
-  -- },
   'nvim-telescope/telescope-ui-select.nvim',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-nvim-lsp',
-
   -- snippets
   'L3MON4D3/LuaSnip',
-
   -- lsp
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',

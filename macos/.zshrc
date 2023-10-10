@@ -8,15 +8,31 @@ export PATH=/opt/homebrew/Cellar/lazygit/0.40.2/bin:$PATH
 # Prompt
 eval "$(starship init zsh)"
 
+######  zsh specific options  starts
 # bindkey -v # enable vi mode
+setopt autocd # automatically cd into typed directory
 
-setopt autocd
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+
+
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE="$HOME/.local/share/.zsh_history"
+
+##### zsh specific options  end
+
 
 # alias starts
 
 alias vim=nvim
 alias lg=lazygit
 alias fdfind=fd
+alias ls="ls --color=auto"
+alias ll="ls --color=auto -l"
+
 
 # alias ends
 
@@ -40,5 +56,12 @@ function open_tmux_session() {
 
 zle -N open_tmux_session # without `zle`, the below bindkey doesn't work.
 bindkey '^P' 'open_tmux_session'
+
+###### Plugins starts.
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # syntax highlighting
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#
+###### Plugins ends.
 
 

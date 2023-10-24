@@ -243,6 +243,7 @@ alias sctl=systemctl
 
 alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
+alias code="flatpak run com.visualstudio.code "
 
 shopt -s autocd # auto cd into the path typed.
 neofetch

@@ -1,4 +1,4 @@
-local formatting = require('user.lsp.formatting')
+-- local formatting = require('user.lsp.formatting')
 local M = {}
 local vim = vim
 
@@ -90,7 +90,7 @@ end
 
 M.on_attach = function(client, bufnr)
   print('client name: ' .. client.name)
-  formatting.setup_lsp_formatting(client, bufnr)
+  -- formatting.setup_lsp_formatting(client, bufnr)
   lsp_keymaps(bufnr, client)
   lsp_highlight_document(client)
 end

@@ -149,8 +149,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # alias fd=fdfind
 
-# export TERM=xterm-256color
-export TERM=alacritty
+export TERM=xterm-256color
 
 function open_tmux_session() {
   $HOME/dotfiles/scripts/bash/tmux_fzf.sh
@@ -244,6 +243,7 @@ alias sctl=systemctl
 
 alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
+alias code="flatpak run com.visualstudio.code "
 
 shopt -s autocd # auto cd into the path typed.
 neofetch

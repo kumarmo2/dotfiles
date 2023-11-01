@@ -19,7 +19,6 @@ require('lazy').setup('plugins', { defaults = { lazy = false } })
 
 require('settings')
 require('user.lsp')
-require('user.lsp.formatting.null-ls')
 require('user.nvim-cmp')
 require('user.treesitter')
 require('user.autopairs')

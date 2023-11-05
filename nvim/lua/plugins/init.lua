@@ -65,6 +65,10 @@ return {
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
   },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
   -- 'nvim-treesitter/playground',
   -- for commentings
   { 'preservim/nerdcommenter', lazy = false },

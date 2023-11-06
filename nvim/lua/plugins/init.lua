@@ -1,3 +1,4 @@
+local vim = vim
 return {
   -- { 'kyazdani42/nvim-web-devicons', name = 'devicons' },
   'kyazdani42/nvim-tree.lua',
@@ -76,6 +77,7 @@ return {
   -- nightfox and alike colorschemes
 
   'famiu/bufdelete.nvim',
+  -- 'github/copilot.vim',
   {
     'Exafunction/codeium.vim',
     lazy = false,
@@ -102,10 +104,6 @@ return {
   -- {
   {
     'folke/zen-mode.nvim',
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
   },
 }

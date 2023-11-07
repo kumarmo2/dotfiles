@@ -7,7 +7,7 @@ end
 mason.setup({})
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'omnisharp', 'gopls' },
+  ensure_installed = { 'lua_ls', 'rust_analyzer', 'omnisharp', 'gopls', 'bashls' },
 })
 
 local lspconfig = require('lspconfig')
@@ -23,6 +23,7 @@ lspconfig.pylsp.setup(lsp_options)
 lspconfig.bufls.setup(lsp_options)
 lspconfig.clangd.setup(lsp_options)
 lspconfig.gopls.setup(lsp_options)
+lspconfig.bashls.setup(lsp_options)
 
 require('lspconfig').tailwindcss.setup(lsp_options)
 require('user.lsp.servers.rust').setup() -- rust

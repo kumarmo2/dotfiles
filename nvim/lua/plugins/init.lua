@@ -72,7 +72,7 @@ return {
   },
   -- 'nvim-treesitter/playground',
   -- for commentings
-  { 'preservim/nerdcommenter', lazy = false },
+  -- { 'preservim/nerdcommenter', lazy = false },
 
   -- nightfox and alike colorschemes
 

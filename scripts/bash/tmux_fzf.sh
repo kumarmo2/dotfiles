@@ -13,7 +13,7 @@ fi
 
 
 # Find directories in the home directory using fd and pass them to fzf for selection
-selected_dir=$(fdfind -t d . "$HOME" | fzf --preview "ls {}")
+selected_dir=$(fdfind --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")
 
 # Check if a directory is selected
 if [ -n "$selected_dir" ]; then

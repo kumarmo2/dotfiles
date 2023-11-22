@@ -19,14 +19,15 @@ return {
           -- line = 'gcc',
           line = '<C-_>',
           ---Block-comment toggle keymap
-          block = '<leader>bc',
+          -- block = '<leader>bc',
         },
         ---LHS of operator-pending mappings in NORMAL and VISUAL mode
         opleader = {
           ---Line-comment keymap
-          line = 'gc',
+          -- line = 'gc',
+          line = '<C-_>',
           ---Block-comment keymap
-          block = 'bc',
+          -- block = '<leader>bc',
         },
         ---LHS of extra mappings
         extra = {

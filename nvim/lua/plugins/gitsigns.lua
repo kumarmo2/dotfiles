@@ -43,6 +43,8 @@ return {
           map('n', '<leader>hu', gs.undo_stage_hunk)
           map('n', '<leader>hR', gs.reset_buffer)
           map('n', '<leader>hp', gs.preview_hunk)
+          map('n', '<leader>hn', gs.next_hunk)
+          map('n', '<leader>hN', gs.preview_hunk)
           map('n', '<leader>hb', function()
             gs.blame_line({ full = true })
           end)

@@ -2,6 +2,7 @@ local vim = vim
 local binding_opts = { silent = true, noremap = true }
 return {
   {
+    keys = { '<leader>,', '<leader>m', '<leader>]', '<leader>[' }, 
     'ThePrimeagen/harpoon',
     config = function()
       vim.api.nvim_set_keymap('n', '<leader>,', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', binding_opts)

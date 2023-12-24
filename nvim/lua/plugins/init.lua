@@ -1,35 +1,24 @@
 local vim = vim
 return {
   -- { 'kyazdani42/nvim-web-devicons', name = 'devicons' },
-  'kyazdani42/nvim-tree.lua',
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
   },
-  -- {
-  -- 'folke/persistence.nvim',
-  -- event = 'BufReadPre', -- this will only start session saving when an actual file was opened
-  -- module = 'persistence',
-  -- config = function()
-  -- require('persistence').setup()
-  -- end,
-  -- },
   'nvim-telescope/telescope-ui-select.nvim',
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-nvim-lsp',
+  { 'hrsh7th/nvim-cmp', lazy = false },
+  { 'hrsh7th/cmp-buffer', lazy = false },
+  { 'hrsh7th/cmp-path', lazy = false },
+  { 'hrsh7th/cmp-nvim-lsp', lazy = false },
 
   -- snippets
-  'L3MON4D3/LuaSnip',
+  { 'L3MON4D3/LuaSnip', lazy = true },
 
   -- lsp
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig', -- enable lsp
-  -- use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-  'jose-elias-alvarez/null-ls.nvim', -- for better formatting
   'Hoffs/omnisharp-extended-lsp.nvim',
   { 'simrat39/rust-tools.nvim', lazy = false },
   {
@@ -38,20 +27,6 @@ return {
       require('nvim-autopairs').setup({})
     end,
   },
-
-  -- colorschemes starts
-  -- "priority": applicable for plugins with lazy = false. useful for loading certain plugins first.
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 900,
-    lazy = true,
-  },
-  { 'folke/tokyonight.nvim', priority = 901, lazy = true },
-  { 'EdenEast/nightfox.nvim', priority = 903, lazy = true },
-  { 'nyoom-engineering/oxocarbon.nvim', priority = 904, lazy = true },
-  { 'olimorris/onedarkpro.nvim', priority = 902, lazy = true },
-  -- colorschemes ends
 
   { 'machakann/vim-highlightedyank', lazy = false },
   {
@@ -69,15 +44,11 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    lazy = false,
+    event = 'VeryLazy',
   },
-  -- 'nvim-treesitter/playground',
-  -- for commentings
-  -- { 'preservim/nerdcommenter', lazy = false },
-
-  -- nightfox and alike colorschemes
 
   'famiu/bufdelete.nvim',
-  -- 'github/copilot.vim',
   {
     'Exafunction/codeium.vim',
     lazy = false,
@@ -101,9 +72,26 @@ return {
       end, { expr = true })
     end,
   },
-  -- {
+
+  {
+    'sourcegraph/sg.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim', --[[ "nvim-telescope/telescope.nvim ]]
+    },
+    config = function()
+      require('sg').setup({})
+    end,
+
+    -- If you have a recent version of lazy.nvim, you don't need to add this!
+    build = 'nvim -l build/init.lua',
+  },
+
   {
     'folke/zen-mode.nvim',
+    keys = { '<leader>zm' },
+    config = function()
+      vim.api.nvim_set_keymap('n', '<leader>zm', ':ZenMode<CR>', {})
+    end,
     opts = {},
   },
 }

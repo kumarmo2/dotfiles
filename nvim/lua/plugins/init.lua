@@ -7,10 +7,10 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
   },
   'nvim-telescope/telescope-ui-select.nvim',
-  { 'hrsh7th/nvim-cmp', lazy = false },
-  { 'hrsh7th/cmp-buffer', lazy = false },
-  { 'hrsh7th/cmp-path', lazy = false },
-  { 'hrsh7th/cmp-nvim-lsp', lazy = false },
+  { 'hrsh7th/nvim-cmp', event = 'VeryLazy' },
+  { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
+  { 'hrsh7th/cmp-path', event = 'VeryLazy' },
+  { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
 
   -- snippets
   { 'L3MON4D3/LuaSnip', lazy = true },
@@ -31,7 +31,7 @@ return {
   { 'machakann/vim-highlightedyank', lazy = false },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true },
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
   },
 
   -- for better syntax highlighting
@@ -44,7 +44,6 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    lazy = false,
     event = 'VeryLazy',
   },
 

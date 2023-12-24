@@ -10,6 +10,7 @@ return {
       conform_config.formatters_by_ft.rust = { 'rustfmt' }
       conform_config.formatters_by_ft.go = { 'gofmt' }
       conform_config.formatters_by_ft.sql = { 'sql_formatter' }
+      conform_config.formatters_by_ft.sh = { 'beautysh' }
       conform_config.format_on_save = {
         -- These options will be passed to conform.format()
         timeout_ms = 500,

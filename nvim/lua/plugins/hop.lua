@@ -9,7 +9,7 @@ return {
       local directions = require('hop.hint').HintDirection
       hop.setup()
       vim.keymap.set('', '<leader>/', function()
-        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false })
+        hop.hint_char1({ direction = directions.ACross, current_line_only = false })
       end, { remap = true })
     end,
   },

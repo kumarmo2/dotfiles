@@ -1,6 +1,7 @@
 return {
   {
     'mangelozzi/nvim-rgflow.lua',
+    keys = { '<leader>rg' },
     config = function()
       require('rgflow').setup({
         -- Set the default rip grep flags and options for when running a search via

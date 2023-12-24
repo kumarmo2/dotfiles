@@ -16,7 +16,7 @@ local common_on_attach = require('user.lsp.handlers').on_attach
 local config = {
   sources = {
     -- formatters
-    -- formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
+    formatting.rustfmt, -- if you face any issues, set the config for rustfmt in ~/.config/rustfmt. Its also saved in my configs.
     formatting.stylua,
     formatting.prettier,
     formatting.pg_format,

@@ -65,11 +65,4 @@ setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 -- open nvim config folder in new tab
 setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', opts)
 
--- nvim tree
-setKeyMap('n', '<Leader>n', ':NvimTreeToggle<CR>', opts)
-setKeyMap('n', '<Leader>r', ':NvimTreeRefresh<CR>', opts)
-
 -- neogit
-setKeyMap('n', '<leader>gg', ':Neogit<CR>', opts)
-
-setKeyMap('n', '<leader>zm', ':ZenMode<CR>', opts)

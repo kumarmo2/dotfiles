@@ -14,14 +14,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('plugins', { defaults = { lazy = false } })
--- install lazy plugin manager ends.
-
+require('lazy').setup('plugins', { defaults = { lazy = true } })
+-- -- install lazy plugin manager ends.
+--
 require('settings')
 require('user.lsp')
 require('user.nvim-cmp')
 require('user.treesitter')
 require('user.autopairs')
--- require('user.nerd-commenter')
-require('user.nvim-tree')
 require('user.telescope')

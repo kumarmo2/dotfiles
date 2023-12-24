@@ -4,6 +4,7 @@ return {
     'smoka7/hop.nvim',
     version = '*',
     opts = {},
+    keys = { '<leader>/'},
     config = function()
       local hop = require('hop')
       local directions = require('hop.hint').HintDirection

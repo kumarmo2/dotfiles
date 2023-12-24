@@ -3,6 +3,7 @@ return {
   {
     'stevearc/conform.nvim',
     opts = {},
+    event = 'BufWritePre',
     config = function()
       local conform_config = {}
       conform_config.formatters_by_ft = {}

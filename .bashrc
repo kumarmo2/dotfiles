@@ -244,6 +244,7 @@ alias sctl=systemctl
 alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
 alias code="flatpak run com.visualstudio.code "
+alias gitco='git branch | fzf | xargs git checkout'
 
 shopt -s autocd # auto cd into the path typed.
 neofetch
@@ -252,6 +253,7 @@ neofetch
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 export PATH=$PATH:$HOME/.bun/bin/
+export PATH=$PATH:$HOME/.local/share/nvim/mason/bin/
 
 # yazi helper function to help changing working
 # directory on quitting.

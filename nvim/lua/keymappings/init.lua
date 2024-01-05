@@ -19,7 +19,8 @@ setKeyMap('n', '<C-d>', '<C-d>zz', opts)
 setKeyMap('n', '<C-u>', '<C-u>zz', opts)
 
 -- prev buffer
-setKeyMap('n', '<leader><leader>', '<C-^>', { noremap = true })
+setKeyMap('n', '<leader>bn', ':bnext<CR>', { noremap = true })
+setKeyMap('n', '<leader>bp', ':bprevious<CR>', { noremap = true })
 
 -- better window movement
 setKeyMap('n', '<Leader>h', '<C-w>h', opts)

@@ -24,10 +24,10 @@ if [ -n "$selected_dir" ]; then
     # Get the base name of the selected directory
     dir_name=$(basename "$selected_dir")
     windows=$(tmux list-windows -F "#{window_name}" | grep "$dir_name" | wc -l)
-    echo "$windows"
+    # TODO: duplicate window names is not handled for now.
     if [[ windows -gt 0 ]]; then
         tmux select-window -t "$dir_name"
     else
         tmux new-window -c "$selected_dir" -n "$dir_name"
     fi
-
+fi

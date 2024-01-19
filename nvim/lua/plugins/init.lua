@@ -1,6 +1,5 @@
 local vim = vim
 return {
-  -- { 'kyazdani42/nvim-web-devicons', name = 'devicons' },
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',

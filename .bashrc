@@ -155,7 +155,12 @@ function open_tmux_session() {
   $HOME/dotfiles/scripts/bash/tmux_fzf.sh
 }
 
+function open_tmux_window() {
+  $HOME/dotfiles/scripts/bash/tmux_fzf_same_session.sh
+}
+
 bind -x '"\C-p": open_tmux_session'
+bind -x '"\C-o": open_tmux_window'
 
 
 # export DOTNET_ROOT=$HOME/dotnet

@@ -5,20 +5,22 @@ live_config_reload = true
 size = 12
 
 [font.normal]
-family = "CaskaydiaCove NF"
+family = "ComicShannsMono Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "CaskaydiaCove NF"
+family = "ComicShannsMono Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "CaskaydiaCove NF"
-style = "italic"
+family = "ComicShannsMono Nerd Font Mono"
+# style = "italic"
+style = "Regular"
 
 [font.bold_italic]
-family = "CaskaydiaCove NF"
-style = "Bold Italic"
+family = "ComicShannsMono Nerd Font Mono"
+# style = "Bold Italic"
+style = "Regular"
 
 [scrolling]
 history = 10_000

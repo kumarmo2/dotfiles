@@ -48,7 +48,7 @@ window#waybar.hidden {
 	font-size: 4px;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
 	color: #ABE9B3;
     border-top: 2px solid #ABE9B3;
     border-bottom: 2px solid #ABE9B3;

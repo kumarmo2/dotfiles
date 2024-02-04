@@ -1,7 +1,7 @@
 {
 	"layer": "top",
 	// "modules-left": ["custom/launcher","cpu","memory","custom/media","tray"],
-	"modules-left": ["custom/launcher","cpu","memory","tray"],
+	"modules-left": ["cpu","memory","tray"],
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["backlight", "network","wireplumber","clock", "battery", "custom/power"],
   "wireplumber": {

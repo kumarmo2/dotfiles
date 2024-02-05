@@ -1,3 +1,4 @@
+" set options starts.
 set nu
 set rnu
 set nocompatible
@@ -13,3 +14,9 @@ set undodir=~/.vim/undodir
 " set undofile
 set incsearch
 set hlsearch
+
+" set options ends.
+
+let mapleader = " "
+nnoremap <leader><CR> :qa<CR>
+

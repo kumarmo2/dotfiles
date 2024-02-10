@@ -19,4 +19,6 @@ set hlsearch
 
 let mapleader = " "
 nnoremap <leader><CR> :qa<CR>
+nnoremap \ :noh<CR>
+colorscheme slate
 

@@ -142,7 +142,7 @@ export FZF_CTRL_R_OPTS="
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-export FZF_DEFAULT_COMMAND='fdfind --type f'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -250,6 +250,7 @@ alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
 alias code="flatpak run com.visualstudio.code "
 alias gitco='git branch | fzf | xargs git checkout'
+alias fzfcd='cd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
 
 shopt -s autocd # auto cd into the path typed.
 neofetch

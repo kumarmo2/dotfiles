@@ -25,8 +25,19 @@ lspconfig.clangd.setup(lsp_options)
 lspconfig.gopls.setup(lsp_options)
 lspconfig.bashls.setup(lsp_options)
 
-require('lspconfig').tailwindcss.setup(lsp_options)
-require('user.lsp.servers.rust').setup() -- rust
+lspconfig.tailwindcss.setup(lsp_options)
+-- require('user.lsp.servers.rust').setup() -- rust
+lspconfig.rust_analyzer.setup({
+  on_attach = common_on_attach,
+  capabilities = client_capablities,
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false,
+      },
+    },
+  },
+})
 require('user.lsp.servers.omnisharp').setup() -- csharp
 require('user.lsp.servers.tsserver').setup() -- js/ts
 require('lspconfig').dockerls.setup(lsp_options)

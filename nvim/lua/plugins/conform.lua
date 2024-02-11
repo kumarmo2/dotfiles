@@ -8,7 +8,6 @@ return {
       local conform_config = {}
       conform_config.formatters_by_ft = {}
       conform_config.formatters_by_ft.lua = { 'stylua' }
-      conform_config.formatters_by_ft.rust = { 'rustfmt' }
       conform_config.formatters_by_ft.go = { 'gofmt' }
       conform_config.formatters_by_ft.sql = { 'sql_formatter' }
       conform_config.formatters_by_ft.sh = { 'beautysh' }
@@ -16,6 +15,11 @@ return {
         -- These options will be passed to conform.format()
         timeout_ms = 500,
         lsp_fallback = true,
+      }
+      conform_config.formatters = {
+        sql_formatter = {
+          args = { '-l', 'tsql' },
+        },
       }
       require('conform').setup(conform_config)
 

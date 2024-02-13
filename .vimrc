@@ -12,7 +12,8 @@ set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 " set undofile
-set incsearch
+set incsearch  " highlight words as they are searched
+set ignorecase " case insensitive search.
 set hlsearch
 
 " set options ends.

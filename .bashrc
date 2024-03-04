@@ -254,7 +254,9 @@ alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
 alias code="flatpak run com.visualstudio.code "
 alias gitco='git branch | fzf | xargs git checkout'
-alias fzfcd='cd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
+alias fzcd='cd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
+alias fzn='nvim $(fzf)'
+
 
 shopt -s autocd # auto cd into the path typed.
 neofetch

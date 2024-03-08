@@ -1,5 +1,5 @@
 local vim = vim
-local setKeyMap = vim.keymap.set
+local setKeyMap = vim.api.nvim_set_keymap
 
 local opts = { noremap = true, silent = true }
 local actions = require('telescope.actions')
@@ -7,7 +7,6 @@ local lga_actions = require('telescope-live-grep-args.actions')
 local action_state = require('telescope.actions.state')
 local helpers = require('telescope-live-grep-args.helpers')
 local Path = require('plenary.path')
-local builtin = require 'telescope.builtin'
 
 local cur_live_grep_buf = 0 -- fg_buf is used to track the "current" buf number when live_grep was invoked.
 
@@ -105,4 +104,3 @@ setKeyMap('n', '<leader>gc', ':lua require(\'telescope-live-grep-args.shortcuts\
 -- setKeyMap('n', '<leader>m', ':Telescope marks<CR>', opts)
 setKeyMap('n', '<localleader>ws', ':lua require(\'telescope.builtin\').lsp_workspace_symbols()<CR>', opts) -- "ws" stands for "workspace symbols"
 -- setKeyMap('n', '<C-h>', ':Telescope help_tags<CR>', opts);
-setKeyMap('n', '<leader>/', builtin.current_buffer_fuzzy_find, opts)

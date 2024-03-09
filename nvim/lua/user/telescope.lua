@@ -104,5 +104,5 @@ setKeyMap('n', '<leader>fg', ':lua FILE_GREP_HANDLER()<CR>', opts)
 setKeyMap('n', '<leader>gc', ':lua require(\'telescope-live-grep-args.shortcuts\').grep_word_under_cursor()<CR>', opts)
 -- setKeyMap('n', '<leader>m', ':Telescope marks<CR>', opts)
 setKeyMap('n', '<localleader>ws', ':lua require(\'telescope.builtin\').lsp_workspace_symbols()<CR>', opts) -- "ws" stands for "workspace symbols"
-setKeyMap('n', '<leader>/', builtin.current_buffer_fuzzy_find, opts)
+setKeyMap('n', '<leader>bf', builtin.current_buffer_fuzzy_find, opts)
 -- setKeyMap('n', '<C-h>', ':Telescope help_tags<CR>', opts);

@@ -10,6 +10,10 @@ require('mason-lspconfig').setup({
   ensure_installed = { 'lua_ls', 'rust_analyzer', 'omnisharp', 'gopls', 'bashls' },
 })
 
+-- `neodev` needs to be required before lspconfig.
+require('neodev').setup({
+  -- add any options here, or leave empty to use the default settings
+})
 local lspconfig = require('lspconfig')
 
 local common_on_attach = require('user.lsp.handlers').on_attach

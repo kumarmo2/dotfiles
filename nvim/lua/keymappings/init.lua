@@ -51,7 +51,7 @@ setKeyMap('n', '=', ':resize +2<CR>', opts)
 setKeyMap('n', '<leader>dd', ':Bdelete<CR>', opts)
 
 -- better visual indenting
-setKeyMap('v', '<', '<gv', opts)
+setKeyMap('v', '<', '<gv', opts) --gv reselects last visual selection
 setKeyMap('v', '>', '>gv', opts)
 
 setKeyMap('v', 'J', ':m \'>+1<CR>gv=gv', opts) -- gv reselects last visual selection

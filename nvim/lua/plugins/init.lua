@@ -5,6 +5,7 @@ return {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
   },
+  { 'folke/neodev.nvim', opts = {} },
   'nvim-telescope/telescope-ui-select.nvim',
   { 'hrsh7th/nvim-cmp', event = 'VeryLazy' },
   { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
@@ -47,6 +48,7 @@ return {
   },
 
   'famiu/bufdelete.nvim',
+  -- { 'TabbyML/vim-tabby', lazy = false },
   {
     'Exafunction/codeium.vim',
     lazy = false,
@@ -69,19 +71,6 @@ return {
         return vim.fn['codeium#Clear']()
       end, { expr = true })
     end,
-  },
-
-  {
-    'sourcegraph/sg.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim', --[[ "nvim-telescope/telescope.nvim ]]
-    },
-    config = function()
-      require('sg').setup({})
-    end,
-
-    -- If you have a recent version of lazy.nvim, you don't need to add this!
-    build = 'nvim -l build/init.lua',
   },
 
   {

@@ -28,6 +28,8 @@ lspconfig.bufls.setup(lsp_options)
 lspconfig.clangd.setup(lsp_options)
 lspconfig.gopls.setup(lsp_options)
 lspconfig.bashls.setup(lsp_options)
+lspconfig.cssls.setup(lsp_options)
+lspconfig.eslint.setup(lsp_options)
 
 lspconfig.tailwindcss.setup(lsp_options)
 -- require('user.lsp.servers.rust').setup() -- rust

@@ -13,7 +13,7 @@ vim.o.incsearch = true
 -- shows the mode in it.
 vim.o.showmode = false
 vim.o.visualbell = true
-vim.o.wrap = false
+vim.o.wrap = true
 -- indentation behavior
 setOption('tabstop', 4)
 vim.o.tabstop = 4

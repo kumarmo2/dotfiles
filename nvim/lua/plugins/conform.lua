@@ -12,16 +12,37 @@ return {
       conform_config.formatters_by_ft.sql = { 'sql_formatter' }
       conform_config.formatters_by_ft.sh = { 'beautysh' }
       conform_config.formatters_by_ft.javascript = { 'prettier' }
-      conform_config.format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 500,
-        lsp_fallback = true,
-      }
+      local slow_format_filetypes = { ['javascript'] = true } -- assumption here(not actually an assumption if its true),
+      -- that prettier is always slow. and its is being used for formatting javascript.
       conform_config.formatters = {
         sql_formatter = {
           args = { '-l', 'tsql' },
         },
       }
+      -- asyn formatting start:  https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#automatically-run-slow-formatters-async
+      local format_on_save = function(bufnr)
+        if slow_format_filetypes[vim.bo[bufnr].filetype] then
+          return
+        end
+        local function on_format(err)
+          if err and err:match('timeout$') then
+            print('formatting timed out for ' .. vim.bo[bufnr].filetype)
+            slow_format_filetypes[vim.bo[bufnr].filetype] = true
+          end
+        end
+
+        return { timeout_ms = 200, lsp_fallback = true }, on_format
+      end
+      local format_after_save = function(bufnr)
+        if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+          return
+        end
+        return { lsp_fallback = true }
+      end
+      conform_config.format_on_save = format_on_save
+      conform_config.format_after_save = format_after_save
+      -- asyn formatting ends:
+
       require('conform').setup(conform_config)
 
       vim.api.nvim_create_autocmd('BufWritePre', {

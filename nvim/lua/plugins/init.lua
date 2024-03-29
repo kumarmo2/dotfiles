@@ -44,7 +44,14 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VeryLazy',
+    lazy = false,
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+    lazy = false,
   },
 
   'famiu/bufdelete.nvim',

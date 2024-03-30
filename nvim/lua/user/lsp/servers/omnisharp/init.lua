@@ -28,7 +28,7 @@ local M = {}
 
 M.setup = function()
   local pid = vim.fn.getpid()
-  local omnisharp_bin = '/usr/bin/omnisharp'
+  local omnisharp_bin = vim.fn.expand('~/.local/share/nvim/mason/bin/omnisharp')
 
   local config = {
     handlers = {

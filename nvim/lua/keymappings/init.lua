@@ -69,5 +69,5 @@ setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 
 -- open nvim config folder in new tab
 setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', opts)
-
--- neogit
+setKeyMap('v', 'Y', '"+y', opts)
+setKeyMap('n', '<leader>P', '"+p', opts)

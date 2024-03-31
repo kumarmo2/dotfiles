@@ -48,7 +48,7 @@ setKeyMap('n', '=', ':resize +2<CR>', opts)
 
 -- buffers
 -- delete current buffer.
-setKeyMap('n', '<leader>bd', ':bd<CR>', opts)
+setKeyMap('n', '<leader>bd', ':bdelete<CR>', opts)
 
 -- better visual indenting
 setKeyMap('v', '<', '<gv', opts) --gv reselects last visual selection

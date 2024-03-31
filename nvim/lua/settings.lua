@@ -13,12 +13,12 @@ vim.o.incsearch = true
 -- shows the mode in it.
 vim.o.showmode = false
 vim.o.visualbell = true
-vim.o.wrap = false
+vim.o.wrap = true
 -- indentation behavior
-setOption('tabstop', 2)
-vim.o.tabstop = 2
-setOption('shiftwidth', 2)
-vim.o.shiftwidth = 2
+setOption('tabstop', 4)
+vim.o.tabstop = 4
+setOption('shiftwidth', 4)
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 -- mouse support on

@@ -11,23 +11,36 @@ require('mason-lspconfig').setup({
 })
 
 -- `neodev` needs to be required before lspconfig.
-require('neodev').setup({
-  -- add any options here, or leave empty to use the default settings
-})
+require('neodev').setup()
 local lspconfig = require('lspconfig')
 
 local common_on_attach = require('user.lsp.handlers').on_attach
 local client_capablities = require('user.lsp.handlers').capabilities
 
-local lsp_options = { on_attach = common_on_attach, capabilities = client_capablities }
+local lsp_options = {
+  on_attach = common_on_attach,
+  capabilities = client_capablities,
+}
+local lua_lsp_options = vim.tbl_deep_extend('force', lsp_options, {
+  settings = {
+    Lua = {
+      workspace = {
+        checkThirdParty = 'Disable',
+      },
+    },
+  },
+})
+
 -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-lspconfig.lua_ls.setup(lsp_options) -- lua
+lspconfig.lua_ls.setup(lua_lsp_options) -- lua
 lspconfig.pylsp.setup(lsp_options)
 lspconfig.bufls.setup(lsp_options)
 lspconfig.clangd.setup(lsp_options)
 lspconfig.gopls.setup(lsp_options)
 lspconfig.bashls.setup(lsp_options)
+lspconfig.cssls.setup(lsp_options)
+lspconfig.eslint.setup(lsp_options)
 
 lspconfig.tailwindcss.setup(lsp_options)
 -- require('user.lsp.servers.rust').setup() -- rust

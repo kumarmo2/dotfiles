@@ -16,8 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', { defaults = { lazy = true } })
 -- -- install lazy plugin manager ends.
---
 require('settings')
+require('user.commands')
 require('user.lsp')
 require('user.nvim-cmp')
 require('user.treesitter')

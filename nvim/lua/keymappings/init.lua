@@ -50,6 +50,13 @@ setKeyMap('n', '=', ':resize +2<CR>', opts)
 -- delete current buffer.
 setKeyMap('n', '<leader>bd', ':bdelete<CR>', opts)
 
+-- quickfix list starts
+setKeyMap('n', '<leader>cc', ':copen<CR>', opts)
+setKeyMap('n', '<leader>co', ':colder<CR>:copen<CR>', opts)
+setKeyMap('n', '<leader>cn', ':cnewer<CR>:copen<CR>', opts)
+
+-- quickfix list ends
+
 -- better visual indenting
 setKeyMap('v', '<', '<gv', opts) --gv reselects last visual selection
 setKeyMap('v', '>', '>gv', opts)
@@ -68,6 +75,5 @@ setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
 setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 
 -- open nvim config folder in new tab
-setKeyMap('n', '<leader>c', ':tabnew ~/configs/nvim/init.lua<CR>', opts)
 setKeyMap('v', 'Y', '"+y', opts)
 setKeyMap('n', '<leader>P', '"+p', opts)

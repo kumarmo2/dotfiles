@@ -7,7 +7,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set nowrap
-set smartcase
+" set smartcase
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
@@ -15,11 +15,24 @@ set undodir=~/.vim/undodir
 set incsearch  " highlight words as they are searched
 set ignorecase " case insensitive search.
 set hlsearch
+set path+=** " look into directory's subdirectories and their subdirectories.
+set cursorline
+
+set wildmode=longest,list,full "in normal mode, the tab completion will show options
+set wildmenu
 
 " set options ends.
+
+" ----- Mappings starts 
 
 let mapleader = " "
 nnoremap <leader><CR> :qa<CR>
 nnoremap \ :noh<CR>
-colorscheme slate
+nnoremap <leader>ss :so%<CR>
+
+" ----- Mappings ends 
+
+
+filetype plugin on
+colorscheme habamax
 

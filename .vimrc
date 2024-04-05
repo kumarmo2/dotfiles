@@ -29,6 +29,7 @@ let mapleader = " "
 nnoremap <leader><CR> :qa<CR>
 nnoremap \ :noh<CR>
 nnoremap <leader>ss :so%<CR>
+nnoremap <leader>n :Explore<CR>
 
 " ----- Mappings ends 
 

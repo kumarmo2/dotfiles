@@ -24,10 +24,10 @@ setKeyMap('n', '<leader>bp', ':bprevious<CR>', { noremap = true })
 setKeyMap('n', '<leader><leader>', '<C-^>', { noremap = true })
 
 -- better window movement
-setKeyMap('n', '<Leader>h', '<C-w>h', opts)
-setKeyMap('n', '<Leader>j', '<C-w>j', opts)
-setKeyMap('n', '<Leader>k', '<C-w>k', opts)
-setKeyMap('n', '<Leader>l', '<C-w>l', opts)
+setKeyMap('n', '<leader>h', '<C-w>h', opts)
+setKeyMap('n', '<leader>j', '<C-w>j', opts)
+setKeyMap('n', '<leader>k', '<C-w>k', opts)
+setKeyMap('n', '<leader>l', '<C-w>l', opts)
 
 -- tabs management
 setKeyMap('n', '<leader>tn', ':tabnext<CR>', opts)

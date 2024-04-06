@@ -18,7 +18,7 @@ set hlsearch
 set path+=** " look into directory's subdirectories and their subdirectories.
 set cursorline
 
-set wildmode=longest,list,full "in normal mode, the tab completion will show options
+" set wildmode=longest,list,full "in normal mode, the tab completion will show options
 set wildmenu
 
 " set options ends.
@@ -34,10 +34,10 @@ nnoremap <leader>n :Explore<CR>
 nnoremap <leader><leader> :bprevious<CR>
 
 " window management
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <leader>h <C-w>h
 
 " split resizing
 nnoremap _ :vertical resize -2<CR>

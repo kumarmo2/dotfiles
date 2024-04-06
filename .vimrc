@@ -26,10 +26,25 @@ set wildmenu
 " ----- Mappings starts 
 
 let mapleader = " "
-nnoremap <leader><CR> :qa<CR>
+nnoremap <leader><CR> :q<CR>
 nnoremap \ :noh<CR>
 nnoremap <leader>ss :so%<CR>
+nnoremap <leader>w :w<CR>
 nnoremap <leader>n :Explore<CR>
+nnoremap <leader><leader> :bprevious<CR>
+
+" window management
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+" split resizing
+nnoremap _ :vertical resize -2<CR>
+nnoremap + :vertical resize +2<CR>
+nnoremap - :resize -2<CR>
+nnoremap = :resize +2<CR>
+
 
 " ----- Mappings ends 
 

@@ -5,6 +5,10 @@ vim.filetype.add({
       if string.match(path, '%.playbook.yaml') then
         return 'yaml.ansible'
       end
+      if string.find(path, 'docker-compose', 1, true) then -- to not treat '-' in 'docker-compose' as special interpretation,
+        -- fourth parameter is passed as true
+        return 'yaml.docker-compose'
+      end
       return 'yaml'
     end,
   },

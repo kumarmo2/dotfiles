@@ -55,3 +55,5 @@ vim.o.cmdheight = 1
 vim.opt.list = true
 vim.opt.listchars:append('space:⋅')
 vim.opt.listchars:append('eol:↴')
+vim.opt.grepprg = 'rg --vimgrep'
+vim.opt.grepformat = '%f:%l:%c:%m'

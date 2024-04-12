@@ -7,6 +7,7 @@ return {
       local lualine = require('lualine')
       local config = {
         options = {
+          theme = 'auto',
           component_separators = '|',
           section_separators = '',
         },

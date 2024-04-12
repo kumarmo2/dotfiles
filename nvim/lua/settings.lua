@@ -41,12 +41,12 @@ setOption('syntax', 'enable')
 setOption('laststatus', 3)
 setOption('statuscolumn', '%l %r ')
 -- vim.g.gruvbox_transparent_bg = '1'
--- cmd("colorscheme gruvbox")
+cmd('colorscheme onedark')
 -- vim.api.nvim_command("colorscheme catppuccin")
 -- vim.api.nvim_command("colorscheme tokyonight")
 -- cmd('colorscheme nordfox')
 vim.o.cursorline = true
--- vim.o.background = 'dark'
+vim.o.background = 'dark'
 vim.termguicolors = true
 -- vim.o.ch = 0 -- set command heght to 0
 -- keep block cursor in normal, visual, command and insert modes.

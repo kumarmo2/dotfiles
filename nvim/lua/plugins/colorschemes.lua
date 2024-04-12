@@ -3,7 +3,6 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     priority = 10000,
-    lazy = false,
     config = function()
       -- setup must be called before loading the colorscheme
       -- Default options:
@@ -28,8 +27,20 @@ return {
         dim_inactive = false,
         transparent_mode = true,
       })
-      vim.o.backround = 'dark'
-      vim.cmd('colorscheme gruvbox')
+      vim.o.background = 'dark'
+    end,
+  },
+  {
+    'neanias/everforest-nvim',
+    version = false,
+    -- lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require('everforest').setup({
+        background = 'hard',
+        -- Your config here
+      })
     end,
   },
 }

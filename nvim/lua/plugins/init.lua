@@ -20,6 +20,13 @@ return {
   'williamboman/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig', -- enable lsp
   'Hoffs/omnisharp-extended-lsp.nvim',
+  {
+    'j-hui/fidget.nvim',
+    event = 'LspAttach',
+    config = function()
+      require('fidget').setup({})
+    end,
+  },
   { 'simrat39/rust-tools.nvim', lazy = false },
   {
     'windwp/nvim-autopairs',
@@ -27,6 +34,7 @@ return {
       require('nvim-autopairs').setup({})
     end,
   },
+  { 'marko-cerovac/material.nvim' },
 
   { 'machakann/vim-highlightedyank', lazy = false },
   {
@@ -62,7 +70,7 @@ return {
     event = 'BufEnter',
     config = function()
       -- Change '<C-g>' here to any keycode you like.
-      -- vim.g.codeium_enabled = false
+      vim.g.codeium_enabled = false
       vim.keymap.set('i', '<C-g>', function()
         return vim.fn['codeium#Accept']()
       end, { expr = true })

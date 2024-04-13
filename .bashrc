@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -47,12 +47,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -65,11 +65,11 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+    xterm*|rxvt*)
+        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -91,6 +91,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ls='eza'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -113,11 +114,11 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 . "$HOME/.cargo/env"
 
@@ -136,17 +137,17 @@ export FZF_DEFAULT_OPS="--extended"
 # CTRL-/ to toggle small preview window to see the full command
 # CTRL-Y to copy the command into clipboard using pbcopy
 export FZF_CTRL_R_OPTS="
-  --preview 'echo {}' --preview-window up:3:hidden:wrap
-  --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
-  --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'"
+--preview 'echo {}' --preview-window up:3:hidden:wrap
+--bind 'ctrl-/:toggle-preview'
+--bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+--color header:italic
+--header 'Press CTRL-Y to copy command into clipboard'"
 
 # by default, fzf uses `find` internally
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fdfind --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -172,7 +173,6 @@ bind -x '"\C-o": open_tmux_window'
 export PATH=$PATH:$HOME/dotnet-6
 export PATH=$PATH:$HOME/.dotnet
 export PATH=$PATH:$HOME/nvim-linux64/bin
-alias vim=nvim
 export PATH=$PATH:$HOME/Downloads/logstash-7.15.1/bin
 export PATH=$PATH:$HOME/go/bin
 BUN_INSTALL="/home/manya/.bun"
@@ -220,6 +220,10 @@ alias dtr="dotnet run"
 # tmux aliases
 alias ts="tmux new-session -s"
 
+# golang related aliases
+alias grm="go run main.go"
+alias gb="go build"
+
 
 export PATH=$PATH:$HOME/rust/bin
 export PATH=$PATH:/usr/local/go/bin
@@ -237,11 +241,6 @@ export PASSWORD_STORE_CLIP_TIME=120 #num of seconds after which password will be
 # pass related envs end
 
 
-# export AWS_ACCESS_KEY_ID=DUMMYIDEXAMPLE
-# export AWS_SECRET_ACCESS_KEY=DUMMYIDEXAMPLE
-# export AWS_SESSION_TOKEN
-
-
 # misc aliases
 alias cl=clear
 
@@ -254,8 +253,9 @@ alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
 alias code="flatpak run com.visualstudio.code "
 alias gitco='git branch | fzf | xargs git checkout'
-alias fzcd='cd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
+alias fzcd='pushd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
 alias fzn='nvim $(fzf)'
+alias fzv='vim $(fzf)'
 
 
 shopt -s autocd # auto cd into the path typed.
@@ -266,6 +266,21 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 export PATH=$PATH:$HOME/.bun/bin/
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin/
+export PATH=$PATH:$HOME/softwares/jdk-21.0.1/bin/
+export PATH=$PATH:$HOME/softwares/azure-functions-cli/
+export PATH=$PATH:/usr/sbin/
+export PATH=$PATH:$HOME/dev/oss/ILSpy/ICSharpCode.ILSpyCmd/bin/Release/net8.0/publish
+export JAVA_HOME=$HOME/softwares/jdk-21.0.1
+
+export AWS_PROFILE=personal
+
+
+export  CUDA_HOME=/usr/local/cuda
+export  PATH=${CUDA_HOME}/bin:${PATH}
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # yazi helper function to help changing working
 # directory on quitting.
@@ -279,5 +294,4 @@ function ya() {
 }
 
 shopt -s autocd # auto cd into the path typed.
-pfetch
 

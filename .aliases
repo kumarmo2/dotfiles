@@ -1,2 +1,3 @@
 alias gplc='git pull origin $(git branch --show-current)'
+alias gphc='git push origin $(git branch --show-current)'
 

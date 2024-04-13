@@ -39,7 +39,7 @@ vim.o.guifont = 'Caskaydia Cove Nerd Font'
 
 setOption('syntax', 'enable')
 setOption('laststatus', 3)
-setOption('statuscolumn', '%l %r ')
+-- setOption('statuscolumn', '%l %r ')
 -- vim.g.gruvbox_transparent_bg = '1'
 cmd('colorscheme onedark')
 -- vim.api.nvim_command("colorscheme catppuccin")
@@ -57,3 +57,4 @@ vim.opt.listchars:append('space:⋅')
 vim.opt.listchars:append('eol:↴')
 vim.opt.grepprg = 'rg --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m'
+vim.opt.signcolumn = 'yes'

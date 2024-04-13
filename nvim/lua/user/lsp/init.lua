@@ -7,7 +7,18 @@ end
 mason.setup({})
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'rust_analyzer', 'omnisharp', 'gopls', 'bashls' },
+  ensure_installed = {
+    'lua_ls',
+    'rust_analyzer',
+    'omnisharp',
+    'gopls',
+    'bashls',
+    'ansiblels',
+    'dockerls',
+    'tailwindcss',
+    'terraformls',
+    'tsserver',
+  },
 })
 
 -- `neodev` needs to be required before lspconfig.
@@ -21,6 +32,7 @@ local lsp_options = {
   on_attach = common_on_attach,
   capabilities = client_capablities,
 }
+---@diagnostic disable-next-line: unused-local
 local lua_lsp_options = vim.tbl_deep_extend('force', lsp_options, {
   settings = {
     Lua = {
@@ -67,6 +79,7 @@ lspconfig.rust_analyzer.setup({
   },
 })
 lspconfig.ansiblels.setup({})
+lspconfig.terraformls.setup({})
 
 require('user.lsp.servers.omnisharp').setup() -- csharp
 require('user.lsp.servers.tsserver').setup() -- js/ts

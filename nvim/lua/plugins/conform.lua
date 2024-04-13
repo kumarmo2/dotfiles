@@ -11,8 +11,8 @@ return {
       conform_config.formatters_by_ft.go = { 'gofmt' }
       conform_config.formatters_by_ft.sql = { 'sql_formatter' }
       conform_config.formatters_by_ft.sh = { 'beautysh' }
-      conform_config.formatters_by_ft.javascript = { 'prettier' }
-      conform_config.formatters_by_ft.javascriptreact = { 'prettier' }
+      conform_config.formatters_by_ft.javascript = { { 'prettierd', 'prettier' } } -- using prettierd as its faster.
+      conform_config.formatters_by_ft.javascriptreact = { { 'prettierd', 'prettier' } } -- using prettierd as its faster.
       local slow_format_filetypes = { ['javascript'] = true, ['javascriptreact'] = true } -- assumption here(not actually an assumption if its true),
       -- that prettier is always slow. and its is being used for formatting javascript.
       conform_config.formatters = {

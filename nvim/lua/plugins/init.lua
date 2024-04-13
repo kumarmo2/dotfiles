@@ -27,16 +27,14 @@ return {
       require('fidget').setup({})
     end,
   },
-  { 'simrat39/rust-tools.nvim', lazy = false },
   {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup({})
     end,
   },
-  { 'marko-cerovac/material.nvim' },
 
-  { 'machakann/vim-highlightedyank', lazy = false },
+  -- { 'machakann/vim-highlightedyank', lazy = false },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
@@ -62,8 +60,6 @@ return {
     lazy = false,
   },
 
-  'famiu/bufdelete.nvim',
-  -- { 'TabbyML/vim-tabby', lazy = false },
   {
     'Exafunction/codeium.vim',
     lazy = false,
@@ -87,14 +83,5 @@ return {
         return vim.fn['codeium#Clear']()
       end, { expr = true })
     end,
-  },
-
-  {
-    'folke/zen-mode.nvim',
-    keys = { '<leader>zm' },
-    config = function()
-      vim.api.nvim_set_keymap('n', '<leader>zm', ':ZenMode<CR>', {})
-    end,
-    opts = {},
   },
 }

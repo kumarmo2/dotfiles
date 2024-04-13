@@ -10,8 +10,8 @@ success_symbol = "[\n❯](bold green)"     # The "success_symbol" segment is bei
 error_symbol = "[\n#](bold red)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
 
-# [aws]
-# disabled = true
+[aws]
+disabled = true
 
 # [rust]
 # disabled = true
@@ -26,6 +26,6 @@ style = "bold green"
 # [nodejs]
 # disabled = true
 
-[golang]
-disabled = true
+# [golang]
+# disabled = true
 

@@ -1,32 +1,30 @@
 import:
-  - ~/.config/alacritty/catppuccin-macchiato.yml
-live_config_reload: true
+- ~/.config/alacritty/one-dark.yml
 font:
   size: 12
   normal:
     family: JetBrainsMono Nerd Font
-    style: Bold
   bold:
-    family: CaskaydiaCove NF
+    family: JetBrainsMono Nerd Font
     style: Extra Bold
   italic:
-    family: CaskaydiaCove NF
+    family: JetBrainsMono Nerd Font
     style: Italic
   bold_italic:
-    family: CaskaydiaCove NF
+    family: JetBrainsMono Nerd Font
     style: Extra Bold Italic
-scrolling:
-  history: 10000
-  multiplier: 10
+live_config_reload: true
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: true
+scrolling:
+  history: 10000
+  multiplier: 10
 window:
-  opacity: 1
+  opacity: 1.0
   dynamic_padding: false
   decorations: full
   startup_mode: Windowed
   padding:
     x: 5
     y: 1
-

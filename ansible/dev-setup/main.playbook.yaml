@@ -5,6 +5,7 @@
     - essentials
   tasks:
     - name: install packages
+      tags: packages
       become: true
       ansible.builtin.apt:
         update_cache: true
@@ -16,6 +17,7 @@
          - trash-cli
          - pkg-config
          - neofetch
+         - tldr
 
     - name: tmux conf symlink
       ansible.builtin.file:
@@ -23,7 +25,14 @@
         src: ~/dotfiles/tmux/.tmux.conf
         state: link
 
+    - name: vimrc conf symlink
+      ansible.builtin.file:
+        src: ~/dotfiles/.vimrc
+        path: ~/.vimrc
+        state: link
+
     - name: install rg
+      tags: cargo-packages
       ansible.builtin.shell:
         cmd: cargo install ripgrep
         creates: ~/.cargo/bin/rg
@@ -34,17 +43,7 @@
       ansible.builtin.file:
         path: ~/dev/oss
         state: directory
-    - name: Ensure font directory
-      ansible.builtin.file:
-        path: ~/.local/share/fonts
-        state: directory
 
-    - name: Copy fonts
-      ansible.builtin.copy:
-        src: ~/dotfiles/fonts/
-        dest: ~/.local/share/fonts
-      with_fileglob:
-        - "*.ttf"
 
 
 
@@ -100,11 +99,25 @@
     - terminal
   hosts: localhost
   tasks:
-    - name: Install alacritty
+    - name: Ensure font directory
+      ansible.builtin.file:
+        path: ~/.local/share/fonts
+        state: directory
+
+    - name: Copy fonts
+      ansible.builtin.copy:
+        src: ~/dotfiles/fonts/
+        dest: ~/.local/share/fonts
+      with_fileglob:
+        - "*.ttf"
+
+    - name: Install terminal related packages from apt
       become: true
       ansible.builtin.apt:
         pkg:
           - alacritty
+          - fzf
+          - fd-find
 
     - name: Alacritty conf symlink
       ansible.builtin.file:
@@ -112,5 +125,42 @@
         path: ~/.config/alacritty
         state: link
 
+    - name: Install starship
+      tags: cargo-packages
+      ansible.builtin.shell:
+        cmd: cargo install starship
+        creates: ~/.cargo/bin/starship
 
+    - name: Install eza
+      tags: cargo-packages
+      ansible.builtin.shell:
+        cmd: cargo install eza
+        creates: ~/.cargo/bin/eza
+
+    - name: Symlink starship conf
+      ansible.builtin.file:
+        src: ~/dotfiles/starship.toml
+        path: ~/.config/starship.toml
+        state: link
+
+- name: Install lazygit
+  hosts: localhost
+  tags: lazygit
+  tasks:
+    - name: Get lazygit zipped binary
+      ansible.builtin.get_url:
+        url: https://github.com/jesseduffield/lazygit/releases/download/v0.41.0/lazygit_0.41.0_Linux_x86_64.tar.gz
+        dest: /tmp/
+
+    - name: Extract lazygit zip
+      ansible.builtin.shell:
+        chdir: /tmp/
+        cmd: "tar xvf lazygit_0.41.0_Linux_x86_64.tar.gz"
+        creates: /tmp/lazygit
+
+    - name: Copy lazygit
+      ansible.builtin.copy:
+        src: /tmp/lazygit
+        dest: ~/.local/bin/
+        mode: '744'
 

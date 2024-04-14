@@ -1,0 +1,23 @@
+#Work account 
+Host github.com  
+    HostName github.com 
+    User git 
+    IdentityFile ~/.ssh/id_ed25519
+    UserKnownHostsFile ~/.ssh/known_hosts 
+    IdentitiesOnly yes
+
+Host github.com-kumarmo-2  
+    HostName github.com 
+    User git 
+    IdentityFile ~/.ssh/id_ed25519_wenergy_github
+    UserKnownHostsFile ~/.ssh/known_hosts 
+    IdentitiesOnly yes
+
+#Personal account 
+Host bitbucket.org 
+    HostName bitbucket.org 
+    User git 
+    IdentityFile ~/.ssh/work_bitbucket
+    UserKnownHostsFile ~/.ssh/known_hosts 
+    IdentitiesOnly yes
+

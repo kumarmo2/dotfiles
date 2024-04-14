@@ -1,0 +1,116 @@
+- name: Setup essentials from debian repo.
+  hosts: localhost
+  # become: true
+  tags:
+    - essentials
+  tasks:
+    - name: install packages
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+         - tmux
+         - vim
+         - curl
+         - wget
+         - trash-cli
+         - pkg-config
+         - neofetch
+
+    - name: tmux conf symlink
+      ansible.builtin.file:
+        path: ~/.tmux.conf
+        src: ~/dotfiles/tmux/.tmux.conf
+        state: link
+
+    - name: install rg
+      ansible.builtin.shell:
+        cmd: cargo install ripgrep
+        creates: ~/.cargo/bin/rg
+
+    - name: create oss folders
+      tags:
+        - neovim
+      ansible.builtin.file:
+        path: ~/dev/oss
+        state: directory
+    - name: Ensure font directory
+      ansible.builtin.file:
+        path: ~/.local/share/fonts
+        state: directory
+
+    - name: Copy fonts
+      ansible.builtin.copy:
+        src: ~/dotfiles/fonts/
+        dest: ~/.local/share/fonts
+      with_fileglob:
+        - "*.ttf"
+
+
+
+- name: Install neovim
+  tags:
+    - neovim
+  hosts: localhost
+  tasks:
+    - name: Clone neovim
+      ansible.builtin.git:
+        repo: https://github.com/neovim/neovim.git
+        dest: ~/dev/oss/neovim/
+
+    - name: Install Dependencies
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+          - ninja-build
+          - gettext
+          - cmake 
+          - unzip 
+          - curl 
+          - build-essential
+
+    - name: Checkout stable
+      ansible.builtin.shell:
+        chdir: ~/dev/oss/neovim
+        cmd: git checkout stable
+
+    - name: Build
+      ansible.builtin.shell:
+        chdir: ~/dev/oss/neovim
+        cmd: make CMAKE_BUILD_TYPE=RelWithDebInfo 
+        creates: /usr/local/bin/nvim # skip this if binary is present.
+
+    - name: Install
+      become: true
+      ansible.builtin.shell:
+        chdir: /home/manya/dev/oss/neovim
+        cmd: make install
+        creates: /usr/local/bin/nvim
+
+    - name: Neovim conf symlink
+      ansible.builtin.file:
+        path: ~/.config/nvim
+        src: ~/dotfiles/nvim/
+        state: link
+
+
+- name: Install Terminal
+  tags:
+    - terminal
+  hosts: localhost
+  tasks:
+    - name: Install alacritty
+      become: true
+      ansible.builtin.apt:
+        pkg:
+          - alacritty
+
+    - name: Alacritty conf symlink
+      ansible.builtin.file:
+        src: ~/dotfiles/alacritty/
+        path: ~/.config/alacritty
+        state: link
+
+
+

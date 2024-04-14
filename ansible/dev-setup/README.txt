@@ -1,0 +1,2 @@
+- git clone the dotfiles. make sure you are on the device/asus-laptop-v2 branch.
+- Install cargo directly from the shell script from rustup.

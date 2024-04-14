@@ -54,7 +54,7 @@ lspconfig.gopls.setup(lsp_options)
 lspconfig.bashls.setup(lsp_options)
 lspconfig.sqlls.setup(lsp_options)
 lspconfig.bicep.setup(lsp_options)
-lspconfig.ruby_ls.setup(lsp_options)
+lspconfig.ruby_lsp.setup(lsp_options)
 lspconfig.dockerls.setup(lsp_options)
 lspconfig.docker_compose_language_service.setup(lsp_options)
 lspconfig.html.setup({

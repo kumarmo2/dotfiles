@@ -18,6 +18,8 @@
          - pkg-config
          - neofetch
          - tldr
+         - build-essential
+         - cmake
 
     - name: tmux conf symlink
       ansible.builtin.file:
@@ -91,7 +93,7 @@
     - name: Install
       become: true
       ansible.builtin.shell:
-        chdir: /home/manya/dev/oss/neovim
+        chdir: /home/kumarmo2/dev/oss/neovim #FIXME: remove hardcoding for user in path.
         cmd: make install
         creates: /usr/local/bin/nvim
 
@@ -116,8 +118,13 @@
       ansible.builtin.copy:
         src: ~/dotfiles/fonts/
         dest: ~/.local/share/fonts
-      with_fileglob:
-        - "*.ttf"
+      with_fileglob: "*.ttf"
+
+    - name: Copy fonts 2
+      ansible.builtin.copy:
+        src: ~/dotfiles/fonts/jetbrains/
+        dest: ~/.local/share/fonts
+      with_fileglob: "*ttf"
 
     - name: Install terminal related packages from apt
       become: true

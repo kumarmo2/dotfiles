@@ -44,7 +44,15 @@
         path: ~/dev/oss
         state: directory
 
+    - name: create dotnet directory
+      ansible.builtin.file:
+        path: ~/dev/oss/dotnet
+        state: directory
 
+    - name: create js directory
+      ansible.builtin.file:
+        path: ~/dev/oss/js
+        state: directory
 
 
 - name: Install neovim
@@ -142,6 +150,11 @@
         src: ~/dotfiles/starship.toml
         path: ~/.config/starship.toml
         state: link
+    - name: Symlink fzf script 
+      ansible.builtin.file:
+        src: ~/dotfiles/.fzf.bash
+        path: ~/.fzf.bash
+        state: link
 
 - name: Install lazygit
   hosts: localhost
@@ -163,4 +176,43 @@
         src: /tmp/lazygit
         dest: ~/.local/bin/
         mode: '744'
+
+- name: Install Languages
+  hosts: localhost
+  tags:
+    - lang
+  tasks:
+    - name: Install Node version manager
+      ansible.builtin.shell:
+        cmd: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+    - name: Install Node latest LTS
+      ansible.builtin.shell:
+        cmd: . ~/.nvm/nvm.sh && nvm install --lts # it sources the ~/.nvm/nvm.sh and then run the install command
+        creates: ~/.nvm/versions/node/v20.12.2/bin/node # TODO:  this hardcoding of the node version should be removed as the latest lts version will be changed ultimately.
+
+- name: Install yazi
+  hosts: localhost
+  tags: terminal
+  tasks:
+    - name: Clone yazi
+      ansible.builtin.git:
+        repo: https://github.com/sxyazi/yazi.git
+        dest: ~/dev/oss/yazi/
+
+    - name: Build Yazi
+      ansible.builtin.shell:
+        chdir: ~/dev/oss/yazi
+        cmd: cargo build --release && cp target/release/yazi  ~/.local/bin/
+        creates: ~/.local/bin/yazi
+
+    - name: Symlink yazi conf
+      ansible.builtin.file:
+        src: ~/dotfiles/yazi/
+        path: ~/.config/yazi
+        state: link
+
+
+
+
+
 

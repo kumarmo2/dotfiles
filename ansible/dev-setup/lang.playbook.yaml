@@ -1,0 +1,37 @@
+- name: Install Node
+  hosts: localhost
+  tags:
+    - node
+  tasks:
+    - name: Install Node version manager
+      ansible.builtin.shell:
+        cmd: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+    - name: Install Node latest LTS
+      ansible.builtin.shell:
+        cmd: . ~/.nvm/nvm.sh && nvm install --lts # it sources the ~/.nvm/nvm.sh and then run the install command
+        creates: ~/.nvm/versions/node/v20.12.2/bin/node # TODO:  this hardcoding of the node version should be removed as the latest lts version will be changed ultimately.
+
+- name: Install dotnet
+  hosts: localhost
+  tags:
+    - dotnet
+  tasks:
+    - name: Get Deb file
+      ansible.builtin.get_url:
+        url: https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb
+        dest: /tmp/
+
+    - name: Install packages
+      become: true
+      ansible.builtin.shell:
+        chdir: /tmp
+        cmd: dpkg -i packages-microsoft-prod.deb
+
+    - name: Install sdk
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+          - dotnet-sdk-8.0
+          - aspnetcore-runtime-8.0
+

@@ -192,7 +192,9 @@
 
 - name: Install yazi
   hosts: localhost
-  tags: terminal
+  tags:
+    - terminal
+    - yazi 
   tasks:
     - name: Clone yazi
       ansible.builtin.git:

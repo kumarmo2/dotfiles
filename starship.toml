@@ -1,6 +1,8 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
+command_timeout = 200
+
 [line_break]
 disabled = true
 
@@ -19,6 +21,11 @@ disabled = true
 [git_branch]
 #format = "on [$branch]($style) "
 style = "bold green"
+# disabled = true
+
+[ git_status ]
+disabled = true
+
 
 # [dotnet]
 # disabled = true

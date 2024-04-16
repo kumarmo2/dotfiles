@@ -50,12 +50,12 @@
 
     - name: create dotnet directory
       ansible.builtin.file:
-        path: ~/dev/oss/dotnet
+        path: ~/dev/dotnet
         state: directory
 
     - name: create js directory
       ansible.builtin.file:
-        path: ~/dev/oss/js
+        path: ~/dev/js
         state: directory
 
 

@@ -20,6 +20,8 @@
          - tldr
          - build-essential
          - cmake
+         - nala
+         - pipx
 
     - name: tmux conf symlink
       ansible.builtin.file:

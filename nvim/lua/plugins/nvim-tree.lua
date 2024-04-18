@@ -3,8 +3,6 @@ return {
     'kyazdani42/nvim-tree.lua',
     keys = { '<leader>n' },
     config = function()
-      local vim = vim
-
       local status_ok, nvim_tree = pcall(require, 'nvim-tree')
       if not status_ok then
         print('could not find nvim-tree. returning...')

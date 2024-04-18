@@ -1,4 +1,3 @@
-local vim = vim
 local lspconfig = require('lspconfig')
 
 local common_on_attach = require('user.lsp.handlers').on_attach

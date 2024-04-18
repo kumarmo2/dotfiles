@@ -1,4 +1,3 @@
-local vim = vim
 local setOption = vim.api.nvim_set_option
 local cmd = vim.cmd
 vim.o.rnu = true

@@ -5,18 +5,8 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
   'nvim-telescope/telescope-ui-select.nvim',
-  { 'folke/neodev.nvim', opts = {} },
-  { 'hrsh7th/nvim-cmp', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-path', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
-  'onsails/lspkind.nvim', -- lsp icons pack
 
   -- lsp
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig', -- enable lsp
-  'Hoffs/omnisharp-extended-lsp.nvim',
   {
     'j-hui/fidget.nvim',
     event = 'LspAttach',

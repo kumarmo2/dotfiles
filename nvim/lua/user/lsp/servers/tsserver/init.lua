@@ -1,4 +1,3 @@
-local vim = vim
 local M = {}
 local lspconfig = require('lspconfig')
 

@@ -1,4 +1,4 @@
--- local vim = vim
+--
 -- local M = {}
 --
 -- local lsp_formatting = function(bufnr)

@@ -80,11 +80,6 @@ require('telescope').setup({
     live_grep_args = {
       auto_quoting = true,
       mappings = { -- extend mappings
-        i = {
-          -- ['<C-k>'] = lga_actions.quote_prompt(),
-          ['<C-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
-          -- ['<C-k>'] = HELPER_QUOTE_PROMPT,
-        },
       },
     },
   },

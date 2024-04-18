@@ -81,11 +81,6 @@
           - curl 
           - build-essential
 
-    - name: Checkout stable
-      ansible.builtin.shell:
-        chdir: ~/dev/oss/neovim
-        cmd: git checkout stable
-
     - name: Build
       ansible.builtin.shell:
         chdir: ~/dev/oss/neovim

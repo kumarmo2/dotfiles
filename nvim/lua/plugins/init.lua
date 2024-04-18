@@ -3,7 +3,7 @@ return {
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   { 'folke/neodev.nvim', opts = {} },
   'nvim-telescope/telescope-ui-select.nvim',
@@ -11,9 +11,7 @@ return {
   { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
   { 'hrsh7th/cmp-path', event = 'VeryLazy' },
   { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
-
-  -- snippets
-  { 'L3MON4D3/LuaSnip', lazy = true },
+  'onsails/lspkind.nvim', -- lsp icons pack
 
   -- lsp
   'williamboman/mason.nvim',

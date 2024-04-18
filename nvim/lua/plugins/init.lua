@@ -1,12 +1,11 @@
-local vim = vim
 return {
   'nvim-lua/plenary.nvim',
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
-  { 'folke/neodev.nvim', opts = {} },
   'nvim-telescope/telescope-ui-select.nvim',
+  { 'folke/neodev.nvim', opts = {} },
   { 'hrsh7th/nvim-cmp', event = 'VeryLazy' },
   { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
   { 'hrsh7th/cmp-path', event = 'VeryLazy' },
@@ -37,7 +36,6 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
   },
-
   -- for better syntax highlighting
   {
     'nvim-treesitter/nvim-treesitter',

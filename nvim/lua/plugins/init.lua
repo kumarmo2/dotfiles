@@ -1,10 +1,5 @@
 return {
   'nvim-lua/plenary.nvim',
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-  'nvim-telescope/telescope-ui-select.nvim',
 
   -- lsp
   {
@@ -16,6 +11,7 @@ return {
   },
   {
     'windwp/nvim-autopairs',
+    lazy = false,
     config = function()
       require('nvim-autopairs').setup({})
     end,
@@ -25,18 +21,6 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-  },
-  -- for better syntax highlighting
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    lazy = false,
   },
   {
     'windwp/nvim-ts-autotag',

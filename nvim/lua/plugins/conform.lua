@@ -1,4 +1,3 @@
-local vim = vim
 return {
   {
     'stevearc/conform.nvim',

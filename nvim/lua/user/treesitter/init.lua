@@ -1,4 +1,3 @@
-local vim = vim
 local opt = vim.opt
 
 require('nvim-treesitter.configs').setup({

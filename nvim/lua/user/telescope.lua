@@ -1,4 +1,3 @@
-local vim = vim
 local setKeyMap = vim.keymap.set
 
 local opts = { noremap = true, silent = true }

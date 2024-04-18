@@ -1,6 +1,5 @@
 -- local formatting = require('user.lsp.formatting')
 local M = {}
-local vim = vim
 
 M.setup = function()
   local signs = {

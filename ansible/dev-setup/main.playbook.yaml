@@ -18,6 +18,10 @@
          - pkg-config
          - neofetch
          - tldr
+         - build-essential
+         - cmake
+         - nala
+         - pipx
 
     - name: tmux conf symlink
       ansible.builtin.file:
@@ -37,6 +41,12 @@
         cmd: cargo install ripgrep
         creates: ~/.cargo/bin/rg
 
+    - name: Install Bottom
+      tags: cargo-packages
+      ansible.builtin.shell:
+        cmd: cargo install bottom
+        creates: ~/.cargo/bin/btm
+
     - name: create oss folders
       tags:
         - neovim
@@ -46,12 +56,12 @@
 
     - name: create dotnet directory
       ansible.builtin.file:
-        path: ~/dev/oss/dotnet
+        path: ~/dev/dotnet
         state: directory
 
     - name: create js directory
       ansible.builtin.file:
-        path: ~/dev/oss/js
+        path: ~/dev/js
         state: directory
 
 
@@ -77,11 +87,6 @@
           - curl 
           - build-essential
 
-    - name: Checkout stable
-      ansible.builtin.shell:
-        chdir: ~/dev/oss/neovim
-        cmd: git checkout stable
-
     - name: Build
       ansible.builtin.shell:
         chdir: ~/dev/oss/neovim
@@ -91,7 +96,7 @@
     - name: Install
       become: true
       ansible.builtin.shell:
-        chdir: /home/manya/dev/oss/neovim
+        chdir: /home/kumarmo2/dev/oss/neovim #FIXME: remove hardcoding for user in path.
         cmd: make install
         creates: /usr/local/bin/nvim
 
@@ -116,8 +121,13 @@
       ansible.builtin.copy:
         src: ~/dotfiles/fonts/
         dest: ~/.local/share/fonts
-      with_fileglob:
-        - "*.ttf"
+      with_fileglob: "*.ttf"
+
+    - name: Copy fonts 2
+      ansible.builtin.copy:
+        src: ~/dotfiles/fonts/jetbrains/
+        dest: ~/.local/share/fonts
+      with_fileglob: "*ttf"
 
     - name: Install terminal related packages from apt
       become: true

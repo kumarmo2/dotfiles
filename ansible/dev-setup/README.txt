@@ -1,3 +1,10 @@
 - git clone the dotfiles. make sure you are on the device/asus-laptop-v2 branch.
-- Install cargo directly from the shell script from rustup.
+- add the user to sudo group.
 - install ansible for debian.
+- create symlink from ~/dotfiles/bashrc. `eza` alias will need to be commented out temporarily.
+- install `packages` tag in ansible.
+- Install cargo directly from the shell script from rustup.
+- First install tag `packages` and then `essentials` and then rest of the packages.
+- Copy the Fonts manually. TODO: For some reason the ansible script is not working. FIXME:
+- Run languages playbook.
+- Run extras playbook.

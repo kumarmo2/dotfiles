@@ -278,10 +278,6 @@ export AWS_PROFILE=personal
 export  CUDA_HOME=/usr/local/cuda
 export  PATH=${CUDA_HOME}/bin:${PATH}
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 # yazi helper function to help changing working
 # directory on quitting.
 function ya() {

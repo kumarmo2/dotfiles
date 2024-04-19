@@ -1,0 +1,13 @@
+- name: Some KDE plasma automation stuff.
+  hosts: localhost
+  tasks:
+    - name: Install Konsave
+      ansible.builtin.shell:
+        cmd: pipx install konsave
+        creates: ~/.local/bin/konsave
+    - name: import profile
+      ansible.builtin.shell:
+        cmd: konsave -f -i ~/dotfiles/plasma/kumarmo2.knsv
+    - name: Apply Profile
+      ansible.builtin.shell:
+        cmd: konsave -f -a kumarmo2 #NOTE: will need to logout and log back in to see affects.

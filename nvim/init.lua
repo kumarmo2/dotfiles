@@ -1,6 +1,4 @@
-local vim = vim
 require('keymappings')
--- install lazy plugin manager starts.
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -13,14 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 require('lazy').setup('plugins', { defaults = { lazy = true } })
--- -- install lazy plugin manager ends.
+
 require('settings')
-require('user.lsp')
-require('user.nvim-cmp')
-require('user.treesitter')
-require('user.autopairs')
-require('user.telescope')
 require('user.filetype')
 require('user.commands')

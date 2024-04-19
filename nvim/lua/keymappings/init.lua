@@ -1,5 +1,5 @@
 -- set function ref to make it easier
-local vim = vim
+
 local setKeyMap = vim.api.nvim_set_keymap
 require('keymappings.toggle-cmdheight')
 
@@ -69,8 +69,6 @@ setKeyMap('n', 'vv', 'zzV', opts)
 -- setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
-setKeyMap('n', '<leader>th', ':Telescope help_tags<CR>', { noremap = true })
-
 -- toggle cmd height
 setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 

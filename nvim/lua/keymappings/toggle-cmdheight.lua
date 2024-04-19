@@ -1,13 +1,7 @@
-local vim = vim;
-
-
-
-toggle_cmd_height = function()
+Toggle_cmd_height = function()
   if vim.o.cmdheight > 0 then
-    vim.o.cmdheight = 0;
-    return;
+    vim.o.cmdheight = 0
+    return
   end
-  vim.o.cmdheight = 1;
-
-
+  vim.o.cmdheight = 1
 end

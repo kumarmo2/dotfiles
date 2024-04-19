@@ -1,4 +1,3 @@
-local vim = vim
 vim.opt.termguicolors = true
 
 return {

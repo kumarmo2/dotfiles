@@ -1,4 +1,3 @@
-local vim = vim
 return {
   {
     'smoka7/hop.nvim',

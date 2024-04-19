@@ -1,4 +1,6 @@
-local vim = vim
+-- TODO: Check if we need this file or not. Right not its not getting referenced
+-- after the refactoring. But since its doing some extra work, we might require the
+-- logic for it
 local M = {}
 local lspconfig = require('lspconfig')
 

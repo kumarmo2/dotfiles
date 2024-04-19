@@ -1,25 +1,7 @@
-local vim = vim
 return {
   'nvim-lua/plenary.nvim',
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
-  },
-  { 'folke/neodev.nvim', opts = {} },
-  'nvim-telescope/telescope-ui-select.nvim',
-  { 'hrsh7th/nvim-cmp', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-path', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
-
-  -- snippets
-  { 'L3MON4D3/LuaSnip', lazy = true },
 
   -- lsp
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig', -- enable lsp
-  'Hoffs/omnisharp-extended-lsp.nvim',
   {
     'j-hui/fidget.nvim',
     event = 'LspAttach',
@@ -29,35 +11,22 @@ return {
   },
   {
     'windwp/nvim-autopairs',
+    lazy = false,
     config = function()
       require('nvim-autopairs').setup({})
     end,
   },
 
-  -- { 'machakann/vim-highlightedyank', lazy = false },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
   },
-
-  -- for better syntax highlighting
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    lazy = false,
-  },
   {
     'windwp/nvim-ts-autotag',
+    ft = { 'javascript', 'javascriptreact', 'html' },
     config = function()
       require('nvim-ts-autotag').setup()
     end,
-    lazy = false,
   },
 
   {

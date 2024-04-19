@@ -2,15 +2,10 @@ local setOption = vim.api.nvim_set_option
 local cmd = vim.cmd
 vim.o.rnu = true
 vim.o.nu = true
--- highlight search terms
 vim.o.hlsearch = true
--- ignore cases while searching
 vim.o.ignorecase = true
 vim.o.incsearch = true
--- show cursor line
--- removes the -- INSERT --. Since i am using lightline plugin which anyways
--- shows the mode in it.
-vim.o.showmode = false
+vim.o.showmode = false -- statusline/plugin shows it
 vim.o.visualbell = true
 vim.o.wrap = true
 -- indentation behavior
@@ -34,26 +29,23 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 vim.o.guifont = 'Caskaydia Cove Nerd Font'
--- vim.o.autoread = true
-
 setOption('syntax', 'enable')
 setOption('laststatus', 3)
--- setOption('statuscolumn', '%l %r ')
--- vim.g.gruvbox_transparent_bg = '1'
-cmd('colorscheme onedark')
--- vim.api.nvim_command("colorscheme catppuccin")
--- vim.api.nvim_command("colorscheme tokyonight")
--- cmd('colorscheme nordfox')
+vim.cmd.colorscheme('onedark')
 vim.o.cursorline = true
 vim.o.background = 'dark'
 vim.termguicolors = true
--- vim.o.ch = 0 -- set command heght to 0
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')
 vim.o.cmdheight = 1
 vim.opt.list = true
-vim.opt.listchars:append('space:⋅')
-vim.opt.listchars:append('eol:↴')
+vim.opt.listchars = { tab = '» ', trail = '-', lead = '.' }
 vim.opt.grepprg = 'rg --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m'
 vim.opt.signcolumn = 'yes'
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.opt.clipboard = 'unnamedplus'
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10

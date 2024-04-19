@@ -1,8 +1,16 @@
+local keys_to_command_map = {
+  ['<leader>p'] = ':Telescope find_files<CR>',
+  ['<leader>;'] = ':Telescope buffers<CR>',
+  ['<leader>fg'] = ':Telescope live_grep<CR>',
+  ['<leader>bf'] = ':lua require(\'telescope.builtin\').current_buffer_fuzzy_find()<CR>',
+  ['<leader>th'] = ':Telescope help_tags<CR>',
+}
+local keys = vim.tbl_keys(keys_to_command_map)
 return {
   'nvim-telescope/telescope-ui-select.nvim',
   {
     'nvim-telescope/telescope.nvim',
-    lazy = false,
+    keys = keys,
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local setKeyMap = vim.keymap.set
@@ -43,11 +51,9 @@ return {
       })
 
       require('telescope').load_extension('ui-select')
-      setKeyMap('n', '<leader>p', ':Telescope find_files<CR>', opts)
-      setKeyMap('n', '<leader>;', ':Telescope buffers<CR>', opts)
-      setKeyMap('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
-      setKeyMap('n', '<localleader>ws', ':lua require(\'telescope.builtin\').lsp_workspace_symbols()<CR>', opts) -- "ws" stands for "workspace symbols"
-      setKeyMap('n', '<leader>bf', builtin.current_buffer_fuzzy_find, opts)
+      for k, v in pairs(keys_to_command_map) do
+        setKeyMap('n', k, v, opts)
+      end
     end,
   },
 }

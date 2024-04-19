@@ -134,7 +134,7 @@ return {
         },
         rust_analyzer = {},
         omnisharp = {},
-        -- gopls = {},
+        gopls = {},
         bashls = {},
         ansiblels = {},
         dockerls = {},

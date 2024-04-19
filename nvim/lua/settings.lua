@@ -1,4 +1,3 @@
-local setOption = vim.api.nvim_set_option
 local cmd = vim.cmd
 vim.o.rnu = true
 vim.o.nu = true
@@ -9,9 +8,7 @@ vim.o.showmode = false -- statusline/plugin shows it
 vim.o.visualbell = true
 vim.o.wrap = true
 -- indentation behavior
-setOption('tabstop', 4)
 vim.o.tabstop = 4
-setOption('shiftwidth', 4)
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
@@ -29,8 +26,8 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 vim.o.guifont = 'Caskaydia Cove Nerd Font'
-setOption('syntax', 'enable')
-setOption('laststatus', 3)
+vim.o.syntax = 'enable'
+vim.o.laststatus = 3
 vim.cmd.colorscheme('onedark')
 vim.o.cursorline = true
 vim.o.background = 'dark'

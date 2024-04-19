@@ -17,7 +17,6 @@ return {
     end,
   },
 
-  -- { 'machakann/vim-highlightedyank', lazy = false },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },

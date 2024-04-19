@@ -1,3 +1,29 @@
+local map_lsp_keymaps = function(bufnr, opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>.', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dp', '<cmd>vim.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    'n',
+    'gl',
+    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>',
+    opts
+  )
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+end
+
 return {
   { 'folke/neodev.nvim', opts = {} },
   { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
@@ -59,92 +85,108 @@ return {
     'neovim/nvim-lspconfig',
     lazy = false,
     config = function()
-      local found, mason = pcall(require, 'mason')
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('LspAttachCommandGroup', { clear = true }),
+        callback = function(event)
+          local opts = { noremap = true, silent = true }
+          local bufnr = event.buf
+          map_lsp_keymaps(bufnr, opts)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-      if found ~= true then
-        return
-      end
+          -- The following two autocommands are used to highlight references of the
+          -- word under your cursor when your cursor rests there for a little while.
+          --    See `:help CursorHold` for information about when this is executed
+          --
+          -- When you move your cursor, the highlights will be cleared (the second autocommand).
+          if client and client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+              buffer = event.buf,
+              callback = vim.lsp.buf.document_highlight,
+            })
 
-      mason.setup({})
-
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          'lua_ls',
-          'rust_analyzer',
-          'omnisharp',
-          -- 'gopls',
-          'bashls',
-          'ansiblels',
-          'dockerls',
-          'tailwindcss',
-          'terraformls',
-          'tsserver',
-          'eslint',
-        },
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+              buffer = event.buf,
+              callback = vim.lsp.buf.clear_references,
+            })
+          end
+        end,
       })
+      -- LSP servers and clients are able to communicate to each other what features they support.
+      --  By default, Neovim doesn't support everything that is in the LSP specification.
+      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local servers = {
+        lua_ls = {
 
-      -- `neodev` needs to be required before lspconfig.
-      require('neodev').setup()
-      local lspconfig = require('lspconfig')
-
-      local common_on_attach = require('user.lsp.handlers').on_attach
-      local client_capablities = require('user.lsp.handlers').capabilities
-
-      local lsp_options = {
-        on_attach = common_on_attach,
-        capabilities = client_capablities,
+          -- cmd = {...},
+          -- filetypes = { ...},
+          -- capabilities = {},
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = 'Disable',
+              },
+              --
+            },
+          },
+        },
+        rust_analyzer = {},
+        omnisharp = {},
+        -- gopls = {},
+        bashls = {},
+        ansiblels = {},
+        dockerls = {},
+        tailwindcss = {},
+        terraformls = {},
+        tsserver = {},
+        eslint = {},
       }
-      ---@diagnostic disable-next-line: unused-local
-      local lua_lsp_options = vim.tbl_deep_extend('force', lsp_options, {
-        settings = {
-          Lua = {
-            workspace = {
-              checkThirdParty = 'Disable',
+
+      require('mason').setup()
+
+      local ensure_installed = vim.tbl_keys(servers or {})
+      require('mason-lspconfig').setup({ ensure_installed = ensure_installed })
+      require('neodev').setup() -- For neovim dev.
+
+      -- NOTE:: automatically setup lsp servers. For more info check
+      -- `:h mason-lspconfig-automatic-server-setup`
+      require('mason-lspconfig').setup_handlers({
+        function(server_name)
+          local server = servers[server_name] or {}
+          -- This handles overriding only values explicitly passed
+          -- by the server configuration above. Useful when disabling
+          -- certain features of an LSP (for example, turning off formatting for tsserver)
+          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          require('lspconfig')[server_name].setup(server)
+        end,
+        ['rust_analyzer'] = function()
+          local server = servers['rust_analyzer'] or {}
+          server.settings = {
+            ['rust-analyzer'] = {
+              diagnostics = {
+                enable = false,
+              },
             },
-          },
-        },
+          }
+          server.capabilities = capabilities
+          require('lspconfig')['rust_analyzer'].setup(server)
+        end,
+        ['omnisharp'] = function()
+          local server = servers['omnisharp'] or {}
+          server.capabilities = capabilities
+          server.handlers = {
+            ['textDocument/definition'] = require('omnisharp_extended').definition_handler,
+            ['textDocument/typeDefinition'] = require('omnisharp_extended').type_definition_handler,
+            ['textDocument/references'] = require('omnisharp_extended').references_handler,
+            ['textDocument/implementation'] = require('omnisharp_extended').implementation_handler,
+          }
+          require('lspconfig')['omnisharp'].setup(server)
+        end,
       })
-
-      -- local docker_compose_lsp_options = vim.tbl_deep_extend('force', lsp_options, {})
-      -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-
-      lspconfig.lua_ls.setup(lsp_options) -- lua
-      lspconfig.pylsp.setup(lsp_options)
-      lspconfig.bufls.setup(lsp_options)
-      lspconfig.clangd.setup(lsp_options)
-      -- lspconfig.gopls.setup(lsp_options)
-      lspconfig.bashls.setup(lsp_options)
-      lspconfig.sqlls.setup(lsp_options)
-      lspconfig.bicep.setup(lsp_options)
-      -- lspconfig.ruby_lsp.setup(lsp_options)
-      lspconfig.dockerls.setup(lsp_options)
-      lspconfig.docker_compose_language_service.setup(lsp_options)
-      lspconfig.html.setup({
-        on_attach = common_on_attach,
-        capabilities = client_capablities,
-        filetypes = { 'html', 'erb', 'rb' },
-      })
-      lspconfig.cssls.setup(lsp_options)
-      lspconfig.eslint.setup(lsp_options)
-
-      lspconfig.tailwindcss.setup(lsp_options)
-      -- require('user.lsp.servers.rust').setup() -- rust
-      lspconfig.rust_analyzer.setup({
-        on_attach = common_on_attach,
-        capabilities = client_capablities,
-        settings = {
-          ['rust-analyzer'] = {
-            diagnostics = {
-              enable = false,
-            },
-          },
-        },
-      })
-      -- lspconfig.ansiblels.setup({})
-      lspconfig.terraformls.setup({})
-
-      require('user.lsp.servers.omnisharp').setup() -- csharp
-      require('user.lsp.servers.tsserver').setup() -- js/ts
     end,
-  }, -- enable lsp
+    -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    --
+  },
 }

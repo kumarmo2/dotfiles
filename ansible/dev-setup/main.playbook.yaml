@@ -41,6 +41,12 @@
         cmd: cargo install ripgrep
         creates: ~/.cargo/bin/rg
 
+    - name: Install Bottom
+      tags: cargo-packages
+      ansible.builtin.shell:
+        cmd: cargo install bottom
+        creates: ~/.cargo/bin/btm
+
     - name: create oss folders
       tags:
         - neovim

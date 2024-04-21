@@ -1,0 +1,36 @@
+- name:  Build and install Vim From Source
+  hosts: localhost
+  tasks:
+    - name: Installl dependencies
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+          - git
+          - make
+          - clang
+          - libtool-bin
+          - libxt-dev # for x windows clipboard support
+
+    - name: Clone vim
+      ansible.builtin.git:
+        repo: https://github.com/vim/vim.git
+        dest: ~/dev/oss/vim
+
+    - name: Run Make
+      ansible.builtin.shell:
+        chdir: ~/dev/oss/vim/src
+        cmd: make
+
+    - name: Run tests to check there are no problems
+      ansible.builtin.shell:
+        chdir: ~/dev/oss/vim/src
+        cmd: make test
+
+    - name: Install vim in /usr/local
+      become: true
+      ansible.builtin.shell:
+        chdir: ~/dev/oss/vim/src
+        creates: /usr/local/bin/vim
+        cmd: make install
+

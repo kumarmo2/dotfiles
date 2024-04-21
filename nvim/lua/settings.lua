@@ -46,3 +46,4 @@ vim.opt.signcolumn = 'yes'
 vim.opt.clipboard = 'unnamedplus'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+vim.o.updatetime = 2000 -- Check `CursorHold` event and updatetime friendly manual.

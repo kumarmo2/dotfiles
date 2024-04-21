@@ -11,5 +11,6 @@ vim.filetype.add({
       end
       return 'yaml'
     end,
+    conf = 'ini',
   },
 })

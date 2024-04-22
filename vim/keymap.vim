@@ -4,7 +4,7 @@ nnoremap \ :noh<CR>
 nnoremap <leader>ss :so%<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>n :Lexplore<CR>
-nnoremap <leader><leader> :bprevious<CR>
+nnoremap <leader><leader> <C-^>
 
 " window management
 nnoremap <leader>j <C-w>j
@@ -21,7 +21,6 @@ nnoremap _ :vertical resize -2<CR>
 nnoremap + :vertical resize +2<CR>
 nnoremap - :resize -2<CR>
 nnoremap = :resize +2<CR>
-
 
 " fzf
 nnoremap <leader>p :Files<CR>

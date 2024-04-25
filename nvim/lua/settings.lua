@@ -14,6 +14,7 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 -- mouse support on
 vim.o.mouse = 'a'
+vim.cmd('set path+=**')
 -- using big value for `scrolloff`, you can keep the cursor at the
 -- center
 -- vim.o.scrolloff = 999

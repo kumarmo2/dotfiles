@@ -1,5 +1,5 @@
 import:
-- ~/.config/alacritty/one-dark.yml
+- ~/.config/alacritty/gruvbox.yml
 font:
   size: 12
   normal:

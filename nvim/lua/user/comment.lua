@@ -1,6 +1,6 @@
 local comment_map = {
-  ['lua'] = '--',
-  ['rust'] = '//',
+  ['lua'] = { '--' }, -- TODO: Add support for block comments in future
+  ['rust'] = { '//' },
 }
 
 local get_first_non_whitespace_position_in_row = function(buf, row)
@@ -21,7 +21,7 @@ local get_first_non_whitespace_position_in_row = function(buf, row)
 end
 
 local toggleSingleLineCommentForFileType = function(row, filetype)
-  local comment_character_length = string.len(comment_map[filetype])
+  local comment_character_length = string.len(comment_map[filetype][1])
   local pos = get_first_non_whitespace_position_in_row(0, row) -- NOTE: 1 indexed
 
   if pos == nil then
@@ -31,8 +31,8 @@ local toggleSingleLineCommentForFileType = function(row, filetype)
   local end_col = start_col + comment_character_length
   local potential_comment_chars = vim.api.nvim_buf_get_text(0, row, start_col, row, end_col, {})[1]
 
-  if potential_comment_chars ~= comment_map[filetype] then
-    vim.api.nvim_buf_set_text(0, row, pos - 1, row, pos - 1, { comment_map[filetype] })
+  if potential_comment_chars ~= comment_map[filetype][1] then
+    vim.api.nvim_buf_set_text(0, row, pos - 1, row, pos - 1, { comment_map[filetype][1] })
   else
     vim.api.nvim_buf_set_text(0, row, pos - 1, row, pos + comment_character_length - 1, { '' })
   end

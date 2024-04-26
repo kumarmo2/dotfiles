@@ -28,8 +28,7 @@ vim.o.backup = false
 vim.o.hidden = true
 vim.o.guifont = 'Caskaydia Cove Nerd Font'
 vim.o.syntax = 'enable'
-vim.o.laststatus = 3
-vim.cmd.colorscheme('onedark')
+vim.cmd.colorscheme('gruvbox')
 vim.o.cursorline = true
 vim.o.background = 'dark'
 vim.termguicolors = true

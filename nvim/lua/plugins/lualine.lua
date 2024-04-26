@@ -10,6 +10,7 @@ return {
           theme = 'auto',
           component_separators = '|',
           section_separators = '',
+          globalstatus = 3,
         },
       }
       lualine.setup(config)

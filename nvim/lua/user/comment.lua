@@ -1,9 +1,10 @@
 local comment_map = {
   ['lua'] = '--',
+  ['rust'] = '//',
 }
 
 local get_first_non_whitespace_position_in_row = function(buf, row)
-  -- we will try in batches of 20 columns
+  --we will try in batches of 20 columns
   -- i.e first we will try to find a non-whitespace character in [0, 19] and then [20, 39] and so on
   -- NOTE: this returns postition which is 1 indexed
   local start_col = 0
@@ -19,17 +20,8 @@ local get_first_non_whitespace_position_in_row = function(buf, row)
   return nil
 end
 
-local toggleSingleLineComment = function()
-  local filetype = vim.api.nvim_get_option_value('filetype', { buf = 0 })
-  if filetype == nil or filetype == '' then
-    return
-  end
-  if comment_map[filetype] == nil then
-    return
-  end
+local toggleSingleLineCommentForFileType = function(row, filetype)
   local comment_character_length = string.len(comment_map[filetype])
-  local save_cursor = vim.fn.getcurpos()
-  local row = save_cursor[2] - 1 -- zero based
   local pos = get_first_non_whitespace_position_in_row(0, row) -- NOTE: 1 indexed
 
   if pos == nil then
@@ -46,12 +38,35 @@ local toggleSingleLineComment = function()
   end
 end
 
-local toggleMultiLineComment = function()
-  local start_mark = vim.api.nvim_buf_get_mark(0, '<')
-  print(vim.inspect(start_mark))
-  local end_mark = vim.api.nvim_buf_get_mark(0, '>')
-  print(vim.inspect(end_mark))
+local toggleSingleLineComment = function()
+  local filetype = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+  if filetype == nil or filetype == '' then
+    return
+  end
+  if comment_map[filetype] == nil then
+    return
+  end
+  local save_cursor = vim.fn.getcurpos()
+  local row = save_cursor[2] - 1 -- zero based
+
+  toggleSingleLineCommentForFileType(row, filetype)
 end
 
-vim.keymap.set('n', '<leader>/', toggleSingleLineComment, { noremap = true, silent = true })
---toggleMultiLineComment()
+local toggleMultiLineComment = function()
+  local filetype = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+  if filetype == nil or filetype == '' then
+    return
+  end
+  if comment_map[filetype] == nil then
+    return
+  end
+  local start_row = vim.fn.getpos('v')[2]
+  local end_row = vim.fn.getcurpos()[2]
+
+  for i = start_row - 1, end_row - 1, 1 do
+    toggleSingleLineCommentForFileType(i, filetype)
+  end
+end
+
+vim.keymap.set('n', '<C-_>', toggleSingleLineComment, { noremap = true, silent = true })
+vim.keymap.set('v', '<C-_>', toggleMultiLineComment, { noremap = true })

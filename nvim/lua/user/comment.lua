@@ -27,17 +27,11 @@ end
 local toggleSingleLineCommentForFileType = function(row, filetype)
   local comment_character_length = string.len(comment_map[filetype][1])
   local pos = get_first_non_whitespace_position_in_row(0, row) -- NOTE: 1 indexed
-  do
-    do
-      do
-      end
-    end
-  end
-
   if pos == nil then
     return
   end
-  local start_col = pos - 1 --
+
+  local start_col = pos - 1
   local end_col = start_col + comment_character_length
   local potential_comment_chars = vim.api.nvim_buf_get_text(0, row, start_col, row, end_col, {})[1]
 

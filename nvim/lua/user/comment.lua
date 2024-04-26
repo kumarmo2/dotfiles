@@ -4,18 +4,22 @@ local comment_map = {
 }
 
 local get_first_non_whitespace_position_in_row = function(buf, row)
-  --we will try in batches of 20 columns
-  -- i.e first we will try to find a non-whitespace character in [0, 19] and then [20, 39] and so on
+  -- TODO: After testing(either through unit testing or actual testing, once the
+  -- working of this function is tested, update the `4` to `20` columns)
+  -- we will try in batches of 4 columns
+  -- i.e first we will try to find a non-whitespace character in [0, 19] and then [4, 39] and so on
   -- NOTE: this returns postition which is 1 indexed
   local start_col = 0
-  local end_col = 20
+  local end_col = 4
   local text = vim.api.nvim_buf_get_text(buf, row, start_col, row, end_col, {})[1]
   while text ~= nil and text ~= '' do
     local local_index = string.find(text, '%S') -- returns nil if not found
     if local_index ~= nil then
       return start_col + local_index
     end
-    text = vim.api.nvim_buf_get_text(buf, row, end_col, row, end_col + 20, {})[1]
+    start_col = end_col
+    end_col = end_col + 4
+    text = vim.api.nvim_buf_get_text(buf, row, start_col, row, end_col, {})[1]
   end
   return nil
 end
@@ -23,6 +27,12 @@ end
 local toggleSingleLineCommentForFileType = function(row, filetype)
   local comment_character_length = string.len(comment_map[filetype][1])
   local pos = get_first_non_whitespace_position_in_row(0, row) -- NOTE: 1 indexed
+  do
+    do
+      do
+      end
+    end
+  end
 
   if pos == nil then
     return
@@ -62,6 +72,14 @@ local toggleMultiLineComment = function()
   end
   local start_row = vim.fn.getpos('v')[2]
   local end_row = vim.fn.getcurpos()[2]
+
+  if end_row < start_row then
+    --This swap is needed because vim.fn.getpos('v') returns the first line that was selected visually.
+    --so if in visual mode, someone goes from down to up, then `end_row` < `start_row`
+    local temp = end_row
+    end_row = start_row
+    start_row = temp
+  end
 
   for i = start_row - 1, end_row - 1, 1 do
     toggleSingleLineCommentForFileType(i, filetype)

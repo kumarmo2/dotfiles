@@ -1,6 +1,9 @@
+local doubleSlash = '//'
+
 local comment_map = {
   ['lua'] = { '--' }, -- TODO: Add support for block comments in future
-  ['rust'] = { '//' },
+  ['rust'] = { doubleSlash },
+  ['go'] = { doubleSlash },
   ['yaml'] = { '#' },
 }
 

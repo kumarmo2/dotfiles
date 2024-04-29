@@ -5,6 +5,7 @@ local comment_map = {
   ['rust'] = { doubleSlash },
   ['go'] = { doubleSlash },
   ['yaml'] = { '#' },
+  ['yaml.ansible'] = { '#' },
 }
 
 local get_first_non_whitespace_position_in_row = function(buf, row)

@@ -22,4 +22,5 @@ syntax on
 set wildmenu
 
 filetype plugin indent on
-colorscheme habamax
+set bg=dark
+colorscheme gruvbox

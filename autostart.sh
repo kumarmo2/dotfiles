@@ -11,5 +11,6 @@
 # flatpak run org.mozilla.Thunderbird &
 # /home/kumarmo2/Downloads/thunderbird/thunderbird-bin &
 flatpak run com.discordapp.Discord &
+flatpak run md.obsidian.Obsidian &
 # transmission-gtk
 # flatpak run org.openrgb.OpenRGB

@@ -1,6 +1,7 @@
 local comment_map = {
   ['lua'] = { '--' }, -- TODO: Add support for block comments in future
   ['rust'] = { '//' },
+  ['yaml'] = { '#' },
 }
 
 local get_first_non_whitespace_position_in_row = function(buf, row)

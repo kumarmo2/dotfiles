@@ -5,6 +5,7 @@ return {
     config = function()
       -- setup must be called before loading the colorscheme
       -- Default options:
+      local g = require('gruvbox')
       require('gruvbox').setup({
         undercurl = true,
         underline = true,

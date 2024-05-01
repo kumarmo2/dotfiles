@@ -1,11 +1,13 @@
 local doubleSlash = '//'
+local hash = '#'
 
 local comment_map = {
   ['lua'] = { '--' }, -- TODO: Add support for block comments in future
   ['rust'] = { doubleSlash },
   ['go'] = { doubleSlash },
-  ['yaml'] = { '#' },
-  ['yaml.ansible'] = { '#' },
+  ['yaml'] = { hash },
+  ['yaml.ansible'] = { hash },
+  ['sh'] = { hash },
 }
 
 local get_first_non_whitespace_position_in_row = function(buf, row)

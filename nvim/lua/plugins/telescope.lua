@@ -2,6 +2,7 @@ local keys_to_command_map = {
   ['<leader>p'] = ':Telescope find_files<CR>',
   ['<leader>;'] = ':Telescope buffers<CR>',
   ['<leader>fg'] = ':Telescope live_grep<CR>',
+  ['<leader>gf'] = ':Telescope git_files<CR>',
   ['<leader>bf'] = ':lua require(\'telescope.builtin\').current_buffer_fuzzy_find()<CR>',
   ['<leader>th'] = ':Telescope help_tags<CR>',
 }
@@ -33,7 +34,6 @@ return {
       local setKeyMap = vim.keymap.set
       local opts = { noremap = true, silent = true }
       local actions = require('telescope.actions')
-      local builtin = require('telescope.builtin')
 
       require('telescope').setup({
         defaults = {

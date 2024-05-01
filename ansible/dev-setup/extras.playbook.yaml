@@ -1,3 +1,6 @@
+- name: Install Fastfetch
+  ansible.builtin.import_playbook: fastfetch.playbook.yaml
+
 - name: Some KDE plasma automation stuff.
   hosts: localhost
   tasks:

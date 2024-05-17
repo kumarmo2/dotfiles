@@ -1,3 +1,4 @@
+-- NOTE: No longer being used. Keeping it for just reference.
 local doubleSlash = '//'
 local hash = '#'
 

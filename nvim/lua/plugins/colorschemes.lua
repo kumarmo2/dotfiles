@@ -2,18 +2,19 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     priority = 10000,
+    lazy = false,
     config = function()
       -- setup must be called before loading the colorscheme
       -- Default options:
       local g = require('gruvbox')
       require('gruvbox').setup({
-        undercurl = true,
-        underline = true,
+        undercurl = false,
+        underline = false,
         bold = true,
         italic = {
-          strings = true,
-          operators = true,
-          comments = true,
+          strings = false,
+          operators = false,
+          comments = false,
         },
         strikethrough = true,
         invert_selection = false,
@@ -21,7 +22,7 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = '', -- can be "hard", "soft" or empty string
+        contrast = '',  -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {
           ['@keyword.import.rust'] = { fg = g.palette.bright_red },
@@ -33,18 +34,19 @@ return {
       vim.o.background = 'dark'
     end,
   },
-  {
-    'neanias/everforest-nvim',
-    version = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
-    -- Optional; default configuration will be used if setup isn't called.
-    config = function()
-      require('everforest').setup({
-        background = 'hard',
-        -- Your config here
-      })
-    end,
-  },
+  -- {
+  --   'neanias/everforest-nvim',
+  --   version = false,
+  --   lazy = false,
+  --   priority = 1001, -- make sure to load this before all the other start plugins
+  --   -- Optional; default configuration will be used if setup isn't called.
+  --   config = function()
+  --     require('everforest').setup({
+  --       background = 'hard',
+  --       -- Your config here
+  --     })
+  --   end,
+  -- },
   {
     'navarasu/onedark.nvim',
     priority = 1000,

@@ -16,7 +16,7 @@ return {
       -- that prettier is always slow. and its is being used for formatting javascript.
       conform_config.formatters = {
         sql_formatter = {
-          args = { '-l', 'tsql' },
+          args = { '-l', 'postgresql' },
         },
       }
       -- asyn formatting start:  https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#automatically-run-slow-formatters-async

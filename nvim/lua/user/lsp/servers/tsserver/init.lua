@@ -24,7 +24,7 @@ end
 
 local function filterFiles(value)
   return string.match(value.targetUri, 'react/index.d.ts') == nil
-    and string.match(value.targetUri, 'qwik/core.d.ts') == nil
+      and string.match(value.targetUri, 'qwik/core.d.ts') == nil
 end
 
 M.setup = function()
@@ -34,7 +34,7 @@ M.setup = function()
     handlers = {
       -- NOTE: filtering out `react` && `qwik` library definition files if "GoToDefinition" returns multiple results.
       ['textDocument/definition'] = function(err, result, method, ...)
-        if vim.tbl_islist(result) and #result > 1 then
+        if vim.islist(result) and #result > 1 then
           local filtered_result = filter(result, filterFiles)
           return vim.lsp.handlers['textDocument/definition'](err, filtered_result, method, ...)
         end

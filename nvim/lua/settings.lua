@@ -43,7 +43,7 @@ vim.opt.signcolumn = 'yes'
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+--vim.opt.clipboard = 'unnamedplus'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 vim.o.updatetime = 2000 -- Check `CursorHold` event and updatetime friendly manual.

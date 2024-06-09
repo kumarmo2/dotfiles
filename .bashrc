@@ -259,7 +259,7 @@ alias fzv='vim $(fzf)'
 
 
 shopt -s autocd # auto cd into the path typed.
-neofetch
+fastfetch
 
 # bun
 export BUN_INSTALL="$HOME/.bun"

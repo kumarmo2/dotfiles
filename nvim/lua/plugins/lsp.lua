@@ -24,22 +24,88 @@ local map_lsp_keymaps = function(bufnr, opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
+function configure_luasnip()
+  local ls = require("luasnip");
+  local s = ls.snippet;
+  local t = ls.text_node;
+  local types = require("luasnip.util.types")
+  ls.setup({
+    keep_roots = true,
+    link_roots = true,
+    link_children = true,
+
+    -- Update more often, :h events for more info.
+    update_events = "TextChanged,TextChangedI",
+    -- Snippets aren't automatically removed if their text is deleted.
+    -- `delete_check_events` determines on which events (:h events) a check for
+    -- deleted snippets is performed.
+    -- This can be especially useful when `history` is enabled.
+    delete_check_events = "TextChanged",
+    ext_opts = {
+      [types.choiceNode] = {
+        active = {
+          virt_text = { { "choiceNode", "Comment" } },
+        },
+      },
+    },
+    -- treesitter-hl has 100, use something higher (default is 200).
+    ext_base_prio = 300,
+    -- minimal increase in priority.
+    ext_prio_increase = 1,
+    enable_autosnippets = true,
+    -- mapping for cutting selected text so it's usable as SELECT_DEDENT,
+    -- SELECT_RAW or TM_SELECTED_TEXT (mapped via xmap).
+    store_selection_keys = "<Tab>",
+    -- luasnip uses this function to get the currently active filetype. This
+    -- is the (rather uninteresting) default, but it's possible to use
+    -- eg. treesitter for getting the current filetype by setting ft_func to
+    -- require("luasnip.extras.filetype_functions").from_cursor (requires
+    -- `nvim-treesitter/nvim-treesitter`). This allows correctly resolving
+    -- the current filetype in eg. a markdown-code block or `vim.cmd()`.
+    ft_func = function()
+      return vim.split(vim.bo.filetype, ".", true)
+    end,
+
+  })
+  require("luasnip.loaders.from_vscode").lazy_load()
+  ls.add_snippets("all", {
+    s("expand", {
+      t("sdfsdf")
+    })
+  })
+end
+
 return {
-  { 'folke/neodev.nvim', opts = {} },
-  { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
-  { 'hrsh7th/cmp-path', event = 'VeryLazy' },
+  { 'folke/neodev.nvim',    opts = {} },
+  { 'hrsh7th/cmp-buffer',   event = 'VeryLazy' },
+  { 'hrsh7th/cmp-path',     event = 'VeryLazy' },
   { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = { 'saadparwaiz1/cmp_luasnip', 'rafamadriz/friendly-snippets' }
+  },
   'onsails/lspkind.nvim', -- lsp icons pack
   {
     'hrsh7th/nvim-cmp',
     event = 'VeryLazy',
     config = function()
       local cmp = require('cmp')
+      local luasnip = require("luasnip");
+      configure_luasnip();
       cmp.setup({
         snippet = {
           expand = function(args)
-            vim.snippet.expand(args.body)
+            -- vim.snippet.expand(args.body)
+            luasnip.lsp_expand(args.body);
           end,
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -52,13 +118,44 @@ return {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
           }),
-          -- Accept currently selected item. If none selected, `select` first item.
-          -- Set `select` to `false` to only confirm explicitly selected items.
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              if luasnip.expandable() then
+                luasnip.expand()
+              else
+                cmp.confirm({
+                  select = true,
+                })
+              end
+            else
+              fallback()
+            end
+          end),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.locally_jumpable(1) then
+              luasnip.jump(1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
         }),
         sources = cmp.config.sources({
-          { name = 'nvim_lua' },
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'nvim_lua' },
           { name = 'buffer' },
           { name = 'path' },
         }),

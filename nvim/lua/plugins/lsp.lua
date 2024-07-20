@@ -170,6 +170,7 @@ return {
         gopls = {},
         bashls = {},
         ansiblels = {},
+        zls = {},
         dockerls = {},
         tailwindcss = {},
         terraformls = {},

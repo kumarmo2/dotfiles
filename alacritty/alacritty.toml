@@ -5,20 +5,20 @@ live_config_reload = true
 size = 12
 
 [font.normal]
-family = "ComicShannsMono Nerd Font Mono"
+family = "JetBrainsMonoNL Nerd Font"
 style = "Regular"
 
 [font.bold]
-family = "ComicShannsMono Nerd Font Mono"
+family = "JetBrainsMonoNL Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "ComicShannsMono Nerd Font Mono"
+family = "JetBrainsMonoNL Nerd Font"
 # style = "italic"
 style = "Regular"
 
 [font.bold_italic]
-family = "ComicShannsMono Nerd Font Mono"
+family = "JetBrainsMonoNL Nerd Font"
 # style = "Bold Italic"
 style = "Regular"
 

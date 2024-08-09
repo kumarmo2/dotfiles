@@ -211,6 +211,9 @@ return {
               diagnostics = {
                 enable = false,
               },
+              check = {
+                command = 'clippy' -- run clippy.
+              }
             },
           }
           server.capabilities = capabilities

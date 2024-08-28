@@ -95,7 +95,7 @@ return {
           },
         },
         view = {
-          width = 40,
+          width = 25,
           -- height = 30,
           side = 'right',
           number = false,

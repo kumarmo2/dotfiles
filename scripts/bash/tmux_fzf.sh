@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if fd and fzf are installed
-command -v fdfind >/dev/null 2>&1 || { echo >&2 "fd is required but not installed. Aborting."; exit 1; }
+command -v fd >/dev/null 2>&1 || { echo >&2 "fd is required but not installed. Aborting."; exit 1; }
 command -v fzf >/dev/null 2>&1 || { echo >&2 "fzf is required but not installed. Aborting."; exit 1; }
 
 # Check if inside a tmux session
@@ -13,7 +13,7 @@ fi
 
 
 # Find directories in the home directory using fd and pass them to fzf for selection
-selected_dir=$(fdfind --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")
+selected_dir=$(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")
 
 # Check if a directory is selected
 if [ -n "$selected_dir" ]; then

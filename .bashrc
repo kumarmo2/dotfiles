@@ -147,12 +147,12 @@ export FZF_CTRL_R_OPTS="
 # we are overriding to use `fd` which covers
 # majority of common use cases. eg: fd while searching
 # takes gitignore into account.
-export FZF_DEFAULT_COMMAND='fdfind --type f'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # For `ctrl-t` also, we are overriding to use `fd`
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# alias fd=fdfind
+# alias fd=fd
 
 export TERM=xterm-256color
 
@@ -253,7 +253,7 @@ alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
 alias code="flatpak run com.visualstudio.code "
 alias gitco='git branch | fzf | xargs git checkout'
-alias fzcd='pushd $(fdfind --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
+alias fzcd='pushd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
 alias fzn='nvim $(fzf)'
 alias fzv='vim $(fzf)'
 
@@ -288,6 +288,8 @@ function ya() {
     fi
     rm -f -- "$tmp"
 }
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 shopt -s autocd # auto cd into the path typed.
 

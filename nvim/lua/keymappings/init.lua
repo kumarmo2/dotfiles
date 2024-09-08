@@ -1,7 +1,6 @@
 -- set function ref to make it easier
 
 local setKeyMap = vim.api.nvim_set_keymap
-require('keymappings.toggle-cmdheight')
 
 -- set leader key to ','
 vim.g.mapleader = ' '
@@ -69,8 +68,6 @@ setKeyMap('n', 'vv', 'zzV', opts)
 -- setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
--- toggle cmd height
-setKeyMap('n', '<C-]>', ':lua toggle_cmd_height()<CR>', opts)
 
 -- open nvim config folder in new tab
 setKeyMap('v', 'Y', '"+y', opts)

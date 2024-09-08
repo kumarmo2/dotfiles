@@ -34,10 +34,10 @@ vim.o.background = 'dark'
 vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.
 cmd('set guicursor=n-v-c-i:block-Cursor')
-vim.o.cmdheight = 1
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '-', lead = '.' }
-vim.opt.grepprg = 'rg --vimgrep'
+vim.o.cmdheight    = 1
+vim.opt.list       = true
+vim.opt.listchars  = { tab = '» ', trail = '-', lead = '.' }
+vim.opt.grepprg    = 'rg --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m'
 vim.opt.signcolumn = 'yes'
 -- Sync clipboard between OS and Neovim.
@@ -45,5 +45,5 @@ vim.opt.signcolumn = 'yes'
 --  See `:help 'clipboard'`
 --vim.opt.clipboard = 'unnamedplus'
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-vim.o.updatetime = 2000 -- Check `CursorHold` event and updatetime friendly manual.
+vim.opt.scrolloff  = 10
+vim.o.updatetime   = 2000       -- Check `CursorHold` event and updatetime friendly manual.

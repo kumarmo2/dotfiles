@@ -31,25 +31,61 @@ return {
       end
 
       local configure_dap_for_languages = function()
-        local dotnet_debugger_path = vim.fn.exepath("netcoredbg");
+        local dotnet_dap_setup = function()
+          local dotnet_debugger_path = vim.fn.exepath("netcoredbg");
 
-        if dotnet_debugger_path ~= nil then
-          dap.adapters.coreclr = {
-            type = 'executable',
-            command = dotnet_debugger_path,
-            args = { '--interpreter=vscode' }
+          if dotnet_debugger_path ~= nil then
+            dap.adapters.coreclr = {
+              type = 'executable',
+              command = dotnet_debugger_path,
+              args = { '--interpreter=vscode' }
+            }
+            dap.configurations.cs = {
+              {
+                type = "coreclr",
+                name = "launch - netcoredbg",
+                request = "launch",
+                program = function()
+                  return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                end,
+              },
+            }
+          end
+        end
+
+        local rust_dap_setup = function()
+          local codelldb_path = vim.fn.exepath("codelldb");
+          if codelldb_path == nil then
+            return;
+          end
+          dap.adapters.codelldb = {
+            type = 'server',
+            port = "${port}",
+            executable = {
+              -- CHANGE THIS to your path!
+              command = codelldb_path,
+              args = { "--port", "${port}" },
+
+              -- On windows you may have to uncomment this:
+              -- detached = false,
+            }
           }
-          dap.configurations.cs = {
+
+          dap.configurations.rust = {
             {
-              type = "coreclr",
-              name = "launch - netcoredbg",
+              name = "Launch file",
+              type = "codelldb",
               request = "launch",
               program = function()
-                return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
               end,
+              cwd = '${workspaceFolder}',
+              stopOnEntry = false,
             },
           }
         end
+        dotnet_dap_setup()
+        rust_dap_setup();
       end
 
       set_key_maps();

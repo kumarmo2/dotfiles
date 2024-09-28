@@ -47,14 +47,15 @@
 )
 
 ( defalias 
-  lcl (tap-hold-next-release 250 f lctl)
-  lmt (tap-hold-next-release 250 s lmet)
-  lat (tap-hold-next-release 250 d lalt)
-  lst (tap-hold-next-release 250 a lsft)
+  lcl (tap-hold-next-release 220 a lctl)
+  lmt (tap-hold-next-release 220 s lmet)
+  lat (tap-hold-next-release 220 d lalt)
+  lst (tap-hold-next-release 220 f lsft)
 
-  rcl (tap-hold-next-release 250 h lctl)
-  rat (tap-hold-next-release 250 k lalt)
-  rst (tap-hold-next-release 250 ; lsft)
+  rcl (tap-hold-next-release 220 ; lctl)
+  rmt (tap-hold-next-release 220 l lmet)
+  rat (tap-hold-next-release 220 k lalt)
+  rst (tap-hold-next-release 220 j lsft)
 )
 
 (defsrc
@@ -70,7 +71,7 @@
   caps    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  esc  @lst @lmt @lat @lcl _    @rcl _    _    _    @rst    _    _
+  esc  @lcl @lmt @lat @lst _    _    @rst @rat @rmt @rcl _    _
   _    _    _    _    _    _    _    _    _    _    _    _                    _
   _    _    _              _              _    _    _    _               _    _    _
 )

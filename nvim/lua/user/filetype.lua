@@ -12,5 +12,6 @@ vim.filetype.add({
       return 'yaml'
     end,
     conf = 'ini',
+    kbd = 'lisp', -- used for KMonad configuration.
   },
 })

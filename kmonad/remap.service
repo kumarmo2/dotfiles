@@ -1,0 +1,12 @@
+[Unit]
+Description=Remapping service.
+
+[Service]
+WorkingDirectory=/home/kumarmo2/dotfiles/kmonad/
+ExecStart=kmonad us_ansi_tkl.kbd
+TimeoutStartSec=0
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

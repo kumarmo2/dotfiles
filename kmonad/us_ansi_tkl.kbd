@@ -70,12 +70,12 @@
 )
 
 (deflayer base
-  caps    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  esc  @lcl @lmt @lat @lst _    _    @rst @rat @rmt @rcl _    _
-  _    _    _    _    _    _    _    _    _    _    _    _                    _
-  _    _    @layerone              _              @layerone    _    _    _               _    _    _
+  caps _    _          _    _    _    _    _    _         _    _    _    _
+  _    _    _          _    _    _    _    _    _         _    _    _    _    _     _    _    _
+  _    _    _          _    _    _    _    _    _         _    _    _    _    _     _    _    _
+  esc  @lcl @lmt       @lat @lst _    _    @rst @rat      @rmt @rcl _    _
+  _    _    _          _    _    _    _    _    _         _    _    _                    _
+  _    _    @layerone            _              @layerone _    _    _               _    _    _
 )
 
 (deflayer one

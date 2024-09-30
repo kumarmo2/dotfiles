@@ -47,17 +47,20 @@
 )
 
 ( defalias 
+  layerone (layer-toggle one)
   lcl (tap-hold-next-release 220 a lctl)
   lmt (tap-hold-next-release 220 s lmet)
   lat (tap-hold-next-release 220 d lalt)
   lst (tap-hold-next-release 220 f lsft)
+  ;; retn (tap-hold-next-release 100 ret (layer-toggle one))
+  retn (tap-hold-next-release 100 ret @layerone)
 
   rcl (tap-hold-next-release 220 ; lctl)
   rmt (tap-hold-next-release 220 l lmet)
   rat (tap-hold-next-release 220 k lalt)
   rst (tap-hold-next-release 220 j lsft)
 )
-(defalias layerone (layer-toggle one))
+;; (defalias layerone (layer-toggle one))
 
 
 (defsrc
@@ -73,7 +76,7 @@
   caps _    _          _    _    _    _    _    _         _    _    _    _
   _    _    _          _    _    _    _    _    _         _    _    _    _    _     _    _    _
   _    _    _          _    _    _    _    _    _         _    _    _    _    _     _    _    _
-  esc  @lcl @lmt       @lat @lst _    _    @rst @rat      @rmt @rcl _    _
+  esc  @lcl @lmt       @lat @lst _    _    @rst @rat      @rmt @rcl _    @retn 
   _    _    _          _    _    _    _    _    _         _    _    _                    _
   _    _    @layerone            _              @layerone _    _    _               _    _    _
 )
@@ -82,7 +85,7 @@
   _    _    _    _    _    _    _    _    _    _      _    _    _
   _    _    _    _    _    _    _    _    _    _      _    _    _    _     _    _    _
   _    1    2    3    4    5    6    7    8    9      0    _    _    _     _    _    _
-  _    _    _    _    _    _    left down up   right  _    _    _
+  bspc    _    _    _    _    _    left down up   right  _    _    _
   _    _    _    _    _    _    _    _    _    _      _    _                    _
   _    _    _              _              _    _      _    _               _    _    _
 )

@@ -7,6 +7,7 @@
   "codeium.vim": { "branch": "main", "commit": "decfb541c9fd176f467991dcde8923c7db362e02" },
   "conform.nvim": { "branch": "master", "commit": "5541c54cf2ab078a537838e1fb9d96ae47f71255" },
   "diffview.nvim": { "branch": "main", "commit": "3afa6a053f680e9f1329c4a151db988a482306cd" },
+  "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "friendly-snippets": { "branch": "main", "commit": "682157939e57bd6a2c86277dfd4d6fbfce63dbac" },
   "fzf-lua": { "branch": "main", "commit": "9ecc8f6a6555cd3988c21480069aa5da001cd9df" },
   "gitsigns.nvim": { "branch": "main", "commit": "4a143f13e122ab91abdc88f89eefbe70a4858a56" },

@@ -1,6 +1,5 @@
 return {
   'nvim-lua/plenary.nvim',
-
   -- lsp
   {
     'windwp/nvim-autopairs',
@@ -16,34 +15,9 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    ft = { 'javascript', 'javascriptreact', 'html' },
+    ft = { 'javascript', 'javascriptreact', 'html', 'typescript', 'typescriptreact' },
     config = function()
       require('nvim-ts-autotag').setup()
-    end,
-  },
-
-  {
-    'Exafunction/codeium.vim',
-    lazy = false,
-    event = 'BufEnter',
-    config = function()
-      -- Change '<C-g>' here to any keycode you like.
-      vim.g.codeium_enabled = false
-      vim.keymap.set('i', '<C-g>', function()
-        return vim.fn['codeium#Accept']()
-      end, { expr = true })
-
-      vim.keymap.set('i', '<c-;>', function()
-        return vim.fn['codeium#CycleCompletions'](1)
-      end, { expr = true })
-
-      vim.keymap.set('i', '<c-,>', function()
-        return vim.fn['codeium#CycleCompletions'](-1)
-      end, { expr = true })
-
-      vim.keymap.set('i', '<c-x>', function()
-        return vim.fn['codeium#Clear']()
-      end, { expr = true })
     end,
   },
 }

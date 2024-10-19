@@ -20,7 +20,7 @@ return {
       keymap = {
         show = '<C-space>',
         hide = '<C-e>',
-        accept = '<CR>',
+        accept = '<Tab>',
         -- select_and_accept = {},
         select_prev = { '<Up>', '<C-k>' },
         select_next = { '<Down>', '<C-j>' },

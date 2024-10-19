@@ -48,17 +48,17 @@
 
 ( defalias 
   layerone (layer-toggle one)
-  lcl (tap-hold-next-release 220 a lctl)
-  lmt (tap-hold-next-release 220 s lmet)
-  lat (tap-hold-next-release 220 d lalt)
-  lst (tap-hold-next-release 220 f lsft)
-  qul1 (tap-hold-next-release 220 ' @layerone)
-  escl1 (tap-hold-next-release 220 esc @layerone)
+  lcl (tap-hold-next-release 180 a lctl)
+  lmt (tap-hold-next-release 180 s lmet)
+  lat (tap-hold-next-release 180 d lalt)
+  lst (tap-hold-next-release 180 f lsft)
+  qul1 (tap-hold-next-release 180 ' @layerone)
+  escl1 (tap-hold-next-release 180 esc @layerone)
 
-  rcl (tap-hold-next-release 220 ; lctl)
-  rmt (tap-hold-next-release 220 l lmet)
-  rat (tap-hold-next-release 220 k lalt)
-  rst (tap-hold-next-release 220 j lsft)
+  rcl (tap-hold-next-release 180 ; lctl)
+  rmt (tap-hold-next-release 180 l lmet)
+  rat (tap-hold-next-release 180 k lalt)
+  rst (tap-hold-next-release 180 j lsft)
 )
 ;; (defalias layerone (layer-toggle one))
 

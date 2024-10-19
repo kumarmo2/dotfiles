@@ -1,6 +1,5 @@
 return {
   'nvim-lua/plenary.nvim',
-  -- lsp
   {
     'windwp/nvim-autopairs',
     lazy = false,
@@ -8,7 +7,6 @@ return {
       require('nvim-autopairs').setup({})
     end,
   },
-
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },

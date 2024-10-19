@@ -25,96 +25,8 @@ local map_lsp_keymaps = function(bufnr, opts)
 end
 
 return {
-  { 'folke/neodev.nvim',    opts = {} },
-  { 'hrsh7th/cmp-buffer',   event = 'VeryLazy' },
-  { 'hrsh7th/cmp-path',     event = 'VeryLazy' },
-  { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
+  { 'folke/neodev.nvim', opts = {} },
   'onsails/lspkind.nvim', -- lsp icons pack
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'VeryLazy',
-    config = function()
-      local cmp = require('cmp')
-      local luasnip = require("luasnip");
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            -- vim.snippet.expand(args.body)
-            luasnip.lsp_expand(args.body);
-          end,
-        },
-        window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-k>'] = cmp.mapping.select_prev_item(),
-          ['<C-j>'] = cmp.mapping.select_next_item(),
-          ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
-          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-          ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-          ['<C-e>'] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-          }),
-          ['<CR>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              if luasnip.expandable() then
-                luasnip.expand()
-              else
-                cmp.confirm({
-                  select = true,
-                })
-              end
-            else
-              fallback()
-            end
-          end),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.locally_jumpable(1) then
-              luasnip.jump(1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-        }),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'nvim_lua' },
-          { name = 'buffer' },
-          { name = 'path' },
-        }),
-        formatting = {
-          format = function(entry, vim_item)
-            if vim.tbl_contains({ 'path' }, entry.source.name) then
-              local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
-              if icon then
-                vim_item.kind = icon
-                vim_item.kind_hl_group = hl_group
-                return vim_item
-              end
-            end
-            return require('lspkind').cmp_format({ with_text = false })(entry, vim_item)
-          end,
-        },
-      })
-    end,
-  },
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   'Hoffs/omnisharp-extended-lsp.nvim',
@@ -153,7 +65,8 @@ return {
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      -- capabilities = vim.tbl_deep_extend('force', capabilities)
 
       local servers = {
         lua_ls = {
@@ -174,8 +87,8 @@ return {
         dockerls = {},
         tailwindcss = {},
         terraformls = {},
-        tsserver = {},
-        eslint = {},
+        -- tsserver = {},
+        -- eslint = {},
         yamlls = {
           settings = {
             ['yaml'] = {

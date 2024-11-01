@@ -18,21 +18,32 @@ return {
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        show = '<C-space>',
-        hide = '<C-e>',
-        accept = '<Tab>',
+        ['<C-e>'] = { 'hide' },
+        ['<C-CR>'] = { 'accept' },
         -- select_and_accept = {},
-        select_prev = { '<Up>', '<C-k>' },
-        select_next = { '<Down>', '<C-j>' },
+        ['<C-k>'] = { 'select_prev' },
+        ['<Up>'] = { 'select_prev' },
+        -- select_prev = { '<Up>' },
+        -- select_next = { '<Down>' },
+        ['<Down>'] = { 'select_next' },
+        ['<C-j>'] = { 'select_next' },
 
-        show_documentation = '<C-space>',
-        hide_documentation = '<C-space>',
-        scroll_documentation_up = '<C-b>',
-        scroll_documentation_down = '<C-f>',
+        ['<C-space>'] = { 'show_documentation' },
+        -- ['<C-space>']= {'hide_documentation'},
+        ['<C-b>'] = { 'scroll_documentation_up' },
+        ['<C-f>'] = { 'scroll_documentation_down' },
 
-        snippet_forward = '<Tab>',
-        snippet_backward = '<S-Tab>',
+        -- snippet_forward = {},
+        ['<S-Tab>'] = { 'snippet_backward' },
       },
+      sources = {
+        -- list of enabled providers
+        completion = {
+          -- enabled_providers = { 'lsp', 'path', 'snippets', 'buffer' },
+          enabled_providers = { 'lsp', 'path', 'buffer' },
+        }
+      },
+
       highlight = {
         -- sets the fallback highlight groups to nvim-cmp's highlight groups
         -- useful for when your theme doesn't support blink.cmp

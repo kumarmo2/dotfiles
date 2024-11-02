@@ -68,7 +68,7 @@ return {
         playground = {
           enable = true,
           disable = {},
-          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
           persist_queries = false, -- Whether the query persists across vim sessions
           keybindings = {
             toggle_query_editor = 'o',
@@ -84,6 +84,18 @@ return {
           },
         },
       })
+
+      -- add c3 support.
+      -- Follow `https://github.com/c3lang/tree-sitter-c3?tab=readme-ov-file#neovim for complete installation.`
+      local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+      ---@diagnostic disable-next-line: inject-field
+      parser_config.c3 = {
+        install_info = {
+          url = "https://github.com/c3lang/tree-sitter-c3",
+          files = { "src/parser.c", "src/scanner.c" },
+          branch = "main",
+        },
+      }
 
       opt.foldlevel = 20
       opt.foldmethod = 'expr'

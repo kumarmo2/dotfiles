@@ -1,0 +1,259 @@
+clear
+ls
+ll
+clear
+ls
+ls -l
+clear
+ls -al
+clear
+ls
+which ls
+clear
+ls
+ls -l
+clear
+ls -a
+clear
+dotfiles/
+fzn
+nvim/
+nvim
+clear
+ls
+clear
+man tmux
+tmux
+clear
+cleasr
+clear
+fzcd
+clear
+open init.lua
+clear
+cd
+ya
+yazi
+clear
+ll
+ls -a 
+ls -a | where name = 'dotfiles'
+ls -a | where name == dotfiles
+ls -a | rg -i nu
+clear
+$nu.env-path
+nvim .config/nushell/env.nu
+clear
+cleasr
+clear
+ya
+yazi
+clear
+ls
+ls -a | where type == dir
+ls -a | where type == "dir"
+clear
+ls | where type == "dir"
+ls | where type == dir
+clear
+ps
+btm
+clear
+ls
+clear
+yazi 
+clear
+)
+clear
+["hello" "world"] | describe 
+["hello" "world"]
+clear
+yazi
+clear
+yazi
+clear
+ln -s ~/dotfiles/starship.toml ~/.co
+ln -s ~/dotfiles/starship.toml ~/.config/
+clear
+dev/kumarmo2/
+clear
+ll
+ls
+mkdir maelstrom-challenge-rust
+cd maelstrom-challenge-rust/
+clear
+git init
+..
+rm -rf maelstrom-challenge-rust/
+cd maelstrom-challenge-rust/
+mkdir maelstrom-challenge-rust
+cd maelstrom-challenge-rust/
+clear
+ll
+git init --bare
+ll
+git worktree list
+clear
+tldr git worktree
+git worktree ./master master
+git worktree add ./master master
+git worktree add -b ./master master
+ll
+ls
+git brances
+git branch
+cd worktrees/
+ll
+ls
+..
+git worktree add -b master master
+ll
+ls
+cd master/
+git status
+clear
+git commit --allow-empty "init empty commit"
+git commit --allow-empty -m "init empty commit"
+gs
+c
+clear
+cd ..
+git remote add origin git@github.com:kumarmo2/maelstrom-rust.git
+git push origin master
+..
+rm -rf maelstrom-challenge-rust/
+git clone --bare git@github.com:kumarmo2/maelstrom-rust.git
+cd maelstrom-rust.git/
+ll
+ls
+git worktree list
+git worktree add master master
+cd master
+clear
+ll
+ls
+clear
+cargo init
+ls
+cargo run
+clear
+cargo run
+clear
+rustup update
+cargo add maelstrom-node
+clear
+cargo build
+clear
+fzn
+nvim
+clear
+fzn
+ll
+ls
+cargo build
+clear
+nvim
+cargo build echo
+clear
+ls
+tree
+clear
+cargo build
+clear
+ls
+cargo add async-trait
+nvim
+cargo build
+clear
+cargo build
+clear
+cargo add serde serde-json
+cargo build
+clear
+cargo add tokio
+cargo build
+clear
+cargo build
+clear
+cargo build
+clear
+cargo build --release
+clear
+wget https://github.com/jepsen-io/maelstrom/releases/download/v0.2.3/maelstrom.tar.bz2
+tar xvf maelstrom.tar.bz2
+ll
+clear
+all
+clear
+ls
+./maelstrom/maelstrom test -w echo --bin target/release/echo --node-count 1 --time-limit 10
+cargo build --release &&./maelstrom/maelstrom test -w echo --bin target/release/echo --node-count 1 --time-limit 10
+cargo build --release && ./maelstrom/maelstrom test -w echo --bin target/release/echo --node-count 1 --time-limit 10
+clear
+cargo build --release && ./maelstrom/maelstrom test -w echo --bin target/release/echo --node-count 1 --time-limit 10
+cargo build --release and ./maelstrom/maelstrom test -w echo --bin target/release/echo --node-count 1 --time-limit 10
+cargo build --release ; ./maelstrom/maelstrom test -w echo --bin target/release/echo --node-count 1 --time-limit 10
+clear
+lg
+clear
+lazygit 
+git push origin master
+systemctl sleep
+sysreboot
+reboot
+clear
+["hello" "world"] | get $.1
+ll
+clear
+cd
+dev/
+ls
+mkdir nu
+cd nu/
+save practice.nu
+"" =
+"" | save practice.nu
+nvim practice.nu
+clear
+ls
+clear
+source practice.nu
+clear
+nvim
+gplc
+git pull origin master
+nvim
+fzn
+nvim practice.nu
+fzn
+source practice.nu
+clear
+exit
+nu
+let table = [ "manya", "gorgan"]
+$table
+$table.c
+$table.c?
+$table.c? == null
+let rec = { a: 1}
+rec.b?
+$rec.b?
+$rec.b? == true
+$rec.b? == null
+clear
+open ../rust/codecrafters-kafka-rust/Cargo.toml
+$table
+$rec
+clear
+alias ll = ls -al
+ll
+ls
+clear
+ll
+clear
+scope aliases
+config nu
+clear
+lazygit 
+clear
+config nu

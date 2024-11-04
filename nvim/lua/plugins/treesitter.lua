@@ -6,12 +6,16 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      { "nushell/tree-sitter-nu", build = ":TSUpdate nu" }
+    },
     build = function()
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
     config = function()
       local opt = vim.opt
 
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup({
         ensure_installed = { 'rust', 'c', 'go', 'css', 'html', 'lua', 'javascript', 'python', 'c_sharp' },
 

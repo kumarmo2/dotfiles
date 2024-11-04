@@ -229,9 +229,9 @@ $env.config = {
     }
 
     cursor_shape: {
-        emacs: line # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
+        emacs: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
         vi_insert: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (block is the default)
-        vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
+        vi_normal: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
     color_config: $dark_theme # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
@@ -240,7 +240,7 @@ $env.config = {
     buffer_editor: null # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
-    edit_mode: emacs # emacs, vi
+    edit_mode: vi # emacs, vi
     shell_integration: {
         # osc2 abbreviates the path if in the home_dir, sets the tab/window title, shows the running command in the tab/window title
         osc2: true
@@ -896,45 +896,6 @@ $env.config = {
         }
     ]
 }
-
-alias ll = ls -al
-
-# git aliases
-alias gd = git diff
-alias ga = git add
-alias gs = git status
-alias gc = git commit
-alias gp = git push origin
-alias gpl = git pull origin
-alias gch = git checkout
-
-# dotnet alias
-alias dt = dotnet
-alias dtv = dotnet --version
-alias dtc = dotnet clean
-alias dtb = dotnet build
-alias dtr = dotnet run
-
-alias lg = lazygit
-
-
-
-alias rm = trash-put
-alias code = flatpak run com.visualstudio.code
-# alias gitco = git branch | fzf | xargs git checkout
-# alias fzcd = 'pushd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
-alias fzn = nvim (fzf)
-alias fzv = vim (fzf)
-
-def greet [name] {
-  $"Hello, ($name)!"
-}
-
-def greet2 [] {
-    $"sdfdf"
-}
-def gitco [] {
-    git branch | fzf | str trim | git checkout $in
-}
-
-
+use ~/dotfiles/nushell/alias.nu *
+use ~/dotfiles/nushell/commands.nu *
+use ~/.cache/starship/init.nu

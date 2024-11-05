@@ -1,3 +1,5 @@
+export alias tmux = tmux -u # -u is for unicode support. 
+
 export alias ll = ls -al
 export alias lg = lazygit
 

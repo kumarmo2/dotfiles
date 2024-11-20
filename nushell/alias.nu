@@ -9,6 +9,7 @@ export alias ga = git add
 export alias gs = git status
 export alias gc = git commit
 export alias gp = git push origin
+export alias gpl = git pull origin
 export alias gplc = git pull origin (git branch --show-current)
 export alias gphc = git push origin (git branch --show-current)
 export alias gch = git checkout

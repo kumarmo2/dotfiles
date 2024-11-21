@@ -12,7 +12,6 @@ return {
         scope = {
           enabled = true,
           show_start = false,
-          highlight = { 'Function', 'Label' },
         },
         -- for example, context is off by default, use this to turn it on
         -- show_current_context = true,

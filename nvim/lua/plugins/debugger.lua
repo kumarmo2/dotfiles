@@ -1,7 +1,24 @@
+local keys_to_handler = {
+  ['<F5>'] = ':lua require(\'dap\').continue()<CR>',
+  ['<F10>'] = ':lua require(\'dap\').step_over()<CR>',
+  ['<F11>'] = ':lua require(\'dap\').step_into()<CR>',
+  ['<F12>'] = ':lua require(\'dap\').step_out()<CR>',
+  ['<Leader>b'] = ':lua require(\'dap\').toggle_breakpoint()<CR>',
+}
+
+local get_keys = function()
+  local keys = {}
+  for k, _ in pairs(keys_to_handler) do
+    table.insert(keys, k)
+  end
+  return keys
+end
+
 return {
   {
     'mfussenegger/nvim-dap',
     dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
+    keys = get_keys(),
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
@@ -23,11 +40,10 @@ return {
       end
 
       local set_key_maps = function()
-        vim.keymap.set('n', '<F5>', dap.continue)
-        vim.keymap.set('n', '<F10>', dap.step_over)
-        vim.keymap.set('n', '<F11>', dap.step_into)
-        vim.keymap.set('n', '<F12>', dap.step_out)
-        vim.keymap.set('n', '<Leader>b', dap.toggle_breakpoint)
+        local opts = { noremap = true, silent = true }
+        for k, v in pairs(keys_to_handler) do
+          vim.api.nvim_set_keymap('n', k, v, opts)
+        end
       end
 
       local configure_dap_for_languages = function()
@@ -92,6 +108,6 @@ return {
       setup_dapui();
       configure_dap_for_languages();
     end,
-    lazy = false
+    lazy = true
   }
 }

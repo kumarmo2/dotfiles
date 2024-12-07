@@ -4,7 +4,10 @@ local wezterm = require 'wezterm'
 local config = {}
 bindings.add_key_bindings(config)
 
-config.color_scheme = 'Gruvbox dark, hard (base16)'
+-- config.color_scheme = 'Everforest Dark Hard (Gogh)'
+-- config.color_scheme = 'Everforest Light (Gogh)'
+-- config.color_scheme = 'Everforest Dark (Gogh)'
+config.color_scheme = 'Everforest Dark Hard (Gogh)'
 
 config.hide_tab_bar_if_only_one_tab = true
 config.disable_default_key_bindings = true

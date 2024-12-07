@@ -34,19 +34,20 @@ return {
       vim.o.background = 'dark'
     end,
   },
-  -- {
-  --   'neanias/everforest-nvim',
-  --   version = false,
-  --   lazy = false,
-  --   priority = 1001, -- make sure to load this before all the other start plugins
-  --   -- Optional; default configuration will be used if setup isn't called.
-  --   config = function()
-  --     require('everforest').setup({
-  --       background = 'hard',
-  --       -- Your config here
-  --     })
-  --   end,
-  -- },
+  {
+    'neanias/everforest-nvim',
+    version = false,
+    lazy = false,
+    priority = 1001, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require('everforest').setup({
+        background = 'hard',
+        transparent_background = true,
+        transparent_background_level = 2
+      })
+    end,
+  },
   {
     'navarasu/onedark.nvim',
     priority = 1000,

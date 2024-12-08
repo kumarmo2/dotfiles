@@ -67,7 +67,7 @@ setKeyMap('v', 'K', ':m \'<-2<CR>gv=gv', opts)
 setKeyMap('n', 'vv', 'zzV', opts)
 -- setKeyMap('n', 'vx', ':lua require("stackmap").select()<CR>', { noremap = true });
 
-setKeyMap('n', '<leader>ss', ':so %<CR>', { noremap = true })
+setKeyMap('n', '<leader>ss', ':so %<CR>', opts)
 
 -- open nvim config folder in new tab
 setKeyMap('v', 'Y', '"+y', opts)

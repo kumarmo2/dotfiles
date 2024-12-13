@@ -23,7 +23,6 @@ end
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    print("VimEnter callback")
     local timer = vim.uv.new_timer()
     if timer == nil then
       return

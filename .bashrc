@@ -89,6 +89,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'
+alias lls='ls -alF --total-size'
 alias la='ls -A'
 alias l='ls -CF'
 alias ls='eza'

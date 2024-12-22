@@ -113,7 +113,7 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       require('mason-lspconfig').setup({ ensure_installed = ensure_installed })
-      require('neodev').setup() -- For neovim dev.
+
 
       -- NOTE:: automatically setup lsp servers. For more info check
       -- `:h mason-lspconfig-automatic-server-setup`

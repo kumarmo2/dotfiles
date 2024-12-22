@@ -1,4 +1,3 @@
--- local keys = vim.tbl_keys(keys_to_command_map)
 return {
   {
     "ibhagwan/fzf-lua",

@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-  callback = function(ev)
+  callback = function()
     vim.opt.number = false
     vim.opt.relativenumber = false;
     -- I am not exactly sure how this works, but below 2 lines make the window transparent.

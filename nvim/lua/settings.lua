@@ -26,7 +26,6 @@ vim.o.backup = false
 -- current buffer, and you try moving to some another buffer, vim won't let you
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
-vim.o.guifont = 'Caskaydia Cove Nerd Font'
 vim.o.syntax = 'enable'
 vim.cmd.colorscheme('everforest')
 vim.o.cursorline = true

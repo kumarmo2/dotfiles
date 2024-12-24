@@ -17,6 +17,6 @@ config.font =
 
 -- Spawn a bash shell in non-login shell
 
-config.default_prog = { "/bin/bash" }
+-- config.default_prog = { "/bin/bash" }
 
 return config

@@ -11,7 +11,7 @@ return {
         ['<leader>p'] = ':FzfLua files<CR>',
         ['<leader>;'] = ':FzfLua buffers<CR>',
         ['<leader>fg'] = ':FzfLua live_grep<CR>',
-        ['<leader>gf'] = ':Telescope git_files<CR>',
+        ['<leader>gf'] = ':FzfLua git_files<CR>',
         ['<leader>th'] = ':FzfLua helptags<CR>',
       }
       local opts = { noremap = true, silent = true }

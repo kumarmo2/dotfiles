@@ -72,4 +72,5 @@ setKeyMap('n', '<leader>ss', ':so %<CR>', opts)
 -- open nvim config folder in new tab
 setKeyMap('v', 'Y', '"+y', opts)
 
--- setKeyMap('n', '<C-_>', 'gcc', {})
+
+setKeyMap("t", "<esc>", "<C-\\><C-n>", opts)

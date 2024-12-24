@@ -73,4 +73,4 @@ setKeyMap('n', '<leader>ss', ':so %<CR>', opts)
 setKeyMap('v', 'Y', '"+y', opts)
 
 
-setKeyMap("t", "<esc>", "<C-\\><C-n>", opts)
+setKeyMap("t", "<esc><esc>", "<C-\\><C-n>", opts)

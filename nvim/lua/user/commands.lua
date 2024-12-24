@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
   callback = function()
     vim.opt.number = false;
     vim.opt.relativenumber = false;
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i", true, false, true), "n", false) -- enter the insert mode.
     -- I am not exactly sure how this works, but below 2 lines make the window transparent.
     vim.api.nvim_win_set_option(0, "winhighlight", "Normal:TransparentBg")
     vim.cmd("highlight TransparentBg guibg=NONE")
@@ -36,6 +37,6 @@ vim.keymap.set("n", "<leader>ft", function()
     border = 'rounded'
   });
   if not term_available then
-    vim.cmd("terminal tmux attach-session -t nvim-ft ||tmux  new-session -s nvim-ft")
+    vim.cmd("terminal tmux attach-session -t nvim-ft || tmux new-session -s nvim-ft")
   end
 end)

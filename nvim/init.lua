@@ -19,3 +19,5 @@ vim.g.markdown_fenced_languages = {
 require('settings')
 require('user.filetype')
 require('user.commands')
+require('user.float_focus')
+require('user.terminal')

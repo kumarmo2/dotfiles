@@ -1,7 +1,9 @@
 local M = {}
 local state = {
   float_win_id = -1,
-  float_buf_id = -1
+  float_buf_id = -1,
+  attached_buffs = {}, -- right now we are treating as array. maybe we can convert it
+  -- to a map, if bottleneck is the lookup.
 }
 
 M.state = state
@@ -30,8 +32,10 @@ local function open_floating_window()
     border = 'rounded', -- Change to 'single', 'double', etc., for other border styles
   }
 
-  state.float_buf_id = vim.api.nvim_get_current_buf();
+  local curr_buff = vim.api.nvim_get_current_buf();
+  state.float_buf_id = curr_buff;
   state.float_win_id = vim.api.nvim_open_win(0, true, opts) -- 0 indicates the current buffer
+  table.insert(state.attached_buffs, curr_buff);
 
   vim.api.nvim_set_option_value("winhighlight", "Normal:TransparentBg",
     { win = state.float_win_id })
@@ -40,41 +44,31 @@ local function open_floating_window()
 
   vim.api.nvim_buf_set_keymap(state.float_buf_id, "n", "<leader><cr>", ":CloseFloat<CR>", {})
 
-  -- print(state.float_win_id)
-  -- print(vim.fn.win_getid(state.float_win_id))
-  -- vim.api.nvim_create_autocmd('WinClosed', {
-  --   group = vim.api.nvim_create_augroup("float-win-close", { clear = true }),
-  --   pattern = "*",
-  --   callback = function(args)
-  --     vim.notify("winclosed called", vim.log.levels.WARN);
-  --     print(args.match)
-  --     vim.api.nvim_buf_del_keymap(state.float_buf_id, "n", "<leader><cr>")
-  --   end
-  -- })
+  vim.api.nvim_create_autocmd('BufWinEnter', {
+    pattern = "*",
+    callback = function()
+      -- print("called BufWinEnter")
+      if state.float_win_id == nil or not vim.api.nvim_win_is_valid(state.float_win_id) then
+        return
+      end
+      local curr_win = vim.api.nvim_get_current_win()
+      if curr_win ~= state.float_win_id then
+        return
+      end
+      local new_buff = vim.api.nvim_get_current_buf();
 
-  -- vim.api.nvim_create_autocmd('WinEnter', {
-  --   pattern = tostring(state.float_win_id),
-  --   group = vim.api.nvim_create_augroup("float-win-close", { clear = true }),
-  --   callback = function()
-  --     -- vim.api.nvim_set_option_value("winhighlight", "Normal:TransparentBg",
-  --     --   { win = state.float_win_id })
-  --     -- vim.api.nvim_set_option_value("number", true, { win = state.float_win_id })
-  --     -- vim.api.nvim_set_option_value("relativenumber", true, { win = state.float_win_id })
-  --     --
-  --     -- vim.api.nvim_buf_set_keymap(state.float_buf_id, "n", "<leader><cr>", "<cmd>CloseFloat<CR>", {})
-  --   end
-  -- })
-  -- if this floating window is closed or even just left, close the window.
-  -- vim.api.nvim_create_autocmd("WinLeave", {
-  --   group = vim.api.nvim_create_augroup("float-buf-win-leave", { clear = true }),
-  --   buffer = state.float_buf_id,
-  --   callback = function()
-  --     if not vim.api.nvim_win_is_valid(state.float_win_id) or not vim.api.nvim_buf_is_valid(state.float_buf_id) then
-  --       return;
-  --     end
-  --     vim.cmd("CloseFloat")
-  --   end,
-  -- })
+      local table_contains = require("utils").contains
+      if table_contains(state.attached_buffs, new_buff) then
+        return
+      end
+      table.insert(state.attached_buffs, new_buff);
+      vim.api.nvim_buf_set_keymap(new_buff, "n", "<leader><cr>", ":CloseFloat<CR>", {})
+      vim.api.nvim_set_option_value("winhighlight", "Normal:TransparentBg",
+        { win = state.float_win_id })
+      vim.api.nvim_set_option_value("number", true, { win = state.float_win_id })
+      vim.api.nvim_set_option_value("relativenumber", true, { win = state.float_win_id })
+    end
+  })
 end
 
 local close_float = function()
@@ -82,7 +76,9 @@ local close_float = function()
     vim.notify("no managed float win found", vim.log.levels.WARN)
     return
   end
-  vim.api.nvim_buf_del_keymap(state.float_buf_id, "n", "<leader><cr>")
+  for _, v in ipairs(state.attached_buffs) do
+    vim.api.nvim_buf_del_keymap(v, "n", "<leader><cr>")
+  end
   vim.api.nvim_win_close(state.float_win_id, true) -- true to force close
 end
 

@@ -1,4 +1,3 @@
-local v = vim
 local M = {}
 
 local count_items = function(iter)
@@ -13,6 +12,18 @@ local count_items = function(iter)
   return count
 end
 
+local contains = function(tbl, val)
+  for _, v in pairs(tbl) do
+    if v == val then
+      return true
+    end
+  end
+  return false
+end
+
+
+
 M.count_items = count_items
+M.contains = contains
 
 return M

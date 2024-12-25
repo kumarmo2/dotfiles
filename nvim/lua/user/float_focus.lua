@@ -38,36 +38,61 @@ local function open_floating_window()
   vim.api.nvim_set_option_value("number", true, { win = state.float_win_id })
   vim.api.nvim_set_option_value("relativenumber", true, { win = state.float_win_id })
 
+  vim.api.nvim_buf_set_keymap(state.float_buf_id, "n", "<leader><cr>", ":CloseFloat<CR>", {})
 
+  -- print(state.float_win_id)
+  -- print(vim.fn.win_getid(state.float_win_id))
+  -- vim.api.nvim_create_autocmd('WinClosed', {
+  --   group = vim.api.nvim_create_augroup("float-win-close", { clear = true }),
+  --   pattern = "*",
+  --   callback = function(args)
+  --     vim.notify("winclosed called", vim.log.levels.WARN);
+  --     print(args.match)
+  --     vim.api.nvim_buf_del_keymap(state.float_buf_id, "n", "<leader><cr>")
+  --   end
+  -- })
+
+  -- vim.api.nvim_create_autocmd('WinEnter', {
+  --   pattern = tostring(state.float_win_id),
+  --   group = vim.api.nvim_create_augroup("float-win-close", { clear = true }),
+  --   callback = function()
+  --     -- vim.api.nvim_set_option_value("winhighlight", "Normal:TransparentBg",
+  --     --   { win = state.float_win_id })
+  --     -- vim.api.nvim_set_option_value("number", true, { win = state.float_win_id })
+  --     -- vim.api.nvim_set_option_value("relativenumber", true, { win = state.float_win_id })
+  --     --
+  --     -- vim.api.nvim_buf_set_keymap(state.float_buf_id, "n", "<leader><cr>", "<cmd>CloseFloat<CR>", {})
+  --   end
+  -- })
   -- if this floating window is closed or even just left, close the window.
-  vim.api.nvim_create_autocmd("WinLeave", {
-    group = vim.api.nvim_create_augroup("float-buf-win-leave", { clear = true }),
-    buffer = state.float_buf_id,
-    callback = function()
-      if not vim.api.nvim_win_is_valid(state.float_win_id) or not vim.api.nvim_buf_is_valid(state.float_buf_id) then
-        return;
-      end
-      vim.cmd("CloseFloat")
-    end,
-  })
+  -- vim.api.nvim_create_autocmd("WinLeave", {
+  --   group = vim.api.nvim_create_augroup("float-buf-win-leave", { clear = true }),
+  --   buffer = state.float_buf_id,
+  --   callback = function()
+  --     if not vim.api.nvim_win_is_valid(state.float_win_id) or not vim.api.nvim_buf_is_valid(state.float_buf_id) then
+  --       return;
+  --     end
+  --     vim.cmd("CloseFloat")
+  --   end,
+  -- })
 end
 
-local closeFloat = function()
+local close_float = function()
   if state.float_win_id == nil or not vim.api.nvim_win_is_valid(state.float_win_id) then
     vim.notify("no managed float win found", vim.log.levels.WARN)
     return
   end
+  vim.api.nvim_buf_del_keymap(state.float_buf_id, "n", "<leader><cr>")
   vim.api.nvim_win_close(state.float_win_id, true) -- true to force close
-  state.float_win_id = -1
-  state.float_buf_id = -1
 end
+
 vim.api.nvim_create_user_command('OpenFloat', open_floating_window, {})
-vim.api.nvim_create_user_command('CloseFloat', closeFloat, {})
+vim.api.nvim_create_user_command('CloseFloat', close_float, {})
 
 
 vim.keymap.set("n", "<leader>of", ":OpenFloat<CR>", {})
 vim.keymap.set("n", "<leader>cf", ":CloseFloat<CR>", {})
 
 
-M.closeFloat = closeFloat
+M.closeFloat = close_float
 return M

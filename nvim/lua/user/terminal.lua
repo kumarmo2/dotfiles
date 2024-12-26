@@ -33,8 +33,8 @@ vim.keymap.set("n", "<leader>ft", function()
   local ui = vim.api.nvim_list_uis()[1]
   local width = ui.width
   local height = ui.height
-  local float_width = math.floor(width * 0.8)         -- 80% of the screen width
-  local float_height = math.floor(height * 0.8)       -- 80% of the screen height
+  local float_width = math.floor(width * 0.95)        -- x% of the screen width
+  local float_height = math.floor(height * 0.95)      -- x% of the screen height
   local col = math.floor((width - float_width) / 2)   -- Center horizontally
   local row = math.floor((height - float_height) / 2) -- Center vertically
 

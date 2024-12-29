@@ -40,8 +40,9 @@ local function open_floating_window()
     height = float_height,
     col = col,
     row = row,
-    style = 'minimal',
-    border = 'rounded', -- Change to 'single', 'double', etc., for other border styles
+    zindex = 10,
+    -- style = 'minimal',
+    -- border = 'single', -- Change to 'single', 'double', etc., for other border styles
   }
 
   local curr_buff = vim.api.nvim_get_current_buf();

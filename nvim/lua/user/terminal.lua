@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>ft", function()
   local width = ui.width
   local height = ui.height
   local float_width = math.floor(width * 0.95)        -- x% of the screen width
-  local float_height = math.floor(height * 0.95)      -- x% of the screen height
+  local float_height = math.floor(height * 0.90)      -- x% of the screen height
   local col = math.floor((width - float_width) / 2)   -- Center horizontally
   local row = math.floor((height - float_height) / 2) -- Center vertically
 
@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>ft", function()
     height = float_height,
     col = col, -- / 2,
     row = row, -- / 2,
-    border = 'rounded'
+    -- border = 'rounded'
   });
   local tmux_session = "nvim-ft-" .. cwd
   tmux_session = string.gsub(tmux_session, "%.", "_")

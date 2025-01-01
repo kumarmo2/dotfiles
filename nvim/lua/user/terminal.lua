@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>ft", function()
     height = float_height,
     col = col, -- / 2,
     row = row, -- / 2,
-    -- border = 'rounded'
+    border = 'single'
   });
   local tmux_session = "nvim-ft-" .. cwd
   tmux_session = string.gsub(tmux_session, "%.", "_")

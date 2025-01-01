@@ -42,7 +42,7 @@ local function open_floating_window()
     row = row,
     zindex = 10,
     -- style = 'minimal',
-    -- border = 'single', -- Change to 'single', 'double', etc., for other border styles
+    border = 'single', -- Change to 'single', 'double', etc., for other border styles
   }
 
   local curr_buff = vim.api.nvim_get_current_buf();

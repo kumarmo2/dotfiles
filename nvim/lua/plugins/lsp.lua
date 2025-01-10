@@ -42,7 +42,7 @@ return {
   'Hoffs/omnisharp-extended-lsp.nvim',
   {
     'neovim/nvim-lspconfig',
-    dependencies = { 'saghen/blink.cmp' },
+    -- dependencies = { 'saghen/blink.cmp' },
     lazy = false,
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {

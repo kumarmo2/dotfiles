@@ -1,7 +1,6 @@
 return {
   {
     'saghen/blink.cmp',
-    dependencies = 'rafamadriz/friendly-snippets',
     version = 'v0.*',
     build = 'cargo build --release',
     ---@module 'blink.cmp'

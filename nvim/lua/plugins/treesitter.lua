@@ -7,21 +7,25 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-      { "nushell/tree-sitter-nu", build = ":TSUpdate nu" }
+      -- { "nushell/tree-sitter-nu", build = ":TSUpdate nu" }
     },
     build = function()
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
     config = function()
-      local opt = vim.opt
-
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { 'rust', 'c', 'go', 'css', 'html', 'lua', 'javascript', 'python', 'c_sharp' },
+        ensure_installed = { 'rust', 'c', 'go', 'css', 'html', 'lua', 'javascript', 'typescript', 'python', 'c_sharp' },
 
         -- Install languages synchronously (only applied to `ensure_installed`)
         sync_install = false,
 
+        autotag = {
+          enable = true
+        },
+        autopairs = {
+          enable = true
+        },
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
@@ -101,9 +105,9 @@ return {
         },
       }
 
-      opt.foldlevel = 20
-      opt.foldmethod = 'expr'
-      opt.foldexpr = 'nvim_treesitter#foldexpr()'
+      vim.opt.foldlevel = 20
+      vim.opt.foldmethod = 'expr'
+      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
     end,
   },
 }

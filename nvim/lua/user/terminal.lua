@@ -3,7 +3,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false;
-    -- require("user.float_focus").closeFloat()
     -- I am not exactly sure how this works, but below 2 lines make the window transparent.
     vim.api.nvim_win_set_option(0, "winhighlight", "Normal:TransparentBg")
     vim.cmd("highlight TransparentBg guibg=NONE")
@@ -21,14 +20,10 @@ end
 vim.keymap.set("n", "<leader>ft", function()
   local cwd = vim.fn.getcwd()
   local buf_id = directory_to_buf_id[cwd]
-  local term_available = buf_id ~= nil and buf_id ~= -1
-  local win_height = vim.api.nvim_win_get_height(0)
-  local win_width = vim.api.nvim_win_get_width(0)
-  if not term_available then
+  local term_buf_available = buf_id ~= nil and buf_id ~= -1
+  if not term_buf_available then
     directory_to_buf_id[cwd] = vim.api.nvim_create_buf(false, false)
   end
-
-  -- require("user.float_focus").closeFloat()
 
   local ui = vim.api.nvim_list_uis()[1]
   local width = ui.width
@@ -46,6 +41,12 @@ vim.keymap.set("n", "<leader>ft", function()
     row = row, -- / 2,
     border = 'single'
   });
+
+  if term_buf_available then
+    vim.cmd("startinsert")
+    return
+  end
+
   local tmux_session = "nvim-ft-" .. cwd
   tmux_session = string.gsub(tmux_session, "%.", "_")
   local is_tmux_session_available = tmux_session_exists(tmux_session)

@@ -69,8 +69,15 @@ setKeyMap('n', 'vv', 'zzV', opts)
 
 setKeyMap('n', '<leader>ss', ':so %<CR>', opts)
 
--- open nvim config folder in new tab
+-- copy pasta bindings
 setKeyMap('v', 'Y', '"+y', opts)
+setKeyMap('n', '<leader>p', '""p', opts)  -- paste from unnamed register
+setKeyMap('n', '<leader>P', '""P', opts)  -- paste from unnamed register
+setKeyMap('n', 'p', '"0p', opts)          -- paste from 0 register(this is the most recent yank)
+setKeyMap('n', 'P', '"0P', opts)          -- paste from 0 register(this is the most recent yank)
+setKeyMap('n', '<leader>gp', '"+p', opts) -- paste from + register(this is paste from system clipboard)
+setKeyMap('n', '<leader>gP', '"+P', opts) -- paste from + register(this is paste from system clipboard)
 
 
+-- terminal binding
 setKeyMap("t", "<esc><esc>", "<C-\\><C-n>", opts)

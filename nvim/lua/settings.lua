@@ -27,7 +27,7 @@ vim.o.backup = false
 -- do that. By setting `hidden` it enables this behavior.
 vim.o.hidden = true
 vim.o.syntax = 'enable'
-vim.cmd.colorscheme('everforest')
+vim.cmd.colorscheme('gruvbox')
 vim.o.cursorline = true
 vim.o.background = 'dark'
 vim.termguicolors = true
@@ -46,3 +46,14 @@ vim.opt.signcolumn = 'yes'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff  = 10
 vim.o.updatetime   = 2000 -- Check `CursorHold` event and updatetime friendly manual.
+
+
+if vim.g.neovide then
+  -- vim.keymap.set('n', '<D-s>', ':w<CR>')      -- Save
+  vim.keymap.set('v', '<C-S-c>', '"+y')      -- Copy
+  vim.keymap.set('n', '<C-S-v>', '"+P')      -- Paste normal mode
+  vim.keymap.set('i', '<C-S-v>', '<esc>"+P') -- Paste normal mode
+  vim.keymap.set('v', '<C-S-v>', '"+P')      -- Paste visual mode
+  -- vim.keymap.set('c', '<D-v>', '<C-R>+')      -- Paste command mode
+  -- vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+end

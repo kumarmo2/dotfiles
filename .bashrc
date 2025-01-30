@@ -271,6 +271,7 @@ export PATH=$PATH:$HOME/softwares/jdk-21.0.1/bin/
 export PATH=$PATH:$HOME/softwares/azure-functions-cli/
 export PATH=$PATH:/usr/sbin/
 export PATH=$PATH:$HOME/dev/oss/ILSpy/ICSharpCode.ILSpyCmd/bin/Release/net8.0/publish
+export PATH=$PATH:$HOME/.local/kitty/bin
 export JAVA_HOME=$HOME/softwares/jdk-21.0.1
 
 export AWS_PROFILE=personal

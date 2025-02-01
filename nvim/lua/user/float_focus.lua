@@ -29,7 +29,7 @@ local function open_floating_window()
 
   -- Define the dimensions of the floating window
   local float_width = math.floor(width * 0.6)         -- 80% of the screen width
-  local float_height = math.floor(height * 0.9)       -- 80% of the screen height
+  local float_height = math.floor(height * 0.95)      -- 80% of the screen height
   local col = math.floor((width - float_width) / 2)   -- Center horizontally
   local row = math.floor((height - float_height) / 2) -- Center vertically
 

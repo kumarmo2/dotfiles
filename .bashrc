@@ -295,3 +295,5 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 shopt -s autocd # auto cd into the path typed.
 
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k

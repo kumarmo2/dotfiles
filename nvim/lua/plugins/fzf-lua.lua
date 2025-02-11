@@ -6,7 +6,11 @@ return {
     lazy = false,
     config = function()
       -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
+      require("fzf-lua").setup({
+        keymap = {
+          fzf = { true, ["ctrl-q"] = "select-all+accept" } -- send to quickfix list
+        }
+      })
       local keys_to_command_map = {
         ['<leader>p'] = ':FzfLua files<CR>',
         ['<leader>;'] = ':FzfLua buffers<CR>',

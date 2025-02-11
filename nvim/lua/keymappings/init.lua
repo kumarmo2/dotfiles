@@ -81,4 +81,4 @@ setKeyMap('n', '<leader>gP', '"+P', opts) -- paste from + register(this is paste
 
 -- terminal binding
 setKeyMap("t", "<esc><esc>", "<C-\\><C-n>", opts)
-setKeyMap("t", "<esc><esc><CR>", "<C-\\><C-n>:q<CR>", opts)
+setKeyMap("t", "<esc><CR>", "<C-\\><C-n>:q<CR>", opts)

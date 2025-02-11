@@ -6,19 +6,13 @@ local keys_to_handler = {
   ['<Leader>b'] = ':lua require(\'dap\').toggle_breakpoint()<CR>',
 }
 
-local get_keys = function()
-  local keys = {}
-  for k, _ in pairs(keys_to_handler) do
-    table.insert(keys, k)
-  end
-  return keys
-end
+local utils = require("utils")
 
 return {
   {
     'mfussenegger/nvim-dap',
     dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
-    keys = get_keys(),
+    keys = utils.get_keys(keys_to_handler),
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")

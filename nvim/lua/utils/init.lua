@@ -21,9 +21,16 @@ local contains = function(tbl, val)
   return false
 end
 
-
+local get_keys = function(tbl)
+  local keys = {}
+  for key, _ in pairs(tbl) do
+    table.insert(keys, key)
+  end
+  return keys
+end
 
 M.count_items = count_items
 M.contains = contains
+M.get_keys = get_keys
 
 return M

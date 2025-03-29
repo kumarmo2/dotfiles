@@ -24,6 +24,9 @@ local map_lsp_keymaps = function(bufnr, opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 end
 
+vim.diagnostic.config({ virtual_lines = true }) -- in 0.11, by default diagnostics are not shown.
+-- that is we need this option.
+
 return {
   {
     "folke/lazydev.nvim",

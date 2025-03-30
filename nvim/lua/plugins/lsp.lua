@@ -45,7 +45,7 @@ return {
   -- 'Hoffs/omnisharp-extended-lsp.nvim',
   {
     'neovim/nvim-lspconfig',
-    -- dependencies = { 'saghen/blink.cmp' },
+    dependencies = { 'saghen/blink.cmp' },
     lazy = false,
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -78,8 +78,7 @@ return {
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- FIXME: blink doesn't work with react projects. so for now moving back to nvim-cmp
       -- local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 

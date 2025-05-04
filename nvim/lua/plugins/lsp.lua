@@ -90,6 +90,9 @@ return {
               workspace = {
                 checkThirdParty = 'Disable',
               },
+              diagnostics = {
+                disable = { "unused-local" }
+              }
             },
           },
         },

@@ -42,7 +42,7 @@ return {
   'onsails/lspkind.nvim', -- lsp icons pack
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  -- 'Hoffs/omnisharp-extended-lsp.nvim',
+  'Hoffs/omnisharp-extended-lsp.nvim',
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
@@ -74,14 +74,6 @@ return {
           end
         end,
       })
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- FIXME: blink doesn't work with react projects. so for now moving back to nvim-cmp
-      -- local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 
       local servers = {
         lua_ls = {
@@ -97,10 +89,18 @@ return {
           },
         },
         rust_analyzer = {},
-        -- omnisharp = {},
         gopls = {},
         bashls = {},
         ansiblels = {},
+        omnisharp = {
+          command = { "Omnisharp", "-z", "--hostPID", "79167", "DotNet:enablePackageRestore=false", "--encoding", "utf-8", "--languageserver" },
+          handlers = {
+            ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+            ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+            ["textDocument/references"] = require('omnisharp_extended').references_handler,
+            ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+          }
+        },
         zls = {},
         dockerls = {},
         tailwindcss = {},
@@ -119,50 +119,32 @@ return {
       }
 
       require('mason').setup()
-
       local ensure_installed = vim.tbl_keys(servers or {})
-      require('mason-lspconfig').setup({ ensure_installed = ensure_installed })
+      require('mason-lspconfig').setup({ automatic_enable = true, ensure_installed = ensure_installed })
 
-      -- NOTE:: automatically setup lsp servers. For more info check
-      -- `:h mason-lspconfig-automatic-server-setup`
-      require('mason-lspconfig').setup_handlers({
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-        ['rust_analyzer'] = function()
-          local server = servers['rust_analyzer'] or {}
-          server.settings = {
-            ['rust-analyzer'] = {
-              diagnostics = {
-                enable = false,
-              },
-              check = {
-                command = 'clippy' -- run clippy.
-              }
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+      vim.lsp.config("*", {
+        capabilities = capabilities
+      })
+
+      vim.lsp.config('rust_analyzer', {
+        settings = {
+          ['rust_analyzer'] = {
+            diagnostics = {
+              enable = false,
             },
+            check = {
+              command = 'clippy' -- run clippy.
+            }
           }
-          server.capabilities = capabilities
-          require('lspconfig')['rust_analyzer'].setup(server)
-        end,
-        -- ['omnisharp'] = function()
-        --   local server = servers['omnisharp'] or {}
-        --   server.capabilities = capabilities
-        --   server.handlers = {
-        --     ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
-        --     ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
-        --     ["textDocument/references"] = require('omnisharp_extended').references_handler,
-        --     ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
-        --   }
-        --   require('lspconfig')['omnisharp'].setup(server)
-        -- end,
+        }
+      })
+
+      vim.lsp.config('omnisharp', {
+        cmd = { vim.fn.expand("~") .. "/.local/share/nvim/mason/bin/OmniSharp", "-z", "--hostPID", "79167", "DotNet:enablePackageRestore=false", "--encoding", "utf-8", "--languageserver" },
       })
     end,
     -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    --
   },
 }

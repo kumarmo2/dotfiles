@@ -14,4 +14,7 @@ fzf --fish | source
 alias fzcd='pushd (fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
 alias fzn='nvim (fzf)'
 alias fzv='vim (fzf)'
+source "$HOME/.cargo/env.fish"
+
+set -u fish_user_paths $fish_user_paths $HOME/.local/share/nvim/mason/bin
 

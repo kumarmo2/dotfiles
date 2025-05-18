@@ -39,7 +39,6 @@ return {
       },
     },
   },
-  'onsails/lspkind.nvim', -- lsp icons pack
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   'Hoffs/omnisharp-extended-lsp.nvim',

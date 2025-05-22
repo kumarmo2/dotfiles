@@ -8,7 +8,7 @@ return {
         print('could not find nvim-tree. returning...')
         return
       end
-      vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', {})
+      vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
       local function on_attach(bufnr)
         local api = require('nvim-tree.api')

@@ -1,5 +1,9 @@
 return {
   {
+    'tpope/vim-fugitive',
+    lazy = false,
+  },
+  {
     'lewis6991/gitsigns.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -16,8 +20,8 @@ return {
           untracked = { text = '┆' },
         },
         signcolumn = true,
-        numhl = true,      -- Toggle with `:Gitsigns toggle_numhl`
-        linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
+        numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
+        linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
         word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
         watch_gitdir = {
           interval = 1000,

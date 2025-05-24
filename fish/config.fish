@@ -11,6 +11,7 @@ source "$HOME/.cargo/env.fish"
 source "$HOME/dotfiles/fish/functions/tmux-window.fish"
 source "$HOME/dotfiles/fish/functions/fzcd.fish"
 source "$HOME/dotfiles/fish/functions/fzn.fish"
+source "$HOME/dotfiles/fish/functions/git.fish"
 
 
 set -u fish_user_paths $fish_user_paths $HOME/.local/share/nvim/mason/bin

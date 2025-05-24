@@ -54,7 +54,6 @@ setKeyMap('n', '<leader>cc', ':copen<CR>', opts)
 setKeyMap('n', '<leader>co', ':colder<CR>:copen<CR>', opts)
 setKeyMap('n', '<leader>cn', ':cnewer<CR>:copen<CR>', opts)
 
-setKeyMap('n', '<leader>bp', ':silent make<CR>', opts)
 
 -- better visual indenting
 setKeyMap('v', '<', '<gv', opts) --gv reselects last visual selection

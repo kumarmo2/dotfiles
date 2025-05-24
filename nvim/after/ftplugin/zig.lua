@@ -11,7 +11,13 @@ vim.api.nvim_create_user_command("Make",
       on_exit = function(_, code)
         if code == 0 then
           vim.notify("✅ Zig build succeeded", vim.log.levels.INFO)
-          vim.cmd("cclose")
+          local qlist = vim.fn.getqflist()
+          if qlist == nil or #qlist == 0 then
+            vim.cmd("vertical topleft copen 80")
+            return
+          end
+          vim.fn.setqflist({})
+          -- vim.cmd("cclose")
         else
           vim.cmd("vertical cfile " .. logfile)
           vim.cmd("vertical topleft copen 80")

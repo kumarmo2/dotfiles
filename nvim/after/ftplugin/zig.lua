@@ -6,15 +6,16 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<leader>bp', ':Make<CR>', { silent = true, 
 vim.api.nvim_create_user_command("Make",
   function()
     local logfile = "/tmp/zig_build.log"
-    print("Building Zig..")
+    vim.notify("Building Zig..", vim.log.levels.INFO);
     vim.fn.jobstart("zig build > " .. logfile .. " 2>&1", {
       on_exit = function(_, code)
         if code == 0 then
-          print("✅ Zig build succeeded")
+          vim.notify("✅ Zig build succeeded", vim.log.levels.INFO)
+          vim.cmd("cclose")
         else
           vim.cmd("vertical cfile " .. logfile)
           vim.cmd("vertical topleft copen 80")
-          print("❌ Zig build failed. Check quickfix.")
+          vim.notify("❌ Zig build failed. Check quickfix.", vim.log.levels.ERROR);
         end
       end,
     })

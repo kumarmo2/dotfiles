@@ -29,19 +29,27 @@ vim.diagnostic.config({ virtual_lines = true }) -- in 0.11, by default diagnosti
 
 return {
   {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
     opts = {
       library = {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
   },
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  'Hoffs/omnisharp-extended-lsp.nvim',
+  -- 'Hoffs/omnisharp-extended-lsp.nvim',
+  {
+    'seblyng/roslyn.nvim',
+    ft = 'cs',
+    ---@module 'roslyn.config'
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
@@ -82,35 +90,7 @@ return {
                 checkThirdParty = 'Disable',
               },
               diagnostics = {
-                disable = { "unused-local" }
-              }
-            },
-          },
-        },
-        rust_analyzer = {},
-        gopls = {},
-        bashls = {},
-        ansiblels = {},
-        omnisharp = {
-          command = { "Omnisharp", "-z", "--hostPID", "79167", "DotNet:enablePackageRestore=false", "--encoding", "utf-8", "--languageserver" },
-          handlers = {
-            ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
-            ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
-            ["textDocument/references"] = require('omnisharp_extended').references_handler,
-            ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
-          }
-        },
-        zls = {},
-        dockerls = {},
-        tailwindcss = {},
-        terraformls = {},
-        ts_ls = {},
-        -- eslint = {},
-        yamlls = {
-          settings = {
-            ['yaml'] = {
-              schemas = {
-                ['Kubernetes'] = { vim.fn.expand('~') .. '/dev/kumarmo2/cloud-infra-projects/common/k8s/**/*.yaml' },
+                disable = { 'unused-local' },
               },
             },
           },
@@ -118,13 +98,20 @@ return {
       }
 
       require('mason').setup()
+      require('mason').setup({
+        registries = {
+          'github:mason-org/mason-registry',
+          'github:Crashdummyy/mason-registry',
+        },
+      })
+
       local ensure_installed = vim.tbl_keys(servers or {})
       require('mason-lspconfig').setup({ automatic_enable = true, ensure_installed = ensure_installed })
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      vim.lsp.config("*", {
-        capabilities = capabilities
+      vim.lsp.config('*', {
+        capabilities = capabilities,
       })
 
       vim.lsp.config('rust_analyzer', {
@@ -134,14 +121,10 @@ return {
               enable = false,
             },
             check = {
-              command = 'clippy' -- run clippy.
-            }
-          }
-        }
-      })
-
-      vim.lsp.config('omnisharp', {
-        cmd = { vim.fn.expand("~") .. "/.local/share/nvim/mason/bin/OmniSharp", "-z", "--hostPID", "79167", "DotNet:enablePackageRestore=false", "--encoding", "utf-8", "--languageserver" },
+              command = 'clippy', -- run clippy.
+            },
+          },
+        },
       })
     end,
     -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

@@ -254,7 +254,7 @@ alias rm=trash-put
 alias em="emacsclient -c -a 'nvim'"
 alias code="flatpak run com.visualstudio.code "
 alias gitco='git branch | fzf | xargs git checkout'
-alias fzcd='pushd $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
+alias fzcd='z $(fd --max-depth 4 -t d . "$HOME" | fzf --preview "ls {}")'
 alias fzn='nvim $(fzf)'
 alias fzv='vim $(fzf)'
 
@@ -297,3 +297,4 @@ shopt -s autocd # auto cd into the path typed.
 
 source <(kubectl completion bash)
 complete -o default -F __start_kubectl k
+eval "$(zoxide init bash)"

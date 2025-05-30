@@ -1,7 +1,7 @@
 return {
   {
     'Exafunction/codeium.vim',
-    lazy = false,
+    event = 'VeryLazy',
     event = 'BufEnter',
     config = function()
       -- Change '<C-g>' here to any keycode you like.
@@ -22,5 +22,5 @@ return {
         return vim.fn['codeium#Clear']()
       end, { expr = true })
     end,
-  }
+  },
 }

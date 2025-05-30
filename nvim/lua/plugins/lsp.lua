@@ -31,7 +31,6 @@ return {
   {
     'folke/lazydev.nvim',
     ft = 'lua', -- only load on lua files
-    lazy = false,
     opts = {
       library = {
         -- See the configuration section for more details
@@ -50,7 +49,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
-    lazy = false,
+    event = 'VeryLazy',
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('LspAttachCommandGroup', { clear = true }),

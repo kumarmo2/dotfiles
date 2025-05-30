@@ -1,7 +1,7 @@
 return {
 
-  { 'hrsh7th/cmp-buffer',   event = 'VeryLazy' },
-  { 'hrsh7th/cmp-path',     event = 'VeryLazy' },
+  { 'hrsh7th/cmp-buffer', event = 'VeryLazy' },
+  { 'hrsh7th/cmp-path', event = 'VeryLazy' },
   { 'hrsh7th/cmp-nvim-lsp', event = 'VeryLazy' },
   {
     'hrsh7th/nvim-cmp',
@@ -47,7 +47,7 @@ return {
               fallback()
             end
           end),
-          ["<Tab>"] = cmp.mapping(function(fallback)
+          ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
               -- elseif luasnip.locally_jumpable(1) then
@@ -55,9 +55,9 @@ return {
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end, { 'i', 's' }),
 
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
+          ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
               -- elseif luasnip.locally_jumpable(-1) then
@@ -65,8 +65,7 @@ return {
             else
               fallback()
             end
-          end, { "i", "s" }),
-
+          end, { 'i', 's' }),
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
@@ -93,7 +92,7 @@ return {
   },
   -- {
   --   "L3MON4D3/LuaSnip",
-  --   lazy = false,
+  --   event = 'VeryLazy',
   --   -- follow latest release.
   --   version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
   --   -- install jsregexp (optional!).

@@ -11,7 +11,7 @@ return {
   'nvim-telescope/telescope-ui-select.nvim',
   {
     'nvim-telescope/telescope.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     keys = keys,
     dependencies = {
       'nvim-lua/plenary.nvim',

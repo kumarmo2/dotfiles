@@ -31,6 +31,7 @@ return {
   {
     'folke/lazydev.nvim',
     ft = 'lua', -- only load on lua files
+    lazy = false,
     opts = {
       library = {
         -- See the configuration section for more details
@@ -41,14 +42,11 @@ return {
   },
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  -- 'Hoffs/omnisharp-extended-lsp.nvim',
   {
     'seblyng/roslyn.nvim',
     ft = 'cs',
     ---@module 'roslyn.config'
-    opts = {
-      -- your configuration comes here; leave empty for default settings
-    },
+    opts = {},
   },
   {
     'neovim/nvim-lspconfig',
@@ -126,6 +124,7 @@ return {
           },
         },
       })
+      vim.lsp.enable('zls')
     end,
     -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   },

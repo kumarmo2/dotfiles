@@ -41,7 +41,6 @@ return {
     },
   },
   'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
   {
     'seblyng/roslyn.nvim',
     ft = 'cs',
@@ -80,31 +79,12 @@ return {
         end,
       })
 
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = 'Disable',
-              },
-              diagnostics = {
-                disable = { 'unused-local' },
-              },
-            },
-          },
-        },
-      }
-
-      require('mason').setup()
       require('mason').setup({
         registries = {
           'github:mason-org/mason-registry',
           'github:Crashdummyy/mason-registry',
         },
       })
-
-      local ensure_installed = vim.tbl_keys(servers or {})
-      require('mason-lspconfig').setup({ automatic_enable = true, ensure_installed = ensure_installed })
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
@@ -125,6 +105,7 @@ return {
         },
       })
       vim.lsp.enable('zls')
+      vim.lsp.enable('lua_ls')
     end,
     -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   },

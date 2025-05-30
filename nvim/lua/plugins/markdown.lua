@@ -2,9 +2,9 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {},
-    ft = "markdown",
+    ft = 'markdown',
     config = function()
-      require('render-markdown').setup {
+      require('render-markdown').setup({
         -- bullet = {
         --   -- Turn on / off list bullet rendering
         --   enabled = true,
@@ -30,10 +30,10 @@ return {
         --     per_level = 2,
         --   },
         -- }
-      }
+      })
     end,
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-  }
+  },
 }

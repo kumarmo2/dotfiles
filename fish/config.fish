@@ -1,7 +1,4 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
-
-set -x LANG en_US.UTF-8
-set -x LC_ALL en_US.UTF-8
+starship init fish | source
 
 
 # Set up fzf key bindings

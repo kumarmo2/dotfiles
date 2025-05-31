@@ -12,10 +12,10 @@ return {
       conform_config.formatters_by_ft.go = { 'gofmt' }
       conform_config.formatters_by_ft.sql = { 'sql_formatter' }
       conform_config.formatters_by_ft.sh = { 'beautysh' }
-      conform_config.formatters_by_ft.javascript = { js_formatters }
-      conform_config.formatters_by_ft.javascriptreact = { js_formatters }
-      conform_config.formatters_by_ft.typescript = { js_formatters }
-      conform_config.formatters_by_ft.typescriptreact = { js_formatters }
+      conform_config.formatters_by_ft.javascript = { 'biome' }
+      conform_config.formatters_by_ft.javascriptreact = { 'biome' }
+      conform_config.formatters_by_ft.typescript = { 'biome' }
+      conform_config.formatters_by_ft.typescriptreact = { 'biome' }
       conform_config.formatters_by_ft.json = { 'biome' }
 
       -- local slow_format_filetypes = { ['javascript'] = true, ['javascriptreact'] = true } -- assumption here(not actually an assumption if its true),

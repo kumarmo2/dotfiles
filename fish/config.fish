@@ -1,5 +1,5 @@
 starship init fish | source
-
+set -x LANG en_US.UTF-8
 
 # Set up fzf key bindings
 fzf --fish | source

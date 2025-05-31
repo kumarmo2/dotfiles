@@ -5,12 +5,13 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<leader>bp', ':Make<CR>', { silent = true, 
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = vim.api.nvim_create_augroup('ZigFormat', { clear = true }),
+  pattern = "*.zig",
   callback = function()
     local is_zls_enabled = vim.lsp.is_enabled('zls')
     if not is_zls_enabled then
       return
     end
-    local lines = vim.api.nvim_buf_line_count(0)
+        local lines = vim.api.nvim_buf_line_count(0)
     if lines < 5000 then
       vim.lsp.buf.format()
     else

@@ -103,8 +103,11 @@ return {
           },
         },
       })
-      vim.lsp.enable('zls')
-      vim.lsp.enable('lua_ls')
+
+      local lsps = { 'zls', 'lua_ls'};
+      for _, lsp in ipairs(lsps) do
+        vim.lsp.enable(lsp);
+      end
     end,
     -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   },

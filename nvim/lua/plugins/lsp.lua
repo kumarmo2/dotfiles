@@ -104,9 +104,10 @@ return {
         },
       })
 
-      local lsps = { 'zls', 'lua_ls'};
+      local lsps = { {lsp = 'zls', extension = 'zig'}, {lsp = 'lua_ls', extension = 'lua' }};
       for _, lsp in ipairs(lsps) do
-        vim.lsp.enable(lsp);
+        vim.lsp.enable(lsp.lsp);
+        require('utils.lsp').register_lsp_format(lsp.lsp, lsp.extension, nil)
       end
     end,
     -- NOTE: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

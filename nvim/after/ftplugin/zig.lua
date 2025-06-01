@@ -3,8 +3,6 @@ vim.opt_local.errorformat = '%f:%l:%c: %t%*[^:]: %m'
 
 vim.api.nvim_buf_set_keymap(0, 'n', '<leader>bp', ':Make<CR>', { silent = true, noremap = true })
 
-local lsp_utils = require('utils.lsp')
-lsp_utils.register_lsp_format('zls', 'zig')
 
 
 vim.api.nvim_create_user_command('Make', function()

@@ -104,7 +104,7 @@ return {
         },
       })
 
-      local lsps = { {lsp = 'zls', extension = 'zig'}, {lsp = 'lua_ls', extension = 'lua' }};
+      local lsps = { { lsp = 'zls', extension = 'zig' }, { lsp = 'lua_ls', extension = 'lua' }, { lsp = 'roslyn', extension = 'cs' } };
       for _, lsp in ipairs(lsps) do
         vim.lsp.enable(lsp.lsp);
         require('utils.lsp').register_lsp_format(lsp.lsp, lsp.extension, nil)

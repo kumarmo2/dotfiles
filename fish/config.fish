@@ -12,6 +12,7 @@ source "$HOME/dotfiles/fish/functions/git.fish"
 source "$HOME/dotfiles/fish/functions/dotnet.fish"
 source "$HOME/dotfiles/fish/functions/zig.fish"
 source "$HOME/dotfiles/fish/functions/eza.fish"
+source "$HOME/dotfiles/fish/functions/homelab.fish"
 
 
 set -u fish_user_paths $fish_user_paths $HOME/.local/share/nvim/mason/bin

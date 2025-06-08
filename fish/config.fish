@@ -4,6 +4,7 @@ set -x LANG en_US.UTF-8
 # Set up fzf key bindings
 fzf --fish | source
 alias fzv='vim (fzf)'
+alias rm='trash'
 source "$HOME/.cargo/env.fish"
 source "$HOME/dotfiles/fish/functions/tmux-window.fish"
 source "$HOME/dotfiles/fish/functions/fzcd.fish"

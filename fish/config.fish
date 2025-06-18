@@ -6,7 +6,7 @@ fzf --fish | source
 alias fzv='vim (fzf)'
 alias rm='trash'
 source "$HOME/.cargo/env.fish"
-source "$HOME/dotfiles/fish/functions/tmux-window.fish"
+source "$HOME/dotfiles/fish/functions/tmux.fish"
 source "$HOME/dotfiles/fish/functions/fzcd.fish"
 source "$HOME/dotfiles/fish/functions/fzn.fish"
 source "$HOME/dotfiles/fish/functions/git.fish"
@@ -19,7 +19,9 @@ source "$HOME/dotfiles/fish/functions/homelab.fish"
 set -u fish_user_paths $fish_user_paths $HOME/.local/share/nvim/mason/bin
 set -u fish_user_paths $fish_user_paths $HOME/.local/bin/zig
 set -u fish_user_paths $fish_user_paths $HOME/.local/bin
+set -u fish_user_paths $fish_user_paths /usr/local/go/bin
 
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
 zoxide init fish | source
+fastfetch

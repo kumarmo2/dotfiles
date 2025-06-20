@@ -14,12 +14,15 @@ source "$HOME/dotfiles/fish/functions/dotnet.fish"
 source "$HOME/dotfiles/fish/functions/zig.fish"
 source "$HOME/dotfiles/fish/functions/eza.fish"
 source "$HOME/dotfiles/fish/functions/homelab.fish"
+source "$HOME/dotfiles/fish/conf.d/nvm.fish"
 
 
 set -u fish_user_paths $fish_user_paths $HOME/.local/share/nvim/mason/bin
 set -u fish_user_paths $fish_user_paths $HOME/.local/bin/zig
 set -u fish_user_paths $fish_user_paths $HOME/.local/bin
 set -u fish_user_paths $fish_user_paths /usr/local/go/bin
+set --universal nvm_default_version v22.16.0
+
 
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim

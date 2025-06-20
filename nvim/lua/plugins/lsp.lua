@@ -104,9 +104,16 @@ return {
         },
       })
 
-      local lsps = { { lsp = 'zls', extension = 'zig' }, { lsp = 'lua_ls', extension = 'lua' }, { lsp = 'roslyn', extension = 'cs' } };
+      local lsps = { { lsp = 'zls', pattern = '*.zig' },
+        { lsp = 'lua_ls', extension = '*.lua' },
+        { lsp = 'roslyn', extension = '*.cs' },
+        { lsp = 'ts_ls',  extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } }
+      };
       for _, lsp in ipairs(lsps) do
         vim.lsp.enable(lsp.lsp);
+        if lsp.config ~= nil then
+          vim.lsp.config(lsp.lsp, lsp.config)
+        end
         require('utils.lsp').register_lsp_format(lsp.lsp, lsp.extension, nil)
       end
     end,

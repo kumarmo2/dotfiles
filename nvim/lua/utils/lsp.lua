@@ -1,11 +1,11 @@
 local M = {};
 
 M.register_lsp_format = function(lsp, extension, opts)
-  if extension == nil or extension == "" then
-    local msg = "'extension' cannot be empty"
-    vim.notify(msg, vim.log.levels.ERROR, nil)
-    return
-  end
+  -- if extension == nil or extension == "" then
+  --   local msg = "'extension' cannot be empty"
+  --   vim.notify(msg, vim.log.levels.ERROR, nil)
+  --   return
+  -- end
 
   if lsp == nil then
     local msg = "`lsp` cannot be empty"
@@ -19,7 +19,7 @@ M.register_lsp_format = function(lsp, extension, opts)
   vim.api.nvim_create_autocmd('BufWritePre', {
 
     group = vim.api.nvim_create_augroup(aug_group_name, { clear = true }),
-    pattern = "*." .. extension,
+    pattern = extension,
     callback = function()
       local is_lsp_enabled = vim.lsp.is_enabled(lsp)
       if not is_lsp_enabled then

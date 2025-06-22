@@ -28,5 +28,6 @@ end
 bind \cp fzf_tmux_dir
 
 
+alias t='tmux'
 alias tns='tmux new-session -s'
 alias tks='tmux kill-server'

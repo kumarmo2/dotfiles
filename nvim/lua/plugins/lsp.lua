@@ -105,11 +105,12 @@ return {
       })
 
       local lsps = { { lsp = 'zls', pattern = '*.zig' },
-        { lsp = 'lua_ls',      extension = '*.lua' },
-        { lsp = 'roslyn',      extension = '*.cs' },
-        { lsp = 'ts_ls',       extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
-        { lsp = 'tailwindcss', extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
-        { lsp = 'gopls',  extension = '*.go' },
+        { lsp = 'lua_ls',        extension = '*.lua' },
+        { lsp = 'roslyn',        extension = '*.cs' },
+        { lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
+        { lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
+        { lsp = 'gopls',         extension = '*.go' },
+        { lsp = 'rust_analyzer', extension = '*.rs' },
       };
       for _, lsp in ipairs(lsps) do
         vim.lsp.enable(lsp.lsp);

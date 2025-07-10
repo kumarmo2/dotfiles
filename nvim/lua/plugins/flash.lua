@@ -1,7 +1,7 @@
 return {
   {
     'folke/flash.nvim',
-    event = 'VeryLazy',
+    keys = { '/', '?' },
     opts = {
       modes = {
         -- options used when flash is activated through

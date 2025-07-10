@@ -6,6 +6,7 @@ fzf --fish | source
 alias fzv='vim (fzf)'
 alias rm='trash'
 alias tx='tmuxifier'
+alias lf='ls | fzf'
 source "$HOME/.cargo/env.fish"
 source "$HOME/dotfiles/fish/functions/tmux.fish"
 source "$HOME/dotfiles/fish/functions/fzcd.fish"

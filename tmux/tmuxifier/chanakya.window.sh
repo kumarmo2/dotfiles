@@ -6,7 +6,7 @@ window_root "~/dev/kumarmo2/chanakya/"
 # layout file name.
 new_window "chanakya"
 
-split_h 70
+split_h 80
 split_v 20
 split_h 50
 

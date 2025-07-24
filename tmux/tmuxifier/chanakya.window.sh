@@ -31,5 +31,9 @@ select_pane 0
 run_cmd "cd backend/go-api"
 run_cmd "go run *.go"
 
+select_pane 1
+run_cmd "cd backend/Chanakay.Api.v2"
+run_cmd "dotnet run"
+
 select_pane 3
 run_cmd "nvim"

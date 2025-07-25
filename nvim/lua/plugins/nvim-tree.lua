@@ -113,14 +113,14 @@ return {
       })
 
       -- if last window is nvim-tree. quit the nvim
-      -- local buf_enter_callback = function(opts)
-      -- if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match('NvimTree_') ~= nil then
-      -- vim.cmd('quit')
-      -- end
-      -- end
+      local buf_enter_callback = function()
+        if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match('NvimTree_') ~= nil then
+          vim.cmd('quit')
+        end
+      end
 
-      -- local group = vim.api.nvim_create_augroup('NvimTreeCloseIfLast', { clear = true })
-      -- vim.api.nvim_create_autocmd('BufEnter', { callback = buf_enter_callback, group = group })
+      local group = vim.api.nvim_create_augroup('NvimTreeCloseIfLast', { clear = true })
+      vim.api.nvim_create_autocmd('BufEnter', { callback = buf_enter_callback, group = group })
     end,
   },
 }

@@ -28,17 +28,6 @@ vim.diagnostic.config({ virtual_lines = true }) -- in 0.11, by default diagnosti
 -- that is we need this option.
 
 return {
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua', -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
   'williamboman/mason.nvim',
   {
     'seblyng/roslyn.nvim',

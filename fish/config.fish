@@ -16,6 +16,7 @@ source "$HOME/dotfiles/fish/functions/dotnet.fish"
 source "$HOME/dotfiles/fish/functions/zig.fish"
 source "$HOME/dotfiles/fish/functions/eza.fish"
 source "$HOME/dotfiles/fish/functions/homelab.fish"
+source "$HOME/dotfiles/fish/functions/tailscale.fish"
 source "$HOME/dotfiles/fish/conf.d/nvm.fish"
 
 

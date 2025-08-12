@@ -18,6 +18,10 @@ select_pane 4
 
 run_cmd "envoy -c infra/envoy.yml"
 
+split_v 50
+
+run_cmd "caddy run --config infra/dev.Caddyfile"
+
 select_pane 3
 
 run_cmd "cd frontend/chanakya-ui"

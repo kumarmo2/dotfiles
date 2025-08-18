@@ -13,6 +13,10 @@ M.register_lsp_format = function(lsp, extension, opts)
     return
   end
 
+  if extension == nil or extension == "" then
+    return
+  end
+
   opts = opts or {}
   local aug_group_name = opts.aug_group_name or lsp .. "Format"
 

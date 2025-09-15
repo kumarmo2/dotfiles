@@ -28,9 +28,9 @@ local function open_floating_window()
   local height = ui.height
 
   -- Define the dimensions of the floating window
-  local float_width = math.floor(width * 0.6) -- 80% of the screen width
-  local float_height = math.floor(height * 0.95) -- 80% of the screen height
-  local col = math.floor((width - float_width) / 2) -- Center horizontally
+  local float_width = math.floor(width * 0.65)        -- 80% of the screen width
+  local float_height = math.floor(height * 0.95)      -- 80% of the screen height
+  local col = math.floor((width - float_width) / 2)   -- Center horizontally
   local row = math.floor((height - float_height) / 2) -- Center vertically
 
   -- Create a floating window with the current buffer

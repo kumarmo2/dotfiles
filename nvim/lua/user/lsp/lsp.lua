@@ -63,7 +63,6 @@ vim.diagnostic.config({ virtual_lines = true }) -- in 0.11, by default diagnosti
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('LspAttachCommandGroup', { clear = true }),
   callback = function(event)
-    print('>>> LspAttach')
     local opts = { noremap = true, silent = true }
     local bufnr = event.buf
     map_lsp_keymaps(bufnr, opts)
@@ -95,20 +94,6 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 vim.lsp.config('*', {
   capabilities = capabilities,
 })
--- --
--- -- vim.lsp.config('rust_analyzer', {
--- --   settings = {
--- --     ['rust_analyzer'] = {
--- --       diagnostics = {
--- --         enable = false,
--- --       },
--- --       check = {
--- --         command = 'clippy', -- run clippy.
--- --       },
--- --     },
--- --   },
--- -- })
---
 local lsps = { { lsp = 'zls',             pattern = '*.zig' },
   { lsp = 'lua_ls',                         extension = '*.lua' },
   { lsp = 'roslyn',                         extension = '*.cs' },
@@ -120,9 +105,6 @@ local lsps = { { lsp = 'zls',             pattern = '*.zig' },
 };
 --
 for _, lsp in ipairs(lsps) do
-  -- vim.lsp.config[lsp.lsp] = {
-  --   capabilities = capabilities,
-  -- }
   vim.lsp.enable(lsp.lsp);
   if lsp.config ~= nil then
     vim.lsp.config(lsp.lsp, lsp.config)

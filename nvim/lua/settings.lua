@@ -28,7 +28,7 @@ vim.o.backup = false
 vim.o.hidden = true
 vim.o.syntax = 'enable'
 vim.cmd.colorscheme('gruvbox')
--- vim.o.cursorline = true
+vim.o.cursorline = true
 vim.o.background = 'dark'
 vim.termguicolors = true
 -- keep block cursor in normal, visual, command and insert modes.
@@ -36,7 +36,7 @@ cmd('set guicursor=n-v-c-i:block-Cursor')
 vim.o.cmdheight    = 1
 vim.opt.list       = true
 vim.opt.listchars  = { tab = '» ', trail = '-', lead = '.' }
-vim.opt.grepprg    = 'rg --vimgrep'
+vim.opt.grepprg    = 'rg --vimgrep --fixed-strings --ignore-case'
 vim.opt.grepformat = '%f:%l:%c:%m'
 vim.opt.signcolumn = 'yes'
 -- Sync clipboard between OS and Neovim.

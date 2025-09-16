@@ -1,13 +1,10 @@
 return {
   {
     "supermaven-inc/supermaven-nvim",
-    event = "VeryLazy",
     config = function()
-      require("supermaven-nvim").setup({
-        -- log_level = "debug",
-      })
-    end,
-  },
+      require("supermaven-nvim").setup({})
+    end
+  }
   -- {
   --   'milanglacier/minuet-ai.nvim',
   --   event = 'VeryLazy',

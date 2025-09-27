@@ -1,0 +1,12 @@
+{
+    "custom/tailscale": {
+        "icon": {
+            "up": "🛡️",
+            "down": "🛡️❌"
+        },
+        "tooltip": "{ip}",
+        "execute": "/home/kumarmo2/dotfiles/hypr/scripts/tailscale-status",
+        "label": "tailscale",
+        "interval": 5000
+    }
+}

@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+TS_IP=$(tailscale ip -4 2>/dev/null)
+
+TS_STATUS_RAW=$(tailscale status | grep -i "stop" | head -n 1)
+
+TS_STATUS="up"
+
+if [ -n "$TS_STATUS_RAW" ]; then
+    TS_STATUS="down"
+fi
+
+echo "{\"alt\":\"$TS_STATUS\", \"ip\":\"$TS_IP\"}"
+

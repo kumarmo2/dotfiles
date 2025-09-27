@@ -436,5 +436,5 @@
       ]
     }
   },
-  "theme.bar.location": "top"
+  "theme.bar.location": "bottom"
 }

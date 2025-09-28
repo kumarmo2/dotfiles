@@ -379,8 +379,8 @@
   "theme.bar.buttons.modules.worldclock.icon_background": "#242438",
   "theme.bar.buttons.modules.worldclock.icon": "#f9e2af",
   "theme.bar.buttons.modules.worldclock.border": "#f9e2af",
-  "theme.bar.transparent": false,
-  "wallpaper.enable": true,
+  "theme.bar.transparent": true,
+  "wallpaper.enable": false,
   "bar.customModules.storage.paths": [
     "/"
   ],

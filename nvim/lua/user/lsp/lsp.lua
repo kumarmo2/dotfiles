@@ -94,13 +94,28 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 vim.lsp.config('*', {
   capabilities = capabilities,
 })
-local lsps = { { lsp = 'zls',             pattern = '*.zig' },
-  { lsp = 'lua_ls',                         extension = '*.lua' },
-  { lsp = 'roslyn',                         extension = '*.cs' },
-  { lsp = 'ts_ls',                          extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
-  { lsp = 'tailwindcss',                    extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
-  { lsp = 'gopls',                          extension = '*.go' },
-  { lsp = 'rust_analyzer',                  extension = '*.rs' },
+
+local lsps = { { lsp = 'zls', pattern = '*.zig' },
+  { lsp = 'lua_ls',        extension = '*.lua' },
+  { lsp = 'roslyn',        extension = '*.cs' },
+  { lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
+  { lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
+  { lsp = 'gopls',         extension = '*.go' },
+  { lsp = 'rust_analyzer', extension = '*.rs' },
+  {
+    lsp = 'clangd',
+    extension = '*.c',
+    config = {
+      cmd = {
+        'clangd',
+        '--clang-tidy',
+        '--background-index',
+        '--offset-encoding=utf-8',
+      },
+      root_markers = { '.clangd', 'compile_commands.json' },
+      filetypes = { 'c', 'cpp' },
+    }
+  },
   { lsp = 'docker_compose_language_service' },
 };
 --

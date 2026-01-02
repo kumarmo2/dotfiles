@@ -109,6 +109,16 @@ return {
             stopOnEntry = false,
           },
         }
+        dap.configurations.go = {
+          {
+            name = "Launch file",
+            type = "delve",
+            request = "launch",
+            program = function()
+              return vim.fn.input('Path to executable: ', vim.fn.getcwd())
+            end,
+          }
+        }
         -- dotnet_dap_setup()
       end
 

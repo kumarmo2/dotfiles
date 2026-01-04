@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
+local leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 local keys = {
   -- This will create a new split and run your default program inside it
   {
@@ -43,8 +44,23 @@ local keys = {
     key = 'DownArrow',
     mods = 'CTRL',
     action = act.ActivatePaneDirection 'Down',
-
-  }
+  },
+   {
+    key = 'H',
+    mods = 'LEADER',
+    action = act.AdjustPaneSize { 'Left', 10 },
+  },
+  {
+    key = 'J',
+    mods = 'LEADER',
+    action = act.AdjustPaneSize { 'Down', 10 },
+  },
+  { key = 'K', mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 10 } },
+  {
+    key = 'L',
+    mods = 'LEADER',
+    action = act.AdjustPaneSize { 'Right', 10 },
+  },
 }
 
   local default_prog = {
@@ -58,6 +74,7 @@ local keys = {
 
 
 return {
+  leader = leader,
   default_prog = default_prog,
   keys = keys,
   automatically_reload_config = true

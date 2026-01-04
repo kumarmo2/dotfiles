@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
 local keys = {
   -- This will create a new split and run your default program inside it
@@ -8,10 +9,42 @@ local keys = {
     action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   {
+    key = "'",
+    mods = 'ALT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  {
     key = 'x',
     mods = 'ALT',
     action = wezterm.action.CloseCurrentPane { confirm = true },
   },
+  { key = 'p', mods = 'CTRL', action = act.PaneSelect },
+  {
+    key = 'n',
+    mods = 'ALT',
+    action = act.SpawnTab 'CurrentPaneDomain',
+  },
+   {
+    key = 'LeftArrow',
+    mods = 'CTRL',
+    action = act.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CTRL',
+    action = act.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CTRL',
+    action = act.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CTRL',
+    action = act.ActivatePaneDirection 'Down',
+
+  }
 }
 
   local default_prog = {
@@ -27,5 +60,6 @@ local keys = {
 return {
   default_prog = default_prog,
   keys = keys,
+  automatically_reload_config = true
 }
 

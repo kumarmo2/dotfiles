@@ -114,7 +114,7 @@ window_behavior:
     fullscreen:
       # Maximize the window if possible. If the window doesn't have a
       # maximize button, then it'll be fullscreen'ed normally instead.
-      maximized: false
+      maximized: true
 
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
@@ -179,19 +179,23 @@ keybindings:
   - commands: ['focus --direction right']
     bindings: ['alt+l', 'alt+right']
   - commands: ['focus --direction up']
-    bindings: ['alt+k', 'alt+up']
+    # bindings: ['alt+k', 'alt+up']
+    bindings: ['alt+up']
   - commands: ['focus --direction down']
-    bindings: ['alt+j', 'alt+down']
+    bindings: [ 'alt+down']
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
-    bindings: ['alt+shift+h', 'alt+shift+left']
+    # bindings: ['alt+shift+h', 'alt+shift+left']
+    bindings: ['alt+shift+left']
   - commands: ['move --direction right']
-    bindings: ['alt+shift+l', 'alt+shift+right']
+    bindings: ['alt+shift+right']
   - commands: ['move --direction up']
-    bindings: ['alt+shift+k', 'alt+shift+up']
+    # bindings: ['alt+shift+k', 'alt+shift+up']
+    bindings: ['alt+shift+up']
   - commands: ['move --direction down']
-    bindings: ['alt+shift+j', 'alt+shift+down']
+    # bindings: ['alt+shift+j', 'alt+shift+down']
+    bindings: ['alt+shift+down']
 
   # Resize focused window by a percentage or pixel amount.
   - commands: ['resize --width -2%']
@@ -233,7 +237,7 @@ keybindings:
 
   # Change the focused window to be fullscreen.
   - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
+    bindings: ['alt+shift+f']
 
   # Minimize focused window.
   - commands: ['toggle-minimized']

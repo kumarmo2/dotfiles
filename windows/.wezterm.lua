@@ -17,7 +17,7 @@ local keys = {
   {
     key = 'x',
     mods = 'ALT',
-    action = wezterm.action.CloseCurrentPane { confirm = true },
+    action = wezterm.action.CloseCurrentPane { confirm = false },
   },
   { key = 'p', mods = 'CTRL', action = act.PaneSelect },
   {
@@ -27,51 +27,57 @@ local keys = {
   },
    {
     key = 'LeftArrow',
-    mods = 'CTRL',
+    mods = 'LEADER',
     action = act.ActivatePaneDirection 'Left',
   },
   {
     key = 'RightArrow',
-    mods = 'CTRL',
+    mods = 'LEADER',
     action = act.ActivatePaneDirection 'Right',
   },
   {
     key = 'UpArrow',
-    mods = 'CTRL',
+    mods = 'LEADER',
     action = act.ActivatePaneDirection 'Up',
   },
   {
     key = 'DownArrow',
-    mods = 'CTRL',
+    mods = 'LEADER',
     action = act.ActivatePaneDirection 'Down',
   },
    {
-    key = 'H',
-    mods = 'LEADER',
+    key = 'LeftArrow',
+    mods = 'CTRL',
     action = act.AdjustPaneSize { 'Left', 10 },
   },
   {
-    key = 'J',
-    mods = 'LEADER',
+    key = 'DownArrow',
+    mods = 'CTRL',
     action = act.AdjustPaneSize { 'Down', 10 },
   },
-  { key = 'K', mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 10 } },
+  { key = 'UpArrow', mods = 'CTRL', action = act.AdjustPaneSize { 'Up', 10 } },
   {
-    key = 'L',
-    mods = 'LEADER',
+    key = 'RightArrow',
+    mods = 'CTRL',
     action = act.AdjustPaneSize { 'Right', 10 },
   },
 }
 
+  -- local default_prog = {
+  --   'pwsh.exe', '-NoLogo', '-NoExit', '-Command',
+  --   [[
+  --     Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll";
+  --     Enter-VsDevShell -VsInstallPath "C:\Program Files\Microsoft Visual Studio\2022\Community" -SkipAutomaticLocation -DevCmdArguments "-arch=x64";
+  --     Write-Host "MSVC environment ready in PowerShell."
+  --   ]]
+  -- }
   local default_prog = {
-    'pwsh.exe', '-NoLogo', '-NoExit', '-Command',
-    [[
-      Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll";
-      Enter-VsDevShell -VsInstallPath "C:\Program Files\Microsoft Visual Studio\2022\Community" -SkipAutomaticLocation -DevCmdArguments "-arch=x64";
-      Write-Host "MSVC environment ready in PowerShell."
-    ]]
+    'pwsh.exe', '-NoLogo', '-NoExit'
   }
 
+  -- local default_prog = {
+  --   'pwsh.exe', '-NoLogo', '-NoExit'
+  -- }
 
 return {
   leader = leader,

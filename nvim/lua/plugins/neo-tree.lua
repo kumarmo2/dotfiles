@@ -13,6 +13,8 @@ return {
         filesystem = {
           filtered_items = {
             hide_dotfiles = false,
+            visible = true,
+            hide_gitignored = true,
             always_show_by_pattern = {
               ".env*"
             }

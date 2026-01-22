@@ -28,9 +28,9 @@ vim.keymap.set('n', '<leader>ft', function()
   local ui = vim.api.nvim_list_uis()[1]
   local width = ui.width
   local height = ui.height
-  local float_width = math.floor(width * 0.95) -- x% of the screen width
-  local float_height = math.floor(height * 0.90) -- x% of the screen height
-  local col = math.floor((width - float_width) / 2) -- Center horizontally
+  local float_width = math.floor(width * 0.95)        -- x% of the screen width
+  local float_height = math.floor(height * 0.90)      -- x% of the screen height
+  local col = math.floor((width - float_width) / 2)   -- Center horizontally
   local row = math.floor((height - float_height) / 2) -- Center vertically
 
   vim.api.nvim_open_win(directory_to_buf_id[cwd], true, {
@@ -47,17 +47,17 @@ vim.keymap.set('n', '<leader>ft', function()
     return
   end
 
-  local tmux_session = 'nvim-ft-' .. cwd
-  tmux_session = string.gsub(tmux_session, '%.', '_')
-  local is_tmux_session_available = tmux_session_exists(tmux_session)
-  local tmux_cmd = nil
+  -- local tmux_session = 'nvim-ft-' .. cwd
+  -- tmux_session = string.gsub(tmux_session, '%.', '_')
+  -- local is_tmux_session_available = tmux_session_exists(tmux_session)
+  -- local tmux_cmd = nil
+  --
+  -- if is_tmux_session_available then
+  --   tmux_cmd = 'tmux attach-session -t ' .. tmux_session
+  -- else
+  --   tmux_cmd = 'tmux new-session -s ' .. tmux_session
+  -- end
 
-  if is_tmux_session_available then
-    tmux_cmd = 'tmux attach-session -t ' .. tmux_session
-  else
-    tmux_cmd = 'tmux new-session -s ' .. tmux_session
-  end
-
-  vim.cmd('terminal ' .. tmux_cmd)
+  vim.cmd('terminal ') -- .. tmux_cmd)
   vim.cmd('startinsert')
 end)

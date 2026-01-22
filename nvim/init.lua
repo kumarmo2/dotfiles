@@ -19,9 +19,16 @@ vim.g.markdown_fenced_languages = {
 require('settings')
 require('user.filetype')
 require('user.commands')
+
+local tmux = vim.env.TMUX
+
+
 require('user.float_focus')
-require('user.terminal')
+if tmux == nil then
+  require('user.terminal') -- use tmux floating terminal instead if available,
+end
 require('user.find_in_project')
 require('user.split-resize')
 require('user.lsp.lsp')
 require('user.load_plugin')
+require('user.build')

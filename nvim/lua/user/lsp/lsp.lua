@@ -1,15 +1,4 @@
-local register_lsp_format = function(lsp, extension, opts)
-  if lsp == nil then
-    local msg = "`lsp` cannot be empty"
-    vim.notify(msg, vim.log.levels.ERROR, nil);
-    return
-  end
-
-  if extension == nil or extension == "" then
-    return
-  end
-
-  opts = opts or {}
+local register_lsp_format_with_au_group = function(lsp, extension, opts)
   local aug_group_name = opts.aug_group_name or lsp .. "Format"
 
   vim.api.nvim_create_autocmd('BufWritePre', {
@@ -30,6 +19,28 @@ local register_lsp_format = function(lsp, extension, opts)
     end,
   })
 end
+
+local register_lsp_format = function(lsp, extension, opts)
+  if lsp == nil then
+    local msg = "`lsp` cannot be empty"
+    vim.notify(msg, vim.log.levels.ERROR, nil);
+    return
+  end
+
+  if extension == nil or extension == "" then
+    return
+  end
+
+  opts = opts or {
+    lsp_format = true
+  }
+
+  if opts.lsp_format then
+    register_lsp_format_with_au_group(lsp, extension, opts)
+  end
+end
+
+
 
 local map_lsp_keymaps = function(bufnr, opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -95,16 +106,17 @@ vim.lsp.config('*', {
   capabilities = capabilities,
 })
 
-local lsps = { { lsp = 'zls', pattern = '*.zig' },
-  { lsp = 'lua_ls',        extension = '*.lua' },
-  { lsp = 'roslyn',        extension = '*.cs' },
-  { lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
-  { lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" } },
-  { lsp = 'gopls',         extension = '*.go' },
-  { lsp = 'rust_analyzer', extension = '*.rs' },
+local lsps = { { lsp = 'zls', pattern = '*.zig',                           opts = nil },
+  { lsp = 'lua_ls',        extension = '*.lua',                              opts = nil },
+  { lsp = 'roslyn',        extension = '*.cs',                               opts = nil },
+  { lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
+  { lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
+  { lsp = 'gopls',         extension = '*.go',                               opts = nil },
+  { lsp = 'rust_analyzer', extension = '*.rs',                               opts = nil },
   {
     lsp = 'clangd',
     extension = '*.c',
+    opts = { lsp_format = false },
     config = {
       cmd = {
         'clangd',
@@ -124,5 +136,5 @@ for _, lsp in ipairs(lsps) do
   if lsp.config ~= nil then
     vim.lsp.config(lsp.lsp, lsp.config)
   end
-  register_lsp_format(lsp.lsp, lsp.extension, nil)
+  register_lsp_format(lsp.lsp, lsp.extension, lsp.opts)
 end

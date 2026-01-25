@@ -106,15 +106,16 @@ vim.lsp.config('*', {
   capabilities = capabilities,
 })
 
-local lsps = { { lsp = 'zls', pattern = '*.zig',                           opts = nil },
-  { lsp = 'lua_ls',        extension = '*.lua',                              opts = nil },
-  { lsp = 'roslyn',        extension = '*.cs',                               opts = nil },
-  { lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
-  { lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
-  { lsp = 'gopls',         extension = '*.go',                               opts = nil },
-  { lsp = 'rust_analyzer', extension = '*.rs',                               opts = nil },
+local lsps = { { enabled = true, lsp = 'zls', pattern = '*.zig',                           opts = nil },
+  { enabled = true, lsp = 'lua_ls',        extension = '*.lua',                              opts = nil },
+  { enabled = true, lsp = 'roslyn',        extension = '*.cs',                               opts = nil },
+  { enabled = true, lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
+  { enabled = true, lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
+  { enabled = true, lsp = 'gopls',         extension = '*.go',                               opts = nil },
+  { enabled = true, lsp = 'rust_analyzer', extension = '*.rs',                               opts = nil },
   {
     lsp = 'clangd',
+    enabled = false,
     extension = '*.c',
     opts = { lsp_format = false },
     config = {
@@ -132,9 +133,11 @@ local lsps = { { lsp = 'zls', pattern = '*.zig',                           opts 
 };
 --
 for _, lsp in ipairs(lsps) do
-  vim.lsp.enable(lsp.lsp);
-  if lsp.config ~= nil then
-    vim.lsp.config(lsp.lsp, lsp.config)
+  if lsp.enabled then
+    vim.lsp.enable(lsp.lsp);
+    if lsp.config ~= nil then
+      vim.lsp.config(lsp.lsp, lsp.config)
+    end
+    register_lsp_format(lsp.lsp, lsp.extension, lsp.opts)
   end
-  register_lsp_format(lsp.lsp, lsp.extension, lsp.opts)
 end

@@ -28,6 +28,9 @@ set -u fish_user_paths $fish_user_paths $HOME/.tmux/plugins/tmuxifier/bin
 set --universal nvm_default_version v22.16.0
 set -Ux TMUXIFIER_LAYOUT_PATH  $HOME/dotfiles/tmux/tmuxifier
 
+# Pretty man pages with syntax highlighting
+set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -Ux MANROFFOPT -c
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
 zoxide init fish | source

@@ -16,18 +16,22 @@ if initialize_session "chariot"; then
 
     # Split window into panes.
     split_h 80
-    #
+
+    select_pane 0
+
+    run_cmd "cd src/frontend"
+
+    run_cmd "npm run dev"
+    
     select_pane 1
-    #
+    
     split_h 15
-    #
+    
     select_pane 1
-    #
-    split_v 20
+    
+    split_v 15
 
     select_pane 1
-
-
 
     new_window
 
@@ -38,16 +42,22 @@ if initialize_session "chariot"; then
     split_h 80
 
     run_cmd "cd ~/work/chariot-be/latest-work/"
- 
+
+    select_pane 0
+
+    run_cmd "cd src/backend/Chariot.BlueSky.Functions.API"
+
+    run_cmd "func start --port 7071"
+
     select_pane 1
-    
+
     split_h 15
 
     run_cmd "cd ~/work/chariot-be/latest-work/"
-    
+
     select_pane 1
-    
-    split_v 20
+
+    split_v 15
 
     run_cmd "cd ~/work/chariot-be/latest-work/"
 

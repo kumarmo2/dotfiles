@@ -101,6 +101,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 --
 local capabilities = require('blink.cmp').get_lsp_capabilities()
+-- vim.print(capabilities);
 --
 vim.lsp.config('*', {
   capabilities = capabilities,
@@ -115,7 +116,7 @@ local lsps = { { enabled = true, lsp = 'zls', pattern = '*.zig',                
   { enabled = true, lsp = 'rust_analyzer', extension = '*.rs',                               opts = nil },
   {
     lsp = 'clangd',
-    enabled = false,
+    enabled = true,
     extension = '*.c',
     opts = { lsp_format = false },
     config = {
@@ -127,6 +128,17 @@ local lsps = { { enabled = true, lsp = 'zls', pattern = '*.zig',                
       },
       root_markers = { '.clangd', 'compile_commands.json' },
       filetypes = { 'c', 'cpp' },
+      capabilities = {
+        textDocument = {
+          completion = {}
+        },
+      },
+      on_attach = function(client)
+        -- NOTE: purposefully disabling completion, as i want to learn more about the language.
+        -- but i am not stopping other lsp capabilities.
+        client.server_capabilities.completionProvider = nil
+      end
+
     }
   },
   { lsp = 'docker_compose_language_service' },

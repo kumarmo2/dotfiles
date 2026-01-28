@@ -31,8 +31,6 @@ local function run_build_bash()
   vim.fn.jobstart(
     { "bash", build_script },
     {
-      -- stdout_buffered = false,
-      -- stderr_buffered = false,
 
       on_stdout = function(_, data)
         if data then
@@ -48,11 +46,16 @@ local function run_build_bash()
 
       on_exit = function(_, code)
         vim.schedule(function()
-          vim.fn.setqflist({}, "r", {
-            title = "build.sh (" .. cwd .. ")",
-            lines = output_lines,
-          })
-          vim.cmd("copen")
+          if #output_lines > 0 then
+            vim.fn.setqflist({}, "r", {
+              title = "build.sh (" .. cwd .. ")",
+              lines = output_lines,
+            })
+            vim.cmd("copen")
+          else
+            vim.cmd("cclose");
+            vim.notify("Build completed without errors and warnings!!😀", vim.log.levels.INFO);
+          end
         end)
       end,
     }
@@ -60,3 +63,4 @@ local function run_build_bash()
 end
 
 vim.api.nvim_create_user_command('Build', run_build_bash, {})
+vim.api.nvim_set_keymap('n', '<leader>bp', ":Build<cr>", {})

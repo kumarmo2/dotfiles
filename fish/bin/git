@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$1" == "diff" ]]; then
+  shift
+  exec /usr/bin/git diff --ignore-space-change "$@"
+else
+  exec /usr/bin/git "$@"
+fi
+

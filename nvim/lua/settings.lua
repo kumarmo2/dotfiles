@@ -46,6 +46,24 @@ vim.opt.signcolumn = 'yes'
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff  = 10
 vim.o.updatetime   = 2000 -- Check `CursorHold` event and updatetime friendly manual.
+vim.o.autoread     = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd('checktime')
+    end
+  end,
+})
+
+if not vim._checktime_timer then
+  local timer = vim.loop.new_timer()
+  timer:start(2000, 2000, vim.schedule_wrap(function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd('checktime')
+    end
+  end))
+  vim._checktime_timer = timer
+end
 
 
 if vim.g.neovide then

@@ -12,9 +12,9 @@ tmux new-session -d -s $SESSION_NAME -n host
 tmux new-window -t "$SESSION_NAME:" -n pi
 tmux send-keys -t "$SESSION_NAME:pi" "sshpass -p '${pass}' ssh pi" C-m # C-m imitates enter press.
 
-tmux new-window -t "$SESSION_NAME:" -n hp
-tmux send-keys -t "$SESSION_NAME:hp" "sshpass -p '${pass}' ssh hp" C-m
-
-
-tmux swap-window -s "$SESSION_NAME:host" -t "$SESSION_NAME:hp"
+# tmux new-window -t "$SESSION_NAME:" -n hp
+# tmux send-keys -t "$SESSION_NAME:hp" "sshpass -p '${pass}' ssh hp" C-m
+#
+#
+# tmux swap-window -s "$SESSION_NAME:host" -t "$SESSION_NAME:hp"
 

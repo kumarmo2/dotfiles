@@ -69,13 +69,19 @@ setKeyMap('n', '<leader>ss', ':so %<CR>', opts)
 
 -- copy pasta bindings
 setKeyMap('v', 'Y', '"+y', opts)
-setKeyMap('n', 'dp', '""p', opts) -- paste from unnamed register
-setKeyMap('n', 'dP', '""P', opts) -- paste from unnamed register
-setKeyMap('n', 'p', '"0p', opts) -- paste from 0 register(this is the most recent yank)
-setKeyMap('n', 'P', '"0P', opts) -- paste from 0 register(this is the most recent yank)
+setKeyMap('n', 'dp', '""p', opts)         -- paste from unnamed register
+setKeyMap('n', 'dP', '""P', opts)         -- paste from unnamed register
+setKeyMap('n', 'p', '"0p', opts)          -- paste from 0 register(this is the most recent yank)
+setKeyMap('n', 'P', '"0P', opts)          -- paste from 0 register(this is the most recent yank)
 setKeyMap('n', '<leader>gp', '"+p', opts) -- paste from + register(this is paste from system clipboard)
 setKeyMap('n', '<leader>gP', '"+P', opts) -- paste from + register(this is paste from system clipboard)
 
 -- terminal binding
 setKeyMap('t', '<esc><esc>', '<C-\\><C-n>', opts)
 setKeyMap('t', '<esc><CR>', '<C-\\><C-n>:q<CR>', opts)
+
+-- local yanks = { 'w', '{', '[', '(' }
+--
+-- for y in pairs(yanks) do
+--   setKeyMap('n', 'yi' .. y, '"+yi' .. y, opts)
+-- end

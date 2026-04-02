@@ -32,3 +32,4 @@ require('user.load_plugin')
 require('user.build')
 
 require('user.load_ui2')
+require('user.toggle-friendly-line-numbers')

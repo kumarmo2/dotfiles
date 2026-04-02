@@ -107,7 +107,15 @@ vim.lsp.config('*', {
   capabilities = capabilities,
 })
 
-local lsps = { { enabled = true, lsp = 'zls', pattern = '*.zig',                           opts = nil },
+local lsps = { {
+  enabled = true,
+  lsp = 'zls',
+  extension = '*.zig',
+  config = {
+    cmd = { 'zls' },
+    root_markers = { "zls.json", "build.zig", ".git" }
+  }
+},
   { enabled = true, lsp = 'lua_ls',        extension = '*.lua',                              opts = nil },
   { enabled = true, lsp = 'roslyn',        extension = '*.cs',                               opts = nil },
   { enabled = true, lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },

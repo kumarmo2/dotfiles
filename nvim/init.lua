@@ -24,11 +24,11 @@ local tmux = vim.env.TMUX
 
 
 require('user.float_focus')
-if tmux == nil then
-  require('user.terminal') -- use tmux floating terminal instead if available,
-end
+require('user.terminal') -- use tmux floating terminal instead if available,
 require('user.find_in_project')
 require('user.split-resize')
 require('user.lsp.lsp')
 require('user.load_plugin')
 require('user.build')
+
+require('user.load_ui2')

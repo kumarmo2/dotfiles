@@ -25,7 +25,7 @@ function fzf_tmux_dir --description 'Fuzzy-find a directory and attach/create tm
     end
 end
 
-bind \cp fzf_tmux_dir
+# bind \cp fzf_tmux_dir
 
 
 alias t='tmux'

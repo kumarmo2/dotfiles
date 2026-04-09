@@ -20,9 +20,6 @@ require('settings')
 require('user.filetype')
 require('user.commands')
 
-local tmux = vim.env.TMUX
-
-
 require('user.float_focus')
 require('user.terminal') -- use tmux floating terminal instead if available,
 require('user.find_in_project')

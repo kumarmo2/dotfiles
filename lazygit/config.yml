@@ -1,6 +1,15 @@
 gui:
-  sidePanelWidth: 0.20
-git: 
-    paging:
-        colorArg: always
-        pager: delta --dark --paging=never --syntax-theme base16-256 -s
+  sidePanelWidth: 0.2
+  mainPanelSplitMode: "horizontal"
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --syntax-theme base16-256 -s
+# customCommands:
+#   - key: 'W'
+customCommands:
+  # - key: "W"
+  #   description: "Diff all files (ignore whitespace)"
+  #   context: "files"
+  #   command: "git diff --ignore-space-change | delta --paging=never"
+  #   output: terminal

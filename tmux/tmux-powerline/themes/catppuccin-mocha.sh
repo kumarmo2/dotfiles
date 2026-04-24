@@ -1,0 +1,30 @@
+# shellcheck shell=bash
+# Catppuccin (Mocha) theme for tmux-powerline
+
+# Separator characters
+if patched_font_in_use 2>/dev/null; then
+	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD=''
+	TMUX_POWERLINE_SEPARATOR_LEFT_THIN=''
+	TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD=''
+	TMUX_POWERLINE_SEPARATOR_RIGHT_THIN=''
+else
+	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD='◀'
+	TMUX_POWERLINE_SEPARATOR_LEFT_THIN='❮'
+	TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD='▶'
+	TMUX_POWERLINE_SEPARATOR_RIGHT_THIN='❯'
+fi
+
+# Base colors (Catppuccin Mocha)
+export TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR='#1e1e2e'
+export TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR='#cdd6f4'
+export TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR=''
+export TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=''
+
+# Status segments (Catppuccin Mocha)
+export TMUX_POWERLINE_LEFT_STATUS_SEGMENTS='tmux_session_info #cba6f7 #1e1e2e
+vcs_branch #a6e3a1 #1e1e2e'
+
+export TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS='pwd #fab387 #1e1e2e
+date_day #313244 #cdd6f4
+date #313244 #cdd6f4 
+time #313244 #cdd6f4 '

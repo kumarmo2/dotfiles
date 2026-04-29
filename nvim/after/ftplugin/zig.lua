@@ -14,7 +14,7 @@ vim.api.nvim_create_user_command('Make', function()
         vim.notify('✅ Zig build succeeded', vim.log.levels.INFO)
         local qlist = vim.fn.getqflist()
         if qlist == nil or #qlist == 0 then
-          vim.cmd('vertical topleft copen 80')
+          -- vim.cmd('vertical topleft copen 80')
           return
         end
         vim.fn.setqflist({})

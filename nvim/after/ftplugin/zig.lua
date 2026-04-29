@@ -14,15 +14,17 @@ vim.api.nvim_create_user_command('Make', function()
         vim.notify('✅ Zig build succeeded', vim.log.levels.INFO)
         local qlist = vim.fn.getqflist()
         if qlist == nil or #qlist == 0 then
+          vim.cmd("cclose")
           -- vim.cmd('vertical topleft copen 80')
           return
         end
+        -- clear any previos quickfix list
         vim.fn.setqflist({})
-        -- vim.cmd("cclose")
+        vim.cmd("cclose")
       else
-        vim.cmd('vertical cfile ' .. logfile)
+        vim.notify('❌ Zig build failed. Check quickfix.', vim.log.levels.INFO)
+        vim.cmd('cgetfile ' .. logfile) -- 'cgetfile' only updates the errorfile but don't jump to the error.
         vim.cmd('vertical topleft copen 80')
-        vim.notify('❌ Zig build failed. Check quickfix.', vim.log.levels.ERROR)
       end
     end,
   })

@@ -36,14 +36,14 @@ fi
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_STYLE" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_STYLE=(
-		"#[fg=#ebdbb2,bg=#3c3836]"
+		"#[fg=#ebdbb2,bg=#282828]"
 	)
 fi
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
-		"#[fg=#ebdbb2,bg=#3c3836]"
+		"#[fg=#ebdbb2,bg=#282828]"
 		"  #I#{?window_flags,#F, } "
 		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
 		" #W "

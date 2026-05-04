@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Catppuccin (Mocha) theme for tmux-powerline
+# Gruvbox Dark theme for tmux-powerline
 
 # Separator characters
 if patched_font_in_use 2>/dev/null; then
@@ -14,21 +14,21 @@ else
 	TMUX_POWERLINE_SEPARATOR_RIGHT_THIN='❯'
 fi
 
-# Base colors (Catppuccin Mocha)
-export TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR='#1e1e2e'
-export TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR='#cdd6f4'
+# Base colors (Gruvbox Dark)
+export TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR='#282828'
+export TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR='#ebdbb2'
 export TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR=''
 export TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=''
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_CURRENT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
-		"#[fg=#1e1e2e,bg=#89b4fa,bold]"
+		"#[fg=#282828,bg=#fabd2f,bold]"
 		"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
 		" #I#F "
 		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
 		" #W "
-		"#[fg=#89b4fa,bg=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR}]"
+		"#[fg=#fabd2f,bg=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR}]"
 		"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
 	)
 fi
@@ -36,14 +36,14 @@ fi
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_STYLE" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_STYLE=(
-		"#[fg=#cdd6f4,bg=#313244]"
+		"#[fg=#ebdbb2,bg=#3c3836]"
 	)
 fi
 
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
-		"#[fg=#cdd6f4,bg=#313244]"
+		"#[fg=#ebdbb2,bg=#3c3836]"
 		"  #I#{?window_flags,#F, } "
 		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
 		" #W "
@@ -53,17 +53,17 @@ fi
 # shellcheck disable=SC1143,SC2128
 if [ -z "$TMUX_POWERLINE_LEFT_STATUS_SEGMENTS" ]; then
 	TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-		"tmux_session_info #cba6f7 #1e1e2e"
-		"vcs_branch #a6e3a1 #1e1e2e"
+		"tmux_session_info #d3869b #282828"
+		"vcs_branch #b8bb26 #282828"
 	)
 fi
 
 # shellcheck disable=SC1143,SC2128
 if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-		"pwd #fab387 #1e1e2e"
-		"date_day #313244 #cdd6f4"
-		"date #313244 #cdd6f4 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
-		"time #313244 #cdd6f4 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
+		"pwd #fabd2f #282828"
+		"date_day #3c3836 #ebdbb2"
+		"date #3c3836 #ebdbb2 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
+		"time #3c3836 #ebdbb2 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
 	)
 fi

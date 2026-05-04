@@ -4,7 +4,7 @@
 # This file is symlinked to: ~/.config/tmux-powerline/config.sh
 
 # Use the catppuccin-mocha theme
-export TMUX_POWERLINE_THEME='catppuccin-mocha'
+export TMUX_POWERLINE_THEME='gruvbox-dark'
 
 # Point to our custom themes directory
 export TMUX_POWERLINE_DIR_USER_THEMES='${XDG_CONFIG_HOME:-${HOME}/.config}/tmux-powerline/themes'

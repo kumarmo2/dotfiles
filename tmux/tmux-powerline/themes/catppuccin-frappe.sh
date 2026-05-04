@@ -1,44 +1,69 @@
 # shellcheck shell=bash
-# Catppuccin (Frappe) theme for tmux-powerline.
-#
-# Usage: Set TMUX_POWERLINE_THEME=catppuccin-frappe before sourcing config.sh,
-#        or change the default in config.sh.
+# Catppuccin (Frappe) theme for tmux-powerline
 
-# Base colors
-TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR='#303030'  # base
-TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR='#c6d0f5'  # text
+# Separator characters
+if patched_font_in_use 2>/dev/null; then
+	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD=''
+	TMUX_POWERLINE_SEPARATOR_LEFT_THIN=''
+	TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD=''
+	TMUX_POWERLINE_SEPARATOR_RIGHT_THIN=''
+else
+	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD='◀'
+	TMUX_POWERLINE_SEPARATOR_LEFT_THIN='❮'
+	TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD='▶'
+	TMUX_POWERLINE_SEPARATOR_RIGHT_THIN='❯'
+fi
 
-# Window list styling
-TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
-	"#[fg=#303030,bg=#8caaee,bold]"
-	"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-	" #I#F "
-	"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
-	" #W "
-	"#[fg=#8caaee,bg=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR}]"
-	"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-)
+# Base colors (Catppuccin Frappe)
+export TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR='#303030'
+export TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR='#c6d0f5'
+export TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR=''
+export TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=''
 
-TMUX_POWERLINE_WINDOW_STATUS_STYLE=(
-	"#[fg=#c6d0f5,bg=#626880]"
-)
+# shellcheck disable=SC2128
+if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_CURRENT" ]; then
+	TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
+		"#[fg=#303030,bg=#8caaee,bold]"
+		"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
+		" #I#F "
+		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
+		" #W "
+		"#[fg=#8caaee,bg=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR}]"
+		"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
+	)
+fi
 
-TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
-	"#[fg=#c6d0f5,bg=#626880]"
-	"  #I#{?window_flags,#F, } "
-	"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
-	" #W "
-)
+# shellcheck disable=SC2128
+if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_STYLE" ]; then
+	TMUX_POWERLINE_WINDOW_STATUS_STYLE=(
+		"#[fg=#c6d0f5,bg=#626880]"
+	)
+fi
 
-# Status segments
-TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-	"tmux_session_info #ca9ee6 #303030"  # mauve on base
-	"vcs_branch #a6d189 #303030"        # green on base
-)
+# shellcheck disable=SC2128
+if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
+	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
+		"#[fg=#c6d0f5,bg=#626880]"
+		"  #I#{?window_flags,#F, } "
+		"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
+		" #W "
+	)
+fi
 
-TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-	"pwd #fabd2f #303030"                # peach on base
-	"date_day #626880 #c6d0f5"           # surface0 w/ text
-	"date #626880 #c6d0f5 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
-	"time #626880 #c6d0f5 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
-)
+# shellcheck disable=SC1143,SC2128
+if [ -z "$TMUX_POWERLINE_LEFT_STATUS_SEGMENTS" ]; then
+	TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
+		"tmux_session_info #ca9ee6 #303030"
+		"vcs_branch #a6d189 #303030"
+	)
+fi
+
+# shellcheck disable=SC1143,SC2128
+if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
+	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
+		"pwd #fabd2f #303030"
+		"date_day #626880 #c6d0f5"
+		"date #626880 #c6d0f5 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
+		"time #626880 #c6d0f5 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}"
+	)
+fi

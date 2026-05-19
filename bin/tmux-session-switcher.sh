@@ -1,25 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# macOS ships an ancient Bash (3.2) that lacks mapfile/readarray.
+# We use POSIX head/sed here so this works on both Linux and macOS
+# without requiring a newer Bash.
+
 state_dir="${TMUX_SESSION_SWITCHER_STATE_DIR:-${XDG_STATE_HOME:-$HOME/.local/state}/tmux-session-switcher}"
 state_file="$state_dir/history"
 mkdir -p "$state_dir"
 
 record_session() {
   local new_session="$1"
-  if [[ -z "$new_session" ]]; then
-    return 0
-  fi
+  [[ -z "$new_session" ]] && return 0
 
   local current=""
   if [[ -f "$state_file" ]]; then
-    mapfile -t lines < "$state_file"
-    current="${lines[0]:-}"
+    current=$(head -n 1 "$state_file")
   fi
 
-  if [[ "$current" == "$new_session" ]]; then
-    return 0
-  fi
+  [[ "$current" == "$new_session" ]] && return 0
 
   printf '%s\n%s\n' "$new_session" "$current" > "$state_file"
 }
@@ -30,8 +29,9 @@ swap_session() {
     return 1
   fi
 
-  mapfile -t lines < "$state_file"
-  local previous="${lines[1]:-}"
+  local previous
+  previous=$(sed -n '2p' "$state_file")
+
   if [[ -z "$previous" ]]; then
     tmux display-message "no previous session to toggle"
     return 1

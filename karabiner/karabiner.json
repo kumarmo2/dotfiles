@@ -1,0 +1,82 @@
+{
+    "profiles": [
+        {
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" },
+            "complex_modifications": {
+                "parameters": {
+                    "basic.to_if_alone_timeout_milliseconds": 180,
+                    "basic.to_if_held_down_threshold_milliseconds": 180
+                },
+                "rules": [
+                    {
+                        "description": "Home-row mods",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "a", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "left_control", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "a" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "s", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "left_command", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "s" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "d", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "left_option", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "d" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "f", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "left_shift", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "f" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "j", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "right_shift", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "j" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "k", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "right_option", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "k" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "l", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "right_command", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "l" }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "semicolon", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "right_control", "lazy": true }],
+                                "to_if_alone": [{ "key_code": "semicolon" }]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Space tap, hold layer_one",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "spacebar", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "set_variable": { "name": "layer_one", "value": 1 } }],
+                                "to_after_key_up": [{ "set_variable": { "name": "layer_one", "value": 0 } }],
+                                "to_if_alone": [{ "key_code": "spacebar" }]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

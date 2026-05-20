@@ -164,6 +164,12 @@
                             },
                             {
                                 "type": "basic",
+                                "from": { "key_code": "f", "modifiers": { "optional": ["any"] } },
+                                "to": [{ "key_code": "tab" }],
+                                "conditions": [{ "type": "variable_if", "name": "layer_one", "value": 1 }]
+                            },
+                            {
+                                "type": "basic",
                                 "from": { "key_code": "h", "modifiers": { "optional": ["any"] } },
                                 "to": [{ "key_code": "left_arrow" }],
                                 "conditions": [{ "type": "variable_if", "name": "layer_one", "value": 1 }]

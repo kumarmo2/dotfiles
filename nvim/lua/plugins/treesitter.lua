@@ -10,7 +10,7 @@ return {
     end,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup({
+      require('nvim-treesitter').setup({
         ensure_installed = { 'rust', 'c', 'go', 'css', 'html', 'lua', 'javascript', 'typescript', 'python', 'c_sharp' },
 
         -- Install languages synchronously (only applied to `ensure_installed`)
@@ -91,15 +91,15 @@ return {
 
       -- add c3 support.
       -- Follow `https://github.com/c3lang/tree-sitter-c3?tab=readme-ov-file#neovim for complete installation.`
-      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-      ---@diagnostic disable-next-line: inject-field
-      parser_config.c3 = {
-        install_info = {
-          url = 'https://github.com/c3lang/tree-sitter-c3',
-          files = { 'src/parser.c', 'src/scanner.c' },
-          branch = 'main',
-        },
-      }
+      -- local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      -- ---@diagnostic disable-next-line: inject-field
+      -- parser_config.c3 = {
+      --   install_info = {
+      --     url = 'https://github.com/c3lang/tree-sitter-c3',
+      --     files = { 'src/parser.c', 'src/scanner.c' },
+      --     branch = 'main',
+      --   },
+      -- }
 
       vim.opt.foldlevel = 20
       vim.opt.foldmethod = 'expr'

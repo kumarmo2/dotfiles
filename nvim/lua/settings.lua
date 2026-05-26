@@ -49,7 +49,12 @@ vim.o.updatetime   = 2000 -- Check `CursorHold` event and updatetime friendly ma
 vim.o.autoread     = true
 vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
   callback = function()
-    if vim.fn.mode() ~= 'c' then
+    -- Don't run checktime in the command-line window (cmdwin). The cmdwin is a
+    -- special editable buffer opened with q:, q/, q?, or <C-f> in ex/search mode.
+    -- Running :checktime there can trigger weird errors or close the window
+    -- unexpectedly because it operates on the underlying buffer, not the cmdwin.
+    -- getcmdwintype() returns '' when NOT in a cmdwin, ':' in q:, '/' in q/, etc.
+    if vim.fn.mode() ~= 'c' and vim.fn.getcmdwintype() == '' then
       vim.cmd('checktime')
     end
   end,
@@ -58,7 +63,9 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHo
 if not vim._checktime_timer then
   local timer = vim.loop.new_timer()
   timer:start(2000, 2000, vim.schedule_wrap(function()
-    if vim.fn.mode() ~= 'c' then
+    -- Same guard as the autocmd above: skip checktime in the command-line window
+    -- (cmdwin) to avoid interfering with the special cmdwin buffer.
+    if vim.fn.mode() ~= 'c' and vim.fn.getcmdwintype() == '' then
       vim.cmd('checktime')
     end
   end))

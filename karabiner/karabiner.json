@@ -6,9 +6,9 @@
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" },
             "complex_modifications": {
                 "parameters": {
-                    "basic.to_if_alone_timeout_milliseconds": 200,
-                    "basic.to_if_held_down_threshold_milliseconds": 200,
-                    "basic.to_delayed_action_delay_milliseconds": 200
+                    "basic.to_if_held_down_threshold_milliseconds": 140,
+                    "basic.to_if_alone_timeout_milliseconds": 220,
+                    "basic.to_delayed_action_delay_milliseconds": 140
                 },
                 "rules": [
                     {
@@ -27,61 +27,76 @@
                         ]
                     },
                     {
+                        "description": "App switch (Cmd+J=prev, Cmd+K=next)",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "j", "modifiers": { "mandatory": ["left_command"] } },
+                                "to": [{ "key_code": "tab", "modifiers": ["left_command", "left_shift"] }]
+                            },
+                            {
+                                "type": "basic",
+                                "from": { "key_code": "k", "modifiers": { "mandatory": ["left_command"] } },
+                                "to": [{ "key_code": "tab", "modifiers": ["left_command"] }]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Home-row mods",
                         "manipulators": [
                             {
                                 "type": "basic",
                                 "from": { "key_code": "a", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "left_control", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "left_control", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "a" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "s", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "left_command", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "left_command", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "s" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "d", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "left_option", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "left_option", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "d" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "f", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "left_shift", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "left_shift", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "f" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "j", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "right_shift", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "right_shift", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "j" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "k", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "right_option", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "right_option", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "k" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "l", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "right_command", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "right_command", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "l" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             },
                             {
                                 "type": "basic",
                                 "from": { "key_code": "semicolon", "modifiers": { "optional": ["any"] } },
-                                "to": [{ "key_code": "right_control", "lazy": true }],
+                                "to_if_held_down": [{ "key_code": "right_control", "lazy": true }],
                                 "to_if_alone": [{ "key_code": "semicolon" }],
                                 "conditions": [{ "type": "variable_unless", "name": "layer_one", "value": 1 }]
                             }

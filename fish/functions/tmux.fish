@@ -28,6 +28,10 @@ end
 # bind \cp fzf_tmux_dir
 
 
+function tx --description 'tmuxifier without inherited TMUXIFIER_SESSION_ROOT'
+    env -u TMUXIFIER_SESSION_ROOT tmuxifier $argv
+end
+
 alias t='tmux'
 alias tns='tmux new-session -s'
 alias tks='tmux kill-server'

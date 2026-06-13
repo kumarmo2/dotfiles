@@ -1,0 +1,105 @@
+#| --------------------------------------------------------------------------
+
+                     KMonad: macOS US ansi ten-key-less
+
+  This is the macOS equivalent of `kmonad/us_ansi_tkl.kbd`.
+  Behavior is kept identical to the Linux file; only `defcfg` is adapted
+  for macOS input/output.
+
+  IMPORTANT:
+  - Replace the `iokit-name` placeholder below with a substring of your real
+    keyboard product name.
+  - `iokit-name` is NOT a shell command. It is a KMonad config option.
+  - `output (kext)` on macOS commonly relies on the Karabiner VirtualHID
+    driver being installed.
+
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+
+  -------------------------------------------------------------------------- |#
+(defcfg
+  ;; For MacOS
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
+
+  ;; Keep behavior same as Linux config
+  cmp-seq ralt
+  cmp-seq-delay 5
+  fallthrough true
+  allow-cmd true
+  implicit-around around
+)
+
+( defalias 
+  layerone (layer-toggle one)
+
+  ;; Hold either Command key to also enable a temporary navigation layer.
+  ;; This keeps app switching inside KMonad: while Command is held,
+  ;; J sends Cmd+Shift+Tab (previous app) and K sends Cmd+Tab (next app).
+  ;; Tapping S/L still emits the letter; holding them still behaves as Command.
+  ;; We apply this to both home-row Command mods and the physical Command keys.
+  lcmdnav (around lmet (momentary-layer cmdnav))
+  rcmdnav (around rmet (momentary-layer cmdnav))
+
+  lcl (tap-hold-next-release 180 a lctl)
+  lmt (tap-hold-next-release 180 s @lcmdnav)
+  lat (tap-hold-next-release 180 d lalt)
+  lst (tap-hold-next-release 180 f lsft)
+  qul1 (tap-hold-next-release 180 ' @layerone)
+  escl1 (tap-hold-next-release 180 esc @layerone)
+  spacel1 (tap-hold-next-release 180 spc @layerone)
+
+  rcl (tap-hold-next-release 180 ; lctl)
+  rmt (tap-hold-next-release 180 l @rcmdnav)
+  rat (tap-hold-next-release 180 k lalt)
+  rst (tap-hold-next-release 180 j lsft)
+)
+;; (defalias layerone (layer-toggle one))
+
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+)
+
+(deflayer base
+  caps   _    _          _    _    _    _    _    _         _    _    _     _
+  _      _    _          _    _    _    _    _    _         _    _    _     _    _     _    _    _
+  _      _    _          _    _    _    _    _    _         _    _    _     _    _     _    _    _
+  @escl1 @lcl @lmt       @lat @lst _    _    @rst @rat      @rmt @rcl @qul1 _
+  _    _    _          _    _    _    _    _    _         _    _    _                    _
+  _    @lcmdnav _                    @spacel1       _         @rcmdnav _    _               _    _    _
+)
+
+;; Active only while a Command trigger is held. We only override J/K so
+;; normal Command shortcuts keep working through the transparent keys.
+;; Important: J/K send plain Shift+Tab / Tab here because Command is already
+;; being held by @lcmdnav/@rcmdnav. That keeps the macOS app switcher open
+;; until the Command trigger is released.
+(deflayer cmdnav
+  _    _    _    _    _    _    _    _      _    _    _    _    _
+  _    _    _    _    _    _    _    _      _    _    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    _      _    _    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    S-tab  tab  _    _    _    _
+  _    _    _    _    _    _    _    _      _    _    _    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+
+(deflayer one
+  _    _    _    _    _    _    _    _    _    _      _    _    _
+  _    _    _    _    _    _    _    _    _    _      _    _    _    _     _    _    _
+  _    1    2    3    4    5    6    7    8    9      0    _    _    _     _    _    _
+  _    _    _    _    _    _    left down up   right  _    _    bspc
+  _    _    _    _    _    _    _    _    _    _      _    _                    _
+  _    _    _              _              _    _      _    _               _    _    _
+)

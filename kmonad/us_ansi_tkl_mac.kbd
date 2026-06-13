@@ -126,17 +126,19 @@
   _    @lcmdnav _                    @spacel1       _         @rcmdnav _    _               _    _    _
 )
 
-;; Active only while a Command trigger is held. We only override J/K so
-;; normal Command shortcuts keep working through the transparent keys.
-;; Important: J/K send plain Shift+Tab / Tab here because Command is already
-;; being held by @lcmdnav/@rcmdnav. That keeps the macOS app switcher open
-;; until the Command trigger is released.
+;; Active only while a Command trigger is held. We override only a few keys:
+;; - J = previous app in the Cmd+Tab switcher
+;; - K = next app in the Cmd+Tab switcher
+;; - M = toggle fullscreen (Ctrl+Cmd+F)
+;;
+;; Important: these keys emit the *non-Command* part of the shortcut because
+;; Command is already being held by @lcmdnav/@rcmdnav.
 (deflayer cmdnav
   _    _    _    _    _    _    _    _      _    _    _    _    _
   _    _    _    _    _    _    _    _      _    _    _    _    _    _     _    _    _
   _    _    _    _    _    _    _    _      _    _    _    _    _    _     _    _    _
   _    _    _    _    _    _    _    S-tab  tab  _    _    _    _
-  _    _    _    _    _    _    _    _      _    _    _    _                    _
+  _    _    _    _    _    _    _    C-f    _    _    _    _                    _
   _    _    _              _              _    _    _    _               _    _    _
 )
 

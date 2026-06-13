@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PLIST="/Library/LaunchDaemons/com.kumarmo2.kmonad.plist"
+LOG_OUT="/Library/Logs/kmonad.log"
+LOG_ERR="/Library/Logs/kmonad.err.log"
+
+sudo launchctl bootout system "$PLIST" 2>/dev/null || true
+sudo launchctl bootstrap system "$PLIST"
+
+echo "KMonad daemon reloaded."
+echo
+sudo launchctl print system/com.kumarmo2.kmonad | sed -n '1,80p'
+echo
+if [[ -f "$LOG_OUT" || -f "$LOG_ERR" ]]; then
+  echo "Recent logs:"
+  sudo tail -n 20 "$LOG_OUT" "$LOG_ERR" 2>/dev/null || true
+fi

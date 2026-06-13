@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kumarmo2.kmonad</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/kumarmo2/.local/bin/kmonad</string>
+    <string>/Users/kumarmo2/dotfiles/kmonad/us_ansi_tkl_mac.kbd</string>
+  </array>
+
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/kumarmo2/dotfiles/kmonad</string>
+
+  <key>StandardOutPath</key>
+  <string>/Library/Logs/kmonad.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Library/Logs/kmonad.err.log</string>
+</dict>
+</plist>

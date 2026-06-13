@@ -104,8 +104,21 @@
 ;; Base layer = your normal typing layer.
 ;; `_` means "transparent": fall back to the key from `defsrc`.
 ;; `@name` means "use alias `name` from defalias".
+;;
+;; Top row note for macOS:
+;; KMonad intercepts Apple function keys before macOS can translate them into
+;; brightness / media / volume actions. So we emit those Apple actions here
+;; directly, following KMonad's `apple.kbd` template.
+;; F1  = brightness down      F7  = previous track
+;; F2  = brightness up        F8  = play/pause
+;; F3  = Launchpad            F9  = next track
+;; F4  = Mission Control      F10 = mute
+;; F5  = keyboard backlight down (may be a no-op on some newer Macs)
+;; F6  = keyboard backlight up   (may be a no-op on some newer Macs)
+;; F11 = volume down
+;; F12 = volume up
 (deflayer base
-  caps   _    _          _    _    _    _    _    _         _    _    _     _
+  caps   brdn brup       lp   mctl bldn blup prev pp   next      mute vold volu
   _      _    _          _    _    _    _    _    _         _    _    _     _    _     _    _    _
   _      _    _          _    _    _    _    _    _         _    _    _     _    _     _    _    _
   @escl1 @lcl @lmt       @lat @lst _    _    @rst @rat      @rmt @rcl @qul1 _

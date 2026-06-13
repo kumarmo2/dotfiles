@@ -24,37 +24,63 @@
 
   -------------------------------------------------------------------------- |#
 (defcfg
-  ;; For MacOS
+  ;; KMonad input source on macOS.
+  ;; `iokit-name` matches a substring of the physical keyboard's product name.
+  ;; Here it matches the built-in Mac keyboard.
   input  (iokit-name "Apple Internal Keyboard / Trackpad")
+
+  ;; KMonad output sink on macOS.
+  ;; `kext` sends remapped events through the macOS virtual keyboard driver.
   output (kext)
 
-  ;; Keep behavior same as Linux config
+  ;; Compose key configuration. `cmp` in `defsrc` acts as Right Alt compose.
   cmp-seq ralt
+  ;; Small delay between compose key sequence events.
   cmp-seq-delay 5
+
+  ;; If a key is not remapped in the active layer, let it pass through normally.
   fallthrough true
+
+  ;; Allow KMonad commands/macros that execute commands.
   allow-cmd true
+
+  ;; Use `around` as the default wrapper behavior for implicit modifier handling.
   implicit-around around
 )
 
 ( defalias 
+  ;; Toggle helper for layer `one`.
+  ;; Not used directly right now, but handy to keep around while learning.
   layerone (layer-toggle one)
 
-  ;; Hold either Command key to also enable a temporary navigation layer.
-  ;; This keeps app switching inside KMonad: while Command is held,
-  ;; J sends Cmd+Shift+Tab (previous app) and K sends Cmd+Tab (next app).
-  ;; Tapping S/L still emits the letter; holding them still behaves as Command.
-  ;; We apply this to both home-row Command mods and the physical Command keys.
+  ;; `around` presses the modifier and, at the same time, activates a layer.
+  ;; While left/right Command is held, also enter `cmdnav`.
   lcmdnav (around lmet (momentary-layer cmdnav))
   rcmdnav (around rmet (momentary-layer cmdnav))
 
+  ;; Home-row mods.
+  ;; Pattern: (tap-hold-next-release TIME tap-key hold-action)
+  ;; - quick tap => sends the letter/key
+  ;; - hold => becomes modifier/layer action
+  ;; - 180 is the tap/hold timing threshold in ms
   lcl (tap-hold-next-release 180 a lctl)
   lmt (tap-hold-next-release 180 s @lcmdnav)
   lat (tap-hold-next-release 180 d lalt)
   lst (tap-hold-next-release 180 f lsft)
+
+  ;; Quote, Escape, and Space become layer keys when held.
+  ;; - tap `'` => '
+  ;; - hold `'` => layer `one`
+  ;; - tap `esc` => escape
+  ;; - hold `esc` => layer `one`
+  ;; - tap `space` => space
+  ;; - hold `space` => layer `one`
   qul1 (tap-hold-next-release 180 ' @layerone)
   escl1 (tap-hold-next-release 180 esc @layerone)
   spacel1 (tap-hold-next-release 180 spc @layerone)
 
+  ;; Right-hand home-row mods.
+  ;; Note: `;` is mapped to left control here, matching the Linux config.
   rcl (tap-hold-next-release 180 ; lctl)
   rmt (tap-hold-next-release 180 l @rcmdnav)
   rat (tap-hold-next-release 180 k lalt)
@@ -63,6 +89,9 @@
 ;; (defalias layerone (layer-toggle one))
 
 
+;; `defsrc` describes the physical keyboard layout KMonad listens to.
+;; Every `deflayer` below must match this exact key order/shape.
+;; Think of this as the coordinate system for all layers.
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
@@ -72,6 +101,9 @@
   lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
 )
 
+;; Base layer = your normal typing layer.
+;; `_` means "transparent": fall back to the key from `defsrc`.
+;; `@name` means "use alias `name` from defalias".
 (deflayer base
   caps   _    _          _    _    _    _    _    _         _    _    _     _
   _      _    _          _    _    _    _    _    _         _    _    _     _    _     _    _    _
@@ -95,11 +127,18 @@
   _    _    _              _              _    _    _    _               _    _    _
 )
 
+;; Layer `one` = navigation + symbols/numbers helper layer.
+;; Current functions:
+;; - hold Space / Escape / Quote to enter this layer
+;; - W E R T Y U I O P [ map to 1 2 3 4 5 6 7 8 9 0
+;; - H J K L become arrow keys
+;; - ] and [ on this layer switch macOS desktops via Ctrl+Right / Ctrl+Left
+;; - Return becomes Backspace
 (deflayer one
-  _    _    _    _    _    _    _    _    _    _      _    _    _
-  _    _    _    _    _    _    _    _    _    _      _    _    _    _     _    _    _
-  _    1    2    3    4    5    6    7    8    9      0    _    _    _     _    _    _
-  _    _    _    _    _    _    left down up   right  _    _    bspc
-  _    _    _    _    _    _    _    _    _    _      _    _                    _
-  _    _    _              _              _    _      _    _               _    _    _
+  _    _    _    _    _    _    _    _    _    _      _       _        _
+  _    _    _    _    _    _    _    _    _    _      _       _        _    _     _    _    _
+  _    1    2    3    4    5    6    7    8    9      0       C-left   C-right _    _    _    _
+  _    _    _    _    _    _    left down up   right  _       _        bspc
+  _    _    _    _    _    _    _    _    _    _      _       _                    _
+  _    _    _              _              _    _      _       _               _    _    _
 )

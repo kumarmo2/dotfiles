@@ -1,7 +1,7 @@
 local keys_to_command_map = {
-  ['<leader>p'] = ':FzfLua files<CR>',
+  -- ['<leader>p'] = ':FzfLua files<CR>',
   ['<leader>;'] = ':FzfLua buffers<CR>',
-  ['<leader>fg'] = ':FzfLua live_grep<CR>',
+  -- ['<leader>fg'] = ':FzfLua live_grep<CR>',
   ['<leader>gf'] = ':FzfLua git_files<CR>',
   ['<leader>th'] = ':FzfLua helptags<CR>',
 }

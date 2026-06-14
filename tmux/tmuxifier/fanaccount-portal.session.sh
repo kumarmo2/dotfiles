@@ -1,13 +1,13 @@
 
 # Set a custom session root path. Default is `$HOME`.
 # Must be called before `initialize_session`.
-session_root "~/work/unified-api-account.git/worktrees/latest"
+session_root "~/work/fan-account-portal.git/worktrees/latest"
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
 # if initialize_session "redis-zig"; then
 
-if initialize_session "u-acc-api"; then
+if initialize_session "fanaccount-portal"; then
     new_window
     run_cmd "pi"
     run_cmd "tmux rename-window pi"

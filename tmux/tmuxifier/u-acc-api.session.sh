@@ -13,6 +13,7 @@ if initialize_session "u-acc-api"; then
     run_cmd "tmux rename-window pi"
 
     new_window
+    split_h 70
     run_cmd "nvim"
     run_cmd "tmux rename-window code"
 

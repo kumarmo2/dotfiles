@@ -1,20 +1,14 @@
 # Set a custom session root path. Default is `$HOME`.
 # Must be called before `initialize_session`.
-session_root "~/dotfiles/"
+session_root "~/work/unified-api-b2c-search.git/worktrees/latest"
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "dotfiles"; then
+if initialize_session "b2c-search"; then
 
-    new_window
-    run_cmd "pi"
-    run_cmd "tmux rename-window pi"
-
-    new_window
-    split_h 70
-    run_cmd "nvim"
-
-    run_cmd "tmux rename-window code"
+  # Create a new window inline within session layout definition.
+  new_window
+  run_cmd "tmux rename-window code"
 
   # Load a defined window layout.
   #load_window "example"

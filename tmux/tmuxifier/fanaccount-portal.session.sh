@@ -13,9 +13,10 @@ if initialize_session "fanaccount-portal"; then
     run_cmd "tmux rename-window pi"
 
     new_window
+    split_h 70
     run_cmd "nvim"
-    run_cmd "tmux rename-window code"
 
+    run_cmd "tmux rename-window code"
 fi
 
 finalize_and_go_to_session

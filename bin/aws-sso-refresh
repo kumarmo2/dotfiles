@@ -1,0 +1,187 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Refresh AWS SSO credentials and materialize them for shells and .NET.
+#
+# SSO profile (in ~/.aws/config): DeveloperBase-971217900852
+# Credentials profile (for dotnet/tools): axsdevops
+#
+# Usage:
+#   aws-sso-refresh                 # login + refresh, print fish env commands
+#   aws-sso-refresh --format bash   # print bash export commands
+#   aws-sso-refresh --check         # exit 0 if cached creds are still valid
+
+SSO_PROFILE="${AWS_SSO_PROFILE:-DeveloperBase-971217900852}"
+CREDS_PROFILE="${AWS_CREDS_PROFILE:-axsdevops}"
+AWS_REGION="${AWS_REGION:-us-west-2}"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aws"
+SESSION_FILE="$STATE_DIR/session.env"
+FORMAT="fish"
+CHECK_ONLY=false
+SKIP_LOGIN=false
+
+usage() {
+    cat <<'EOF'
+Usage: aws-sso-refresh [options]
+
+Options:
+  --format fish|bash|env   Output shell commands (default: fish)
+  --check                  Exit 0 when credentials are still valid
+  --skip-login             Skip browser SSO login (use existing SSO session)
+  --profile NAME           SSO profile in ~/.aws/config
+  --creds-profile NAME     Profile name in ~/.aws/credentials (default: axsdevops)
+  -h, --help               Show this help
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --format)
+            FORMAT="$2"
+            shift 2
+            ;;
+        --check)
+            CHECK_ONLY=true
+            shift
+            ;;
+        --skip-login)
+            SKIP_LOGIN=true
+            shift
+            ;;
+        --profile)
+            SSO_PROFILE="$2"
+            shift 2
+            ;;
+        --creds-profile)
+            CREDS_PROFILE="$2"
+            shift 2
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1" >&2
+            usage >&2
+            exit 2
+            ;;
+    esac
+done
+
+ensure_axsdevops_config_profile() {
+    if aws configure list-profiles 2>/dev/null | grep -qx "$CREDS_PROFILE"; then
+        return 0
+    fi
+
+    if [[ "$CREDS_PROFILE" != "axsdevops" ]]; then
+        return 0
+    fi
+
+    local config_file="${AWS_CONFIG_FILE:-$HOME/.aws/config}"
+    if grep -q '^\[profile axsdevops\]' "$config_file" 2>/dev/null; then
+        return 0
+    fi
+
+    cat >>"$config_file" <<'EOF'
+
+[profile axsdevops]
+sso_session = axs-sso
+sso_account_id = 971217900852
+sso_role_name = DeveloperBase
+region = us-west-2
+EOF
+}
+
+credentials_valid() {
+    aws configure export-credentials \
+        --profile "$SSO_PROFILE" \
+        --format env-no-export >/dev/null 2>&1
+}
+
+load_exported_credentials() {
+    local creds
+
+    creds="$(aws configure export-credentials --profile "$SSO_PROFILE" --format env-no-export)"
+    # shellcheck disable=SC1090
+    eval "$creds"
+}
+
+write_credentials_profile() {
+    load_exported_credentials
+
+    local expiration_epoch
+    expiration_epoch="$(python3 -c "from datetime import datetime; print(int(datetime.fromisoformat('${AWS_CREDENTIAL_EXPIRATION}'.replace('Z', '+00:00')).timestamp()))")"
+
+    aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID" --profile "$CREDS_PROFILE"
+    aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY" --profile "$CREDS_PROFILE"
+    aws configure set aws_session_token "$AWS_SESSION_TOKEN" --profile "$CREDS_PROFILE"
+    aws configure set region "$AWS_REGION" --profile "$CREDS_PROFILE"
+
+    mkdir -p "$STATE_DIR"
+    cat >"$SESSION_FILE" <<EOF
+AWS_PROFILE=$CREDS_PROFILE
+AWS_DEFAULT_REGION=$AWS_REGION
+AWS_REGION=$AWS_REGION
+AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN
+AWS_CREDENTIAL_EXPIRATION=$AWS_CREDENTIAL_EXPIRATION
+AWS_CREDENTIAL_EXPIRATION_EPOCH=$expiration_epoch
+EOF
+    chmod 600 "$SESSION_FILE"
+}
+
+emit_shell_env() {
+    # shellcheck disable=SC1090
+    source "$SESSION_FILE"
+
+    case "$FORMAT" in
+        fish)
+            cat <<EOF
+set -gx AWS_PROFILE "$AWS_PROFILE"
+set -gx AWS_DEFAULT_REGION "$AWS_DEFAULT_REGION"
+set -gx AWS_REGION "$AWS_REGION"
+set -gx AWS_ACCESS_KEY_ID "$AWS_ACCESS_KEY_ID"
+set -gx AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
+set -gx AWS_SESSION_TOKEN "$AWS_SESSION_TOKEN"
+set -gx AWS_CREDENTIAL_EXPIRATION "$AWS_CREDENTIAL_EXPIRATION"
+EOF
+            ;;
+        bash)
+            cat <<EOF
+export AWS_PROFILE="$AWS_PROFILE"
+export AWS_DEFAULT_REGION="$AWS_DEFAULT_REGION"
+export AWS_REGION="$AWS_REGION"
+export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+export AWS_SESSION_TOKEN="$AWS_SESSION_TOKEN"
+export AWS_CREDENTIAL_EXPIRATION="$AWS_CREDENTIAL_EXPIRATION"
+EOF
+            ;;
+        env)
+            aws configure export-credentials \
+                --profile "$SSO_PROFILE" \
+                --format env
+            ;;
+        *)
+            echo "Unsupported format: $FORMAT" >&2
+            exit 2
+            ;;
+    esac
+}
+
+ensure_axsdevops_config_profile
+
+if $CHECK_ONLY; then
+    if credentials_valid; then
+        exit 0
+    fi
+    exit 1
+fi
+
+if ! $SKIP_LOGIN; then
+    aws sso login --profile "$SSO_PROFILE"
+fi
+
+write_credentials_profile
+emit_shell_env

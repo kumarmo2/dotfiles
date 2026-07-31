@@ -12,6 +12,7 @@ return {{
       show_scores = true,
     },
   },
+  db = { maxreaders = 512 },
   lazy = false, -- the plugin lazy-initialises itself
   keys = {
     -- { "ff", function() require('fff').find_files() end, desc = 'FFFind files' },

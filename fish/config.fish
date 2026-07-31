@@ -8,6 +8,9 @@ alias rm='trash'
 alias tx='tmuxifier'
 alias lf='ls | fzf'
 alias gg='zeditor'
+function code --description 'Open Visual Studio Code'
+    open -a "Visual Studio Code" -- $argv
+end
 alias pi-no-skills='pi --no-skills --no-prompt-templates'
 alias sysuser='systemctl --user'
 
@@ -24,11 +27,16 @@ source "$HOME/dotfiles/fish/functions/fzcd.fish"
 source "$HOME/dotfiles/fish/functions/fzn.fish"
 source "$HOME/dotfiles/fish/functions/git.fish"
 source "$HOME/dotfiles/fish/functions/dotnet.fish"
+source "$HOME/dotfiles/fish/functions/m.fish"
 source "$HOME/dotfiles/fish/functions/zig.fish"
 source "$HOME/dotfiles/fish/functions/eza.fish"
 source "$HOME/dotfiles/fish/functions/homelab.fish"
 source "$HOME/dotfiles/fish/functions/tailscale.fish"
 source "$HOME/dotfiles/fish/conf.d/nvm.fish"
+
+if test -d "$HOME/work"
+    source "$HOME/dotfiles/fish/conf.d/work.fish"
+end
 
 
 

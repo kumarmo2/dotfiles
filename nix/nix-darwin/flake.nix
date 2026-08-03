@@ -31,6 +31,17 @@
           pkgs.yarn
         ];
 
+      system.primaryUser = "kumarmo2"; # for defaults to apply to certain user, we are setting the primaryUser.
+      system.defaults = {
+        dock.autohide = true;
+        dock.mru-spaces = false;
+        finder.AppleShowAllExtensions = true;
+        finder.FXPreferredViewStyle = "clmv";
+        loginwindow.LoginwindowText = "kumarmo2";
+        screencapture.location = "~/Pictures/screenshots";
+        screensaver.askForPasswordDelay = 10;
+      };
+
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -44,6 +55,10 @@
 
       # use touchId in terminal
       security.pam.services.sudo_local.touchIdAuth = true;
+
+      nix.extraOptions = ''
+          extra-platforms = x86_64-darwin aarch64-darwin
+        '';
 
 # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;

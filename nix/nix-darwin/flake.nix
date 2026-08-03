@@ -44,8 +44,13 @@
       system.defaults = {
         dock.autohide = true;
         dock.mru-spaces = false;
-        finder.AppleShowAllExtensions = true;
-        finder.FXPreferredViewStyle = "clmv";
+        finder = {
+            AppleShowAllExtensions = true;
+            AppleShowAllFiles = true;
+            FXRemoveOldTrashItems = true;
+            QuitMenuItem = true;
+            FXPreferredViewStyle = "clmv";
+        };
         loginwindow.LoginwindowText = "kumarmo2";
         screencapture.location = "~/Pictures/screenshots";
         screensaver.askForPasswordDelay = 10;

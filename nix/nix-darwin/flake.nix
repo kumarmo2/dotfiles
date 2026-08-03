@@ -12,25 +12,34 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
-          pkgs.nixd
-          pkgs.tmux
-          pkgs.neovim
-          pkgs.fastfetch
-          pkgs.zoxide
-          pkgs.fzf
-          pkgs.nodejs
-          pkgs.go
-          pkgs.eza
-          pkgs.lazygit
-          pkgs.pi-coding-agent
-          pkgs.ripgrep
-          pkgs.dotnet-sdk_10
-          pkgs.awscli2
-          pkgs.yarn
+      environment.systemPackages = with pkgs;
+        [ vim
+          nixd
+          tmux
+          neovim
+          fastfetch
+          zoxide
+          fzf
+          nodejs
+          go
+          eza
+          lazygit
+          pi-coding-agent
+          ripgrep
+          dotnet-sdk_10
+          awscli2
+          yarn
+          tailscale
+          gh
+          jira-cli-go
+          jq
         ];
 
+      # use touchId in terminal
+      security.pam.services.sudo_local = {
+          touchIdAuth = true;
+          reattach = true; # [fixes touchId issue in tmux](https://github.com/nix-darwin/nix-darwin/blob/15abb8c98f336cd8bd840d71059adebabe60bf04/modules/security/pam.nix#L49)
+      };
       system.primaryUser = "kumarmo2"; # for defaults to apply to certain user, we are setting the primaryUser.
       system.defaults = {
         dock.autohide = true;
@@ -52,9 +61,6 @@
       system.activationScripts.postActivation.text = ''
           dscl . -create /Users/kumarmo2 UserShell /run/current-system/sw/bin/fish
           '';
-
-      # use touchId in terminal
-      security.pam.services.sudo_local.touchIdAuth = true;
 
       nix.extraOptions = ''
           extra-platforms = x86_64-darwin aarch64-darwin

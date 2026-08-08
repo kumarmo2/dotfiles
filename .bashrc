@@ -233,7 +233,6 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/softwares/prometheus-2.45.0.linux-amd64/
 export PATH=$PATH:$HOME/softwares/bin/
 export PATH=$PATH:$HOME/.config/emacs/bin/
-#export OPENAI_API_KEY=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
 
 # pass related envs start
 

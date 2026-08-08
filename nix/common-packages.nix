@@ -1,0 +1,26 @@
+{pkgs}:{
+p = with pkgs; [    vim
+    nixd
+    tmux
+    neovim
+    fastfetch
+    zoxide
+    fzf
+    nodejs
+    go
+    eza
+    lazygit
+    pi-coding-agent
+    ripgrep
+    dotnet-sdk_10
+    awscli2
+    yarn
+    tailscale
+    gh
+    jira-cli-go
+    jq
+    fd
+    datadog-pup
+    transmission_4-qt
+];
+}

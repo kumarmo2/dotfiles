@@ -87,6 +87,7 @@
      zoxide
      fastfetch
      tmuxifier
+     lazygit
      git
      eza
      fish

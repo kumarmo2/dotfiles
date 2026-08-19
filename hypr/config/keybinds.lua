@@ -22,7 +22,7 @@ hl.bind(mainMod .. " + m", hl.dsp.window.fullscreen(), { description = "Toggles 
 hl.bind(mainMod .. " + Y", hl.dsp.window.pin(), { description = "Pin current window (shows on all workspaces)" })
 
 -- ======= Application shortcuts  =======
-hl.bind(mainMod .. " + b", hl.dsp.exec_cmd("zen-browser"), { description = "browser" })
+hl.bind(mainMod .. " + b", hl.dsp.exec_cmd("zen"), { description = "browser" })
 
 -- ======= Grouping Windows =======
 hl.bind(mainMod .. " + Tab", hl.dsp.group.next(), { description = "Switches to the next window in the group" })

@@ -116,7 +116,18 @@ local lsps = { {
     root_markers = { "zls.json", "build.zig", ".git" }
   }
 },
+  {
+    enabled = true,
+    lsp = 'nixd',
+    extension = '*.nix',
+    config = {
+      cmd = {'nixd'},
+      filetypes = {'nix'},
+      root_markers = {"flake.nix", ".git"},
+    }
+  },
   { enabled = true, lsp = 'lua_ls',        extension = '*.lua',                              opts = nil },
+  { enabled = true, lsp = 'terraform_ls',  extension = '*.tf',                              opts = nil },
   { enabled = true, lsp = 'roslyn',        extension = '*.cs',                               opts = nil },
   { enabled = true, lsp = 'ts_ls',         extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },
   { enabled = true, lsp = 'tailwindcss',   extension = { "*.ts", "*.js", "*.jsx", "*.tsx" }, opts = nil },

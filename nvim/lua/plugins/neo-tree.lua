@@ -9,6 +9,8 @@ return {
     },
     config = function()
       vim.keymap.set("n", "<leader>n", "<Cmd>Neotree float toggle reveal<CR>")
+      vim.keymap.set("n", "<leader>]", "<Cmd>Neotree right<CR>")
+      vim.keymap.set("n", "<leader>[", "<Cmd>Neotree left<CR>")
       require('neo-tree').setup({
         filesystem = {
           filtered_items = {
